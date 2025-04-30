@@ -1,0 +1,25039 @@
+
+/**
+ * Client
+**/
+
+import * as runtime from './runtime/library.js';
+import $Types = runtime.Types // general types
+import $Public = runtime.Types.Public
+import $Utils = runtime.Types.Utils
+import $Extensions = runtime.Types.Extensions
+import $Result = runtime.Types.Result
+
+export type PrismaPromise<T> = $Public.PrismaPromise<T>
+
+
+/**
+ * Model Brand
+ * 
+ */
+export type Brand = $Result.DefaultSelection<Prisma.$BrandPayload>
+/**
+ * Model Model
+ * 
+ */
+export type Model = $Result.DefaultSelection<Prisma.$ModelPayload>
+/**
+ * Model Version
+ * 
+ */
+export type Version = $Result.DefaultSelection<Prisma.$VersionPayload>
+/**
+ * Model BodyType
+ * 
+ */
+export type BodyType = $Result.DefaultSelection<Prisma.$BodyTypePayload>
+/**
+ * Model BodyTypeVersion
+ * 
+ */
+export type BodyTypeVersion = $Result.DefaultSelection<Prisma.$BodyTypeVersionPayload>
+/**
+ * Model FuelType
+ * 
+ */
+export type FuelType = $Result.DefaultSelection<Prisma.$FuelTypePayload>
+/**
+ * Model FuelTypeBody
+ * 
+ */
+export type FuelTypeBody = $Result.DefaultSelection<Prisma.$FuelTypeBodyPayload>
+/**
+ * Model TransmissionType
+ * 
+ */
+export type TransmissionType = $Result.DefaultSelection<Prisma.$TransmissionTypePayload>
+/**
+ * Model TransmissionTypeFuel
+ * 
+ */
+export type TransmissionTypeFuel = $Result.DefaultSelection<Prisma.$TransmissionTypeFuelPayload>
+/**
+ * Model VehicleYear
+ * 
+ */
+export type VehicleYear = $Result.DefaultSelection<Prisma.$VehicleYearPayload>
+/**
+ * Model Mileage
+ * 
+ */
+export type Mileage = $Result.DefaultSelection<Prisma.$MileagePayload>
+/**
+ * Model Color
+ * 
+ */
+export type Color = $Result.DefaultSelection<Prisma.$ColorPayload>
+/**
+ * Model ColorMileage
+ * 
+ */
+export type ColorMileage = $Result.DefaultSelection<Prisma.$ColorMileagePayload>
+/**
+ * Model AccidentRecord
+ * 
+ */
+export type AccidentRecord = $Result.DefaultSelection<Prisma.$AccidentRecordPayload>
+/**
+ * Model Vehicle
+ * 
+ */
+export type Vehicle = $Result.DefaultSelection<Prisma.$VehiclePayload>
+
+/**
+ * ##  Prisma Client ʲˢ
+ *
+ * Type-safe database client for TypeScript & Node.js
+ * @example
+ * ```
+ * const prisma = new PrismaClient()
+ * // Fetch zero or more Brands
+ * const brands = await prisma.brand.findMany()
+ * ```
+ *
+ *
+ * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+ */
+export class PrismaClient<
+  ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
+  U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
+
+    /**
+   * ##  Prisma Client ʲˢ
+   *
+   * Type-safe database client for TypeScript & Node.js
+   * @example
+   * ```
+   * const prisma = new PrismaClient()
+   * // Fetch zero or more Brands
+   * const brands = await prisma.brand.findMany()
+   * ```
+   *
+   *
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+   */
+
+  constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+
+  /**
+   * Connect with the database
+   */
+  $connect(): $Utils.JsPromise<void>;
+
+  /**
+   * Disconnect from the database
+   */
+  $disconnect(): $Utils.JsPromise<void>;
+
+  /**
+   * Add a middleware
+   * @deprecated since 4.16.0. For new code, prefer client extensions instead.
+   * @see https://pris.ly/d/extensions
+   */
+  $use(cb: Prisma.Middleware): void
+
+/**
+   * Executes a prepared raw query and returns the number of affected rows.
+   * @example
+   * ```
+   * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
+   * ```
+   *
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
+
+  /**
+   * Executes a raw query and returns the number of affected rows.
+   * Susceptible to SQL injections, see documentation.
+   * @example
+   * ```
+   * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
+   * ```
+   *
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
+
+  /**
+   * Performs a prepared raw query and returns the `SELECT` data.
+   * @example
+   * ```
+   * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
+   * ```
+   *
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
+
+  /**
+   * Performs a raw query and returns the `SELECT` data.
+   * Susceptible to SQL injections, see documentation.
+   * @example
+   * ```
+   * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
+   * ```
+   *
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
+
+
+  /**
+   * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
+   * @example
+   * ```
+   * const [george, bob, alice] = await prisma.$transaction([
+   *   prisma.user.create({ data: { name: 'George' } }),
+   *   prisma.user.create({ data: { name: 'Bob' } }),
+   *   prisma.user.create({ data: { name: 'Alice' } }),
+   * ])
+   * ```
+   * 
+   * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
+   */
+  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
+
+  $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
+
+
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
+    extArgs: ExtArgs
+  }>>
+
+      /**
+   * `prisma.brand`: Exposes CRUD operations for the **Brand** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Brands
+    * const brands = await prisma.brand.findMany()
+    * ```
+    */
+  get brand(): Prisma.BrandDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.model`: Exposes CRUD operations for the **Model** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Models
+    * const models = await prisma.model.findMany()
+    * ```
+    */
+  get model(): Prisma.ModelDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.version`: Exposes CRUD operations for the **Version** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Versions
+    * const versions = await prisma.version.findMany()
+    * ```
+    */
+  get version(): Prisma.VersionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.bodyType`: Exposes CRUD operations for the **BodyType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BodyTypes
+    * const bodyTypes = await prisma.bodyType.findMany()
+    * ```
+    */
+  get bodyType(): Prisma.BodyTypeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.bodyTypeVersion`: Exposes CRUD operations for the **BodyTypeVersion** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BodyTypeVersions
+    * const bodyTypeVersions = await prisma.bodyTypeVersion.findMany()
+    * ```
+    */
+  get bodyTypeVersion(): Prisma.BodyTypeVersionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.fuelType`: Exposes CRUD operations for the **FuelType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FuelTypes
+    * const fuelTypes = await prisma.fuelType.findMany()
+    * ```
+    */
+  get fuelType(): Prisma.FuelTypeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.fuelTypeBody`: Exposes CRUD operations for the **FuelTypeBody** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FuelTypeBodies
+    * const fuelTypeBodies = await prisma.fuelTypeBody.findMany()
+    * ```
+    */
+  get fuelTypeBody(): Prisma.FuelTypeBodyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.transmissionType`: Exposes CRUD operations for the **TransmissionType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TransmissionTypes
+    * const transmissionTypes = await prisma.transmissionType.findMany()
+    * ```
+    */
+  get transmissionType(): Prisma.TransmissionTypeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.transmissionTypeFuel`: Exposes CRUD operations for the **TransmissionTypeFuel** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TransmissionTypeFuels
+    * const transmissionTypeFuels = await prisma.transmissionTypeFuel.findMany()
+    * ```
+    */
+  get transmissionTypeFuel(): Prisma.TransmissionTypeFuelDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.vehicleYear`: Exposes CRUD operations for the **VehicleYear** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more VehicleYears
+    * const vehicleYears = await prisma.vehicleYear.findMany()
+    * ```
+    */
+  get vehicleYear(): Prisma.VehicleYearDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.mileage`: Exposes CRUD operations for the **Mileage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Mileages
+    * const mileages = await prisma.mileage.findMany()
+    * ```
+    */
+  get mileage(): Prisma.MileageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.color`: Exposes CRUD operations for the **Color** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Colors
+    * const colors = await prisma.color.findMany()
+    * ```
+    */
+  get color(): Prisma.ColorDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.colorMileage`: Exposes CRUD operations for the **ColorMileage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ColorMileages
+    * const colorMileages = await prisma.colorMileage.findMany()
+    * ```
+    */
+  get colorMileage(): Prisma.ColorMileageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.accidentRecord`: Exposes CRUD operations for the **AccidentRecord** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AccidentRecords
+    * const accidentRecords = await prisma.accidentRecord.findMany()
+    * ```
+    */
+  get accidentRecord(): Prisma.AccidentRecordDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.vehicle`: Exposes CRUD operations for the **Vehicle** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Vehicles
+    * const vehicles = await prisma.vehicle.findMany()
+    * ```
+    */
+  get vehicle(): Prisma.VehicleDelegate<ExtArgs, ClientOptions>;
+}
+
+export namespace Prisma {
+  export import DMMF = runtime.DMMF
+
+  export type PrismaPromise<T> = $Public.PrismaPromise<T>
+
+  /**
+   * Validator
+   */
+  export import validator = runtime.Public.validator
+
+  /**
+   * Prisma Errors
+   */
+  export import PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError
+  export import PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError
+  export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
+  export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
+  export import PrismaClientValidationError = runtime.PrismaClientValidationError
+
+  /**
+   * Re-export of sql-template-tag
+   */
+  export import sql = runtime.sqltag
+  export import empty = runtime.empty
+  export import join = runtime.join
+  export import raw = runtime.raw
+  export import Sql = runtime.Sql
+
+
+
+  /**
+   * Decimal.js
+   */
+  export import Decimal = runtime.Decimal
+
+  export type DecimalJsLike = runtime.DecimalJsLike
+
+  /**
+   * Metrics
+   */
+  export type Metrics = runtime.Metrics
+  export type Metric<T> = runtime.Metric<T>
+  export type MetricHistogram = runtime.MetricHistogram
+  export type MetricHistogramBucket = runtime.MetricHistogramBucket
+
+  /**
+  * Extensions
+  */
+  export import Extension = $Extensions.UserArgs
+  export import getExtensionContext = runtime.Extensions.getExtensionContext
+  export import Args = $Public.Args
+  export import Payload = $Public.Payload
+  export import Result = $Public.Result
+  export import Exact = $Public.Exact
+
+  /**
+   * Prisma Client JS version: 6.7.0
+   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   */
+  export type PrismaVersion = {
+    client: string
+  }
+
+  export const prismaVersion: PrismaVersion
+
+  /**
+   * Utility Types
+   */
+
+
+  export import JsonObject = runtime.JsonObject
+  export import JsonArray = runtime.JsonArray
+  export import JsonValue = runtime.JsonValue
+  export import InputJsonObject = runtime.InputJsonObject
+  export import InputJsonArray = runtime.InputJsonArray
+  export import InputJsonValue = runtime.InputJsonValue
+
+  /**
+   * Types of the values used to represent different kinds of `null` values when working with JSON fields.
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  namespace NullTypes {
+    /**
+    * Type of `Prisma.DbNull`.
+    *
+    * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
+    *
+    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+    */
+    class DbNull {
+      private DbNull: never
+      private constructor()
+    }
+
+    /**
+    * Type of `Prisma.JsonNull`.
+    *
+    * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
+    *
+    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+    */
+    class JsonNull {
+      private JsonNull: never
+      private constructor()
+    }
+
+    /**
+    * Type of `Prisma.AnyNull`.
+    *
+    * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
+    *
+    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+    */
+    class AnyNull {
+      private AnyNull: never
+      private constructor()
+    }
+  }
+
+  /**
+   * Helper for filtering JSON entries that have `null` on the database (empty on the db)
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  export const DbNull: NullTypes.DbNull
+
+  /**
+   * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  export const JsonNull: NullTypes.JsonNull
+
+  /**
+   * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  export const AnyNull: NullTypes.AnyNull
+
+  type SelectAndInclude = {
+    select: any
+    include: any
+  }
+
+  type SelectAndOmit = {
+    select: any
+    omit: any
+  }
+
+  /**
+   * Get the type of the value, that the Promise holds.
+   */
+  export type PromiseType<T extends PromiseLike<any>> = T extends PromiseLike<infer U> ? U : T;
+
+  /**
+   * Get the return type of a function which returns a Promise.
+   */
+  export type PromiseReturnType<T extends (...args: any) => $Utils.JsPromise<any>> = PromiseType<ReturnType<T>>
+
+  /**
+   * From T, pick a set of properties whose keys are in the union K
+   */
+  type Prisma__Pick<T, K extends keyof T> = {
+      [P in K]: T[P];
+  };
+
+
+  export type Enumerable<T> = T | Array<T>;
+
+  export type RequiredKeys<T> = {
+    [K in keyof T]-?: {} extends Prisma__Pick<T, K> ? never : K
+  }[keyof T]
+
+  export type TruthyKeys<T> = keyof {
+    [K in keyof T as T[K] extends false | undefined | null ? never : K]: K
+  }
+
+  export type TrueKeys<T> = TruthyKeys<Prisma__Pick<T, RequiredKeys<T>>>
+
+  /**
+   * Subset
+   * @desc From `T` pick properties that exist in `U`. Simple version of Intersection
+   */
+  export type Subset<T, U> = {
+    [key in keyof T]: key extends keyof U ? T[key] : never;
+  };
+
+  /**
+   * SelectSubset
+   * @desc From `T` pick properties that exist in `U`. Simple version of Intersection.
+   * Additionally, it validates, if both select and include are present. If the case, it errors.
+   */
+  export type SelectSubset<T, U> = {
+    [key in keyof T]: key extends keyof U ? T[key] : never
+  } &
+    (T extends SelectAndInclude
+      ? 'Please either choose `select` or `include`.'
+      : T extends SelectAndOmit
+        ? 'Please either choose `select` or `omit`.'
+        : {})
+
+  /**
+   * Subset + Intersection
+   * @desc From `T` pick properties that exist in `U` and intersect `K`
+   */
+  export type SubsetIntersection<T, U, K> = {
+    [key in keyof T]: key extends keyof U ? T[key] : never
+  } &
+    K
+
+  type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
+
+  /**
+   * XOR is needed to have a real mutually exclusive union type
+   * https://stackoverflow.com/questions/42123407/does-typescript-support-mutually-exclusive-types
+   */
+  type XOR<T, U> =
+    T extends object ?
+    U extends object ?
+      (Without<T, U> & U) | (Without<U, T> & T)
+    : U : T
+
+
+  /**
+   * Is T a Record?
+   */
+  type IsObject<T extends any> = T extends Array<any>
+  ? False
+  : T extends Date
+  ? False
+  : T extends Uint8Array
+  ? False
+  : T extends BigInt
+  ? False
+  : T extends object
+  ? True
+  : False
+
+
+  /**
+   * If it's T[], return T
+   */
+  export type UnEnumerate<T extends unknown> = T extends Array<infer U> ? U : T
+
+  /**
+   * From ts-toolbelt
+   */
+
+  type __Either<O extends object, K extends Key> = Omit<O, K> &
+    {
+      // Merge all but K
+      [P in K]: Prisma__Pick<O, P & keyof O> // With K possibilities
+    }[K]
+
+  type EitherStrict<O extends object, K extends Key> = Strict<__Either<O, K>>
+
+  type EitherLoose<O extends object, K extends Key> = ComputeRaw<__Either<O, K>>
+
+  type _Either<
+    O extends object,
+    K extends Key,
+    strict extends Boolean
+  > = {
+    1: EitherStrict<O, K>
+    0: EitherLoose<O, K>
+  }[strict]
+
+  type Either<
+    O extends object,
+    K extends Key,
+    strict extends Boolean = 1
+  > = O extends unknown ? _Either<O, K, strict> : never
+
+  export type Union = any
+
+  type PatchUndefined<O extends object, O1 extends object> = {
+    [K in keyof O]: O[K] extends undefined ? At<O1, K> : O[K]
+  } & {}
+
+  /** Helper Types for "Merge" **/
+  export type IntersectOf<U extends Union> = (
+    U extends unknown ? (k: U) => void : never
+  ) extends (k: infer I) => void
+    ? I
+    : never
+
+  export type Overwrite<O extends object, O1 extends object> = {
+      [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
+  } & {};
+
+  type _Merge<U extends object> = IntersectOf<Overwrite<U, {
+      [K in keyof U]-?: At<U, K>;
+  }>>;
+
+  type Key = string | number | symbol;
+  type AtBasic<O extends object, K extends Key> = K extends keyof O ? O[K] : never;
+  type AtStrict<O extends object, K extends Key> = O[K & keyof O];
+  type AtLoose<O extends object, K extends Key> = O extends unknown ? AtStrict<O, K> : never;
+  export type At<O extends object, K extends Key, strict extends Boolean = 1> = {
+      1: AtStrict<O, K>;
+      0: AtLoose<O, K>;
+  }[strict];
+
+  export type ComputeRaw<A extends any> = A extends Function ? A : {
+    [K in keyof A]: A[K];
+  } & {};
+
+  export type OptionalFlat<O> = {
+    [K in keyof O]?: O[K];
+  } & {};
+
+  type _Record<K extends keyof any, T> = {
+    [P in K]: T;
+  };
+
+  // cause typescript not to expand types and preserve names
+  type NoExpand<T> = T extends unknown ? T : never;
+
+  // this type assumes the passed object is entirely optional
+  type AtLeast<O extends object, K extends string> = NoExpand<
+    O extends unknown
+    ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
+      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+    : never>;
+
+  type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
+
+  export type Strict<U extends object> = ComputeRaw<_Strict<U>>;
+  /** End Helper Types for "Merge" **/
+
+  export type Merge<U extends object> = ComputeRaw<_Merge<Strict<U>>>;
+
+  /**
+  A [[Boolean]]
+  */
+  export type Boolean = True | False
+
+  // /**
+  // 1
+  // */
+  export type True = 1
+
+  /**
+  0
+  */
+  export type False = 0
+
+  export type Not<B extends Boolean> = {
+    0: 1
+    1: 0
+  }[B]
+
+  export type Extends<A1 extends any, A2 extends any> = [A1] extends [never]
+    ? 0 // anything `never` is false
+    : A1 extends A2
+    ? 1
+    : 0
+
+  export type Has<U extends Union, U1 extends Union> = Not<
+    Extends<Exclude<U1, U>, U1>
+  >
+
+  export type Or<B1 extends Boolean, B2 extends Boolean> = {
+    0: {
+      0: 0
+      1: 1
+    }
+    1: {
+      0: 1
+      1: 1
+    }
+  }[B1][B2]
+
+  export type Keys<U extends Union> = U extends unknown ? keyof U : never
+
+  type Cast<A, B> = A extends B ? A : B;
+
+  export const type: unique symbol;
+
+
+
+  /**
+   * Used by group by
+   */
+
+  export type GetScalarType<T, O> = O extends object ? {
+    [P in keyof T]: P extends keyof O
+      ? O[P]
+      : never
+  } : never
+
+  type FieldPaths<
+    T,
+    U = Omit<T, '_avg' | '_sum' | '_count' | '_min' | '_max'>
+  > = IsObject<T> extends True ? U : T
+
+  type GetHavingFields<T> = {
+    [K in keyof T]: Or<
+      Or<Extends<'OR', K>, Extends<'AND', K>>,
+      Extends<'NOT', K>
+    > extends True
+      ? // infer is only needed to not hit TS limit
+        // based on the brilliant idea of Pierre-Antoine Mills
+        // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
+        T[K] extends infer TK
+        ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
+        : never
+      : {} extends FieldPaths<T[K]>
+      ? never
+      : K
+  }[keyof T]
+
+  /**
+   * Convert tuple to union
+   */
+  type _TupleToUnion<T> = T extends (infer E)[] ? E : never
+  type TupleToUnion<K extends readonly any[]> = _TupleToUnion<K>
+  type MaybeTupleToUnion<T> = T extends any[] ? TupleToUnion<T> : T
+
+  /**
+   * Like `Pick`, but additionally can also accept an array of keys
+   */
+  type PickEnumerable<T, K extends Enumerable<keyof T> | keyof T> = Prisma__Pick<T, MaybeTupleToUnion<K>>
+
+  /**
+   * Exclude all keys with underscores
+   */
+  type ExcludeUnderscoreKeys<T extends string> = T extends `_${string}` ? never : T
+
+
+  export type FieldRef<Model, FieldType> = runtime.FieldRef<Model, FieldType>
+
+  type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRef<Model, FieldType>
+
+
+  export const ModelName: {
+    Brand: 'Brand',
+    Model: 'Model',
+    Version: 'Version',
+    BodyType: 'BodyType',
+    BodyTypeVersion: 'BodyTypeVersion',
+    FuelType: 'FuelType',
+    FuelTypeBody: 'FuelTypeBody',
+    TransmissionType: 'TransmissionType',
+    TransmissionTypeFuel: 'TransmissionTypeFuel',
+    VehicleYear: 'VehicleYear',
+    Mileage: 'Mileage',
+    Color: 'Color',
+    ColorMileage: 'ColorMileage',
+    AccidentRecord: 'AccidentRecord',
+    Vehicle: 'Vehicle'
+  };
+
+  export type ModelName = (typeof ModelName)[keyof typeof ModelName]
+
+
+  export type Datasources = {
+    db?: Datasource
+  }
+
+  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+  }
+
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
+    globalOmitOptions: {
+      omit: GlobalOmitOptions
+    }
+    meta: {
+      modelProps: "brand" | "model" | "version" | "bodyType" | "bodyTypeVersion" | "fuelType" | "fuelTypeBody" | "transmissionType" | "transmissionTypeFuel" | "vehicleYear" | "mileage" | "color" | "colorMileage" | "accidentRecord" | "vehicle"
+      txIsolationLevel: Prisma.TransactionIsolationLevel
+    }
+    model: {
+      Brand: {
+        payload: Prisma.$BrandPayload<ExtArgs>
+        fields: Prisma.BrandFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BrandFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BrandFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload>
+          }
+          findFirst: {
+            args: Prisma.BrandFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BrandFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload>
+          }
+          findMany: {
+            args: Prisma.BrandFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload>[]
+          }
+          create: {
+            args: Prisma.BrandCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload>
+          }
+          createMany: {
+            args: Prisma.BrandCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BrandCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload>[]
+          }
+          delete: {
+            args: Prisma.BrandDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload>
+          }
+          update: {
+            args: Prisma.BrandUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload>
+          }
+          deleteMany: {
+            args: Prisma.BrandDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BrandUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BrandUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload>[]
+          }
+          upsert: {
+            args: Prisma.BrandUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BrandPayload>
+          }
+          aggregate: {
+            args: Prisma.BrandAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBrand>
+          }
+          groupBy: {
+            args: Prisma.BrandGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BrandGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BrandCountArgs<ExtArgs>
+            result: $Utils.Optional<BrandCountAggregateOutputType> | number
+          }
+        }
+      }
+      Model: {
+        payload: Prisma.$ModelPayload<ExtArgs>
+        fields: Prisma.ModelFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ModelFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ModelFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload>
+          }
+          findFirst: {
+            args: Prisma.ModelFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ModelFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload>
+          }
+          findMany: {
+            args: Prisma.ModelFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload>[]
+          }
+          create: {
+            args: Prisma.ModelCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload>
+          }
+          createMany: {
+            args: Prisma.ModelCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ModelCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload>[]
+          }
+          delete: {
+            args: Prisma.ModelDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload>
+          }
+          update: {
+            args: Prisma.ModelUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload>
+          }
+          deleteMany: {
+            args: Prisma.ModelDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ModelUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ModelUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload>[]
+          }
+          upsert: {
+            args: Prisma.ModelUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModelPayload>
+          }
+          aggregate: {
+            args: Prisma.ModelAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateModel>
+          }
+          groupBy: {
+            args: Prisma.ModelGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ModelGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ModelCountArgs<ExtArgs>
+            result: $Utils.Optional<ModelCountAggregateOutputType> | number
+          }
+        }
+      }
+      Version: {
+        payload: Prisma.$VersionPayload<ExtArgs>
+        fields: Prisma.VersionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VersionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VersionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload>
+          }
+          findFirst: {
+            args: Prisma.VersionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VersionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload>
+          }
+          findMany: {
+            args: Prisma.VersionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload>[]
+          }
+          create: {
+            args: Prisma.VersionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload>
+          }
+          createMany: {
+            args: Prisma.VersionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VersionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload>[]
+          }
+          delete: {
+            args: Prisma.VersionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload>
+          }
+          update: {
+            args: Prisma.VersionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload>
+          }
+          deleteMany: {
+            args: Prisma.VersionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VersionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VersionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload>[]
+          }
+          upsert: {
+            args: Prisma.VersionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VersionPayload>
+          }
+          aggregate: {
+            args: Prisma.VersionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVersion>
+          }
+          groupBy: {
+            args: Prisma.VersionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VersionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VersionCountArgs<ExtArgs>
+            result: $Utils.Optional<VersionCountAggregateOutputType> | number
+          }
+        }
+      }
+      BodyType: {
+        payload: Prisma.$BodyTypePayload<ExtArgs>
+        fields: Prisma.BodyTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BodyTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BodyTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload>
+          }
+          findFirst: {
+            args: Prisma.BodyTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BodyTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload>
+          }
+          findMany: {
+            args: Prisma.BodyTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload>[]
+          }
+          create: {
+            args: Prisma.BodyTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload>
+          }
+          createMany: {
+            args: Prisma.BodyTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BodyTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload>[]
+          }
+          delete: {
+            args: Prisma.BodyTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload>
+          }
+          update: {
+            args: Prisma.BodyTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.BodyTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BodyTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BodyTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload>[]
+          }
+          upsert: {
+            args: Prisma.BodyTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypePayload>
+          }
+          aggregate: {
+            args: Prisma.BodyTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBodyType>
+          }
+          groupBy: {
+            args: Prisma.BodyTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BodyTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BodyTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<BodyTypeCountAggregateOutputType> | number
+          }
+        }
+      }
+      BodyTypeVersion: {
+        payload: Prisma.$BodyTypeVersionPayload<ExtArgs>
+        fields: Prisma.BodyTypeVersionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BodyTypeVersionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BodyTypeVersionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload>
+          }
+          findFirst: {
+            args: Prisma.BodyTypeVersionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BodyTypeVersionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload>
+          }
+          findMany: {
+            args: Prisma.BodyTypeVersionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload>[]
+          }
+          create: {
+            args: Prisma.BodyTypeVersionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload>
+          }
+          createMany: {
+            args: Prisma.BodyTypeVersionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BodyTypeVersionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload>[]
+          }
+          delete: {
+            args: Prisma.BodyTypeVersionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload>
+          }
+          update: {
+            args: Prisma.BodyTypeVersionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload>
+          }
+          deleteMany: {
+            args: Prisma.BodyTypeVersionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BodyTypeVersionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BodyTypeVersionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload>[]
+          }
+          upsert: {
+            args: Prisma.BodyTypeVersionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BodyTypeVersionPayload>
+          }
+          aggregate: {
+            args: Prisma.BodyTypeVersionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBodyTypeVersion>
+          }
+          groupBy: {
+            args: Prisma.BodyTypeVersionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BodyTypeVersionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BodyTypeVersionCountArgs<ExtArgs>
+            result: $Utils.Optional<BodyTypeVersionCountAggregateOutputType> | number
+          }
+        }
+      }
+      FuelType: {
+        payload: Prisma.$FuelTypePayload<ExtArgs>
+        fields: Prisma.FuelTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FuelTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FuelTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload>
+          }
+          findFirst: {
+            args: Prisma.FuelTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FuelTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload>
+          }
+          findMany: {
+            args: Prisma.FuelTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload>[]
+          }
+          create: {
+            args: Prisma.FuelTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload>
+          }
+          createMany: {
+            args: Prisma.FuelTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FuelTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload>[]
+          }
+          delete: {
+            args: Prisma.FuelTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload>
+          }
+          update: {
+            args: Prisma.FuelTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.FuelTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FuelTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FuelTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload>[]
+          }
+          upsert: {
+            args: Prisma.FuelTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypePayload>
+          }
+          aggregate: {
+            args: Prisma.FuelTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFuelType>
+          }
+          groupBy: {
+            args: Prisma.FuelTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FuelTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FuelTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<FuelTypeCountAggregateOutputType> | number
+          }
+        }
+      }
+      FuelTypeBody: {
+        payload: Prisma.$FuelTypeBodyPayload<ExtArgs>
+        fields: Prisma.FuelTypeBodyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FuelTypeBodyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FuelTypeBodyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload>
+          }
+          findFirst: {
+            args: Prisma.FuelTypeBodyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FuelTypeBodyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload>
+          }
+          findMany: {
+            args: Prisma.FuelTypeBodyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload>[]
+          }
+          create: {
+            args: Prisma.FuelTypeBodyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload>
+          }
+          createMany: {
+            args: Prisma.FuelTypeBodyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FuelTypeBodyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload>[]
+          }
+          delete: {
+            args: Prisma.FuelTypeBodyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload>
+          }
+          update: {
+            args: Prisma.FuelTypeBodyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload>
+          }
+          deleteMany: {
+            args: Prisma.FuelTypeBodyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FuelTypeBodyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FuelTypeBodyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload>[]
+          }
+          upsert: {
+            args: Prisma.FuelTypeBodyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FuelTypeBodyPayload>
+          }
+          aggregate: {
+            args: Prisma.FuelTypeBodyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFuelTypeBody>
+          }
+          groupBy: {
+            args: Prisma.FuelTypeBodyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FuelTypeBodyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FuelTypeBodyCountArgs<ExtArgs>
+            result: $Utils.Optional<FuelTypeBodyCountAggregateOutputType> | number
+          }
+        }
+      }
+      TransmissionType: {
+        payload: Prisma.$TransmissionTypePayload<ExtArgs>
+        fields: Prisma.TransmissionTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TransmissionTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TransmissionTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
+          }
+          findFirst: {
+            args: Prisma.TransmissionTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TransmissionTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
+          }
+          findMany: {
+            args: Prisma.TransmissionTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload>[]
+          }
+          create: {
+            args: Prisma.TransmissionTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
+          }
+          createMany: {
+            args: Prisma.TransmissionTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TransmissionTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload>[]
+          }
+          delete: {
+            args: Prisma.TransmissionTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
+          }
+          update: {
+            args: Prisma.TransmissionTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.TransmissionTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TransmissionTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TransmissionTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload>[]
+          }
+          upsert: {
+            args: Prisma.TransmissionTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
+          }
+          aggregate: {
+            args: Prisma.TransmissionTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransmissionType>
+          }
+          groupBy: {
+            args: Prisma.TransmissionTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TransmissionTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TransmissionTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<TransmissionTypeCountAggregateOutputType> | number
+          }
+        }
+      }
+      TransmissionTypeFuel: {
+        payload: Prisma.$TransmissionTypeFuelPayload<ExtArgs>
+        fields: Prisma.TransmissionTypeFuelFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TransmissionTypeFuelFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TransmissionTypeFuelFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload>
+          }
+          findFirst: {
+            args: Prisma.TransmissionTypeFuelFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TransmissionTypeFuelFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload>
+          }
+          findMany: {
+            args: Prisma.TransmissionTypeFuelFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload>[]
+          }
+          create: {
+            args: Prisma.TransmissionTypeFuelCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload>
+          }
+          createMany: {
+            args: Prisma.TransmissionTypeFuelCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TransmissionTypeFuelCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload>[]
+          }
+          delete: {
+            args: Prisma.TransmissionTypeFuelDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload>
+          }
+          update: {
+            args: Prisma.TransmissionTypeFuelUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload>
+          }
+          deleteMany: {
+            args: Prisma.TransmissionTypeFuelDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TransmissionTypeFuelUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TransmissionTypeFuelUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload>[]
+          }
+          upsert: {
+            args: Prisma.TransmissionTypeFuelUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransmissionTypeFuelPayload>
+          }
+          aggregate: {
+            args: Prisma.TransmissionTypeFuelAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransmissionTypeFuel>
+          }
+          groupBy: {
+            args: Prisma.TransmissionTypeFuelGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TransmissionTypeFuelGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TransmissionTypeFuelCountArgs<ExtArgs>
+            result: $Utils.Optional<TransmissionTypeFuelCountAggregateOutputType> | number
+          }
+        }
+      }
+      VehicleYear: {
+        payload: Prisma.$VehicleYearPayload<ExtArgs>
+        fields: Prisma.VehicleYearFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VehicleYearFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VehicleYearFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload>
+          }
+          findFirst: {
+            args: Prisma.VehicleYearFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VehicleYearFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload>
+          }
+          findMany: {
+            args: Prisma.VehicleYearFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload>[]
+          }
+          create: {
+            args: Prisma.VehicleYearCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload>
+          }
+          createMany: {
+            args: Prisma.VehicleYearCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VehicleYearCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload>[]
+          }
+          delete: {
+            args: Prisma.VehicleYearDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload>
+          }
+          update: {
+            args: Prisma.VehicleYearUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload>
+          }
+          deleteMany: {
+            args: Prisma.VehicleYearDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VehicleYearUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VehicleYearUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload>[]
+          }
+          upsert: {
+            args: Prisma.VehicleYearUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleYearPayload>
+          }
+          aggregate: {
+            args: Prisma.VehicleYearAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVehicleYear>
+          }
+          groupBy: {
+            args: Prisma.VehicleYearGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VehicleYearGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VehicleYearCountArgs<ExtArgs>
+            result: $Utils.Optional<VehicleYearCountAggregateOutputType> | number
+          }
+        }
+      }
+      Mileage: {
+        payload: Prisma.$MileagePayload<ExtArgs>
+        fields: Prisma.MileageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MileageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MileageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload>
+          }
+          findFirst: {
+            args: Prisma.MileageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MileageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload>
+          }
+          findMany: {
+            args: Prisma.MileageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload>[]
+          }
+          create: {
+            args: Prisma.MileageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload>
+          }
+          createMany: {
+            args: Prisma.MileageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MileageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload>[]
+          }
+          delete: {
+            args: Prisma.MileageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload>
+          }
+          update: {
+            args: Prisma.MileageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload>
+          }
+          deleteMany: {
+            args: Prisma.MileageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MileageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MileageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload>[]
+          }
+          upsert: {
+            args: Prisma.MileageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MileagePayload>
+          }
+          aggregate: {
+            args: Prisma.MileageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMileage>
+          }
+          groupBy: {
+            args: Prisma.MileageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MileageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MileageCountArgs<ExtArgs>
+            result: $Utils.Optional<MileageCountAggregateOutputType> | number
+          }
+        }
+      }
+      Color: {
+        payload: Prisma.$ColorPayload<ExtArgs>
+        fields: Prisma.ColorFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ColorFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ColorFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          findFirst: {
+            args: Prisma.ColorFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ColorFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          findMany: {
+            args: Prisma.ColorFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>[]
+          }
+          create: {
+            args: Prisma.ColorCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          createMany: {
+            args: Prisma.ColorCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ColorCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>[]
+          }
+          delete: {
+            args: Prisma.ColorDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          update: {
+            args: Prisma.ColorUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          deleteMany: {
+            args: Prisma.ColorDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ColorUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ColorUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>[]
+          }
+          upsert: {
+            args: Prisma.ColorUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          aggregate: {
+            args: Prisma.ColorAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateColor>
+          }
+          groupBy: {
+            args: Prisma.ColorGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ColorGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ColorCountArgs<ExtArgs>
+            result: $Utils.Optional<ColorCountAggregateOutputType> | number
+          }
+        }
+      }
+      ColorMileage: {
+        payload: Prisma.$ColorMileagePayload<ExtArgs>
+        fields: Prisma.ColorMileageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ColorMileageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ColorMileageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload>
+          }
+          findFirst: {
+            args: Prisma.ColorMileageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ColorMileageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload>
+          }
+          findMany: {
+            args: Prisma.ColorMileageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload>[]
+          }
+          create: {
+            args: Prisma.ColorMileageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload>
+          }
+          createMany: {
+            args: Prisma.ColorMileageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ColorMileageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload>[]
+          }
+          delete: {
+            args: Prisma.ColorMileageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload>
+          }
+          update: {
+            args: Prisma.ColorMileageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ColorMileageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ColorMileageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ColorMileageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload>[]
+          }
+          upsert: {
+            args: Prisma.ColorMileageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorMileagePayload>
+          }
+          aggregate: {
+            args: Prisma.ColorMileageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateColorMileage>
+          }
+          groupBy: {
+            args: Prisma.ColorMileageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ColorMileageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ColorMileageCountArgs<ExtArgs>
+            result: $Utils.Optional<ColorMileageCountAggregateOutputType> | number
+          }
+        }
+      }
+      AccidentRecord: {
+        payload: Prisma.$AccidentRecordPayload<ExtArgs>
+        fields: Prisma.AccidentRecordFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AccidentRecordFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AccidentRecordFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload>
+          }
+          findFirst: {
+            args: Prisma.AccidentRecordFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AccidentRecordFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload>
+          }
+          findMany: {
+            args: Prisma.AccidentRecordFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload>[]
+          }
+          create: {
+            args: Prisma.AccidentRecordCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload>
+          }
+          createMany: {
+            args: Prisma.AccidentRecordCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AccidentRecordCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload>[]
+          }
+          delete: {
+            args: Prisma.AccidentRecordDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload>
+          }
+          update: {
+            args: Prisma.AccidentRecordUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload>
+          }
+          deleteMany: {
+            args: Prisma.AccidentRecordDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AccidentRecordUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AccidentRecordUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload>[]
+          }
+          upsert: {
+            args: Prisma.AccidentRecordUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccidentRecordPayload>
+          }
+          aggregate: {
+            args: Prisma.AccidentRecordAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAccidentRecord>
+          }
+          groupBy: {
+            args: Prisma.AccidentRecordGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AccidentRecordGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AccidentRecordCountArgs<ExtArgs>
+            result: $Utils.Optional<AccidentRecordCountAggregateOutputType> | number
+          }
+        }
+      }
+      Vehicle: {
+        payload: Prisma.$VehiclePayload<ExtArgs>
+        fields: Prisma.VehicleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VehicleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VehicleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
+          }
+          findFirst: {
+            args: Prisma.VehicleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VehicleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
+          }
+          findMany: {
+            args: Prisma.VehicleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>[]
+          }
+          create: {
+            args: Prisma.VehicleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
+          }
+          createMany: {
+            args: Prisma.VehicleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VehicleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>[]
+          }
+          delete: {
+            args: Prisma.VehicleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
+          }
+          update: {
+            args: Prisma.VehicleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
+          }
+          deleteMany: {
+            args: Prisma.VehicleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VehicleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VehicleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>[]
+          }
+          upsert: {
+            args: Prisma.VehicleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
+          }
+          aggregate: {
+            args: Prisma.VehicleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVehicle>
+          }
+          groupBy: {
+            args: Prisma.VehicleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VehicleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VehicleCountArgs<ExtArgs>
+            result: $Utils.Optional<VehicleCountAggregateOutputType> | number
+          }
+        }
+      }
+    }
+  } & {
+    other: {
+      payload: any
+      operations: {
+        $executeRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+        }
+        $executeRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+        }
+        $queryRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+        }
+        $queryRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+        }
+      }
+    }
+  }
+  export const defineExtension: $Extensions.ExtendsHook<"define", Prisma.TypeMapCb, $Extensions.DefaultArgs>
+  export type DefaultPrismaClient = PrismaClient
+  export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
+  export interface PrismaClientOptions {
+    /**
+     * Overwrites the datasource url from your schema.prisma file
+     */
+    datasources?: Datasources
+    /**
+     * Overwrites the datasource url from your schema.prisma file
+     */
+    datasourceUrl?: string
+    /**
+     * @default "colorless"
+     */
+    errorFormat?: ErrorFormat
+    /**
+     * @example
+     * ```
+     * // Defaults to stdout
+     * log: ['query', 'info', 'warn', 'error']
+     * 
+     * // Emit as events
+     * log: [
+     *   { emit: 'stdout', level: 'query' },
+     *   { emit: 'stdout', level: 'info' },
+     *   { emit: 'stdout', level: 'warn' }
+     *   { emit: 'stdout', level: 'error' }
+     * ]
+     * ```
+     * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
+     */
+    log?: (LogLevel | LogDefinition)[]
+    /**
+     * The default values for transactionOptions
+     * maxWait ?= 2000
+     * timeout ?= 5000
+     */
+    transactionOptions?: {
+      maxWait?: number
+      timeout?: number
+      isolationLevel?: Prisma.TransactionIsolationLevel
+    }
+    /**
+     * Global configuration for omitting model fields by default.
+     * 
+     * @example
+     * ```
+     * const prisma = new PrismaClient({
+     *   omit: {
+     *     user: {
+     *       password: true
+     *     }
+     *   }
+     * })
+     * ```
+     */
+    omit?: Prisma.GlobalOmitConfig
+  }
+  export type GlobalOmitConfig = {
+    brand?: BrandOmit
+    model?: ModelOmit
+    version?: VersionOmit
+    bodyType?: BodyTypeOmit
+    bodyTypeVersion?: BodyTypeVersionOmit
+    fuelType?: FuelTypeOmit
+    fuelTypeBody?: FuelTypeBodyOmit
+    transmissionType?: TransmissionTypeOmit
+    transmissionTypeFuel?: TransmissionTypeFuelOmit
+    vehicleYear?: VehicleYearOmit
+    mileage?: MileageOmit
+    color?: ColorOmit
+    colorMileage?: ColorMileageOmit
+    accidentRecord?: AccidentRecordOmit
+    vehicle?: VehicleOmit
+  }
+
+  /* Types for Logging */
+  export type LogLevel = 'info' | 'query' | 'warn' | 'error'
+  export type LogDefinition = {
+    level: LogLevel
+    emit: 'stdout' | 'event'
+  }
+
+  export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
+  export type GetEvents<T extends any> = T extends Array<LogLevel | LogDefinition> ?
+    GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
+    : never
+
+  export type QueryEvent = {
+    timestamp: Date
+    query: string
+    params: string
+    duration: number
+    target: string
+  }
+
+  export type LogEvent = {
+    timestamp: Date
+    message: string
+    target: string
+  }
+  /* End Types for Logging */
+
+
+  export type PrismaAction =
+    | 'findUnique'
+    | 'findUniqueOrThrow'
+    | 'findMany'
+    | 'findFirst'
+    | 'findFirstOrThrow'
+    | 'create'
+    | 'createMany'
+    | 'createManyAndReturn'
+    | 'update'
+    | 'updateMany'
+    | 'updateManyAndReturn'
+    | 'upsert'
+    | 'delete'
+    | 'deleteMany'
+    | 'executeRaw'
+    | 'queryRaw'
+    | 'aggregate'
+    | 'count'
+    | 'runCommandRaw'
+    | 'findRaw'
+    | 'groupBy'
+
+  /**
+   * These options are being passed into the middleware as "params"
+   */
+  export type MiddlewareParams = {
+    model?: ModelName
+    action: PrismaAction
+    args: any
+    dataPath: string[]
+    runInTransaction: boolean
+  }
+
+  /**
+   * The `T` type makes sure, that the `return proceed` is not forgotten in the middleware implementation
+   */
+  export type Middleware<T = any> = (
+    params: MiddlewareParams,
+    next: (params: MiddlewareParams) => $Utils.JsPromise<T>,
+  ) => $Utils.JsPromise<T>
+
+  // tested in getLogLevel.test.ts
+  export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
+
+  /**
+   * `PrismaClient` proxy available in interactive transactions.
+   */
+  export type TransactionClient = Omit<Prisma.DefaultPrismaClient, runtime.ITXClientDenyList>
+
+  export type Datasource = {
+    url?: string
+  }
+
+  /**
+   * Count Types
+   */
+
+
+  /**
+   * Count Type BrandCountOutputType
+   */
+
+  export type BrandCountOutputType = {
+    models: number
+  }
+
+  export type BrandCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    models?: boolean | BrandCountOutputTypeCountModelsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BrandCountOutputType without action
+   */
+  export type BrandCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandCountOutputType
+     */
+    select?: BrandCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BrandCountOutputType without action
+   */
+  export type BrandCountOutputTypeCountModelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ModelWhereInput
+  }
+
+
+  /**
+   * Count Type ModelCountOutputType
+   */
+
+  export type ModelCountOutputType = {
+    versions: number
+  }
+
+  export type ModelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    versions?: boolean | ModelCountOutputTypeCountVersionsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ModelCountOutputType without action
+   */
+  export type ModelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModelCountOutputType
+     */
+    select?: ModelCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ModelCountOutputType without action
+   */
+  export type ModelCountOutputTypeCountVersionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VersionWhereInput
+  }
+
+
+  /**
+   * Count Type VersionCountOutputType
+   */
+
+  export type VersionCountOutputType = {
+    bodyTypes: number
+  }
+
+  export type VersionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bodyTypes?: boolean | VersionCountOutputTypeCountBodyTypesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * VersionCountOutputType without action
+   */
+  export type VersionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VersionCountOutputType
+     */
+    select?: VersionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * VersionCountOutputType without action
+   */
+  export type VersionCountOutputTypeCountBodyTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BodyTypeVersionWhereInput
+  }
+
+
+  /**
+   * Count Type BodyTypeCountOutputType
+   */
+
+  export type BodyTypeCountOutputType = {
+    versions: number
+  }
+
+  export type BodyTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    versions?: boolean | BodyTypeCountOutputTypeCountVersionsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BodyTypeCountOutputType without action
+   */
+  export type BodyTypeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeCountOutputType
+     */
+    select?: BodyTypeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BodyTypeCountOutputType without action
+   */
+  export type BodyTypeCountOutputTypeCountVersionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BodyTypeVersionWhereInput
+  }
+
+
+  /**
+   * Count Type BodyTypeVersionCountOutputType
+   */
+
+  export type BodyTypeVersionCountOutputType = {
+    fuelTypes: number
+  }
+
+  export type BodyTypeVersionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    fuelTypes?: boolean | BodyTypeVersionCountOutputTypeCountFuelTypesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BodyTypeVersionCountOutputType without action
+   */
+  export type BodyTypeVersionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersionCountOutputType
+     */
+    select?: BodyTypeVersionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BodyTypeVersionCountOutputType without action
+   */
+  export type BodyTypeVersionCountOutputTypeCountFuelTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FuelTypeBodyWhereInput
+  }
+
+
+  /**
+   * Count Type FuelTypeCountOutputType
+   */
+
+  export type FuelTypeCountOutputType = {
+    bodyTypes: number
+  }
+
+  export type FuelTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bodyTypes?: boolean | FuelTypeCountOutputTypeCountBodyTypesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FuelTypeCountOutputType without action
+   */
+  export type FuelTypeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeCountOutputType
+     */
+    select?: FuelTypeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FuelTypeCountOutputType without action
+   */
+  export type FuelTypeCountOutputTypeCountBodyTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FuelTypeBodyWhereInput
+  }
+
+
+  /**
+   * Count Type FuelTypeBodyCountOutputType
+   */
+
+  export type FuelTypeBodyCountOutputType = {
+    transmissionTypes: number
+  }
+
+  export type FuelTypeBodyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transmissionTypes?: boolean | FuelTypeBodyCountOutputTypeCountTransmissionTypesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FuelTypeBodyCountOutputType without action
+   */
+  export type FuelTypeBodyCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBodyCountOutputType
+     */
+    select?: FuelTypeBodyCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FuelTypeBodyCountOutputType without action
+   */
+  export type FuelTypeBodyCountOutputTypeCountTransmissionTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransmissionTypeFuelWhereInput
+  }
+
+
+  /**
+   * Count Type TransmissionTypeCountOutputType
+   */
+
+  export type TransmissionTypeCountOutputType = {
+    fuelTypes: number
+  }
+
+  export type TransmissionTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    fuelTypes?: boolean | TransmissionTypeCountOutputTypeCountFuelTypesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TransmissionTypeCountOutputType without action
+   */
+  export type TransmissionTypeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeCountOutputType
+     */
+    select?: TransmissionTypeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TransmissionTypeCountOutputType without action
+   */
+  export type TransmissionTypeCountOutputTypeCountFuelTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransmissionTypeFuelWhereInput
+  }
+
+
+  /**
+   * Count Type TransmissionTypeFuelCountOutputType
+   */
+
+  export type TransmissionTypeFuelCountOutputType = {
+    years: number
+  }
+
+  export type TransmissionTypeFuelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    years?: boolean | TransmissionTypeFuelCountOutputTypeCountYearsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TransmissionTypeFuelCountOutputType without action
+   */
+  export type TransmissionTypeFuelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuelCountOutputType
+     */
+    select?: TransmissionTypeFuelCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TransmissionTypeFuelCountOutputType without action
+   */
+  export type TransmissionTypeFuelCountOutputTypeCountYearsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleYearWhereInput
+  }
+
+
+  /**
+   * Count Type VehicleYearCountOutputType
+   */
+
+  export type VehicleYearCountOutputType = {
+    mileages: number
+  }
+
+  export type VehicleYearCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mileages?: boolean | VehicleYearCountOutputTypeCountMileagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * VehicleYearCountOutputType without action
+   */
+  export type VehicleYearCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYearCountOutputType
+     */
+    select?: VehicleYearCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * VehicleYearCountOutputType without action
+   */
+  export type VehicleYearCountOutputTypeCountMileagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MileageWhereInput
+  }
+
+
+  /**
+   * Count Type MileageCountOutputType
+   */
+
+  export type MileageCountOutputType = {
+    colors: number
+  }
+
+  export type MileageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    colors?: boolean | MileageCountOutputTypeCountColorsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MileageCountOutputType without action
+   */
+  export type MileageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MileageCountOutputType
+     */
+    select?: MileageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MileageCountOutputType without action
+   */
+  export type MileageCountOutputTypeCountColorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ColorMileageWhereInput
+  }
+
+
+  /**
+   * Count Type ColorCountOutputType
+   */
+
+  export type ColorCountOutputType = {
+    mileages: number
+  }
+
+  export type ColorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mileages?: boolean | ColorCountOutputTypeCountMileagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ColorCountOutputType without action
+   */
+  export type ColorCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorCountOutputType
+     */
+    select?: ColorCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ColorCountOutputType without action
+   */
+  export type ColorCountOutputTypeCountMileagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ColorMileageWhereInput
+  }
+
+
+  /**
+   * Count Type ColorMileageCountOutputType
+   */
+
+  export type ColorMileageCountOutputType = {
+    accidentRecords: number
+  }
+
+  export type ColorMileageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    accidentRecords?: boolean | ColorMileageCountOutputTypeCountAccidentRecordsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ColorMileageCountOutputType without action
+   */
+  export type ColorMileageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileageCountOutputType
+     */
+    select?: ColorMileageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ColorMileageCountOutputType without action
+   */
+  export type ColorMileageCountOutputTypeCountAccidentRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AccidentRecordWhereInput
+  }
+
+
+  /**
+   * Count Type AccidentRecordCountOutputType
+   */
+
+  export type AccidentRecordCountOutputType = {
+    vehicles: number
+  }
+
+  export type AccidentRecordCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    vehicles?: boolean | AccidentRecordCountOutputTypeCountVehiclesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AccidentRecordCountOutputType without action
+   */
+  export type AccidentRecordCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecordCountOutputType
+     */
+    select?: AccidentRecordCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AccidentRecordCountOutputType without action
+   */
+  export type AccidentRecordCountOutputTypeCountVehiclesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleWhereInput
+  }
+
+
+  /**
+   * Models
+   */
+
+  /**
+   * Model Brand
+   */
+
+  export type AggregateBrand = {
+    _count: BrandCountAggregateOutputType | null
+    _avg: BrandAvgAggregateOutputType | null
+    _sum: BrandSumAggregateOutputType | null
+    _min: BrandMinAggregateOutputType | null
+    _max: BrandMaxAggregateOutputType | null
+  }
+
+  export type BrandAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BrandSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BrandMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BrandMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BrandCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BrandAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type BrandSumAggregateInputType = {
+    id?: true
+  }
+
+  export type BrandMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BrandMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BrandCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BrandAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Brand to aggregate.
+     */
+    where?: BrandWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Brands to fetch.
+     */
+    orderBy?: BrandOrderByWithRelationInput | BrandOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BrandWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Brands from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Brands.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Brands
+    **/
+    _count?: true | BrandCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BrandAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BrandSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BrandMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BrandMaxAggregateInputType
+  }
+
+  export type GetBrandAggregateType<T extends BrandAggregateArgs> = {
+        [P in keyof T & keyof AggregateBrand]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBrand[P]>
+      : GetScalarType<T[P], AggregateBrand[P]>
+  }
+
+
+
+
+  export type BrandGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BrandWhereInput
+    orderBy?: BrandOrderByWithAggregationInput | BrandOrderByWithAggregationInput[]
+    by: BrandScalarFieldEnum[] | BrandScalarFieldEnum
+    having?: BrandScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BrandCountAggregateInputType | true
+    _avg?: BrandAvgAggregateInputType
+    _sum?: BrandSumAggregateInputType
+    _min?: BrandMinAggregateInputType
+    _max?: BrandMaxAggregateInputType
+  }
+
+  export type BrandGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: BrandCountAggregateOutputType | null
+    _avg: BrandAvgAggregateOutputType | null
+    _sum: BrandSumAggregateOutputType | null
+    _min: BrandMinAggregateOutputType | null
+    _max: BrandMaxAggregateOutputType | null
+  }
+
+  type GetBrandGroupByPayload<T extends BrandGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BrandGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BrandGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BrandGroupByOutputType[P]>
+            : GetScalarType<T[P], BrandGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BrandSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    models?: boolean | Brand$modelsArgs<ExtArgs>
+    _count?: boolean | BrandCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["brand"]>
+
+  export type BrandSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["brand"]>
+
+  export type BrandSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["brand"]>
+
+  export type BrandSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BrandOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["brand"]>
+  export type BrandInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    models?: boolean | Brand$modelsArgs<ExtArgs>
+    _count?: boolean | BrandCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BrandIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type BrandIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $BrandPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Brand"
+    objects: {
+      models: Prisma.$ModelPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["brand"]>
+    composites: {}
+  }
+
+  type BrandGetPayload<S extends boolean | null | undefined | BrandDefaultArgs> = $Result.GetResult<Prisma.$BrandPayload, S>
+
+  type BrandCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BrandFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BrandCountAggregateInputType | true
+    }
+
+  export interface BrandDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Brand'], meta: { name: 'Brand' } }
+    /**
+     * Find zero or one Brand that matches the filter.
+     * @param {BrandFindUniqueArgs} args - Arguments to find a Brand
+     * @example
+     * // Get one Brand
+     * const brand = await prisma.brand.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BrandFindUniqueArgs>(args: SelectSubset<T, BrandFindUniqueArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Brand that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BrandFindUniqueOrThrowArgs} args - Arguments to find a Brand
+     * @example
+     * // Get one Brand
+     * const brand = await prisma.brand.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BrandFindUniqueOrThrowArgs>(args: SelectSubset<T, BrandFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Brand that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandFindFirstArgs} args - Arguments to find a Brand
+     * @example
+     * // Get one Brand
+     * const brand = await prisma.brand.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BrandFindFirstArgs>(args?: SelectSubset<T, BrandFindFirstArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Brand that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandFindFirstOrThrowArgs} args - Arguments to find a Brand
+     * @example
+     * // Get one Brand
+     * const brand = await prisma.brand.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BrandFindFirstOrThrowArgs>(args?: SelectSubset<T, BrandFindFirstOrThrowArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Brands that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Brands
+     * const brands = await prisma.brand.findMany()
+     * 
+     * // Get first 10 Brands
+     * const brands = await prisma.brand.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const brandWithIdOnly = await prisma.brand.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BrandFindManyArgs>(args?: SelectSubset<T, BrandFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Brand.
+     * @param {BrandCreateArgs} args - Arguments to create a Brand.
+     * @example
+     * // Create one Brand
+     * const Brand = await prisma.brand.create({
+     *   data: {
+     *     // ... data to create a Brand
+     *   }
+     * })
+     * 
+     */
+    create<T extends BrandCreateArgs>(args: SelectSubset<T, BrandCreateArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Brands.
+     * @param {BrandCreateManyArgs} args - Arguments to create many Brands.
+     * @example
+     * // Create many Brands
+     * const brand = await prisma.brand.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BrandCreateManyArgs>(args?: SelectSubset<T, BrandCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Brands and returns the data saved in the database.
+     * @param {BrandCreateManyAndReturnArgs} args - Arguments to create many Brands.
+     * @example
+     * // Create many Brands
+     * const brand = await prisma.brand.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Brands and only return the `id`
+     * const brandWithIdOnly = await prisma.brand.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BrandCreateManyAndReturnArgs>(args?: SelectSubset<T, BrandCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Brand.
+     * @param {BrandDeleteArgs} args - Arguments to delete one Brand.
+     * @example
+     * // Delete one Brand
+     * const Brand = await prisma.brand.delete({
+     *   where: {
+     *     // ... filter to delete one Brand
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BrandDeleteArgs>(args: SelectSubset<T, BrandDeleteArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Brand.
+     * @param {BrandUpdateArgs} args - Arguments to update one Brand.
+     * @example
+     * // Update one Brand
+     * const brand = await prisma.brand.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BrandUpdateArgs>(args: SelectSubset<T, BrandUpdateArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Brands.
+     * @param {BrandDeleteManyArgs} args - Arguments to filter Brands to delete.
+     * @example
+     * // Delete a few Brands
+     * const { count } = await prisma.brand.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BrandDeleteManyArgs>(args?: SelectSubset<T, BrandDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Brands.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Brands
+     * const brand = await prisma.brand.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BrandUpdateManyArgs>(args: SelectSubset<T, BrandUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Brands and returns the data updated in the database.
+     * @param {BrandUpdateManyAndReturnArgs} args - Arguments to update many Brands.
+     * @example
+     * // Update many Brands
+     * const brand = await prisma.brand.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Brands and only return the `id`
+     * const brandWithIdOnly = await prisma.brand.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BrandUpdateManyAndReturnArgs>(args: SelectSubset<T, BrandUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Brand.
+     * @param {BrandUpsertArgs} args - Arguments to update or create a Brand.
+     * @example
+     * // Update or create a Brand
+     * const brand = await prisma.brand.upsert({
+     *   create: {
+     *     // ... data to create a Brand
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Brand we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BrandUpsertArgs>(args: SelectSubset<T, BrandUpsertArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Brands.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandCountArgs} args - Arguments to filter Brands to count.
+     * @example
+     * // Count the number of Brands
+     * const count = await prisma.brand.count({
+     *   where: {
+     *     // ... the filter for the Brands we want to count
+     *   }
+     * })
+    **/
+    count<T extends BrandCountArgs>(
+      args?: Subset<T, BrandCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BrandCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Brand.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BrandAggregateArgs>(args: Subset<T, BrandAggregateArgs>): Prisma.PrismaPromise<GetBrandAggregateType<T>>
+
+    /**
+     * Group by Brand.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BrandGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BrandGroupByArgs['orderBy'] }
+        : { orderBy?: BrandGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BrandGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBrandGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Brand model
+   */
+  readonly fields: BrandFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Brand.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BrandClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    models<T extends Brand$modelsArgs<ExtArgs> = {}>(args?: Subset<T, Brand$modelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Brand model
+   */
+  interface BrandFieldRefs {
+    readonly id: FieldRef<"Brand", 'Int'>
+    readonly name: FieldRef<"Brand", 'String'>
+    readonly createdAt: FieldRef<"Brand", 'DateTime'>
+    readonly updatedAt: FieldRef<"Brand", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Brand findUnique
+   */
+  export type BrandFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    /**
+     * Filter, which Brand to fetch.
+     */
+    where: BrandWhereUniqueInput
+  }
+
+  /**
+   * Brand findUniqueOrThrow
+   */
+  export type BrandFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    /**
+     * Filter, which Brand to fetch.
+     */
+    where: BrandWhereUniqueInput
+  }
+
+  /**
+   * Brand findFirst
+   */
+  export type BrandFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    /**
+     * Filter, which Brand to fetch.
+     */
+    where?: BrandWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Brands to fetch.
+     */
+    orderBy?: BrandOrderByWithRelationInput | BrandOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Brands.
+     */
+    cursor?: BrandWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Brands from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Brands.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Brands.
+     */
+    distinct?: BrandScalarFieldEnum | BrandScalarFieldEnum[]
+  }
+
+  /**
+   * Brand findFirstOrThrow
+   */
+  export type BrandFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    /**
+     * Filter, which Brand to fetch.
+     */
+    where?: BrandWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Brands to fetch.
+     */
+    orderBy?: BrandOrderByWithRelationInput | BrandOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Brands.
+     */
+    cursor?: BrandWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Brands from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Brands.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Brands.
+     */
+    distinct?: BrandScalarFieldEnum | BrandScalarFieldEnum[]
+  }
+
+  /**
+   * Brand findMany
+   */
+  export type BrandFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    /**
+     * Filter, which Brands to fetch.
+     */
+    where?: BrandWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Brands to fetch.
+     */
+    orderBy?: BrandOrderByWithRelationInput | BrandOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Brands.
+     */
+    cursor?: BrandWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Brands from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Brands.
+     */
+    skip?: number
+    distinct?: BrandScalarFieldEnum | BrandScalarFieldEnum[]
+  }
+
+  /**
+   * Brand create
+   */
+  export type BrandCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Brand.
+     */
+    data: XOR<BrandCreateInput, BrandUncheckedCreateInput>
+  }
+
+  /**
+   * Brand createMany
+   */
+  export type BrandCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Brands.
+     */
+    data: BrandCreateManyInput | BrandCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Brand createManyAndReturn
+   */
+  export type BrandCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * The data used to create many Brands.
+     */
+    data: BrandCreateManyInput | BrandCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Brand update
+   */
+  export type BrandUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Brand.
+     */
+    data: XOR<BrandUpdateInput, BrandUncheckedUpdateInput>
+    /**
+     * Choose, which Brand to update.
+     */
+    where: BrandWhereUniqueInput
+  }
+
+  /**
+   * Brand updateMany
+   */
+  export type BrandUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Brands.
+     */
+    data: XOR<BrandUpdateManyMutationInput, BrandUncheckedUpdateManyInput>
+    /**
+     * Filter which Brands to update
+     */
+    where?: BrandWhereInput
+    /**
+     * Limit how many Brands to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Brand updateManyAndReturn
+   */
+  export type BrandUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * The data used to update Brands.
+     */
+    data: XOR<BrandUpdateManyMutationInput, BrandUncheckedUpdateManyInput>
+    /**
+     * Filter which Brands to update
+     */
+    where?: BrandWhereInput
+    /**
+     * Limit how many Brands to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Brand upsert
+   */
+  export type BrandUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Brand to update in case it exists.
+     */
+    where: BrandWhereUniqueInput
+    /**
+     * In case the Brand found by the `where` argument doesn't exist, create a new Brand with this data.
+     */
+    create: XOR<BrandCreateInput, BrandUncheckedCreateInput>
+    /**
+     * In case the Brand was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BrandUpdateInput, BrandUncheckedUpdateInput>
+  }
+
+  /**
+   * Brand delete
+   */
+  export type BrandDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    /**
+     * Filter which Brand to delete.
+     */
+    where: BrandWhereUniqueInput
+  }
+
+  /**
+   * Brand deleteMany
+   */
+  export type BrandDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Brands to delete
+     */
+    where?: BrandWhereInput
+    /**
+     * Limit how many Brands to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Brand.models
+   */
+  export type Brand$modelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    where?: ModelWhereInput
+    orderBy?: ModelOrderByWithRelationInput | ModelOrderByWithRelationInput[]
+    cursor?: ModelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ModelScalarFieldEnum | ModelScalarFieldEnum[]
+  }
+
+  /**
+   * Brand without action
+   */
+  export type BrandDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Model
+   */
+
+  export type AggregateModel = {
+    _count: ModelCountAggregateOutputType | null
+    _avg: ModelAvgAggregateOutputType | null
+    _sum: ModelSumAggregateOutputType | null
+    _min: ModelMinAggregateOutputType | null
+    _max: ModelMaxAggregateOutputType | null
+  }
+
+  export type ModelAvgAggregateOutputType = {
+    id: number | null
+    brandId: number | null
+  }
+
+  export type ModelSumAggregateOutputType = {
+    id: number | null
+    brandId: number | null
+  }
+
+  export type ModelMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    brandId: number | null
+  }
+
+  export type ModelMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    brandId: number | null
+  }
+
+  export type ModelCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    brandId: number
+    _all: number
+  }
+
+
+  export type ModelAvgAggregateInputType = {
+    id?: true
+    brandId?: true
+  }
+
+  export type ModelSumAggregateInputType = {
+    id?: true
+    brandId?: true
+  }
+
+  export type ModelMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    brandId?: true
+  }
+
+  export type ModelMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    brandId?: true
+  }
+
+  export type ModelCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    brandId?: true
+    _all?: true
+  }
+
+  export type ModelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Model to aggregate.
+     */
+    where?: ModelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Models to fetch.
+     */
+    orderBy?: ModelOrderByWithRelationInput | ModelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ModelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Models from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Models.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Models
+    **/
+    _count?: true | ModelCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ModelAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ModelSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ModelMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ModelMaxAggregateInputType
+  }
+
+  export type GetModelAggregateType<T extends ModelAggregateArgs> = {
+        [P in keyof T & keyof AggregateModel]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateModel[P]>
+      : GetScalarType<T[P], AggregateModel[P]>
+  }
+
+
+
+
+  export type ModelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ModelWhereInput
+    orderBy?: ModelOrderByWithAggregationInput | ModelOrderByWithAggregationInput[]
+    by: ModelScalarFieldEnum[] | ModelScalarFieldEnum
+    having?: ModelScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ModelCountAggregateInputType | true
+    _avg?: ModelAvgAggregateInputType
+    _sum?: ModelSumAggregateInputType
+    _min?: ModelMinAggregateInputType
+    _max?: ModelMaxAggregateInputType
+  }
+
+  export type ModelGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    brandId: number
+    _count: ModelCountAggregateOutputType | null
+    _avg: ModelAvgAggregateOutputType | null
+    _sum: ModelSumAggregateOutputType | null
+    _min: ModelMinAggregateOutputType | null
+    _max: ModelMaxAggregateOutputType | null
+  }
+
+  type GetModelGroupByPayload<T extends ModelGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ModelGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ModelGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ModelGroupByOutputType[P]>
+            : GetScalarType<T[P], ModelGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ModelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    brandId?: boolean
+    brand?: boolean | BrandDefaultArgs<ExtArgs>
+    versions?: boolean | Model$versionsArgs<ExtArgs>
+    _count?: boolean | ModelCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["model"]>
+
+  export type ModelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    brandId?: boolean
+    brand?: boolean | BrandDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["model"]>
+
+  export type ModelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    brandId?: boolean
+    brand?: boolean | BrandDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["model"]>
+
+  export type ModelSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    brandId?: boolean
+  }
+
+  export type ModelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "brandId", ExtArgs["result"]["model"]>
+  export type ModelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    brand?: boolean | BrandDefaultArgs<ExtArgs>
+    versions?: boolean | Model$versionsArgs<ExtArgs>
+    _count?: boolean | ModelCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ModelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    brand?: boolean | BrandDefaultArgs<ExtArgs>
+  }
+  export type ModelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    brand?: boolean | BrandDefaultArgs<ExtArgs>
+  }
+
+  export type $ModelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Model"
+    objects: {
+      brand: Prisma.$BrandPayload<ExtArgs>
+      versions: Prisma.$VersionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+      brandId: number
+    }, ExtArgs["result"]["model"]>
+    composites: {}
+  }
+
+  type ModelGetPayload<S extends boolean | null | undefined | ModelDefaultArgs> = $Result.GetResult<Prisma.$ModelPayload, S>
+
+  type ModelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ModelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ModelCountAggregateInputType | true
+    }
+
+  export interface ModelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Model'], meta: { name: 'Model' } }
+    /**
+     * Find zero or one Model that matches the filter.
+     * @param {ModelFindUniqueArgs} args - Arguments to find a Model
+     * @example
+     * // Get one Model
+     * const model = await prisma.model.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ModelFindUniqueArgs>(args: SelectSubset<T, ModelFindUniqueArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Model that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ModelFindUniqueOrThrowArgs} args - Arguments to find a Model
+     * @example
+     * // Get one Model
+     * const model = await prisma.model.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ModelFindUniqueOrThrowArgs>(args: SelectSubset<T, ModelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Model that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModelFindFirstArgs} args - Arguments to find a Model
+     * @example
+     * // Get one Model
+     * const model = await prisma.model.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ModelFindFirstArgs>(args?: SelectSubset<T, ModelFindFirstArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Model that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModelFindFirstOrThrowArgs} args - Arguments to find a Model
+     * @example
+     * // Get one Model
+     * const model = await prisma.model.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ModelFindFirstOrThrowArgs>(args?: SelectSubset<T, ModelFindFirstOrThrowArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Models that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Models
+     * const models = await prisma.model.findMany()
+     * 
+     * // Get first 10 Models
+     * const models = await prisma.model.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const modelWithIdOnly = await prisma.model.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ModelFindManyArgs>(args?: SelectSubset<T, ModelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Model.
+     * @param {ModelCreateArgs} args - Arguments to create a Model.
+     * @example
+     * // Create one Model
+     * const Model = await prisma.model.create({
+     *   data: {
+     *     // ... data to create a Model
+     *   }
+     * })
+     * 
+     */
+    create<T extends ModelCreateArgs>(args: SelectSubset<T, ModelCreateArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Models.
+     * @param {ModelCreateManyArgs} args - Arguments to create many Models.
+     * @example
+     * // Create many Models
+     * const model = await prisma.model.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ModelCreateManyArgs>(args?: SelectSubset<T, ModelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Models and returns the data saved in the database.
+     * @param {ModelCreateManyAndReturnArgs} args - Arguments to create many Models.
+     * @example
+     * // Create many Models
+     * const model = await prisma.model.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Models and only return the `id`
+     * const modelWithIdOnly = await prisma.model.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ModelCreateManyAndReturnArgs>(args?: SelectSubset<T, ModelCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Model.
+     * @param {ModelDeleteArgs} args - Arguments to delete one Model.
+     * @example
+     * // Delete one Model
+     * const Model = await prisma.model.delete({
+     *   where: {
+     *     // ... filter to delete one Model
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ModelDeleteArgs>(args: SelectSubset<T, ModelDeleteArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Model.
+     * @param {ModelUpdateArgs} args - Arguments to update one Model.
+     * @example
+     * // Update one Model
+     * const model = await prisma.model.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ModelUpdateArgs>(args: SelectSubset<T, ModelUpdateArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Models.
+     * @param {ModelDeleteManyArgs} args - Arguments to filter Models to delete.
+     * @example
+     * // Delete a few Models
+     * const { count } = await prisma.model.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ModelDeleteManyArgs>(args?: SelectSubset<T, ModelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Models.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Models
+     * const model = await prisma.model.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ModelUpdateManyArgs>(args: SelectSubset<T, ModelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Models and returns the data updated in the database.
+     * @param {ModelUpdateManyAndReturnArgs} args - Arguments to update many Models.
+     * @example
+     * // Update many Models
+     * const model = await prisma.model.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Models and only return the `id`
+     * const modelWithIdOnly = await prisma.model.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ModelUpdateManyAndReturnArgs>(args: SelectSubset<T, ModelUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Model.
+     * @param {ModelUpsertArgs} args - Arguments to update or create a Model.
+     * @example
+     * // Update or create a Model
+     * const model = await prisma.model.upsert({
+     *   create: {
+     *     // ... data to create a Model
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Model we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ModelUpsertArgs>(args: SelectSubset<T, ModelUpsertArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Models.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModelCountArgs} args - Arguments to filter Models to count.
+     * @example
+     * // Count the number of Models
+     * const count = await prisma.model.count({
+     *   where: {
+     *     // ... the filter for the Models we want to count
+     *   }
+     * })
+    **/
+    count<T extends ModelCountArgs>(
+      args?: Subset<T, ModelCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ModelCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Model.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ModelAggregateArgs>(args: Subset<T, ModelAggregateArgs>): Prisma.PrismaPromise<GetModelAggregateType<T>>
+
+    /**
+     * Group by Model.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModelGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ModelGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ModelGroupByArgs['orderBy'] }
+        : { orderBy?: ModelGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ModelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetModelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Model model
+   */
+  readonly fields: ModelFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Model.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ModelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    brand<T extends BrandDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BrandDefaultArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    versions<T extends Model$versionsArgs<ExtArgs> = {}>(args?: Subset<T, Model$versionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Model model
+   */
+  interface ModelFieldRefs {
+    readonly id: FieldRef<"Model", 'Int'>
+    readonly name: FieldRef<"Model", 'String'>
+    readonly createdAt: FieldRef<"Model", 'DateTime'>
+    readonly updatedAt: FieldRef<"Model", 'DateTime'>
+    readonly brandId: FieldRef<"Model", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Model findUnique
+   */
+  export type ModelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    /**
+     * Filter, which Model to fetch.
+     */
+    where: ModelWhereUniqueInput
+  }
+
+  /**
+   * Model findUniqueOrThrow
+   */
+  export type ModelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    /**
+     * Filter, which Model to fetch.
+     */
+    where: ModelWhereUniqueInput
+  }
+
+  /**
+   * Model findFirst
+   */
+  export type ModelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    /**
+     * Filter, which Model to fetch.
+     */
+    where?: ModelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Models to fetch.
+     */
+    orderBy?: ModelOrderByWithRelationInput | ModelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Models.
+     */
+    cursor?: ModelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Models from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Models.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Models.
+     */
+    distinct?: ModelScalarFieldEnum | ModelScalarFieldEnum[]
+  }
+
+  /**
+   * Model findFirstOrThrow
+   */
+  export type ModelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    /**
+     * Filter, which Model to fetch.
+     */
+    where?: ModelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Models to fetch.
+     */
+    orderBy?: ModelOrderByWithRelationInput | ModelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Models.
+     */
+    cursor?: ModelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Models from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Models.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Models.
+     */
+    distinct?: ModelScalarFieldEnum | ModelScalarFieldEnum[]
+  }
+
+  /**
+   * Model findMany
+   */
+  export type ModelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    /**
+     * Filter, which Models to fetch.
+     */
+    where?: ModelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Models to fetch.
+     */
+    orderBy?: ModelOrderByWithRelationInput | ModelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Models.
+     */
+    cursor?: ModelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Models from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Models.
+     */
+    skip?: number
+    distinct?: ModelScalarFieldEnum | ModelScalarFieldEnum[]
+  }
+
+  /**
+   * Model create
+   */
+  export type ModelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Model.
+     */
+    data: XOR<ModelCreateInput, ModelUncheckedCreateInput>
+  }
+
+  /**
+   * Model createMany
+   */
+  export type ModelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Models.
+     */
+    data: ModelCreateManyInput | ModelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Model createManyAndReturn
+   */
+  export type ModelCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * The data used to create many Models.
+     */
+    data: ModelCreateManyInput | ModelCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Model update
+   */
+  export type ModelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Model.
+     */
+    data: XOR<ModelUpdateInput, ModelUncheckedUpdateInput>
+    /**
+     * Choose, which Model to update.
+     */
+    where: ModelWhereUniqueInput
+  }
+
+  /**
+   * Model updateMany
+   */
+  export type ModelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Models.
+     */
+    data: XOR<ModelUpdateManyMutationInput, ModelUncheckedUpdateManyInput>
+    /**
+     * Filter which Models to update
+     */
+    where?: ModelWhereInput
+    /**
+     * Limit how many Models to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Model updateManyAndReturn
+   */
+  export type ModelUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * The data used to update Models.
+     */
+    data: XOR<ModelUpdateManyMutationInput, ModelUncheckedUpdateManyInput>
+    /**
+     * Filter which Models to update
+     */
+    where?: ModelWhereInput
+    /**
+     * Limit how many Models to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Model upsert
+   */
+  export type ModelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Model to update in case it exists.
+     */
+    where: ModelWhereUniqueInput
+    /**
+     * In case the Model found by the `where` argument doesn't exist, create a new Model with this data.
+     */
+    create: XOR<ModelCreateInput, ModelUncheckedCreateInput>
+    /**
+     * In case the Model was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ModelUpdateInput, ModelUncheckedUpdateInput>
+  }
+
+  /**
+   * Model delete
+   */
+  export type ModelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    /**
+     * Filter which Model to delete.
+     */
+    where: ModelWhereUniqueInput
+  }
+
+  /**
+   * Model deleteMany
+   */
+  export type ModelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Models to delete
+     */
+    where?: ModelWhereInput
+    /**
+     * Limit how many Models to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Model.versions
+   */
+  export type Model$versionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    where?: VersionWhereInput
+    orderBy?: VersionOrderByWithRelationInput | VersionOrderByWithRelationInput[]
+    cursor?: VersionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VersionScalarFieldEnum | VersionScalarFieldEnum[]
+  }
+
+  /**
+   * Model without action
+   */
+  export type ModelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Version
+   */
+
+  export type AggregateVersion = {
+    _count: VersionCountAggregateOutputType | null
+    _avg: VersionAvgAggregateOutputType | null
+    _sum: VersionSumAggregateOutputType | null
+    _min: VersionMinAggregateOutputType | null
+    _max: VersionMaxAggregateOutputType | null
+  }
+
+  export type VersionAvgAggregateOutputType = {
+    id: number | null
+    modelId: number | null
+  }
+
+  export type VersionSumAggregateOutputType = {
+    id: number | null
+    modelId: number | null
+  }
+
+  export type VersionMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    modelId: number | null
+  }
+
+  export type VersionMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    modelId: number | null
+  }
+
+  export type VersionCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    modelId: number
+    _all: number
+  }
+
+
+  export type VersionAvgAggregateInputType = {
+    id?: true
+    modelId?: true
+  }
+
+  export type VersionSumAggregateInputType = {
+    id?: true
+    modelId?: true
+  }
+
+  export type VersionMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    modelId?: true
+  }
+
+  export type VersionMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    modelId?: true
+  }
+
+  export type VersionCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    modelId?: true
+    _all?: true
+  }
+
+  export type VersionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Version to aggregate.
+     */
+    where?: VersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Versions to fetch.
+     */
+    orderBy?: VersionOrderByWithRelationInput | VersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Versions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Versions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Versions
+    **/
+    _count?: true | VersionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: VersionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VersionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VersionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VersionMaxAggregateInputType
+  }
+
+  export type GetVersionAggregateType<T extends VersionAggregateArgs> = {
+        [P in keyof T & keyof AggregateVersion]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVersion[P]>
+      : GetScalarType<T[P], AggregateVersion[P]>
+  }
+
+
+
+
+  export type VersionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VersionWhereInput
+    orderBy?: VersionOrderByWithAggregationInput | VersionOrderByWithAggregationInput[]
+    by: VersionScalarFieldEnum[] | VersionScalarFieldEnum
+    having?: VersionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VersionCountAggregateInputType | true
+    _avg?: VersionAvgAggregateInputType
+    _sum?: VersionSumAggregateInputType
+    _min?: VersionMinAggregateInputType
+    _max?: VersionMaxAggregateInputType
+  }
+
+  export type VersionGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    modelId: number
+    _count: VersionCountAggregateOutputType | null
+    _avg: VersionAvgAggregateOutputType | null
+    _sum: VersionSumAggregateOutputType | null
+    _min: VersionMinAggregateOutputType | null
+    _max: VersionMaxAggregateOutputType | null
+  }
+
+  type GetVersionGroupByPayload<T extends VersionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VersionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VersionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VersionGroupByOutputType[P]>
+            : GetScalarType<T[P], VersionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VersionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    modelId?: boolean
+    model?: boolean | ModelDefaultArgs<ExtArgs>
+    bodyTypes?: boolean | Version$bodyTypesArgs<ExtArgs>
+    _count?: boolean | VersionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["version"]>
+
+  export type VersionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    modelId?: boolean
+    model?: boolean | ModelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["version"]>
+
+  export type VersionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    modelId?: boolean
+    model?: boolean | ModelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["version"]>
+
+  export type VersionSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    modelId?: boolean
+  }
+
+  export type VersionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "modelId", ExtArgs["result"]["version"]>
+  export type VersionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    model?: boolean | ModelDefaultArgs<ExtArgs>
+    bodyTypes?: boolean | Version$bodyTypesArgs<ExtArgs>
+    _count?: boolean | VersionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type VersionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    model?: boolean | ModelDefaultArgs<ExtArgs>
+  }
+  export type VersionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    model?: boolean | ModelDefaultArgs<ExtArgs>
+  }
+
+  export type $VersionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Version"
+    objects: {
+      model: Prisma.$ModelPayload<ExtArgs>
+      bodyTypes: Prisma.$BodyTypeVersionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+      modelId: number
+    }, ExtArgs["result"]["version"]>
+    composites: {}
+  }
+
+  type VersionGetPayload<S extends boolean | null | undefined | VersionDefaultArgs> = $Result.GetResult<Prisma.$VersionPayload, S>
+
+  type VersionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VersionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VersionCountAggregateInputType | true
+    }
+
+  export interface VersionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Version'], meta: { name: 'Version' } }
+    /**
+     * Find zero or one Version that matches the filter.
+     * @param {VersionFindUniqueArgs} args - Arguments to find a Version
+     * @example
+     * // Get one Version
+     * const version = await prisma.version.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VersionFindUniqueArgs>(args: SelectSubset<T, VersionFindUniqueArgs<ExtArgs>>): Prisma__VersionClient<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Version that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VersionFindUniqueOrThrowArgs} args - Arguments to find a Version
+     * @example
+     * // Get one Version
+     * const version = await prisma.version.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VersionFindUniqueOrThrowArgs>(args: SelectSubset<T, VersionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VersionClient<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Version that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VersionFindFirstArgs} args - Arguments to find a Version
+     * @example
+     * // Get one Version
+     * const version = await prisma.version.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VersionFindFirstArgs>(args?: SelectSubset<T, VersionFindFirstArgs<ExtArgs>>): Prisma__VersionClient<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Version that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VersionFindFirstOrThrowArgs} args - Arguments to find a Version
+     * @example
+     * // Get one Version
+     * const version = await prisma.version.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VersionFindFirstOrThrowArgs>(args?: SelectSubset<T, VersionFindFirstOrThrowArgs<ExtArgs>>): Prisma__VersionClient<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Versions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VersionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Versions
+     * const versions = await prisma.version.findMany()
+     * 
+     * // Get first 10 Versions
+     * const versions = await prisma.version.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const versionWithIdOnly = await prisma.version.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VersionFindManyArgs>(args?: SelectSubset<T, VersionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Version.
+     * @param {VersionCreateArgs} args - Arguments to create a Version.
+     * @example
+     * // Create one Version
+     * const Version = await prisma.version.create({
+     *   data: {
+     *     // ... data to create a Version
+     *   }
+     * })
+     * 
+     */
+    create<T extends VersionCreateArgs>(args: SelectSubset<T, VersionCreateArgs<ExtArgs>>): Prisma__VersionClient<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Versions.
+     * @param {VersionCreateManyArgs} args - Arguments to create many Versions.
+     * @example
+     * // Create many Versions
+     * const version = await prisma.version.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VersionCreateManyArgs>(args?: SelectSubset<T, VersionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Versions and returns the data saved in the database.
+     * @param {VersionCreateManyAndReturnArgs} args - Arguments to create many Versions.
+     * @example
+     * // Create many Versions
+     * const version = await prisma.version.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Versions and only return the `id`
+     * const versionWithIdOnly = await prisma.version.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VersionCreateManyAndReturnArgs>(args?: SelectSubset<T, VersionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Version.
+     * @param {VersionDeleteArgs} args - Arguments to delete one Version.
+     * @example
+     * // Delete one Version
+     * const Version = await prisma.version.delete({
+     *   where: {
+     *     // ... filter to delete one Version
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VersionDeleteArgs>(args: SelectSubset<T, VersionDeleteArgs<ExtArgs>>): Prisma__VersionClient<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Version.
+     * @param {VersionUpdateArgs} args - Arguments to update one Version.
+     * @example
+     * // Update one Version
+     * const version = await prisma.version.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VersionUpdateArgs>(args: SelectSubset<T, VersionUpdateArgs<ExtArgs>>): Prisma__VersionClient<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Versions.
+     * @param {VersionDeleteManyArgs} args - Arguments to filter Versions to delete.
+     * @example
+     * // Delete a few Versions
+     * const { count } = await prisma.version.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VersionDeleteManyArgs>(args?: SelectSubset<T, VersionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Versions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VersionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Versions
+     * const version = await prisma.version.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VersionUpdateManyArgs>(args: SelectSubset<T, VersionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Versions and returns the data updated in the database.
+     * @param {VersionUpdateManyAndReturnArgs} args - Arguments to update many Versions.
+     * @example
+     * // Update many Versions
+     * const version = await prisma.version.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Versions and only return the `id`
+     * const versionWithIdOnly = await prisma.version.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VersionUpdateManyAndReturnArgs>(args: SelectSubset<T, VersionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Version.
+     * @param {VersionUpsertArgs} args - Arguments to update or create a Version.
+     * @example
+     * // Update or create a Version
+     * const version = await prisma.version.upsert({
+     *   create: {
+     *     // ... data to create a Version
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Version we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VersionUpsertArgs>(args: SelectSubset<T, VersionUpsertArgs<ExtArgs>>): Prisma__VersionClient<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Versions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VersionCountArgs} args - Arguments to filter Versions to count.
+     * @example
+     * // Count the number of Versions
+     * const count = await prisma.version.count({
+     *   where: {
+     *     // ... the filter for the Versions we want to count
+     *   }
+     * })
+    **/
+    count<T extends VersionCountArgs>(
+      args?: Subset<T, VersionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VersionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Version.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VersionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VersionAggregateArgs>(args: Subset<T, VersionAggregateArgs>): Prisma.PrismaPromise<GetVersionAggregateType<T>>
+
+    /**
+     * Group by Version.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VersionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VersionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VersionGroupByArgs['orderBy'] }
+        : { orderBy?: VersionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VersionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVersionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Version model
+   */
+  readonly fields: VersionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Version.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VersionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    model<T extends ModelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ModelDefaultArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    bodyTypes<T extends Version$bodyTypesArgs<ExtArgs> = {}>(args?: Subset<T, Version$bodyTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Version model
+   */
+  interface VersionFieldRefs {
+    readonly id: FieldRef<"Version", 'Int'>
+    readonly name: FieldRef<"Version", 'String'>
+    readonly createdAt: FieldRef<"Version", 'DateTime'>
+    readonly updatedAt: FieldRef<"Version", 'DateTime'>
+    readonly modelId: FieldRef<"Version", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Version findUnique
+   */
+  export type VersionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    /**
+     * Filter, which Version to fetch.
+     */
+    where: VersionWhereUniqueInput
+  }
+
+  /**
+   * Version findUniqueOrThrow
+   */
+  export type VersionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    /**
+     * Filter, which Version to fetch.
+     */
+    where: VersionWhereUniqueInput
+  }
+
+  /**
+   * Version findFirst
+   */
+  export type VersionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    /**
+     * Filter, which Version to fetch.
+     */
+    where?: VersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Versions to fetch.
+     */
+    orderBy?: VersionOrderByWithRelationInput | VersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Versions.
+     */
+    cursor?: VersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Versions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Versions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Versions.
+     */
+    distinct?: VersionScalarFieldEnum | VersionScalarFieldEnum[]
+  }
+
+  /**
+   * Version findFirstOrThrow
+   */
+  export type VersionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    /**
+     * Filter, which Version to fetch.
+     */
+    where?: VersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Versions to fetch.
+     */
+    orderBy?: VersionOrderByWithRelationInput | VersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Versions.
+     */
+    cursor?: VersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Versions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Versions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Versions.
+     */
+    distinct?: VersionScalarFieldEnum | VersionScalarFieldEnum[]
+  }
+
+  /**
+   * Version findMany
+   */
+  export type VersionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    /**
+     * Filter, which Versions to fetch.
+     */
+    where?: VersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Versions to fetch.
+     */
+    orderBy?: VersionOrderByWithRelationInput | VersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Versions.
+     */
+    cursor?: VersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Versions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Versions.
+     */
+    skip?: number
+    distinct?: VersionScalarFieldEnum | VersionScalarFieldEnum[]
+  }
+
+  /**
+   * Version create
+   */
+  export type VersionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Version.
+     */
+    data: XOR<VersionCreateInput, VersionUncheckedCreateInput>
+  }
+
+  /**
+   * Version createMany
+   */
+  export type VersionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Versions.
+     */
+    data: VersionCreateManyInput | VersionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Version createManyAndReturn
+   */
+  export type VersionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * The data used to create many Versions.
+     */
+    data: VersionCreateManyInput | VersionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Version update
+   */
+  export type VersionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Version.
+     */
+    data: XOR<VersionUpdateInput, VersionUncheckedUpdateInput>
+    /**
+     * Choose, which Version to update.
+     */
+    where: VersionWhereUniqueInput
+  }
+
+  /**
+   * Version updateMany
+   */
+  export type VersionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Versions.
+     */
+    data: XOR<VersionUpdateManyMutationInput, VersionUncheckedUpdateManyInput>
+    /**
+     * Filter which Versions to update
+     */
+    where?: VersionWhereInput
+    /**
+     * Limit how many Versions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Version updateManyAndReturn
+   */
+  export type VersionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * The data used to update Versions.
+     */
+    data: XOR<VersionUpdateManyMutationInput, VersionUncheckedUpdateManyInput>
+    /**
+     * Filter which Versions to update
+     */
+    where?: VersionWhereInput
+    /**
+     * Limit how many Versions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Version upsert
+   */
+  export type VersionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Version to update in case it exists.
+     */
+    where: VersionWhereUniqueInput
+    /**
+     * In case the Version found by the `where` argument doesn't exist, create a new Version with this data.
+     */
+    create: XOR<VersionCreateInput, VersionUncheckedCreateInput>
+    /**
+     * In case the Version was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VersionUpdateInput, VersionUncheckedUpdateInput>
+  }
+
+  /**
+   * Version delete
+   */
+  export type VersionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    /**
+     * Filter which Version to delete.
+     */
+    where: VersionWhereUniqueInput
+  }
+
+  /**
+   * Version deleteMany
+   */
+  export type VersionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Versions to delete
+     */
+    where?: VersionWhereInput
+    /**
+     * Limit how many Versions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Version.bodyTypes
+   */
+  export type Version$bodyTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    where?: BodyTypeVersionWhereInput
+    orderBy?: BodyTypeVersionOrderByWithRelationInput | BodyTypeVersionOrderByWithRelationInput[]
+    cursor?: BodyTypeVersionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BodyTypeVersionScalarFieldEnum | BodyTypeVersionScalarFieldEnum[]
+  }
+
+  /**
+   * Version without action
+   */
+  export type VersionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BodyType
+   */
+
+  export type AggregateBodyType = {
+    _count: BodyTypeCountAggregateOutputType | null
+    _avg: BodyTypeAvgAggregateOutputType | null
+    _sum: BodyTypeSumAggregateOutputType | null
+    _min: BodyTypeMinAggregateOutputType | null
+    _max: BodyTypeMaxAggregateOutputType | null
+  }
+
+  export type BodyTypeAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BodyTypeSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BodyTypeMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BodyTypeMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BodyTypeCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BodyTypeAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type BodyTypeSumAggregateInputType = {
+    id?: true
+  }
+
+  export type BodyTypeMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BodyTypeMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BodyTypeCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BodyTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BodyType to aggregate.
+     */
+    where?: BodyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BodyTypes to fetch.
+     */
+    orderBy?: BodyTypeOrderByWithRelationInput | BodyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BodyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BodyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BodyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BodyTypes
+    **/
+    _count?: true | BodyTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BodyTypeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BodyTypeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BodyTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BodyTypeMaxAggregateInputType
+  }
+
+  export type GetBodyTypeAggregateType<T extends BodyTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateBodyType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBodyType[P]>
+      : GetScalarType<T[P], AggregateBodyType[P]>
+  }
+
+
+
+
+  export type BodyTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BodyTypeWhereInput
+    orderBy?: BodyTypeOrderByWithAggregationInput | BodyTypeOrderByWithAggregationInput[]
+    by: BodyTypeScalarFieldEnum[] | BodyTypeScalarFieldEnum
+    having?: BodyTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BodyTypeCountAggregateInputType | true
+    _avg?: BodyTypeAvgAggregateInputType
+    _sum?: BodyTypeSumAggregateInputType
+    _min?: BodyTypeMinAggregateInputType
+    _max?: BodyTypeMaxAggregateInputType
+  }
+
+  export type BodyTypeGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: BodyTypeCountAggregateOutputType | null
+    _avg: BodyTypeAvgAggregateOutputType | null
+    _sum: BodyTypeSumAggregateOutputType | null
+    _min: BodyTypeMinAggregateOutputType | null
+    _max: BodyTypeMaxAggregateOutputType | null
+  }
+
+  type GetBodyTypeGroupByPayload<T extends BodyTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BodyTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BodyTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BodyTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], BodyTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BodyTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    versions?: boolean | BodyType$versionsArgs<ExtArgs>
+    _count?: boolean | BodyTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bodyType"]>
+
+  export type BodyTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["bodyType"]>
+
+  export type BodyTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["bodyType"]>
+
+  export type BodyTypeSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BodyTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["bodyType"]>
+  export type BodyTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    versions?: boolean | BodyType$versionsArgs<ExtArgs>
+    _count?: boolean | BodyTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BodyTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type BodyTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $BodyTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BodyType"
+    objects: {
+      versions: Prisma.$BodyTypeVersionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["bodyType"]>
+    composites: {}
+  }
+
+  type BodyTypeGetPayload<S extends boolean | null | undefined | BodyTypeDefaultArgs> = $Result.GetResult<Prisma.$BodyTypePayload, S>
+
+  type BodyTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BodyTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BodyTypeCountAggregateInputType | true
+    }
+
+  export interface BodyTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BodyType'], meta: { name: 'BodyType' } }
+    /**
+     * Find zero or one BodyType that matches the filter.
+     * @param {BodyTypeFindUniqueArgs} args - Arguments to find a BodyType
+     * @example
+     * // Get one BodyType
+     * const bodyType = await prisma.bodyType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BodyTypeFindUniqueArgs>(args: SelectSubset<T, BodyTypeFindUniqueArgs<ExtArgs>>): Prisma__BodyTypeClient<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BodyType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BodyTypeFindUniqueOrThrowArgs} args - Arguments to find a BodyType
+     * @example
+     * // Get one BodyType
+     * const bodyType = await prisma.bodyType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BodyTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, BodyTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BodyTypeClient<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BodyType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeFindFirstArgs} args - Arguments to find a BodyType
+     * @example
+     * // Get one BodyType
+     * const bodyType = await prisma.bodyType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BodyTypeFindFirstArgs>(args?: SelectSubset<T, BodyTypeFindFirstArgs<ExtArgs>>): Prisma__BodyTypeClient<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BodyType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeFindFirstOrThrowArgs} args - Arguments to find a BodyType
+     * @example
+     * // Get one BodyType
+     * const bodyType = await prisma.bodyType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BodyTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, BodyTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__BodyTypeClient<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BodyTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BodyTypes
+     * const bodyTypes = await prisma.bodyType.findMany()
+     * 
+     * // Get first 10 BodyTypes
+     * const bodyTypes = await prisma.bodyType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bodyTypeWithIdOnly = await prisma.bodyType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BodyTypeFindManyArgs>(args?: SelectSubset<T, BodyTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BodyType.
+     * @param {BodyTypeCreateArgs} args - Arguments to create a BodyType.
+     * @example
+     * // Create one BodyType
+     * const BodyType = await prisma.bodyType.create({
+     *   data: {
+     *     // ... data to create a BodyType
+     *   }
+     * })
+     * 
+     */
+    create<T extends BodyTypeCreateArgs>(args: SelectSubset<T, BodyTypeCreateArgs<ExtArgs>>): Prisma__BodyTypeClient<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BodyTypes.
+     * @param {BodyTypeCreateManyArgs} args - Arguments to create many BodyTypes.
+     * @example
+     * // Create many BodyTypes
+     * const bodyType = await prisma.bodyType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BodyTypeCreateManyArgs>(args?: SelectSubset<T, BodyTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BodyTypes and returns the data saved in the database.
+     * @param {BodyTypeCreateManyAndReturnArgs} args - Arguments to create many BodyTypes.
+     * @example
+     * // Create many BodyTypes
+     * const bodyType = await prisma.bodyType.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BodyTypes and only return the `id`
+     * const bodyTypeWithIdOnly = await prisma.bodyType.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BodyTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, BodyTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BodyType.
+     * @param {BodyTypeDeleteArgs} args - Arguments to delete one BodyType.
+     * @example
+     * // Delete one BodyType
+     * const BodyType = await prisma.bodyType.delete({
+     *   where: {
+     *     // ... filter to delete one BodyType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BodyTypeDeleteArgs>(args: SelectSubset<T, BodyTypeDeleteArgs<ExtArgs>>): Prisma__BodyTypeClient<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BodyType.
+     * @param {BodyTypeUpdateArgs} args - Arguments to update one BodyType.
+     * @example
+     * // Update one BodyType
+     * const bodyType = await prisma.bodyType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BodyTypeUpdateArgs>(args: SelectSubset<T, BodyTypeUpdateArgs<ExtArgs>>): Prisma__BodyTypeClient<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BodyTypes.
+     * @param {BodyTypeDeleteManyArgs} args - Arguments to filter BodyTypes to delete.
+     * @example
+     * // Delete a few BodyTypes
+     * const { count } = await prisma.bodyType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BodyTypeDeleteManyArgs>(args?: SelectSubset<T, BodyTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BodyTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BodyTypes
+     * const bodyType = await prisma.bodyType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BodyTypeUpdateManyArgs>(args: SelectSubset<T, BodyTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BodyTypes and returns the data updated in the database.
+     * @param {BodyTypeUpdateManyAndReturnArgs} args - Arguments to update many BodyTypes.
+     * @example
+     * // Update many BodyTypes
+     * const bodyType = await prisma.bodyType.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BodyTypes and only return the `id`
+     * const bodyTypeWithIdOnly = await prisma.bodyType.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BodyTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, BodyTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BodyType.
+     * @param {BodyTypeUpsertArgs} args - Arguments to update or create a BodyType.
+     * @example
+     * // Update or create a BodyType
+     * const bodyType = await prisma.bodyType.upsert({
+     *   create: {
+     *     // ... data to create a BodyType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BodyType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BodyTypeUpsertArgs>(args: SelectSubset<T, BodyTypeUpsertArgs<ExtArgs>>): Prisma__BodyTypeClient<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BodyTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeCountArgs} args - Arguments to filter BodyTypes to count.
+     * @example
+     * // Count the number of BodyTypes
+     * const count = await prisma.bodyType.count({
+     *   where: {
+     *     // ... the filter for the BodyTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends BodyTypeCountArgs>(
+      args?: Subset<T, BodyTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BodyTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BodyType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BodyTypeAggregateArgs>(args: Subset<T, BodyTypeAggregateArgs>): Prisma.PrismaPromise<GetBodyTypeAggregateType<T>>
+
+    /**
+     * Group by BodyType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BodyTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BodyTypeGroupByArgs['orderBy'] }
+        : { orderBy?: BodyTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BodyTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBodyTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BodyType model
+   */
+  readonly fields: BodyTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BodyType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BodyTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    versions<T extends BodyType$versionsArgs<ExtArgs> = {}>(args?: Subset<T, BodyType$versionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BodyType model
+   */
+  interface BodyTypeFieldRefs {
+    readonly id: FieldRef<"BodyType", 'Int'>
+    readonly name: FieldRef<"BodyType", 'String'>
+    readonly createdAt: FieldRef<"BodyType", 'DateTime'>
+    readonly updatedAt: FieldRef<"BodyType", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BodyType findUnique
+   */
+  export type BodyTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which BodyType to fetch.
+     */
+    where: BodyTypeWhereUniqueInput
+  }
+
+  /**
+   * BodyType findUniqueOrThrow
+   */
+  export type BodyTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which BodyType to fetch.
+     */
+    where: BodyTypeWhereUniqueInput
+  }
+
+  /**
+   * BodyType findFirst
+   */
+  export type BodyTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which BodyType to fetch.
+     */
+    where?: BodyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BodyTypes to fetch.
+     */
+    orderBy?: BodyTypeOrderByWithRelationInput | BodyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BodyTypes.
+     */
+    cursor?: BodyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BodyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BodyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BodyTypes.
+     */
+    distinct?: BodyTypeScalarFieldEnum | BodyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * BodyType findFirstOrThrow
+   */
+  export type BodyTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which BodyType to fetch.
+     */
+    where?: BodyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BodyTypes to fetch.
+     */
+    orderBy?: BodyTypeOrderByWithRelationInput | BodyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BodyTypes.
+     */
+    cursor?: BodyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BodyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BodyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BodyTypes.
+     */
+    distinct?: BodyTypeScalarFieldEnum | BodyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * BodyType findMany
+   */
+  export type BodyTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which BodyTypes to fetch.
+     */
+    where?: BodyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BodyTypes to fetch.
+     */
+    orderBy?: BodyTypeOrderByWithRelationInput | BodyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BodyTypes.
+     */
+    cursor?: BodyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BodyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BodyTypes.
+     */
+    skip?: number
+    distinct?: BodyTypeScalarFieldEnum | BodyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * BodyType create
+   */
+  export type BodyTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BodyType.
+     */
+    data: XOR<BodyTypeCreateInput, BodyTypeUncheckedCreateInput>
+  }
+
+  /**
+   * BodyType createMany
+   */
+  export type BodyTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BodyTypes.
+     */
+    data: BodyTypeCreateManyInput | BodyTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BodyType createManyAndReturn
+   */
+  export type BodyTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * The data used to create many BodyTypes.
+     */
+    data: BodyTypeCreateManyInput | BodyTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BodyType update
+   */
+  export type BodyTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BodyType.
+     */
+    data: XOR<BodyTypeUpdateInput, BodyTypeUncheckedUpdateInput>
+    /**
+     * Choose, which BodyType to update.
+     */
+    where: BodyTypeWhereUniqueInput
+  }
+
+  /**
+   * BodyType updateMany
+   */
+  export type BodyTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BodyTypes.
+     */
+    data: XOR<BodyTypeUpdateManyMutationInput, BodyTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which BodyTypes to update
+     */
+    where?: BodyTypeWhereInput
+    /**
+     * Limit how many BodyTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BodyType updateManyAndReturn
+   */
+  export type BodyTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * The data used to update BodyTypes.
+     */
+    data: XOR<BodyTypeUpdateManyMutationInput, BodyTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which BodyTypes to update
+     */
+    where?: BodyTypeWhereInput
+    /**
+     * Limit how many BodyTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BodyType upsert
+   */
+  export type BodyTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BodyType to update in case it exists.
+     */
+    where: BodyTypeWhereUniqueInput
+    /**
+     * In case the BodyType found by the `where` argument doesn't exist, create a new BodyType with this data.
+     */
+    create: XOR<BodyTypeCreateInput, BodyTypeUncheckedCreateInput>
+    /**
+     * In case the BodyType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BodyTypeUpdateInput, BodyTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * BodyType delete
+   */
+  export type BodyTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+    /**
+     * Filter which BodyType to delete.
+     */
+    where: BodyTypeWhereUniqueInput
+  }
+
+  /**
+   * BodyType deleteMany
+   */
+  export type BodyTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BodyTypes to delete
+     */
+    where?: BodyTypeWhereInput
+    /**
+     * Limit how many BodyTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BodyType.versions
+   */
+  export type BodyType$versionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    where?: BodyTypeVersionWhereInput
+    orderBy?: BodyTypeVersionOrderByWithRelationInput | BodyTypeVersionOrderByWithRelationInput[]
+    cursor?: BodyTypeVersionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BodyTypeVersionScalarFieldEnum | BodyTypeVersionScalarFieldEnum[]
+  }
+
+  /**
+   * BodyType without action
+   */
+  export type BodyTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BodyTypeVersion
+   */
+
+  export type AggregateBodyTypeVersion = {
+    _count: BodyTypeVersionCountAggregateOutputType | null
+    _avg: BodyTypeVersionAvgAggregateOutputType | null
+    _sum: BodyTypeVersionSumAggregateOutputType | null
+    _min: BodyTypeVersionMinAggregateOutputType | null
+    _max: BodyTypeVersionMaxAggregateOutputType | null
+  }
+
+  export type BodyTypeVersionAvgAggregateOutputType = {
+    id: number | null
+    versionId: number | null
+    bodyTypeId: number | null
+  }
+
+  export type BodyTypeVersionSumAggregateOutputType = {
+    id: number | null
+    versionId: number | null
+    bodyTypeId: number | null
+  }
+
+  export type BodyTypeVersionMinAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    versionId: number | null
+    bodyTypeId: number | null
+  }
+
+  export type BodyTypeVersionMaxAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    versionId: number | null
+    bodyTypeId: number | null
+  }
+
+  export type BodyTypeVersionCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    versionId: number
+    bodyTypeId: number
+    _all: number
+  }
+
+
+  export type BodyTypeVersionAvgAggregateInputType = {
+    id?: true
+    versionId?: true
+    bodyTypeId?: true
+  }
+
+  export type BodyTypeVersionSumAggregateInputType = {
+    id?: true
+    versionId?: true
+    bodyTypeId?: true
+  }
+
+  export type BodyTypeVersionMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    versionId?: true
+    bodyTypeId?: true
+  }
+
+  export type BodyTypeVersionMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    versionId?: true
+    bodyTypeId?: true
+  }
+
+  export type BodyTypeVersionCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    versionId?: true
+    bodyTypeId?: true
+    _all?: true
+  }
+
+  export type BodyTypeVersionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BodyTypeVersion to aggregate.
+     */
+    where?: BodyTypeVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BodyTypeVersions to fetch.
+     */
+    orderBy?: BodyTypeVersionOrderByWithRelationInput | BodyTypeVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BodyTypeVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BodyTypeVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BodyTypeVersions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BodyTypeVersions
+    **/
+    _count?: true | BodyTypeVersionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BodyTypeVersionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BodyTypeVersionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BodyTypeVersionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BodyTypeVersionMaxAggregateInputType
+  }
+
+  export type GetBodyTypeVersionAggregateType<T extends BodyTypeVersionAggregateArgs> = {
+        [P in keyof T & keyof AggregateBodyTypeVersion]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBodyTypeVersion[P]>
+      : GetScalarType<T[P], AggregateBodyTypeVersion[P]>
+  }
+
+
+
+
+  export type BodyTypeVersionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BodyTypeVersionWhereInput
+    orderBy?: BodyTypeVersionOrderByWithAggregationInput | BodyTypeVersionOrderByWithAggregationInput[]
+    by: BodyTypeVersionScalarFieldEnum[] | BodyTypeVersionScalarFieldEnum
+    having?: BodyTypeVersionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BodyTypeVersionCountAggregateInputType | true
+    _avg?: BodyTypeVersionAvgAggregateInputType
+    _sum?: BodyTypeVersionSumAggregateInputType
+    _min?: BodyTypeVersionMinAggregateInputType
+    _max?: BodyTypeVersionMaxAggregateInputType
+  }
+
+  export type BodyTypeVersionGroupByOutputType = {
+    id: number
+    createdAt: Date
+    updatedAt: Date
+    versionId: number
+    bodyTypeId: number
+    _count: BodyTypeVersionCountAggregateOutputType | null
+    _avg: BodyTypeVersionAvgAggregateOutputType | null
+    _sum: BodyTypeVersionSumAggregateOutputType | null
+    _min: BodyTypeVersionMinAggregateOutputType | null
+    _max: BodyTypeVersionMaxAggregateOutputType | null
+  }
+
+  type GetBodyTypeVersionGroupByPayload<T extends BodyTypeVersionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BodyTypeVersionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BodyTypeVersionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BodyTypeVersionGroupByOutputType[P]>
+            : GetScalarType<T[P], BodyTypeVersionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BodyTypeVersionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    versionId?: boolean
+    bodyTypeId?: boolean
+    version?: boolean | VersionDefaultArgs<ExtArgs>
+    bodyType?: boolean | BodyTypeDefaultArgs<ExtArgs>
+    fuelTypes?: boolean | BodyTypeVersion$fuelTypesArgs<ExtArgs>
+    _count?: boolean | BodyTypeVersionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bodyTypeVersion"]>
+
+  export type BodyTypeVersionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    versionId?: boolean
+    bodyTypeId?: boolean
+    version?: boolean | VersionDefaultArgs<ExtArgs>
+    bodyType?: boolean | BodyTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bodyTypeVersion"]>
+
+  export type BodyTypeVersionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    versionId?: boolean
+    bodyTypeId?: boolean
+    version?: boolean | VersionDefaultArgs<ExtArgs>
+    bodyType?: boolean | BodyTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bodyTypeVersion"]>
+
+  export type BodyTypeVersionSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    versionId?: boolean
+    bodyTypeId?: boolean
+  }
+
+  export type BodyTypeVersionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "versionId" | "bodyTypeId", ExtArgs["result"]["bodyTypeVersion"]>
+  export type BodyTypeVersionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    version?: boolean | VersionDefaultArgs<ExtArgs>
+    bodyType?: boolean | BodyTypeDefaultArgs<ExtArgs>
+    fuelTypes?: boolean | BodyTypeVersion$fuelTypesArgs<ExtArgs>
+    _count?: boolean | BodyTypeVersionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BodyTypeVersionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    version?: boolean | VersionDefaultArgs<ExtArgs>
+    bodyType?: boolean | BodyTypeDefaultArgs<ExtArgs>
+  }
+  export type BodyTypeVersionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    version?: boolean | VersionDefaultArgs<ExtArgs>
+    bodyType?: boolean | BodyTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $BodyTypeVersionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BodyTypeVersion"
+    objects: {
+      version: Prisma.$VersionPayload<ExtArgs>
+      bodyType: Prisma.$BodyTypePayload<ExtArgs>
+      fuelTypes: Prisma.$FuelTypeBodyPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      createdAt: Date
+      updatedAt: Date
+      versionId: number
+      bodyTypeId: number
+    }, ExtArgs["result"]["bodyTypeVersion"]>
+    composites: {}
+  }
+
+  type BodyTypeVersionGetPayload<S extends boolean | null | undefined | BodyTypeVersionDefaultArgs> = $Result.GetResult<Prisma.$BodyTypeVersionPayload, S>
+
+  type BodyTypeVersionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BodyTypeVersionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BodyTypeVersionCountAggregateInputType | true
+    }
+
+  export interface BodyTypeVersionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BodyTypeVersion'], meta: { name: 'BodyTypeVersion' } }
+    /**
+     * Find zero or one BodyTypeVersion that matches the filter.
+     * @param {BodyTypeVersionFindUniqueArgs} args - Arguments to find a BodyTypeVersion
+     * @example
+     * // Get one BodyTypeVersion
+     * const bodyTypeVersion = await prisma.bodyTypeVersion.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BodyTypeVersionFindUniqueArgs>(args: SelectSubset<T, BodyTypeVersionFindUniqueArgs<ExtArgs>>): Prisma__BodyTypeVersionClient<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BodyTypeVersion that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BodyTypeVersionFindUniqueOrThrowArgs} args - Arguments to find a BodyTypeVersion
+     * @example
+     * // Get one BodyTypeVersion
+     * const bodyTypeVersion = await prisma.bodyTypeVersion.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BodyTypeVersionFindUniqueOrThrowArgs>(args: SelectSubset<T, BodyTypeVersionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BodyTypeVersionClient<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BodyTypeVersion that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeVersionFindFirstArgs} args - Arguments to find a BodyTypeVersion
+     * @example
+     * // Get one BodyTypeVersion
+     * const bodyTypeVersion = await prisma.bodyTypeVersion.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BodyTypeVersionFindFirstArgs>(args?: SelectSubset<T, BodyTypeVersionFindFirstArgs<ExtArgs>>): Prisma__BodyTypeVersionClient<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BodyTypeVersion that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeVersionFindFirstOrThrowArgs} args - Arguments to find a BodyTypeVersion
+     * @example
+     * // Get one BodyTypeVersion
+     * const bodyTypeVersion = await prisma.bodyTypeVersion.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BodyTypeVersionFindFirstOrThrowArgs>(args?: SelectSubset<T, BodyTypeVersionFindFirstOrThrowArgs<ExtArgs>>): Prisma__BodyTypeVersionClient<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BodyTypeVersions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeVersionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BodyTypeVersions
+     * const bodyTypeVersions = await prisma.bodyTypeVersion.findMany()
+     * 
+     * // Get first 10 BodyTypeVersions
+     * const bodyTypeVersions = await prisma.bodyTypeVersion.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bodyTypeVersionWithIdOnly = await prisma.bodyTypeVersion.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BodyTypeVersionFindManyArgs>(args?: SelectSubset<T, BodyTypeVersionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BodyTypeVersion.
+     * @param {BodyTypeVersionCreateArgs} args - Arguments to create a BodyTypeVersion.
+     * @example
+     * // Create one BodyTypeVersion
+     * const BodyTypeVersion = await prisma.bodyTypeVersion.create({
+     *   data: {
+     *     // ... data to create a BodyTypeVersion
+     *   }
+     * })
+     * 
+     */
+    create<T extends BodyTypeVersionCreateArgs>(args: SelectSubset<T, BodyTypeVersionCreateArgs<ExtArgs>>): Prisma__BodyTypeVersionClient<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BodyTypeVersions.
+     * @param {BodyTypeVersionCreateManyArgs} args - Arguments to create many BodyTypeVersions.
+     * @example
+     * // Create many BodyTypeVersions
+     * const bodyTypeVersion = await prisma.bodyTypeVersion.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BodyTypeVersionCreateManyArgs>(args?: SelectSubset<T, BodyTypeVersionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BodyTypeVersions and returns the data saved in the database.
+     * @param {BodyTypeVersionCreateManyAndReturnArgs} args - Arguments to create many BodyTypeVersions.
+     * @example
+     * // Create many BodyTypeVersions
+     * const bodyTypeVersion = await prisma.bodyTypeVersion.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BodyTypeVersions and only return the `id`
+     * const bodyTypeVersionWithIdOnly = await prisma.bodyTypeVersion.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BodyTypeVersionCreateManyAndReturnArgs>(args?: SelectSubset<T, BodyTypeVersionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BodyTypeVersion.
+     * @param {BodyTypeVersionDeleteArgs} args - Arguments to delete one BodyTypeVersion.
+     * @example
+     * // Delete one BodyTypeVersion
+     * const BodyTypeVersion = await prisma.bodyTypeVersion.delete({
+     *   where: {
+     *     // ... filter to delete one BodyTypeVersion
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BodyTypeVersionDeleteArgs>(args: SelectSubset<T, BodyTypeVersionDeleteArgs<ExtArgs>>): Prisma__BodyTypeVersionClient<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BodyTypeVersion.
+     * @param {BodyTypeVersionUpdateArgs} args - Arguments to update one BodyTypeVersion.
+     * @example
+     * // Update one BodyTypeVersion
+     * const bodyTypeVersion = await prisma.bodyTypeVersion.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BodyTypeVersionUpdateArgs>(args: SelectSubset<T, BodyTypeVersionUpdateArgs<ExtArgs>>): Prisma__BodyTypeVersionClient<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BodyTypeVersions.
+     * @param {BodyTypeVersionDeleteManyArgs} args - Arguments to filter BodyTypeVersions to delete.
+     * @example
+     * // Delete a few BodyTypeVersions
+     * const { count } = await prisma.bodyTypeVersion.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BodyTypeVersionDeleteManyArgs>(args?: SelectSubset<T, BodyTypeVersionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BodyTypeVersions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeVersionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BodyTypeVersions
+     * const bodyTypeVersion = await prisma.bodyTypeVersion.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BodyTypeVersionUpdateManyArgs>(args: SelectSubset<T, BodyTypeVersionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BodyTypeVersions and returns the data updated in the database.
+     * @param {BodyTypeVersionUpdateManyAndReturnArgs} args - Arguments to update many BodyTypeVersions.
+     * @example
+     * // Update many BodyTypeVersions
+     * const bodyTypeVersion = await prisma.bodyTypeVersion.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BodyTypeVersions and only return the `id`
+     * const bodyTypeVersionWithIdOnly = await prisma.bodyTypeVersion.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BodyTypeVersionUpdateManyAndReturnArgs>(args: SelectSubset<T, BodyTypeVersionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BodyTypeVersion.
+     * @param {BodyTypeVersionUpsertArgs} args - Arguments to update or create a BodyTypeVersion.
+     * @example
+     * // Update or create a BodyTypeVersion
+     * const bodyTypeVersion = await prisma.bodyTypeVersion.upsert({
+     *   create: {
+     *     // ... data to create a BodyTypeVersion
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BodyTypeVersion we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BodyTypeVersionUpsertArgs>(args: SelectSubset<T, BodyTypeVersionUpsertArgs<ExtArgs>>): Prisma__BodyTypeVersionClient<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BodyTypeVersions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeVersionCountArgs} args - Arguments to filter BodyTypeVersions to count.
+     * @example
+     * // Count the number of BodyTypeVersions
+     * const count = await prisma.bodyTypeVersion.count({
+     *   where: {
+     *     // ... the filter for the BodyTypeVersions we want to count
+     *   }
+     * })
+    **/
+    count<T extends BodyTypeVersionCountArgs>(
+      args?: Subset<T, BodyTypeVersionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BodyTypeVersionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BodyTypeVersion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeVersionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BodyTypeVersionAggregateArgs>(args: Subset<T, BodyTypeVersionAggregateArgs>): Prisma.PrismaPromise<GetBodyTypeVersionAggregateType<T>>
+
+    /**
+     * Group by BodyTypeVersion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BodyTypeVersionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BodyTypeVersionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BodyTypeVersionGroupByArgs['orderBy'] }
+        : { orderBy?: BodyTypeVersionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BodyTypeVersionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBodyTypeVersionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BodyTypeVersion model
+   */
+  readonly fields: BodyTypeVersionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BodyTypeVersion.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BodyTypeVersionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    version<T extends VersionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VersionDefaultArgs<ExtArgs>>): Prisma__VersionClient<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    bodyType<T extends BodyTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BodyTypeDefaultArgs<ExtArgs>>): Prisma__BodyTypeClient<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    fuelTypes<T extends BodyTypeVersion$fuelTypesArgs<ExtArgs> = {}>(args?: Subset<T, BodyTypeVersion$fuelTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BodyTypeVersion model
+   */
+  interface BodyTypeVersionFieldRefs {
+    readonly id: FieldRef<"BodyTypeVersion", 'Int'>
+    readonly createdAt: FieldRef<"BodyTypeVersion", 'DateTime'>
+    readonly updatedAt: FieldRef<"BodyTypeVersion", 'DateTime'>
+    readonly versionId: FieldRef<"BodyTypeVersion", 'Int'>
+    readonly bodyTypeId: FieldRef<"BodyTypeVersion", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BodyTypeVersion findUnique
+   */
+  export type BodyTypeVersionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which BodyTypeVersion to fetch.
+     */
+    where: BodyTypeVersionWhereUniqueInput
+  }
+
+  /**
+   * BodyTypeVersion findUniqueOrThrow
+   */
+  export type BodyTypeVersionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which BodyTypeVersion to fetch.
+     */
+    where: BodyTypeVersionWhereUniqueInput
+  }
+
+  /**
+   * BodyTypeVersion findFirst
+   */
+  export type BodyTypeVersionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which BodyTypeVersion to fetch.
+     */
+    where?: BodyTypeVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BodyTypeVersions to fetch.
+     */
+    orderBy?: BodyTypeVersionOrderByWithRelationInput | BodyTypeVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BodyTypeVersions.
+     */
+    cursor?: BodyTypeVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BodyTypeVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BodyTypeVersions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BodyTypeVersions.
+     */
+    distinct?: BodyTypeVersionScalarFieldEnum | BodyTypeVersionScalarFieldEnum[]
+  }
+
+  /**
+   * BodyTypeVersion findFirstOrThrow
+   */
+  export type BodyTypeVersionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which BodyTypeVersion to fetch.
+     */
+    where?: BodyTypeVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BodyTypeVersions to fetch.
+     */
+    orderBy?: BodyTypeVersionOrderByWithRelationInput | BodyTypeVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BodyTypeVersions.
+     */
+    cursor?: BodyTypeVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BodyTypeVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BodyTypeVersions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BodyTypeVersions.
+     */
+    distinct?: BodyTypeVersionScalarFieldEnum | BodyTypeVersionScalarFieldEnum[]
+  }
+
+  /**
+   * BodyTypeVersion findMany
+   */
+  export type BodyTypeVersionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which BodyTypeVersions to fetch.
+     */
+    where?: BodyTypeVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BodyTypeVersions to fetch.
+     */
+    orderBy?: BodyTypeVersionOrderByWithRelationInput | BodyTypeVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BodyTypeVersions.
+     */
+    cursor?: BodyTypeVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BodyTypeVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BodyTypeVersions.
+     */
+    skip?: number
+    distinct?: BodyTypeVersionScalarFieldEnum | BodyTypeVersionScalarFieldEnum[]
+  }
+
+  /**
+   * BodyTypeVersion create
+   */
+  export type BodyTypeVersionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BodyTypeVersion.
+     */
+    data: XOR<BodyTypeVersionCreateInput, BodyTypeVersionUncheckedCreateInput>
+  }
+
+  /**
+   * BodyTypeVersion createMany
+   */
+  export type BodyTypeVersionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BodyTypeVersions.
+     */
+    data: BodyTypeVersionCreateManyInput | BodyTypeVersionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BodyTypeVersion createManyAndReturn
+   */
+  export type BodyTypeVersionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * The data used to create many BodyTypeVersions.
+     */
+    data: BodyTypeVersionCreateManyInput | BodyTypeVersionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BodyTypeVersion update
+   */
+  export type BodyTypeVersionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BodyTypeVersion.
+     */
+    data: XOR<BodyTypeVersionUpdateInput, BodyTypeVersionUncheckedUpdateInput>
+    /**
+     * Choose, which BodyTypeVersion to update.
+     */
+    where: BodyTypeVersionWhereUniqueInput
+  }
+
+  /**
+   * BodyTypeVersion updateMany
+   */
+  export type BodyTypeVersionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BodyTypeVersions.
+     */
+    data: XOR<BodyTypeVersionUpdateManyMutationInput, BodyTypeVersionUncheckedUpdateManyInput>
+    /**
+     * Filter which BodyTypeVersions to update
+     */
+    where?: BodyTypeVersionWhereInput
+    /**
+     * Limit how many BodyTypeVersions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BodyTypeVersion updateManyAndReturn
+   */
+  export type BodyTypeVersionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * The data used to update BodyTypeVersions.
+     */
+    data: XOR<BodyTypeVersionUpdateManyMutationInput, BodyTypeVersionUncheckedUpdateManyInput>
+    /**
+     * Filter which BodyTypeVersions to update
+     */
+    where?: BodyTypeVersionWhereInput
+    /**
+     * Limit how many BodyTypeVersions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BodyTypeVersion upsert
+   */
+  export type BodyTypeVersionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BodyTypeVersion to update in case it exists.
+     */
+    where: BodyTypeVersionWhereUniqueInput
+    /**
+     * In case the BodyTypeVersion found by the `where` argument doesn't exist, create a new BodyTypeVersion with this data.
+     */
+    create: XOR<BodyTypeVersionCreateInput, BodyTypeVersionUncheckedCreateInput>
+    /**
+     * In case the BodyTypeVersion was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BodyTypeVersionUpdateInput, BodyTypeVersionUncheckedUpdateInput>
+  }
+
+  /**
+   * BodyTypeVersion delete
+   */
+  export type BodyTypeVersionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+    /**
+     * Filter which BodyTypeVersion to delete.
+     */
+    where: BodyTypeVersionWhereUniqueInput
+  }
+
+  /**
+   * BodyTypeVersion deleteMany
+   */
+  export type BodyTypeVersionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BodyTypeVersions to delete
+     */
+    where?: BodyTypeVersionWhereInput
+    /**
+     * Limit how many BodyTypeVersions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BodyTypeVersion.fuelTypes
+   */
+  export type BodyTypeVersion$fuelTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    where?: FuelTypeBodyWhereInput
+    orderBy?: FuelTypeBodyOrderByWithRelationInput | FuelTypeBodyOrderByWithRelationInput[]
+    cursor?: FuelTypeBodyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FuelTypeBodyScalarFieldEnum | FuelTypeBodyScalarFieldEnum[]
+  }
+
+  /**
+   * BodyTypeVersion without action
+   */
+  export type BodyTypeVersionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyTypeVersion
+     */
+    select?: BodyTypeVersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyTypeVersion
+     */
+    omit?: BodyTypeVersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeVersionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FuelType
+   */
+
+  export type AggregateFuelType = {
+    _count: FuelTypeCountAggregateOutputType | null
+    _avg: FuelTypeAvgAggregateOutputType | null
+    _sum: FuelTypeSumAggregateOutputType | null
+    _min: FuelTypeMinAggregateOutputType | null
+    _max: FuelTypeMaxAggregateOutputType | null
+  }
+
+  export type FuelTypeAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type FuelTypeSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type FuelTypeMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FuelTypeMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FuelTypeCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type FuelTypeAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type FuelTypeSumAggregateInputType = {
+    id?: true
+  }
+
+  export type FuelTypeMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FuelTypeMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FuelTypeCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type FuelTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FuelType to aggregate.
+     */
+    where?: FuelTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FuelTypes to fetch.
+     */
+    orderBy?: FuelTypeOrderByWithRelationInput | FuelTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FuelTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FuelTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FuelTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FuelTypes
+    **/
+    _count?: true | FuelTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FuelTypeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FuelTypeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FuelTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FuelTypeMaxAggregateInputType
+  }
+
+  export type GetFuelTypeAggregateType<T extends FuelTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateFuelType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFuelType[P]>
+      : GetScalarType<T[P], AggregateFuelType[P]>
+  }
+
+
+
+
+  export type FuelTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FuelTypeWhereInput
+    orderBy?: FuelTypeOrderByWithAggregationInput | FuelTypeOrderByWithAggregationInput[]
+    by: FuelTypeScalarFieldEnum[] | FuelTypeScalarFieldEnum
+    having?: FuelTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FuelTypeCountAggregateInputType | true
+    _avg?: FuelTypeAvgAggregateInputType
+    _sum?: FuelTypeSumAggregateInputType
+    _min?: FuelTypeMinAggregateInputType
+    _max?: FuelTypeMaxAggregateInputType
+  }
+
+  export type FuelTypeGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: FuelTypeCountAggregateOutputType | null
+    _avg: FuelTypeAvgAggregateOutputType | null
+    _sum: FuelTypeSumAggregateOutputType | null
+    _min: FuelTypeMinAggregateOutputType | null
+    _max: FuelTypeMaxAggregateOutputType | null
+  }
+
+  type GetFuelTypeGroupByPayload<T extends FuelTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FuelTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FuelTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FuelTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], FuelTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FuelTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bodyTypes?: boolean | FuelType$bodyTypesArgs<ExtArgs>
+    _count?: boolean | FuelTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fuelType"]>
+
+  export type FuelTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["fuelType"]>
+
+  export type FuelTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["fuelType"]>
+
+  export type FuelTypeSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type FuelTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["fuelType"]>
+  export type FuelTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bodyTypes?: boolean | FuelType$bodyTypesArgs<ExtArgs>
+    _count?: boolean | FuelTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type FuelTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type FuelTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $FuelTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FuelType"
+    objects: {
+      bodyTypes: Prisma.$FuelTypeBodyPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["fuelType"]>
+    composites: {}
+  }
+
+  type FuelTypeGetPayload<S extends boolean | null | undefined | FuelTypeDefaultArgs> = $Result.GetResult<Prisma.$FuelTypePayload, S>
+
+  type FuelTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FuelTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FuelTypeCountAggregateInputType | true
+    }
+
+  export interface FuelTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FuelType'], meta: { name: 'FuelType' } }
+    /**
+     * Find zero or one FuelType that matches the filter.
+     * @param {FuelTypeFindUniqueArgs} args - Arguments to find a FuelType
+     * @example
+     * // Get one FuelType
+     * const fuelType = await prisma.fuelType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FuelTypeFindUniqueArgs>(args: SelectSubset<T, FuelTypeFindUniqueArgs<ExtArgs>>): Prisma__FuelTypeClient<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FuelType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FuelTypeFindUniqueOrThrowArgs} args - Arguments to find a FuelType
+     * @example
+     * // Get one FuelType
+     * const fuelType = await prisma.fuelType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FuelTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, FuelTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FuelTypeClient<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FuelType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeFindFirstArgs} args - Arguments to find a FuelType
+     * @example
+     * // Get one FuelType
+     * const fuelType = await prisma.fuelType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FuelTypeFindFirstArgs>(args?: SelectSubset<T, FuelTypeFindFirstArgs<ExtArgs>>): Prisma__FuelTypeClient<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FuelType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeFindFirstOrThrowArgs} args - Arguments to find a FuelType
+     * @example
+     * // Get one FuelType
+     * const fuelType = await prisma.fuelType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FuelTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, FuelTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__FuelTypeClient<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FuelTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FuelTypes
+     * const fuelTypes = await prisma.fuelType.findMany()
+     * 
+     * // Get first 10 FuelTypes
+     * const fuelTypes = await prisma.fuelType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const fuelTypeWithIdOnly = await prisma.fuelType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FuelTypeFindManyArgs>(args?: SelectSubset<T, FuelTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FuelType.
+     * @param {FuelTypeCreateArgs} args - Arguments to create a FuelType.
+     * @example
+     * // Create one FuelType
+     * const FuelType = await prisma.fuelType.create({
+     *   data: {
+     *     // ... data to create a FuelType
+     *   }
+     * })
+     * 
+     */
+    create<T extends FuelTypeCreateArgs>(args: SelectSubset<T, FuelTypeCreateArgs<ExtArgs>>): Prisma__FuelTypeClient<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FuelTypes.
+     * @param {FuelTypeCreateManyArgs} args - Arguments to create many FuelTypes.
+     * @example
+     * // Create many FuelTypes
+     * const fuelType = await prisma.fuelType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FuelTypeCreateManyArgs>(args?: SelectSubset<T, FuelTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FuelTypes and returns the data saved in the database.
+     * @param {FuelTypeCreateManyAndReturnArgs} args - Arguments to create many FuelTypes.
+     * @example
+     * // Create many FuelTypes
+     * const fuelType = await prisma.fuelType.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FuelTypes and only return the `id`
+     * const fuelTypeWithIdOnly = await prisma.fuelType.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FuelTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, FuelTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FuelType.
+     * @param {FuelTypeDeleteArgs} args - Arguments to delete one FuelType.
+     * @example
+     * // Delete one FuelType
+     * const FuelType = await prisma.fuelType.delete({
+     *   where: {
+     *     // ... filter to delete one FuelType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FuelTypeDeleteArgs>(args: SelectSubset<T, FuelTypeDeleteArgs<ExtArgs>>): Prisma__FuelTypeClient<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FuelType.
+     * @param {FuelTypeUpdateArgs} args - Arguments to update one FuelType.
+     * @example
+     * // Update one FuelType
+     * const fuelType = await prisma.fuelType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FuelTypeUpdateArgs>(args: SelectSubset<T, FuelTypeUpdateArgs<ExtArgs>>): Prisma__FuelTypeClient<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FuelTypes.
+     * @param {FuelTypeDeleteManyArgs} args - Arguments to filter FuelTypes to delete.
+     * @example
+     * // Delete a few FuelTypes
+     * const { count } = await prisma.fuelType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FuelTypeDeleteManyArgs>(args?: SelectSubset<T, FuelTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FuelTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FuelTypes
+     * const fuelType = await prisma.fuelType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FuelTypeUpdateManyArgs>(args: SelectSubset<T, FuelTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FuelTypes and returns the data updated in the database.
+     * @param {FuelTypeUpdateManyAndReturnArgs} args - Arguments to update many FuelTypes.
+     * @example
+     * // Update many FuelTypes
+     * const fuelType = await prisma.fuelType.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FuelTypes and only return the `id`
+     * const fuelTypeWithIdOnly = await prisma.fuelType.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FuelTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, FuelTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FuelType.
+     * @param {FuelTypeUpsertArgs} args - Arguments to update or create a FuelType.
+     * @example
+     * // Update or create a FuelType
+     * const fuelType = await prisma.fuelType.upsert({
+     *   create: {
+     *     // ... data to create a FuelType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FuelType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FuelTypeUpsertArgs>(args: SelectSubset<T, FuelTypeUpsertArgs<ExtArgs>>): Prisma__FuelTypeClient<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FuelTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeCountArgs} args - Arguments to filter FuelTypes to count.
+     * @example
+     * // Count the number of FuelTypes
+     * const count = await prisma.fuelType.count({
+     *   where: {
+     *     // ... the filter for the FuelTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends FuelTypeCountArgs>(
+      args?: Subset<T, FuelTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FuelTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FuelType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FuelTypeAggregateArgs>(args: Subset<T, FuelTypeAggregateArgs>): Prisma.PrismaPromise<GetFuelTypeAggregateType<T>>
+
+    /**
+     * Group by FuelType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FuelTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FuelTypeGroupByArgs['orderBy'] }
+        : { orderBy?: FuelTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FuelTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFuelTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FuelType model
+   */
+  readonly fields: FuelTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FuelType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FuelTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    bodyTypes<T extends FuelType$bodyTypesArgs<ExtArgs> = {}>(args?: Subset<T, FuelType$bodyTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FuelType model
+   */
+  interface FuelTypeFieldRefs {
+    readonly id: FieldRef<"FuelType", 'Int'>
+    readonly name: FieldRef<"FuelType", 'String'>
+    readonly createdAt: FieldRef<"FuelType", 'DateTime'>
+    readonly updatedAt: FieldRef<"FuelType", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FuelType findUnique
+   */
+  export type FuelTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which FuelType to fetch.
+     */
+    where: FuelTypeWhereUniqueInput
+  }
+
+  /**
+   * FuelType findUniqueOrThrow
+   */
+  export type FuelTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which FuelType to fetch.
+     */
+    where: FuelTypeWhereUniqueInput
+  }
+
+  /**
+   * FuelType findFirst
+   */
+  export type FuelTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which FuelType to fetch.
+     */
+    where?: FuelTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FuelTypes to fetch.
+     */
+    orderBy?: FuelTypeOrderByWithRelationInput | FuelTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FuelTypes.
+     */
+    cursor?: FuelTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FuelTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FuelTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FuelTypes.
+     */
+    distinct?: FuelTypeScalarFieldEnum | FuelTypeScalarFieldEnum[]
+  }
+
+  /**
+   * FuelType findFirstOrThrow
+   */
+  export type FuelTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which FuelType to fetch.
+     */
+    where?: FuelTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FuelTypes to fetch.
+     */
+    orderBy?: FuelTypeOrderByWithRelationInput | FuelTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FuelTypes.
+     */
+    cursor?: FuelTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FuelTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FuelTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FuelTypes.
+     */
+    distinct?: FuelTypeScalarFieldEnum | FuelTypeScalarFieldEnum[]
+  }
+
+  /**
+   * FuelType findMany
+   */
+  export type FuelTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which FuelTypes to fetch.
+     */
+    where?: FuelTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FuelTypes to fetch.
+     */
+    orderBy?: FuelTypeOrderByWithRelationInput | FuelTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FuelTypes.
+     */
+    cursor?: FuelTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FuelTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FuelTypes.
+     */
+    skip?: number
+    distinct?: FuelTypeScalarFieldEnum | FuelTypeScalarFieldEnum[]
+  }
+
+  /**
+   * FuelType create
+   */
+  export type FuelTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FuelType.
+     */
+    data: XOR<FuelTypeCreateInput, FuelTypeUncheckedCreateInput>
+  }
+
+  /**
+   * FuelType createMany
+   */
+  export type FuelTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FuelTypes.
+     */
+    data: FuelTypeCreateManyInput | FuelTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FuelType createManyAndReturn
+   */
+  export type FuelTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * The data used to create many FuelTypes.
+     */
+    data: FuelTypeCreateManyInput | FuelTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FuelType update
+   */
+  export type FuelTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FuelType.
+     */
+    data: XOR<FuelTypeUpdateInput, FuelTypeUncheckedUpdateInput>
+    /**
+     * Choose, which FuelType to update.
+     */
+    where: FuelTypeWhereUniqueInput
+  }
+
+  /**
+   * FuelType updateMany
+   */
+  export type FuelTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FuelTypes.
+     */
+    data: XOR<FuelTypeUpdateManyMutationInput, FuelTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which FuelTypes to update
+     */
+    where?: FuelTypeWhereInput
+    /**
+     * Limit how many FuelTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FuelType updateManyAndReturn
+   */
+  export type FuelTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * The data used to update FuelTypes.
+     */
+    data: XOR<FuelTypeUpdateManyMutationInput, FuelTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which FuelTypes to update
+     */
+    where?: FuelTypeWhereInput
+    /**
+     * Limit how many FuelTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FuelType upsert
+   */
+  export type FuelTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FuelType to update in case it exists.
+     */
+    where: FuelTypeWhereUniqueInput
+    /**
+     * In case the FuelType found by the `where` argument doesn't exist, create a new FuelType with this data.
+     */
+    create: XOR<FuelTypeCreateInput, FuelTypeUncheckedCreateInput>
+    /**
+     * In case the FuelType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FuelTypeUpdateInput, FuelTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * FuelType delete
+   */
+  export type FuelTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+    /**
+     * Filter which FuelType to delete.
+     */
+    where: FuelTypeWhereUniqueInput
+  }
+
+  /**
+   * FuelType deleteMany
+   */
+  export type FuelTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FuelTypes to delete
+     */
+    where?: FuelTypeWhereInput
+    /**
+     * Limit how many FuelTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FuelType.bodyTypes
+   */
+  export type FuelType$bodyTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    where?: FuelTypeBodyWhereInput
+    orderBy?: FuelTypeBodyOrderByWithRelationInput | FuelTypeBodyOrderByWithRelationInput[]
+    cursor?: FuelTypeBodyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FuelTypeBodyScalarFieldEnum | FuelTypeBodyScalarFieldEnum[]
+  }
+
+  /**
+   * FuelType without action
+   */
+  export type FuelTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FuelTypeBody
+   */
+
+  export type AggregateFuelTypeBody = {
+    _count: FuelTypeBodyCountAggregateOutputType | null
+    _avg: FuelTypeBodyAvgAggregateOutputType | null
+    _sum: FuelTypeBodySumAggregateOutputType | null
+    _min: FuelTypeBodyMinAggregateOutputType | null
+    _max: FuelTypeBodyMaxAggregateOutputType | null
+  }
+
+  export type FuelTypeBodyAvgAggregateOutputType = {
+    id: number | null
+    bodyVersionId: number | null
+    fuelTypeId: number | null
+  }
+
+  export type FuelTypeBodySumAggregateOutputType = {
+    id: number | null
+    bodyVersionId: number | null
+    fuelTypeId: number | null
+  }
+
+  export type FuelTypeBodyMinAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    bodyVersionId: number | null
+    fuelTypeId: number | null
+  }
+
+  export type FuelTypeBodyMaxAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    bodyVersionId: number | null
+    fuelTypeId: number | null
+  }
+
+  export type FuelTypeBodyCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    bodyVersionId: number
+    fuelTypeId: number
+    _all: number
+  }
+
+
+  export type FuelTypeBodyAvgAggregateInputType = {
+    id?: true
+    bodyVersionId?: true
+    fuelTypeId?: true
+  }
+
+  export type FuelTypeBodySumAggregateInputType = {
+    id?: true
+    bodyVersionId?: true
+    fuelTypeId?: true
+  }
+
+  export type FuelTypeBodyMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    bodyVersionId?: true
+    fuelTypeId?: true
+  }
+
+  export type FuelTypeBodyMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    bodyVersionId?: true
+    fuelTypeId?: true
+  }
+
+  export type FuelTypeBodyCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    bodyVersionId?: true
+    fuelTypeId?: true
+    _all?: true
+  }
+
+  export type FuelTypeBodyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FuelTypeBody to aggregate.
+     */
+    where?: FuelTypeBodyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FuelTypeBodies to fetch.
+     */
+    orderBy?: FuelTypeBodyOrderByWithRelationInput | FuelTypeBodyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FuelTypeBodyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FuelTypeBodies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FuelTypeBodies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FuelTypeBodies
+    **/
+    _count?: true | FuelTypeBodyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FuelTypeBodyAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FuelTypeBodySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FuelTypeBodyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FuelTypeBodyMaxAggregateInputType
+  }
+
+  export type GetFuelTypeBodyAggregateType<T extends FuelTypeBodyAggregateArgs> = {
+        [P in keyof T & keyof AggregateFuelTypeBody]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFuelTypeBody[P]>
+      : GetScalarType<T[P], AggregateFuelTypeBody[P]>
+  }
+
+
+
+
+  export type FuelTypeBodyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FuelTypeBodyWhereInput
+    orderBy?: FuelTypeBodyOrderByWithAggregationInput | FuelTypeBodyOrderByWithAggregationInput[]
+    by: FuelTypeBodyScalarFieldEnum[] | FuelTypeBodyScalarFieldEnum
+    having?: FuelTypeBodyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FuelTypeBodyCountAggregateInputType | true
+    _avg?: FuelTypeBodyAvgAggregateInputType
+    _sum?: FuelTypeBodySumAggregateInputType
+    _min?: FuelTypeBodyMinAggregateInputType
+    _max?: FuelTypeBodyMaxAggregateInputType
+  }
+
+  export type FuelTypeBodyGroupByOutputType = {
+    id: number
+    createdAt: Date
+    updatedAt: Date
+    bodyVersionId: number
+    fuelTypeId: number
+    _count: FuelTypeBodyCountAggregateOutputType | null
+    _avg: FuelTypeBodyAvgAggregateOutputType | null
+    _sum: FuelTypeBodySumAggregateOutputType | null
+    _min: FuelTypeBodyMinAggregateOutputType | null
+    _max: FuelTypeBodyMaxAggregateOutputType | null
+  }
+
+  type GetFuelTypeBodyGroupByPayload<T extends FuelTypeBodyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FuelTypeBodyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FuelTypeBodyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FuelTypeBodyGroupByOutputType[P]>
+            : GetScalarType<T[P], FuelTypeBodyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FuelTypeBodySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bodyVersionId?: boolean
+    fuelTypeId?: boolean
+    bodyVersion?: boolean | BodyTypeVersionDefaultArgs<ExtArgs>
+    fuelType?: boolean | FuelTypeDefaultArgs<ExtArgs>
+    transmissionTypes?: boolean | FuelTypeBody$transmissionTypesArgs<ExtArgs>
+    _count?: boolean | FuelTypeBodyCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fuelTypeBody"]>
+
+  export type FuelTypeBodySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bodyVersionId?: boolean
+    fuelTypeId?: boolean
+    bodyVersion?: boolean | BodyTypeVersionDefaultArgs<ExtArgs>
+    fuelType?: boolean | FuelTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fuelTypeBody"]>
+
+  export type FuelTypeBodySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bodyVersionId?: boolean
+    fuelTypeId?: boolean
+    bodyVersion?: boolean | BodyTypeVersionDefaultArgs<ExtArgs>
+    fuelType?: boolean | FuelTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fuelTypeBody"]>
+
+  export type FuelTypeBodySelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bodyVersionId?: boolean
+    fuelTypeId?: boolean
+  }
+
+  export type FuelTypeBodyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "bodyVersionId" | "fuelTypeId", ExtArgs["result"]["fuelTypeBody"]>
+  export type FuelTypeBodyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bodyVersion?: boolean | BodyTypeVersionDefaultArgs<ExtArgs>
+    fuelType?: boolean | FuelTypeDefaultArgs<ExtArgs>
+    transmissionTypes?: boolean | FuelTypeBody$transmissionTypesArgs<ExtArgs>
+    _count?: boolean | FuelTypeBodyCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type FuelTypeBodyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bodyVersion?: boolean | BodyTypeVersionDefaultArgs<ExtArgs>
+    fuelType?: boolean | FuelTypeDefaultArgs<ExtArgs>
+  }
+  export type FuelTypeBodyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bodyVersion?: boolean | BodyTypeVersionDefaultArgs<ExtArgs>
+    fuelType?: boolean | FuelTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $FuelTypeBodyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FuelTypeBody"
+    objects: {
+      bodyVersion: Prisma.$BodyTypeVersionPayload<ExtArgs>
+      fuelType: Prisma.$FuelTypePayload<ExtArgs>
+      transmissionTypes: Prisma.$TransmissionTypeFuelPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      createdAt: Date
+      updatedAt: Date
+      bodyVersionId: number
+      fuelTypeId: number
+    }, ExtArgs["result"]["fuelTypeBody"]>
+    composites: {}
+  }
+
+  type FuelTypeBodyGetPayload<S extends boolean | null | undefined | FuelTypeBodyDefaultArgs> = $Result.GetResult<Prisma.$FuelTypeBodyPayload, S>
+
+  type FuelTypeBodyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FuelTypeBodyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FuelTypeBodyCountAggregateInputType | true
+    }
+
+  export interface FuelTypeBodyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FuelTypeBody'], meta: { name: 'FuelTypeBody' } }
+    /**
+     * Find zero or one FuelTypeBody that matches the filter.
+     * @param {FuelTypeBodyFindUniqueArgs} args - Arguments to find a FuelTypeBody
+     * @example
+     * // Get one FuelTypeBody
+     * const fuelTypeBody = await prisma.fuelTypeBody.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FuelTypeBodyFindUniqueArgs>(args: SelectSubset<T, FuelTypeBodyFindUniqueArgs<ExtArgs>>): Prisma__FuelTypeBodyClient<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FuelTypeBody that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FuelTypeBodyFindUniqueOrThrowArgs} args - Arguments to find a FuelTypeBody
+     * @example
+     * // Get one FuelTypeBody
+     * const fuelTypeBody = await prisma.fuelTypeBody.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FuelTypeBodyFindUniqueOrThrowArgs>(args: SelectSubset<T, FuelTypeBodyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FuelTypeBodyClient<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FuelTypeBody that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeBodyFindFirstArgs} args - Arguments to find a FuelTypeBody
+     * @example
+     * // Get one FuelTypeBody
+     * const fuelTypeBody = await prisma.fuelTypeBody.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FuelTypeBodyFindFirstArgs>(args?: SelectSubset<T, FuelTypeBodyFindFirstArgs<ExtArgs>>): Prisma__FuelTypeBodyClient<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FuelTypeBody that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeBodyFindFirstOrThrowArgs} args - Arguments to find a FuelTypeBody
+     * @example
+     * // Get one FuelTypeBody
+     * const fuelTypeBody = await prisma.fuelTypeBody.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FuelTypeBodyFindFirstOrThrowArgs>(args?: SelectSubset<T, FuelTypeBodyFindFirstOrThrowArgs<ExtArgs>>): Prisma__FuelTypeBodyClient<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FuelTypeBodies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeBodyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FuelTypeBodies
+     * const fuelTypeBodies = await prisma.fuelTypeBody.findMany()
+     * 
+     * // Get first 10 FuelTypeBodies
+     * const fuelTypeBodies = await prisma.fuelTypeBody.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const fuelTypeBodyWithIdOnly = await prisma.fuelTypeBody.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FuelTypeBodyFindManyArgs>(args?: SelectSubset<T, FuelTypeBodyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FuelTypeBody.
+     * @param {FuelTypeBodyCreateArgs} args - Arguments to create a FuelTypeBody.
+     * @example
+     * // Create one FuelTypeBody
+     * const FuelTypeBody = await prisma.fuelTypeBody.create({
+     *   data: {
+     *     // ... data to create a FuelTypeBody
+     *   }
+     * })
+     * 
+     */
+    create<T extends FuelTypeBodyCreateArgs>(args: SelectSubset<T, FuelTypeBodyCreateArgs<ExtArgs>>): Prisma__FuelTypeBodyClient<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FuelTypeBodies.
+     * @param {FuelTypeBodyCreateManyArgs} args - Arguments to create many FuelTypeBodies.
+     * @example
+     * // Create many FuelTypeBodies
+     * const fuelTypeBody = await prisma.fuelTypeBody.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FuelTypeBodyCreateManyArgs>(args?: SelectSubset<T, FuelTypeBodyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FuelTypeBodies and returns the data saved in the database.
+     * @param {FuelTypeBodyCreateManyAndReturnArgs} args - Arguments to create many FuelTypeBodies.
+     * @example
+     * // Create many FuelTypeBodies
+     * const fuelTypeBody = await prisma.fuelTypeBody.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FuelTypeBodies and only return the `id`
+     * const fuelTypeBodyWithIdOnly = await prisma.fuelTypeBody.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FuelTypeBodyCreateManyAndReturnArgs>(args?: SelectSubset<T, FuelTypeBodyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FuelTypeBody.
+     * @param {FuelTypeBodyDeleteArgs} args - Arguments to delete one FuelTypeBody.
+     * @example
+     * // Delete one FuelTypeBody
+     * const FuelTypeBody = await prisma.fuelTypeBody.delete({
+     *   where: {
+     *     // ... filter to delete one FuelTypeBody
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FuelTypeBodyDeleteArgs>(args: SelectSubset<T, FuelTypeBodyDeleteArgs<ExtArgs>>): Prisma__FuelTypeBodyClient<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FuelTypeBody.
+     * @param {FuelTypeBodyUpdateArgs} args - Arguments to update one FuelTypeBody.
+     * @example
+     * // Update one FuelTypeBody
+     * const fuelTypeBody = await prisma.fuelTypeBody.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FuelTypeBodyUpdateArgs>(args: SelectSubset<T, FuelTypeBodyUpdateArgs<ExtArgs>>): Prisma__FuelTypeBodyClient<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FuelTypeBodies.
+     * @param {FuelTypeBodyDeleteManyArgs} args - Arguments to filter FuelTypeBodies to delete.
+     * @example
+     * // Delete a few FuelTypeBodies
+     * const { count } = await prisma.fuelTypeBody.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FuelTypeBodyDeleteManyArgs>(args?: SelectSubset<T, FuelTypeBodyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FuelTypeBodies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeBodyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FuelTypeBodies
+     * const fuelTypeBody = await prisma.fuelTypeBody.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FuelTypeBodyUpdateManyArgs>(args: SelectSubset<T, FuelTypeBodyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FuelTypeBodies and returns the data updated in the database.
+     * @param {FuelTypeBodyUpdateManyAndReturnArgs} args - Arguments to update many FuelTypeBodies.
+     * @example
+     * // Update many FuelTypeBodies
+     * const fuelTypeBody = await prisma.fuelTypeBody.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FuelTypeBodies and only return the `id`
+     * const fuelTypeBodyWithIdOnly = await prisma.fuelTypeBody.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FuelTypeBodyUpdateManyAndReturnArgs>(args: SelectSubset<T, FuelTypeBodyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FuelTypeBody.
+     * @param {FuelTypeBodyUpsertArgs} args - Arguments to update or create a FuelTypeBody.
+     * @example
+     * // Update or create a FuelTypeBody
+     * const fuelTypeBody = await prisma.fuelTypeBody.upsert({
+     *   create: {
+     *     // ... data to create a FuelTypeBody
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FuelTypeBody we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FuelTypeBodyUpsertArgs>(args: SelectSubset<T, FuelTypeBodyUpsertArgs<ExtArgs>>): Prisma__FuelTypeBodyClient<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FuelTypeBodies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeBodyCountArgs} args - Arguments to filter FuelTypeBodies to count.
+     * @example
+     * // Count the number of FuelTypeBodies
+     * const count = await prisma.fuelTypeBody.count({
+     *   where: {
+     *     // ... the filter for the FuelTypeBodies we want to count
+     *   }
+     * })
+    **/
+    count<T extends FuelTypeBodyCountArgs>(
+      args?: Subset<T, FuelTypeBodyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FuelTypeBodyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FuelTypeBody.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeBodyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FuelTypeBodyAggregateArgs>(args: Subset<T, FuelTypeBodyAggregateArgs>): Prisma.PrismaPromise<GetFuelTypeBodyAggregateType<T>>
+
+    /**
+     * Group by FuelTypeBody.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FuelTypeBodyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FuelTypeBodyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FuelTypeBodyGroupByArgs['orderBy'] }
+        : { orderBy?: FuelTypeBodyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FuelTypeBodyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFuelTypeBodyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FuelTypeBody model
+   */
+  readonly fields: FuelTypeBodyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FuelTypeBody.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FuelTypeBodyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    bodyVersion<T extends BodyTypeVersionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BodyTypeVersionDefaultArgs<ExtArgs>>): Prisma__BodyTypeVersionClient<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    fuelType<T extends FuelTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FuelTypeDefaultArgs<ExtArgs>>): Prisma__FuelTypeClient<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transmissionTypes<T extends FuelTypeBody$transmissionTypesArgs<ExtArgs> = {}>(args?: Subset<T, FuelTypeBody$transmissionTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FuelTypeBody model
+   */
+  interface FuelTypeBodyFieldRefs {
+    readonly id: FieldRef<"FuelTypeBody", 'Int'>
+    readonly createdAt: FieldRef<"FuelTypeBody", 'DateTime'>
+    readonly updatedAt: FieldRef<"FuelTypeBody", 'DateTime'>
+    readonly bodyVersionId: FieldRef<"FuelTypeBody", 'Int'>
+    readonly fuelTypeId: FieldRef<"FuelTypeBody", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FuelTypeBody findUnique
+   */
+  export type FuelTypeBodyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    /**
+     * Filter, which FuelTypeBody to fetch.
+     */
+    where: FuelTypeBodyWhereUniqueInput
+  }
+
+  /**
+   * FuelTypeBody findUniqueOrThrow
+   */
+  export type FuelTypeBodyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    /**
+     * Filter, which FuelTypeBody to fetch.
+     */
+    where: FuelTypeBodyWhereUniqueInput
+  }
+
+  /**
+   * FuelTypeBody findFirst
+   */
+  export type FuelTypeBodyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    /**
+     * Filter, which FuelTypeBody to fetch.
+     */
+    where?: FuelTypeBodyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FuelTypeBodies to fetch.
+     */
+    orderBy?: FuelTypeBodyOrderByWithRelationInput | FuelTypeBodyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FuelTypeBodies.
+     */
+    cursor?: FuelTypeBodyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FuelTypeBodies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FuelTypeBodies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FuelTypeBodies.
+     */
+    distinct?: FuelTypeBodyScalarFieldEnum | FuelTypeBodyScalarFieldEnum[]
+  }
+
+  /**
+   * FuelTypeBody findFirstOrThrow
+   */
+  export type FuelTypeBodyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    /**
+     * Filter, which FuelTypeBody to fetch.
+     */
+    where?: FuelTypeBodyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FuelTypeBodies to fetch.
+     */
+    orderBy?: FuelTypeBodyOrderByWithRelationInput | FuelTypeBodyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FuelTypeBodies.
+     */
+    cursor?: FuelTypeBodyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FuelTypeBodies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FuelTypeBodies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FuelTypeBodies.
+     */
+    distinct?: FuelTypeBodyScalarFieldEnum | FuelTypeBodyScalarFieldEnum[]
+  }
+
+  /**
+   * FuelTypeBody findMany
+   */
+  export type FuelTypeBodyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    /**
+     * Filter, which FuelTypeBodies to fetch.
+     */
+    where?: FuelTypeBodyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FuelTypeBodies to fetch.
+     */
+    orderBy?: FuelTypeBodyOrderByWithRelationInput | FuelTypeBodyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FuelTypeBodies.
+     */
+    cursor?: FuelTypeBodyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FuelTypeBodies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FuelTypeBodies.
+     */
+    skip?: number
+    distinct?: FuelTypeBodyScalarFieldEnum | FuelTypeBodyScalarFieldEnum[]
+  }
+
+  /**
+   * FuelTypeBody create
+   */
+  export type FuelTypeBodyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FuelTypeBody.
+     */
+    data: XOR<FuelTypeBodyCreateInput, FuelTypeBodyUncheckedCreateInput>
+  }
+
+  /**
+   * FuelTypeBody createMany
+   */
+  export type FuelTypeBodyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FuelTypeBodies.
+     */
+    data: FuelTypeBodyCreateManyInput | FuelTypeBodyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FuelTypeBody createManyAndReturn
+   */
+  export type FuelTypeBodyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * The data used to create many FuelTypeBodies.
+     */
+    data: FuelTypeBodyCreateManyInput | FuelTypeBodyCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FuelTypeBody update
+   */
+  export type FuelTypeBodyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FuelTypeBody.
+     */
+    data: XOR<FuelTypeBodyUpdateInput, FuelTypeBodyUncheckedUpdateInput>
+    /**
+     * Choose, which FuelTypeBody to update.
+     */
+    where: FuelTypeBodyWhereUniqueInput
+  }
+
+  /**
+   * FuelTypeBody updateMany
+   */
+  export type FuelTypeBodyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FuelTypeBodies.
+     */
+    data: XOR<FuelTypeBodyUpdateManyMutationInput, FuelTypeBodyUncheckedUpdateManyInput>
+    /**
+     * Filter which FuelTypeBodies to update
+     */
+    where?: FuelTypeBodyWhereInput
+    /**
+     * Limit how many FuelTypeBodies to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FuelTypeBody updateManyAndReturn
+   */
+  export type FuelTypeBodyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * The data used to update FuelTypeBodies.
+     */
+    data: XOR<FuelTypeBodyUpdateManyMutationInput, FuelTypeBodyUncheckedUpdateManyInput>
+    /**
+     * Filter which FuelTypeBodies to update
+     */
+    where?: FuelTypeBodyWhereInput
+    /**
+     * Limit how many FuelTypeBodies to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FuelTypeBody upsert
+   */
+  export type FuelTypeBodyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FuelTypeBody to update in case it exists.
+     */
+    where: FuelTypeBodyWhereUniqueInput
+    /**
+     * In case the FuelTypeBody found by the `where` argument doesn't exist, create a new FuelTypeBody with this data.
+     */
+    create: XOR<FuelTypeBodyCreateInput, FuelTypeBodyUncheckedCreateInput>
+    /**
+     * In case the FuelTypeBody was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FuelTypeBodyUpdateInput, FuelTypeBodyUncheckedUpdateInput>
+  }
+
+  /**
+   * FuelTypeBody delete
+   */
+  export type FuelTypeBodyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+    /**
+     * Filter which FuelTypeBody to delete.
+     */
+    where: FuelTypeBodyWhereUniqueInput
+  }
+
+  /**
+   * FuelTypeBody deleteMany
+   */
+  export type FuelTypeBodyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FuelTypeBodies to delete
+     */
+    where?: FuelTypeBodyWhereInput
+    /**
+     * Limit how many FuelTypeBodies to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FuelTypeBody.transmissionTypes
+   */
+  export type FuelTypeBody$transmissionTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    where?: TransmissionTypeFuelWhereInput
+    orderBy?: TransmissionTypeFuelOrderByWithRelationInput | TransmissionTypeFuelOrderByWithRelationInput[]
+    cursor?: TransmissionTypeFuelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransmissionTypeFuelScalarFieldEnum | TransmissionTypeFuelScalarFieldEnum[]
+  }
+
+  /**
+   * FuelTypeBody without action
+   */
+  export type FuelTypeBodyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelTypeBody
+     */
+    select?: FuelTypeBodySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelTypeBody
+     */
+    omit?: FuelTypeBodyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeBodyInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TransmissionType
+   */
+
+  export type AggregateTransmissionType = {
+    _count: TransmissionTypeCountAggregateOutputType | null
+    _avg: TransmissionTypeAvgAggregateOutputType | null
+    _sum: TransmissionTypeSumAggregateOutputType | null
+    _min: TransmissionTypeMinAggregateOutputType | null
+    _max: TransmissionTypeMaxAggregateOutputType | null
+  }
+
+  export type TransmissionTypeAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TransmissionTypeSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TransmissionTypeMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TransmissionTypeMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TransmissionTypeCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TransmissionTypeAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type TransmissionTypeSumAggregateInputType = {
+    id?: true
+  }
+
+  export type TransmissionTypeMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TransmissionTypeMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TransmissionTypeCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TransmissionTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TransmissionType to aggregate.
+     */
+    where?: TransmissionTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransmissionTypes to fetch.
+     */
+    orderBy?: TransmissionTypeOrderByWithRelationInput | TransmissionTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TransmissionTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransmissionTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransmissionTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TransmissionTypes
+    **/
+    _count?: true | TransmissionTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TransmissionTypeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TransmissionTypeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TransmissionTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TransmissionTypeMaxAggregateInputType
+  }
+
+  export type GetTransmissionTypeAggregateType<T extends TransmissionTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransmissionType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransmissionType[P]>
+      : GetScalarType<T[P], AggregateTransmissionType[P]>
+  }
+
+
+
+
+  export type TransmissionTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransmissionTypeWhereInput
+    orderBy?: TransmissionTypeOrderByWithAggregationInput | TransmissionTypeOrderByWithAggregationInput[]
+    by: TransmissionTypeScalarFieldEnum[] | TransmissionTypeScalarFieldEnum
+    having?: TransmissionTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TransmissionTypeCountAggregateInputType | true
+    _avg?: TransmissionTypeAvgAggregateInputType
+    _sum?: TransmissionTypeSumAggregateInputType
+    _min?: TransmissionTypeMinAggregateInputType
+    _max?: TransmissionTypeMaxAggregateInputType
+  }
+
+  export type TransmissionTypeGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: TransmissionTypeCountAggregateOutputType | null
+    _avg: TransmissionTypeAvgAggregateOutputType | null
+    _sum: TransmissionTypeSumAggregateOutputType | null
+    _min: TransmissionTypeMinAggregateOutputType | null
+    _max: TransmissionTypeMaxAggregateOutputType | null
+  }
+
+  type GetTransmissionTypeGroupByPayload<T extends TransmissionTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TransmissionTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TransmissionTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TransmissionTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], TransmissionTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TransmissionTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    fuelTypes?: boolean | TransmissionType$fuelTypesArgs<ExtArgs>
+    _count?: boolean | TransmissionTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transmissionType"]>
+
+  export type TransmissionTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["transmissionType"]>
+
+  export type TransmissionTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["transmissionType"]>
+
+  export type TransmissionTypeSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TransmissionTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["transmissionType"]>
+  export type TransmissionTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    fuelTypes?: boolean | TransmissionType$fuelTypesArgs<ExtArgs>
+    _count?: boolean | TransmissionTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TransmissionTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TransmissionTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $TransmissionTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TransmissionType"
+    objects: {
+      fuelTypes: Prisma.$TransmissionTypeFuelPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["transmissionType"]>
+    composites: {}
+  }
+
+  type TransmissionTypeGetPayload<S extends boolean | null | undefined | TransmissionTypeDefaultArgs> = $Result.GetResult<Prisma.$TransmissionTypePayload, S>
+
+  type TransmissionTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TransmissionTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TransmissionTypeCountAggregateInputType | true
+    }
+
+  export interface TransmissionTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TransmissionType'], meta: { name: 'TransmissionType' } }
+    /**
+     * Find zero or one TransmissionType that matches the filter.
+     * @param {TransmissionTypeFindUniqueArgs} args - Arguments to find a TransmissionType
+     * @example
+     * // Get one TransmissionType
+     * const transmissionType = await prisma.transmissionType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TransmissionTypeFindUniqueArgs>(args: SelectSubset<T, TransmissionTypeFindUniqueArgs<ExtArgs>>): Prisma__TransmissionTypeClient<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TransmissionType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TransmissionTypeFindUniqueOrThrowArgs} args - Arguments to find a TransmissionType
+     * @example
+     * // Get one TransmissionType
+     * const transmissionType = await prisma.transmissionType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TransmissionTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, TransmissionTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TransmissionTypeClient<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TransmissionType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeFindFirstArgs} args - Arguments to find a TransmissionType
+     * @example
+     * // Get one TransmissionType
+     * const transmissionType = await prisma.transmissionType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TransmissionTypeFindFirstArgs>(args?: SelectSubset<T, TransmissionTypeFindFirstArgs<ExtArgs>>): Prisma__TransmissionTypeClient<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TransmissionType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeFindFirstOrThrowArgs} args - Arguments to find a TransmissionType
+     * @example
+     * // Get one TransmissionType
+     * const transmissionType = await prisma.transmissionType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TransmissionTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, TransmissionTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__TransmissionTypeClient<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TransmissionTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TransmissionTypes
+     * const transmissionTypes = await prisma.transmissionType.findMany()
+     * 
+     * // Get first 10 TransmissionTypes
+     * const transmissionTypes = await prisma.transmissionType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const transmissionTypeWithIdOnly = await prisma.transmissionType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TransmissionTypeFindManyArgs>(args?: SelectSubset<T, TransmissionTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TransmissionType.
+     * @param {TransmissionTypeCreateArgs} args - Arguments to create a TransmissionType.
+     * @example
+     * // Create one TransmissionType
+     * const TransmissionType = await prisma.transmissionType.create({
+     *   data: {
+     *     // ... data to create a TransmissionType
+     *   }
+     * })
+     * 
+     */
+    create<T extends TransmissionTypeCreateArgs>(args: SelectSubset<T, TransmissionTypeCreateArgs<ExtArgs>>): Prisma__TransmissionTypeClient<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TransmissionTypes.
+     * @param {TransmissionTypeCreateManyArgs} args - Arguments to create many TransmissionTypes.
+     * @example
+     * // Create many TransmissionTypes
+     * const transmissionType = await prisma.transmissionType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TransmissionTypeCreateManyArgs>(args?: SelectSubset<T, TransmissionTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TransmissionTypes and returns the data saved in the database.
+     * @param {TransmissionTypeCreateManyAndReturnArgs} args - Arguments to create many TransmissionTypes.
+     * @example
+     * // Create many TransmissionTypes
+     * const transmissionType = await prisma.transmissionType.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TransmissionTypes and only return the `id`
+     * const transmissionTypeWithIdOnly = await prisma.transmissionType.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TransmissionTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, TransmissionTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TransmissionType.
+     * @param {TransmissionTypeDeleteArgs} args - Arguments to delete one TransmissionType.
+     * @example
+     * // Delete one TransmissionType
+     * const TransmissionType = await prisma.transmissionType.delete({
+     *   where: {
+     *     // ... filter to delete one TransmissionType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TransmissionTypeDeleteArgs>(args: SelectSubset<T, TransmissionTypeDeleteArgs<ExtArgs>>): Prisma__TransmissionTypeClient<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TransmissionType.
+     * @param {TransmissionTypeUpdateArgs} args - Arguments to update one TransmissionType.
+     * @example
+     * // Update one TransmissionType
+     * const transmissionType = await prisma.transmissionType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TransmissionTypeUpdateArgs>(args: SelectSubset<T, TransmissionTypeUpdateArgs<ExtArgs>>): Prisma__TransmissionTypeClient<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TransmissionTypes.
+     * @param {TransmissionTypeDeleteManyArgs} args - Arguments to filter TransmissionTypes to delete.
+     * @example
+     * // Delete a few TransmissionTypes
+     * const { count } = await prisma.transmissionType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TransmissionTypeDeleteManyArgs>(args?: SelectSubset<T, TransmissionTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TransmissionTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TransmissionTypes
+     * const transmissionType = await prisma.transmissionType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TransmissionTypeUpdateManyArgs>(args: SelectSubset<T, TransmissionTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TransmissionTypes and returns the data updated in the database.
+     * @param {TransmissionTypeUpdateManyAndReturnArgs} args - Arguments to update many TransmissionTypes.
+     * @example
+     * // Update many TransmissionTypes
+     * const transmissionType = await prisma.transmissionType.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TransmissionTypes and only return the `id`
+     * const transmissionTypeWithIdOnly = await prisma.transmissionType.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TransmissionTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, TransmissionTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TransmissionType.
+     * @param {TransmissionTypeUpsertArgs} args - Arguments to update or create a TransmissionType.
+     * @example
+     * // Update or create a TransmissionType
+     * const transmissionType = await prisma.transmissionType.upsert({
+     *   create: {
+     *     // ... data to create a TransmissionType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TransmissionType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TransmissionTypeUpsertArgs>(args: SelectSubset<T, TransmissionTypeUpsertArgs<ExtArgs>>): Prisma__TransmissionTypeClient<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TransmissionTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeCountArgs} args - Arguments to filter TransmissionTypes to count.
+     * @example
+     * // Count the number of TransmissionTypes
+     * const count = await prisma.transmissionType.count({
+     *   where: {
+     *     // ... the filter for the TransmissionTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends TransmissionTypeCountArgs>(
+      args?: Subset<T, TransmissionTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TransmissionTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TransmissionType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TransmissionTypeAggregateArgs>(args: Subset<T, TransmissionTypeAggregateArgs>): Prisma.PrismaPromise<GetTransmissionTypeAggregateType<T>>
+
+    /**
+     * Group by TransmissionType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TransmissionTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TransmissionTypeGroupByArgs['orderBy'] }
+        : { orderBy?: TransmissionTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TransmissionTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransmissionTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TransmissionType model
+   */
+  readonly fields: TransmissionTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TransmissionType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TransmissionTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    fuelTypes<T extends TransmissionType$fuelTypesArgs<ExtArgs> = {}>(args?: Subset<T, TransmissionType$fuelTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TransmissionType model
+   */
+  interface TransmissionTypeFieldRefs {
+    readonly id: FieldRef<"TransmissionType", 'Int'>
+    readonly name: FieldRef<"TransmissionType", 'String'>
+    readonly createdAt: FieldRef<"TransmissionType", 'DateTime'>
+    readonly updatedAt: FieldRef<"TransmissionType", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TransmissionType findUnique
+   */
+  export type TransmissionTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which TransmissionType to fetch.
+     */
+    where: TransmissionTypeWhereUniqueInput
+  }
+
+  /**
+   * TransmissionType findUniqueOrThrow
+   */
+  export type TransmissionTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which TransmissionType to fetch.
+     */
+    where: TransmissionTypeWhereUniqueInput
+  }
+
+  /**
+   * TransmissionType findFirst
+   */
+  export type TransmissionTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which TransmissionType to fetch.
+     */
+    where?: TransmissionTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransmissionTypes to fetch.
+     */
+    orderBy?: TransmissionTypeOrderByWithRelationInput | TransmissionTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TransmissionTypes.
+     */
+    cursor?: TransmissionTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransmissionTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransmissionTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TransmissionTypes.
+     */
+    distinct?: TransmissionTypeScalarFieldEnum | TransmissionTypeScalarFieldEnum[]
+  }
+
+  /**
+   * TransmissionType findFirstOrThrow
+   */
+  export type TransmissionTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which TransmissionType to fetch.
+     */
+    where?: TransmissionTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransmissionTypes to fetch.
+     */
+    orderBy?: TransmissionTypeOrderByWithRelationInput | TransmissionTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TransmissionTypes.
+     */
+    cursor?: TransmissionTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransmissionTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransmissionTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TransmissionTypes.
+     */
+    distinct?: TransmissionTypeScalarFieldEnum | TransmissionTypeScalarFieldEnum[]
+  }
+
+  /**
+   * TransmissionType findMany
+   */
+  export type TransmissionTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which TransmissionTypes to fetch.
+     */
+    where?: TransmissionTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransmissionTypes to fetch.
+     */
+    orderBy?: TransmissionTypeOrderByWithRelationInput | TransmissionTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TransmissionTypes.
+     */
+    cursor?: TransmissionTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransmissionTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransmissionTypes.
+     */
+    skip?: number
+    distinct?: TransmissionTypeScalarFieldEnum | TransmissionTypeScalarFieldEnum[]
+  }
+
+  /**
+   * TransmissionType create
+   */
+  export type TransmissionTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TransmissionType.
+     */
+    data: XOR<TransmissionTypeCreateInput, TransmissionTypeUncheckedCreateInput>
+  }
+
+  /**
+   * TransmissionType createMany
+   */
+  export type TransmissionTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TransmissionTypes.
+     */
+    data: TransmissionTypeCreateManyInput | TransmissionTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TransmissionType createManyAndReturn
+   */
+  export type TransmissionTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * The data used to create many TransmissionTypes.
+     */
+    data: TransmissionTypeCreateManyInput | TransmissionTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TransmissionType update
+   */
+  export type TransmissionTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TransmissionType.
+     */
+    data: XOR<TransmissionTypeUpdateInput, TransmissionTypeUncheckedUpdateInput>
+    /**
+     * Choose, which TransmissionType to update.
+     */
+    where: TransmissionTypeWhereUniqueInput
+  }
+
+  /**
+   * TransmissionType updateMany
+   */
+  export type TransmissionTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TransmissionTypes.
+     */
+    data: XOR<TransmissionTypeUpdateManyMutationInput, TransmissionTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which TransmissionTypes to update
+     */
+    where?: TransmissionTypeWhereInput
+    /**
+     * Limit how many TransmissionTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TransmissionType updateManyAndReturn
+   */
+  export type TransmissionTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * The data used to update TransmissionTypes.
+     */
+    data: XOR<TransmissionTypeUpdateManyMutationInput, TransmissionTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which TransmissionTypes to update
+     */
+    where?: TransmissionTypeWhereInput
+    /**
+     * Limit how many TransmissionTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TransmissionType upsert
+   */
+  export type TransmissionTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TransmissionType to update in case it exists.
+     */
+    where: TransmissionTypeWhereUniqueInput
+    /**
+     * In case the TransmissionType found by the `where` argument doesn't exist, create a new TransmissionType with this data.
+     */
+    create: XOR<TransmissionTypeCreateInput, TransmissionTypeUncheckedCreateInput>
+    /**
+     * In case the TransmissionType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TransmissionTypeUpdateInput, TransmissionTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * TransmissionType delete
+   */
+  export type TransmissionTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+    /**
+     * Filter which TransmissionType to delete.
+     */
+    where: TransmissionTypeWhereUniqueInput
+  }
+
+  /**
+   * TransmissionType deleteMany
+   */
+  export type TransmissionTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TransmissionTypes to delete
+     */
+    where?: TransmissionTypeWhereInput
+    /**
+     * Limit how many TransmissionTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TransmissionType.fuelTypes
+   */
+  export type TransmissionType$fuelTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    where?: TransmissionTypeFuelWhereInput
+    orderBy?: TransmissionTypeFuelOrderByWithRelationInput | TransmissionTypeFuelOrderByWithRelationInput[]
+    cursor?: TransmissionTypeFuelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransmissionTypeFuelScalarFieldEnum | TransmissionTypeFuelScalarFieldEnum[]
+  }
+
+  /**
+   * TransmissionType without action
+   */
+  export type TransmissionTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TransmissionTypeFuel
+   */
+
+  export type AggregateTransmissionTypeFuel = {
+    _count: TransmissionTypeFuelCountAggregateOutputType | null
+    _avg: TransmissionTypeFuelAvgAggregateOutputType | null
+    _sum: TransmissionTypeFuelSumAggregateOutputType | null
+    _min: TransmissionTypeFuelMinAggregateOutputType | null
+    _max: TransmissionTypeFuelMaxAggregateOutputType | null
+  }
+
+  export type TransmissionTypeFuelAvgAggregateOutputType = {
+    id: number | null
+    fuelBodyId: number | null
+    transmissionTypeId: number | null
+  }
+
+  export type TransmissionTypeFuelSumAggregateOutputType = {
+    id: number | null
+    fuelBodyId: number | null
+    transmissionTypeId: number | null
+  }
+
+  export type TransmissionTypeFuelMinAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    fuelBodyId: number | null
+    transmissionTypeId: number | null
+  }
+
+  export type TransmissionTypeFuelMaxAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    fuelBodyId: number | null
+    transmissionTypeId: number | null
+  }
+
+  export type TransmissionTypeFuelCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    fuelBodyId: number
+    transmissionTypeId: number
+    _all: number
+  }
+
+
+  export type TransmissionTypeFuelAvgAggregateInputType = {
+    id?: true
+    fuelBodyId?: true
+    transmissionTypeId?: true
+  }
+
+  export type TransmissionTypeFuelSumAggregateInputType = {
+    id?: true
+    fuelBodyId?: true
+    transmissionTypeId?: true
+  }
+
+  export type TransmissionTypeFuelMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    fuelBodyId?: true
+    transmissionTypeId?: true
+  }
+
+  export type TransmissionTypeFuelMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    fuelBodyId?: true
+    transmissionTypeId?: true
+  }
+
+  export type TransmissionTypeFuelCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    fuelBodyId?: true
+    transmissionTypeId?: true
+    _all?: true
+  }
+
+  export type TransmissionTypeFuelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TransmissionTypeFuel to aggregate.
+     */
+    where?: TransmissionTypeFuelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransmissionTypeFuels to fetch.
+     */
+    orderBy?: TransmissionTypeFuelOrderByWithRelationInput | TransmissionTypeFuelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TransmissionTypeFuelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransmissionTypeFuels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransmissionTypeFuels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TransmissionTypeFuels
+    **/
+    _count?: true | TransmissionTypeFuelCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TransmissionTypeFuelAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TransmissionTypeFuelSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TransmissionTypeFuelMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TransmissionTypeFuelMaxAggregateInputType
+  }
+
+  export type GetTransmissionTypeFuelAggregateType<T extends TransmissionTypeFuelAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransmissionTypeFuel]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransmissionTypeFuel[P]>
+      : GetScalarType<T[P], AggregateTransmissionTypeFuel[P]>
+  }
+
+
+
+
+  export type TransmissionTypeFuelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransmissionTypeFuelWhereInput
+    orderBy?: TransmissionTypeFuelOrderByWithAggregationInput | TransmissionTypeFuelOrderByWithAggregationInput[]
+    by: TransmissionTypeFuelScalarFieldEnum[] | TransmissionTypeFuelScalarFieldEnum
+    having?: TransmissionTypeFuelScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TransmissionTypeFuelCountAggregateInputType | true
+    _avg?: TransmissionTypeFuelAvgAggregateInputType
+    _sum?: TransmissionTypeFuelSumAggregateInputType
+    _min?: TransmissionTypeFuelMinAggregateInputType
+    _max?: TransmissionTypeFuelMaxAggregateInputType
+  }
+
+  export type TransmissionTypeFuelGroupByOutputType = {
+    id: number
+    createdAt: Date
+    updatedAt: Date
+    fuelBodyId: number
+    transmissionTypeId: number
+    _count: TransmissionTypeFuelCountAggregateOutputType | null
+    _avg: TransmissionTypeFuelAvgAggregateOutputType | null
+    _sum: TransmissionTypeFuelSumAggregateOutputType | null
+    _min: TransmissionTypeFuelMinAggregateOutputType | null
+    _max: TransmissionTypeFuelMaxAggregateOutputType | null
+  }
+
+  type GetTransmissionTypeFuelGroupByPayload<T extends TransmissionTypeFuelGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TransmissionTypeFuelGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TransmissionTypeFuelGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TransmissionTypeFuelGroupByOutputType[P]>
+            : GetScalarType<T[P], TransmissionTypeFuelGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TransmissionTypeFuelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    fuelBodyId?: boolean
+    transmissionTypeId?: boolean
+    fuelBody?: boolean | FuelTypeBodyDefaultArgs<ExtArgs>
+    transmissionType?: boolean | TransmissionTypeDefaultArgs<ExtArgs>
+    years?: boolean | TransmissionTypeFuel$yearsArgs<ExtArgs>
+    _count?: boolean | TransmissionTypeFuelCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transmissionTypeFuel"]>
+
+  export type TransmissionTypeFuelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    fuelBodyId?: boolean
+    transmissionTypeId?: boolean
+    fuelBody?: boolean | FuelTypeBodyDefaultArgs<ExtArgs>
+    transmissionType?: boolean | TransmissionTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transmissionTypeFuel"]>
+
+  export type TransmissionTypeFuelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    fuelBodyId?: boolean
+    transmissionTypeId?: boolean
+    fuelBody?: boolean | FuelTypeBodyDefaultArgs<ExtArgs>
+    transmissionType?: boolean | TransmissionTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transmissionTypeFuel"]>
+
+  export type TransmissionTypeFuelSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    fuelBodyId?: boolean
+    transmissionTypeId?: boolean
+  }
+
+  export type TransmissionTypeFuelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "fuelBodyId" | "transmissionTypeId", ExtArgs["result"]["transmissionTypeFuel"]>
+  export type TransmissionTypeFuelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    fuelBody?: boolean | FuelTypeBodyDefaultArgs<ExtArgs>
+    transmissionType?: boolean | TransmissionTypeDefaultArgs<ExtArgs>
+    years?: boolean | TransmissionTypeFuel$yearsArgs<ExtArgs>
+    _count?: boolean | TransmissionTypeFuelCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TransmissionTypeFuelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    fuelBody?: boolean | FuelTypeBodyDefaultArgs<ExtArgs>
+    transmissionType?: boolean | TransmissionTypeDefaultArgs<ExtArgs>
+  }
+  export type TransmissionTypeFuelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    fuelBody?: boolean | FuelTypeBodyDefaultArgs<ExtArgs>
+    transmissionType?: boolean | TransmissionTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $TransmissionTypeFuelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TransmissionTypeFuel"
+    objects: {
+      fuelBody: Prisma.$FuelTypeBodyPayload<ExtArgs>
+      transmissionType: Prisma.$TransmissionTypePayload<ExtArgs>
+      years: Prisma.$VehicleYearPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      createdAt: Date
+      updatedAt: Date
+      fuelBodyId: number
+      transmissionTypeId: number
+    }, ExtArgs["result"]["transmissionTypeFuel"]>
+    composites: {}
+  }
+
+  type TransmissionTypeFuelGetPayload<S extends boolean | null | undefined | TransmissionTypeFuelDefaultArgs> = $Result.GetResult<Prisma.$TransmissionTypeFuelPayload, S>
+
+  type TransmissionTypeFuelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TransmissionTypeFuelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TransmissionTypeFuelCountAggregateInputType | true
+    }
+
+  export interface TransmissionTypeFuelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TransmissionTypeFuel'], meta: { name: 'TransmissionTypeFuel' } }
+    /**
+     * Find zero or one TransmissionTypeFuel that matches the filter.
+     * @param {TransmissionTypeFuelFindUniqueArgs} args - Arguments to find a TransmissionTypeFuel
+     * @example
+     * // Get one TransmissionTypeFuel
+     * const transmissionTypeFuel = await prisma.transmissionTypeFuel.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TransmissionTypeFuelFindUniqueArgs>(args: SelectSubset<T, TransmissionTypeFuelFindUniqueArgs<ExtArgs>>): Prisma__TransmissionTypeFuelClient<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TransmissionTypeFuel that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TransmissionTypeFuelFindUniqueOrThrowArgs} args - Arguments to find a TransmissionTypeFuel
+     * @example
+     * // Get one TransmissionTypeFuel
+     * const transmissionTypeFuel = await prisma.transmissionTypeFuel.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TransmissionTypeFuelFindUniqueOrThrowArgs>(args: SelectSubset<T, TransmissionTypeFuelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TransmissionTypeFuelClient<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TransmissionTypeFuel that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeFuelFindFirstArgs} args - Arguments to find a TransmissionTypeFuel
+     * @example
+     * // Get one TransmissionTypeFuel
+     * const transmissionTypeFuel = await prisma.transmissionTypeFuel.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TransmissionTypeFuelFindFirstArgs>(args?: SelectSubset<T, TransmissionTypeFuelFindFirstArgs<ExtArgs>>): Prisma__TransmissionTypeFuelClient<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TransmissionTypeFuel that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeFuelFindFirstOrThrowArgs} args - Arguments to find a TransmissionTypeFuel
+     * @example
+     * // Get one TransmissionTypeFuel
+     * const transmissionTypeFuel = await prisma.transmissionTypeFuel.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TransmissionTypeFuelFindFirstOrThrowArgs>(args?: SelectSubset<T, TransmissionTypeFuelFindFirstOrThrowArgs<ExtArgs>>): Prisma__TransmissionTypeFuelClient<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TransmissionTypeFuels that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeFuelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TransmissionTypeFuels
+     * const transmissionTypeFuels = await prisma.transmissionTypeFuel.findMany()
+     * 
+     * // Get first 10 TransmissionTypeFuels
+     * const transmissionTypeFuels = await prisma.transmissionTypeFuel.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const transmissionTypeFuelWithIdOnly = await prisma.transmissionTypeFuel.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TransmissionTypeFuelFindManyArgs>(args?: SelectSubset<T, TransmissionTypeFuelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TransmissionTypeFuel.
+     * @param {TransmissionTypeFuelCreateArgs} args - Arguments to create a TransmissionTypeFuel.
+     * @example
+     * // Create one TransmissionTypeFuel
+     * const TransmissionTypeFuel = await prisma.transmissionTypeFuel.create({
+     *   data: {
+     *     // ... data to create a TransmissionTypeFuel
+     *   }
+     * })
+     * 
+     */
+    create<T extends TransmissionTypeFuelCreateArgs>(args: SelectSubset<T, TransmissionTypeFuelCreateArgs<ExtArgs>>): Prisma__TransmissionTypeFuelClient<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TransmissionTypeFuels.
+     * @param {TransmissionTypeFuelCreateManyArgs} args - Arguments to create many TransmissionTypeFuels.
+     * @example
+     * // Create many TransmissionTypeFuels
+     * const transmissionTypeFuel = await prisma.transmissionTypeFuel.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TransmissionTypeFuelCreateManyArgs>(args?: SelectSubset<T, TransmissionTypeFuelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TransmissionTypeFuels and returns the data saved in the database.
+     * @param {TransmissionTypeFuelCreateManyAndReturnArgs} args - Arguments to create many TransmissionTypeFuels.
+     * @example
+     * // Create many TransmissionTypeFuels
+     * const transmissionTypeFuel = await prisma.transmissionTypeFuel.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TransmissionTypeFuels and only return the `id`
+     * const transmissionTypeFuelWithIdOnly = await prisma.transmissionTypeFuel.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TransmissionTypeFuelCreateManyAndReturnArgs>(args?: SelectSubset<T, TransmissionTypeFuelCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TransmissionTypeFuel.
+     * @param {TransmissionTypeFuelDeleteArgs} args - Arguments to delete one TransmissionTypeFuel.
+     * @example
+     * // Delete one TransmissionTypeFuel
+     * const TransmissionTypeFuel = await prisma.transmissionTypeFuel.delete({
+     *   where: {
+     *     // ... filter to delete one TransmissionTypeFuel
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TransmissionTypeFuelDeleteArgs>(args: SelectSubset<T, TransmissionTypeFuelDeleteArgs<ExtArgs>>): Prisma__TransmissionTypeFuelClient<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TransmissionTypeFuel.
+     * @param {TransmissionTypeFuelUpdateArgs} args - Arguments to update one TransmissionTypeFuel.
+     * @example
+     * // Update one TransmissionTypeFuel
+     * const transmissionTypeFuel = await prisma.transmissionTypeFuel.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TransmissionTypeFuelUpdateArgs>(args: SelectSubset<T, TransmissionTypeFuelUpdateArgs<ExtArgs>>): Prisma__TransmissionTypeFuelClient<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TransmissionTypeFuels.
+     * @param {TransmissionTypeFuelDeleteManyArgs} args - Arguments to filter TransmissionTypeFuels to delete.
+     * @example
+     * // Delete a few TransmissionTypeFuels
+     * const { count } = await prisma.transmissionTypeFuel.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TransmissionTypeFuelDeleteManyArgs>(args?: SelectSubset<T, TransmissionTypeFuelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TransmissionTypeFuels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeFuelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TransmissionTypeFuels
+     * const transmissionTypeFuel = await prisma.transmissionTypeFuel.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TransmissionTypeFuelUpdateManyArgs>(args: SelectSubset<T, TransmissionTypeFuelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TransmissionTypeFuels and returns the data updated in the database.
+     * @param {TransmissionTypeFuelUpdateManyAndReturnArgs} args - Arguments to update many TransmissionTypeFuels.
+     * @example
+     * // Update many TransmissionTypeFuels
+     * const transmissionTypeFuel = await prisma.transmissionTypeFuel.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TransmissionTypeFuels and only return the `id`
+     * const transmissionTypeFuelWithIdOnly = await prisma.transmissionTypeFuel.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TransmissionTypeFuelUpdateManyAndReturnArgs>(args: SelectSubset<T, TransmissionTypeFuelUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TransmissionTypeFuel.
+     * @param {TransmissionTypeFuelUpsertArgs} args - Arguments to update or create a TransmissionTypeFuel.
+     * @example
+     * // Update or create a TransmissionTypeFuel
+     * const transmissionTypeFuel = await prisma.transmissionTypeFuel.upsert({
+     *   create: {
+     *     // ... data to create a TransmissionTypeFuel
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TransmissionTypeFuel we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TransmissionTypeFuelUpsertArgs>(args: SelectSubset<T, TransmissionTypeFuelUpsertArgs<ExtArgs>>): Prisma__TransmissionTypeFuelClient<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TransmissionTypeFuels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeFuelCountArgs} args - Arguments to filter TransmissionTypeFuels to count.
+     * @example
+     * // Count the number of TransmissionTypeFuels
+     * const count = await prisma.transmissionTypeFuel.count({
+     *   where: {
+     *     // ... the filter for the TransmissionTypeFuels we want to count
+     *   }
+     * })
+    **/
+    count<T extends TransmissionTypeFuelCountArgs>(
+      args?: Subset<T, TransmissionTypeFuelCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TransmissionTypeFuelCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TransmissionTypeFuel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeFuelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TransmissionTypeFuelAggregateArgs>(args: Subset<T, TransmissionTypeFuelAggregateArgs>): Prisma.PrismaPromise<GetTransmissionTypeFuelAggregateType<T>>
+
+    /**
+     * Group by TransmissionTypeFuel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransmissionTypeFuelGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TransmissionTypeFuelGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TransmissionTypeFuelGroupByArgs['orderBy'] }
+        : { orderBy?: TransmissionTypeFuelGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TransmissionTypeFuelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransmissionTypeFuelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TransmissionTypeFuel model
+   */
+  readonly fields: TransmissionTypeFuelFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TransmissionTypeFuel.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TransmissionTypeFuelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    fuelBody<T extends FuelTypeBodyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FuelTypeBodyDefaultArgs<ExtArgs>>): Prisma__FuelTypeBodyClient<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transmissionType<T extends TransmissionTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TransmissionTypeDefaultArgs<ExtArgs>>): Prisma__TransmissionTypeClient<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    years<T extends TransmissionTypeFuel$yearsArgs<ExtArgs> = {}>(args?: Subset<T, TransmissionTypeFuel$yearsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TransmissionTypeFuel model
+   */
+  interface TransmissionTypeFuelFieldRefs {
+    readonly id: FieldRef<"TransmissionTypeFuel", 'Int'>
+    readonly createdAt: FieldRef<"TransmissionTypeFuel", 'DateTime'>
+    readonly updatedAt: FieldRef<"TransmissionTypeFuel", 'DateTime'>
+    readonly fuelBodyId: FieldRef<"TransmissionTypeFuel", 'Int'>
+    readonly transmissionTypeId: FieldRef<"TransmissionTypeFuel", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TransmissionTypeFuel findUnique
+   */
+  export type TransmissionTypeFuelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    /**
+     * Filter, which TransmissionTypeFuel to fetch.
+     */
+    where: TransmissionTypeFuelWhereUniqueInput
+  }
+
+  /**
+   * TransmissionTypeFuel findUniqueOrThrow
+   */
+  export type TransmissionTypeFuelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    /**
+     * Filter, which TransmissionTypeFuel to fetch.
+     */
+    where: TransmissionTypeFuelWhereUniqueInput
+  }
+
+  /**
+   * TransmissionTypeFuel findFirst
+   */
+  export type TransmissionTypeFuelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    /**
+     * Filter, which TransmissionTypeFuel to fetch.
+     */
+    where?: TransmissionTypeFuelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransmissionTypeFuels to fetch.
+     */
+    orderBy?: TransmissionTypeFuelOrderByWithRelationInput | TransmissionTypeFuelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TransmissionTypeFuels.
+     */
+    cursor?: TransmissionTypeFuelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransmissionTypeFuels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransmissionTypeFuels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TransmissionTypeFuels.
+     */
+    distinct?: TransmissionTypeFuelScalarFieldEnum | TransmissionTypeFuelScalarFieldEnum[]
+  }
+
+  /**
+   * TransmissionTypeFuel findFirstOrThrow
+   */
+  export type TransmissionTypeFuelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    /**
+     * Filter, which TransmissionTypeFuel to fetch.
+     */
+    where?: TransmissionTypeFuelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransmissionTypeFuels to fetch.
+     */
+    orderBy?: TransmissionTypeFuelOrderByWithRelationInput | TransmissionTypeFuelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TransmissionTypeFuels.
+     */
+    cursor?: TransmissionTypeFuelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransmissionTypeFuels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransmissionTypeFuels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TransmissionTypeFuels.
+     */
+    distinct?: TransmissionTypeFuelScalarFieldEnum | TransmissionTypeFuelScalarFieldEnum[]
+  }
+
+  /**
+   * TransmissionTypeFuel findMany
+   */
+  export type TransmissionTypeFuelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    /**
+     * Filter, which TransmissionTypeFuels to fetch.
+     */
+    where?: TransmissionTypeFuelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransmissionTypeFuels to fetch.
+     */
+    orderBy?: TransmissionTypeFuelOrderByWithRelationInput | TransmissionTypeFuelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TransmissionTypeFuels.
+     */
+    cursor?: TransmissionTypeFuelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransmissionTypeFuels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransmissionTypeFuels.
+     */
+    skip?: number
+    distinct?: TransmissionTypeFuelScalarFieldEnum | TransmissionTypeFuelScalarFieldEnum[]
+  }
+
+  /**
+   * TransmissionTypeFuel create
+   */
+  export type TransmissionTypeFuelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TransmissionTypeFuel.
+     */
+    data: XOR<TransmissionTypeFuelCreateInput, TransmissionTypeFuelUncheckedCreateInput>
+  }
+
+  /**
+   * TransmissionTypeFuel createMany
+   */
+  export type TransmissionTypeFuelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TransmissionTypeFuels.
+     */
+    data: TransmissionTypeFuelCreateManyInput | TransmissionTypeFuelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TransmissionTypeFuel createManyAndReturn
+   */
+  export type TransmissionTypeFuelCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * The data used to create many TransmissionTypeFuels.
+     */
+    data: TransmissionTypeFuelCreateManyInput | TransmissionTypeFuelCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TransmissionTypeFuel update
+   */
+  export type TransmissionTypeFuelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TransmissionTypeFuel.
+     */
+    data: XOR<TransmissionTypeFuelUpdateInput, TransmissionTypeFuelUncheckedUpdateInput>
+    /**
+     * Choose, which TransmissionTypeFuel to update.
+     */
+    where: TransmissionTypeFuelWhereUniqueInput
+  }
+
+  /**
+   * TransmissionTypeFuel updateMany
+   */
+  export type TransmissionTypeFuelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TransmissionTypeFuels.
+     */
+    data: XOR<TransmissionTypeFuelUpdateManyMutationInput, TransmissionTypeFuelUncheckedUpdateManyInput>
+    /**
+     * Filter which TransmissionTypeFuels to update
+     */
+    where?: TransmissionTypeFuelWhereInput
+    /**
+     * Limit how many TransmissionTypeFuels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TransmissionTypeFuel updateManyAndReturn
+   */
+  export type TransmissionTypeFuelUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * The data used to update TransmissionTypeFuels.
+     */
+    data: XOR<TransmissionTypeFuelUpdateManyMutationInput, TransmissionTypeFuelUncheckedUpdateManyInput>
+    /**
+     * Filter which TransmissionTypeFuels to update
+     */
+    where?: TransmissionTypeFuelWhereInput
+    /**
+     * Limit how many TransmissionTypeFuels to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TransmissionTypeFuel upsert
+   */
+  export type TransmissionTypeFuelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TransmissionTypeFuel to update in case it exists.
+     */
+    where: TransmissionTypeFuelWhereUniqueInput
+    /**
+     * In case the TransmissionTypeFuel found by the `where` argument doesn't exist, create a new TransmissionTypeFuel with this data.
+     */
+    create: XOR<TransmissionTypeFuelCreateInput, TransmissionTypeFuelUncheckedCreateInput>
+    /**
+     * In case the TransmissionTypeFuel was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TransmissionTypeFuelUpdateInput, TransmissionTypeFuelUncheckedUpdateInput>
+  }
+
+  /**
+   * TransmissionTypeFuel delete
+   */
+  export type TransmissionTypeFuelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+    /**
+     * Filter which TransmissionTypeFuel to delete.
+     */
+    where: TransmissionTypeFuelWhereUniqueInput
+  }
+
+  /**
+   * TransmissionTypeFuel deleteMany
+   */
+  export type TransmissionTypeFuelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TransmissionTypeFuels to delete
+     */
+    where?: TransmissionTypeFuelWhereInput
+    /**
+     * Limit how many TransmissionTypeFuels to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TransmissionTypeFuel.years
+   */
+  export type TransmissionTypeFuel$yearsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+    where?: VehicleYearWhereInput
+    orderBy?: VehicleYearOrderByWithRelationInput | VehicleYearOrderByWithRelationInput[]
+    cursor?: VehicleYearWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleYearScalarFieldEnum | VehicleYearScalarFieldEnum[]
+  }
+
+  /**
+   * TransmissionTypeFuel without action
+   */
+  export type TransmissionTypeFuelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionTypeFuel
+     */
+    select?: TransmissionTypeFuelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionTypeFuel
+     */
+    omit?: TransmissionTypeFuelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeFuelInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model VehicleYear
+   */
+
+  export type AggregateVehicleYear = {
+    _count: VehicleYearCountAggregateOutputType | null
+    _avg: VehicleYearAvgAggregateOutputType | null
+    _sum: VehicleYearSumAggregateOutputType | null
+    _min: VehicleYearMinAggregateOutputType | null
+    _max: VehicleYearMaxAggregateOutputType | null
+  }
+
+  export type VehicleYearAvgAggregateOutputType = {
+    id: number | null
+    year: number | null
+    transmissionTypeFuelId: number | null
+  }
+
+  export type VehicleYearSumAggregateOutputType = {
+    id: number | null
+    year: number | null
+    transmissionTypeFuelId: number | null
+  }
+
+  export type VehicleYearMinAggregateOutputType = {
+    id: number | null
+    year: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    transmissionTypeFuelId: number | null
+  }
+
+  export type VehicleYearMaxAggregateOutputType = {
+    id: number | null
+    year: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    transmissionTypeFuelId: number | null
+  }
+
+  export type VehicleYearCountAggregateOutputType = {
+    id: number
+    year: number
+    createdAt: number
+    updatedAt: number
+    transmissionTypeFuelId: number
+    _all: number
+  }
+
+
+  export type VehicleYearAvgAggregateInputType = {
+    id?: true
+    year?: true
+    transmissionTypeFuelId?: true
+  }
+
+  export type VehicleYearSumAggregateInputType = {
+    id?: true
+    year?: true
+    transmissionTypeFuelId?: true
+  }
+
+  export type VehicleYearMinAggregateInputType = {
+    id?: true
+    year?: true
+    createdAt?: true
+    updatedAt?: true
+    transmissionTypeFuelId?: true
+  }
+
+  export type VehicleYearMaxAggregateInputType = {
+    id?: true
+    year?: true
+    createdAt?: true
+    updatedAt?: true
+    transmissionTypeFuelId?: true
+  }
+
+  export type VehicleYearCountAggregateInputType = {
+    id?: true
+    year?: true
+    createdAt?: true
+    updatedAt?: true
+    transmissionTypeFuelId?: true
+    _all?: true
+  }
+
+  export type VehicleYearAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VehicleYear to aggregate.
+     */
+    where?: VehicleYearWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleYears to fetch.
+     */
+    orderBy?: VehicleYearOrderByWithRelationInput | VehicleYearOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VehicleYearWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleYears from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleYears.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned VehicleYears
+    **/
+    _count?: true | VehicleYearCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: VehicleYearAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VehicleYearSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VehicleYearMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VehicleYearMaxAggregateInputType
+  }
+
+  export type GetVehicleYearAggregateType<T extends VehicleYearAggregateArgs> = {
+        [P in keyof T & keyof AggregateVehicleYear]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVehicleYear[P]>
+      : GetScalarType<T[P], AggregateVehicleYear[P]>
+  }
+
+
+
+
+  export type VehicleYearGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleYearWhereInput
+    orderBy?: VehicleYearOrderByWithAggregationInput | VehicleYearOrderByWithAggregationInput[]
+    by: VehicleYearScalarFieldEnum[] | VehicleYearScalarFieldEnum
+    having?: VehicleYearScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VehicleYearCountAggregateInputType | true
+    _avg?: VehicleYearAvgAggregateInputType
+    _sum?: VehicleYearSumAggregateInputType
+    _min?: VehicleYearMinAggregateInputType
+    _max?: VehicleYearMaxAggregateInputType
+  }
+
+  export type VehicleYearGroupByOutputType = {
+    id: number
+    year: number
+    createdAt: Date
+    updatedAt: Date
+    transmissionTypeFuelId: number
+    _count: VehicleYearCountAggregateOutputType | null
+    _avg: VehicleYearAvgAggregateOutputType | null
+    _sum: VehicleYearSumAggregateOutputType | null
+    _min: VehicleYearMinAggregateOutputType | null
+    _max: VehicleYearMaxAggregateOutputType | null
+  }
+
+  type GetVehicleYearGroupByPayload<T extends VehicleYearGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VehicleYearGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VehicleYearGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VehicleYearGroupByOutputType[P]>
+            : GetScalarType<T[P], VehicleYearGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VehicleYearSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    year?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    transmissionTypeFuelId?: boolean
+    transmissionTypeFuel?: boolean | TransmissionTypeFuelDefaultArgs<ExtArgs>
+    mileages?: boolean | VehicleYear$mileagesArgs<ExtArgs>
+    _count?: boolean | VehicleYearCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicleYear"]>
+
+  export type VehicleYearSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    year?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    transmissionTypeFuelId?: boolean
+    transmissionTypeFuel?: boolean | TransmissionTypeFuelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicleYear"]>
+
+  export type VehicleYearSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    year?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    transmissionTypeFuelId?: boolean
+    transmissionTypeFuel?: boolean | TransmissionTypeFuelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicleYear"]>
+
+  export type VehicleYearSelectScalar = {
+    id?: boolean
+    year?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    transmissionTypeFuelId?: boolean
+  }
+
+  export type VehicleYearOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "year" | "createdAt" | "updatedAt" | "transmissionTypeFuelId", ExtArgs["result"]["vehicleYear"]>
+  export type VehicleYearInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transmissionTypeFuel?: boolean | TransmissionTypeFuelDefaultArgs<ExtArgs>
+    mileages?: boolean | VehicleYear$mileagesArgs<ExtArgs>
+    _count?: boolean | VehicleYearCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type VehicleYearIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transmissionTypeFuel?: boolean | TransmissionTypeFuelDefaultArgs<ExtArgs>
+  }
+  export type VehicleYearIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transmissionTypeFuel?: boolean | TransmissionTypeFuelDefaultArgs<ExtArgs>
+  }
+
+  export type $VehicleYearPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "VehicleYear"
+    objects: {
+      transmissionTypeFuel: Prisma.$TransmissionTypeFuelPayload<ExtArgs>
+      mileages: Prisma.$MileagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      year: number
+      createdAt: Date
+      updatedAt: Date
+      transmissionTypeFuelId: number
+    }, ExtArgs["result"]["vehicleYear"]>
+    composites: {}
+  }
+
+  type VehicleYearGetPayload<S extends boolean | null | undefined | VehicleYearDefaultArgs> = $Result.GetResult<Prisma.$VehicleYearPayload, S>
+
+  type VehicleYearCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VehicleYearFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VehicleYearCountAggregateInputType | true
+    }
+
+  export interface VehicleYearDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['VehicleYear'], meta: { name: 'VehicleYear' } }
+    /**
+     * Find zero or one VehicleYear that matches the filter.
+     * @param {VehicleYearFindUniqueArgs} args - Arguments to find a VehicleYear
+     * @example
+     * // Get one VehicleYear
+     * const vehicleYear = await prisma.vehicleYear.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VehicleYearFindUniqueArgs>(args: SelectSubset<T, VehicleYearFindUniqueArgs<ExtArgs>>): Prisma__VehicleYearClient<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one VehicleYear that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VehicleYearFindUniqueOrThrowArgs} args - Arguments to find a VehicleYear
+     * @example
+     * // Get one VehicleYear
+     * const vehicleYear = await prisma.vehicleYear.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VehicleYearFindUniqueOrThrowArgs>(args: SelectSubset<T, VehicleYearFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VehicleYearClient<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VehicleYear that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleYearFindFirstArgs} args - Arguments to find a VehicleYear
+     * @example
+     * // Get one VehicleYear
+     * const vehicleYear = await prisma.vehicleYear.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VehicleYearFindFirstArgs>(args?: SelectSubset<T, VehicleYearFindFirstArgs<ExtArgs>>): Prisma__VehicleYearClient<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VehicleYear that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleYearFindFirstOrThrowArgs} args - Arguments to find a VehicleYear
+     * @example
+     * // Get one VehicleYear
+     * const vehicleYear = await prisma.vehicleYear.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VehicleYearFindFirstOrThrowArgs>(args?: SelectSubset<T, VehicleYearFindFirstOrThrowArgs<ExtArgs>>): Prisma__VehicleYearClient<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more VehicleYears that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleYearFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all VehicleYears
+     * const vehicleYears = await prisma.vehicleYear.findMany()
+     * 
+     * // Get first 10 VehicleYears
+     * const vehicleYears = await prisma.vehicleYear.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const vehicleYearWithIdOnly = await prisma.vehicleYear.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VehicleYearFindManyArgs>(args?: SelectSubset<T, VehicleYearFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a VehicleYear.
+     * @param {VehicleYearCreateArgs} args - Arguments to create a VehicleYear.
+     * @example
+     * // Create one VehicleYear
+     * const VehicleYear = await prisma.vehicleYear.create({
+     *   data: {
+     *     // ... data to create a VehicleYear
+     *   }
+     * })
+     * 
+     */
+    create<T extends VehicleYearCreateArgs>(args: SelectSubset<T, VehicleYearCreateArgs<ExtArgs>>): Prisma__VehicleYearClient<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many VehicleYears.
+     * @param {VehicleYearCreateManyArgs} args - Arguments to create many VehicleYears.
+     * @example
+     * // Create many VehicleYears
+     * const vehicleYear = await prisma.vehicleYear.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VehicleYearCreateManyArgs>(args?: SelectSubset<T, VehicleYearCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many VehicleYears and returns the data saved in the database.
+     * @param {VehicleYearCreateManyAndReturnArgs} args - Arguments to create many VehicleYears.
+     * @example
+     * // Create many VehicleYears
+     * const vehicleYear = await prisma.vehicleYear.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many VehicleYears and only return the `id`
+     * const vehicleYearWithIdOnly = await prisma.vehicleYear.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VehicleYearCreateManyAndReturnArgs>(args?: SelectSubset<T, VehicleYearCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a VehicleYear.
+     * @param {VehicleYearDeleteArgs} args - Arguments to delete one VehicleYear.
+     * @example
+     * // Delete one VehicleYear
+     * const VehicleYear = await prisma.vehicleYear.delete({
+     *   where: {
+     *     // ... filter to delete one VehicleYear
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VehicleYearDeleteArgs>(args: SelectSubset<T, VehicleYearDeleteArgs<ExtArgs>>): Prisma__VehicleYearClient<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one VehicleYear.
+     * @param {VehicleYearUpdateArgs} args - Arguments to update one VehicleYear.
+     * @example
+     * // Update one VehicleYear
+     * const vehicleYear = await prisma.vehicleYear.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VehicleYearUpdateArgs>(args: SelectSubset<T, VehicleYearUpdateArgs<ExtArgs>>): Prisma__VehicleYearClient<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more VehicleYears.
+     * @param {VehicleYearDeleteManyArgs} args - Arguments to filter VehicleYears to delete.
+     * @example
+     * // Delete a few VehicleYears
+     * const { count } = await prisma.vehicleYear.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VehicleYearDeleteManyArgs>(args?: SelectSubset<T, VehicleYearDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VehicleYears.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleYearUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many VehicleYears
+     * const vehicleYear = await prisma.vehicleYear.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VehicleYearUpdateManyArgs>(args: SelectSubset<T, VehicleYearUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VehicleYears and returns the data updated in the database.
+     * @param {VehicleYearUpdateManyAndReturnArgs} args - Arguments to update many VehicleYears.
+     * @example
+     * // Update many VehicleYears
+     * const vehicleYear = await prisma.vehicleYear.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more VehicleYears and only return the `id`
+     * const vehicleYearWithIdOnly = await prisma.vehicleYear.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VehicleYearUpdateManyAndReturnArgs>(args: SelectSubset<T, VehicleYearUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one VehicleYear.
+     * @param {VehicleYearUpsertArgs} args - Arguments to update or create a VehicleYear.
+     * @example
+     * // Update or create a VehicleYear
+     * const vehicleYear = await prisma.vehicleYear.upsert({
+     *   create: {
+     *     // ... data to create a VehicleYear
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the VehicleYear we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VehicleYearUpsertArgs>(args: SelectSubset<T, VehicleYearUpsertArgs<ExtArgs>>): Prisma__VehicleYearClient<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of VehicleYears.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleYearCountArgs} args - Arguments to filter VehicleYears to count.
+     * @example
+     * // Count the number of VehicleYears
+     * const count = await prisma.vehicleYear.count({
+     *   where: {
+     *     // ... the filter for the VehicleYears we want to count
+     *   }
+     * })
+    **/
+    count<T extends VehicleYearCountArgs>(
+      args?: Subset<T, VehicleYearCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VehicleYearCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a VehicleYear.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleYearAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VehicleYearAggregateArgs>(args: Subset<T, VehicleYearAggregateArgs>): Prisma.PrismaPromise<GetVehicleYearAggregateType<T>>
+
+    /**
+     * Group by VehicleYear.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleYearGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VehicleYearGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VehicleYearGroupByArgs['orderBy'] }
+        : { orderBy?: VehicleYearGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VehicleYearGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVehicleYearGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the VehicleYear model
+   */
+  readonly fields: VehicleYearFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for VehicleYear.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VehicleYearClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    transmissionTypeFuel<T extends TransmissionTypeFuelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TransmissionTypeFuelDefaultArgs<ExtArgs>>): Prisma__TransmissionTypeFuelClient<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    mileages<T extends VehicleYear$mileagesArgs<ExtArgs> = {}>(args?: Subset<T, VehicleYear$mileagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the VehicleYear model
+   */
+  interface VehicleYearFieldRefs {
+    readonly id: FieldRef<"VehicleYear", 'Int'>
+    readonly year: FieldRef<"VehicleYear", 'Int'>
+    readonly createdAt: FieldRef<"VehicleYear", 'DateTime'>
+    readonly updatedAt: FieldRef<"VehicleYear", 'DateTime'>
+    readonly transmissionTypeFuelId: FieldRef<"VehicleYear", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * VehicleYear findUnique
+   */
+  export type VehicleYearFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleYear to fetch.
+     */
+    where: VehicleYearWhereUniqueInput
+  }
+
+  /**
+   * VehicleYear findUniqueOrThrow
+   */
+  export type VehicleYearFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleYear to fetch.
+     */
+    where: VehicleYearWhereUniqueInput
+  }
+
+  /**
+   * VehicleYear findFirst
+   */
+  export type VehicleYearFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleYear to fetch.
+     */
+    where?: VehicleYearWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleYears to fetch.
+     */
+    orderBy?: VehicleYearOrderByWithRelationInput | VehicleYearOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VehicleYears.
+     */
+    cursor?: VehicleYearWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleYears from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleYears.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VehicleYears.
+     */
+    distinct?: VehicleYearScalarFieldEnum | VehicleYearScalarFieldEnum[]
+  }
+
+  /**
+   * VehicleYear findFirstOrThrow
+   */
+  export type VehicleYearFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleYear to fetch.
+     */
+    where?: VehicleYearWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleYears to fetch.
+     */
+    orderBy?: VehicleYearOrderByWithRelationInput | VehicleYearOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VehicleYears.
+     */
+    cursor?: VehicleYearWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleYears from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleYears.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VehicleYears.
+     */
+    distinct?: VehicleYearScalarFieldEnum | VehicleYearScalarFieldEnum[]
+  }
+
+  /**
+   * VehicleYear findMany
+   */
+  export type VehicleYearFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleYears to fetch.
+     */
+    where?: VehicleYearWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleYears to fetch.
+     */
+    orderBy?: VehicleYearOrderByWithRelationInput | VehicleYearOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing VehicleYears.
+     */
+    cursor?: VehicleYearWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleYears from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleYears.
+     */
+    skip?: number
+    distinct?: VehicleYearScalarFieldEnum | VehicleYearScalarFieldEnum[]
+  }
+
+  /**
+   * VehicleYear create
+   */
+  export type VehicleYearCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+    /**
+     * The data needed to create a VehicleYear.
+     */
+    data: XOR<VehicleYearCreateInput, VehicleYearUncheckedCreateInput>
+  }
+
+  /**
+   * VehicleYear createMany
+   */
+  export type VehicleYearCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many VehicleYears.
+     */
+    data: VehicleYearCreateManyInput | VehicleYearCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * VehicleYear createManyAndReturn
+   */
+  export type VehicleYearCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * The data used to create many VehicleYears.
+     */
+    data: VehicleYearCreateManyInput | VehicleYearCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * VehicleYear update
+   */
+  export type VehicleYearUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+    /**
+     * The data needed to update a VehicleYear.
+     */
+    data: XOR<VehicleYearUpdateInput, VehicleYearUncheckedUpdateInput>
+    /**
+     * Choose, which VehicleYear to update.
+     */
+    where: VehicleYearWhereUniqueInput
+  }
+
+  /**
+   * VehicleYear updateMany
+   */
+  export type VehicleYearUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update VehicleYears.
+     */
+    data: XOR<VehicleYearUpdateManyMutationInput, VehicleYearUncheckedUpdateManyInput>
+    /**
+     * Filter which VehicleYears to update
+     */
+    where?: VehicleYearWhereInput
+    /**
+     * Limit how many VehicleYears to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * VehicleYear updateManyAndReturn
+   */
+  export type VehicleYearUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * The data used to update VehicleYears.
+     */
+    data: XOR<VehicleYearUpdateManyMutationInput, VehicleYearUncheckedUpdateManyInput>
+    /**
+     * Filter which VehicleYears to update
+     */
+    where?: VehicleYearWhereInput
+    /**
+     * Limit how many VehicleYears to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * VehicleYear upsert
+   */
+  export type VehicleYearUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+    /**
+     * The filter to search for the VehicleYear to update in case it exists.
+     */
+    where: VehicleYearWhereUniqueInput
+    /**
+     * In case the VehicleYear found by the `where` argument doesn't exist, create a new VehicleYear with this data.
+     */
+    create: XOR<VehicleYearCreateInput, VehicleYearUncheckedCreateInput>
+    /**
+     * In case the VehicleYear was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VehicleYearUpdateInput, VehicleYearUncheckedUpdateInput>
+  }
+
+  /**
+   * VehicleYear delete
+   */
+  export type VehicleYearDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+    /**
+     * Filter which VehicleYear to delete.
+     */
+    where: VehicleYearWhereUniqueInput
+  }
+
+  /**
+   * VehicleYear deleteMany
+   */
+  export type VehicleYearDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VehicleYears to delete
+     */
+    where?: VehicleYearWhereInput
+    /**
+     * Limit how many VehicleYears to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * VehicleYear.mileages
+   */
+  export type VehicleYear$mileagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+    where?: MileageWhereInput
+    orderBy?: MileageOrderByWithRelationInput | MileageOrderByWithRelationInput[]
+    cursor?: MileageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MileageScalarFieldEnum | MileageScalarFieldEnum[]
+  }
+
+  /**
+   * VehicleYear without action
+   */
+  export type VehicleYearDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleYear
+     */
+    select?: VehicleYearSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleYear
+     */
+    omit?: VehicleYearOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleYearInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Mileage
+   */
+
+  export type AggregateMileage = {
+    _count: MileageCountAggregateOutputType | null
+    _avg: MileageAvgAggregateOutputType | null
+    _sum: MileageSumAggregateOutputType | null
+    _min: MileageMinAggregateOutputType | null
+    _max: MileageMaxAggregateOutputType | null
+  }
+
+  export type MileageAvgAggregateOutputType = {
+    id: number | null
+    minKm: number | null
+    maxKm: number | null
+    vehicleYearId: number | null
+  }
+
+  export type MileageSumAggregateOutputType = {
+    id: number | null
+    minKm: number | null
+    maxKm: number | null
+    vehicleYearId: number | null
+  }
+
+  export type MileageMinAggregateOutputType = {
+    id: number | null
+    minKm: number | null
+    maxKm: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    vehicleYearId: number | null
+  }
+
+  export type MileageMaxAggregateOutputType = {
+    id: number | null
+    minKm: number | null
+    maxKm: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    vehicleYearId: number | null
+  }
+
+  export type MileageCountAggregateOutputType = {
+    id: number
+    minKm: number
+    maxKm: number
+    createdAt: number
+    updatedAt: number
+    vehicleYearId: number
+    _all: number
+  }
+
+
+  export type MileageAvgAggregateInputType = {
+    id?: true
+    minKm?: true
+    maxKm?: true
+    vehicleYearId?: true
+  }
+
+  export type MileageSumAggregateInputType = {
+    id?: true
+    minKm?: true
+    maxKm?: true
+    vehicleYearId?: true
+  }
+
+  export type MileageMinAggregateInputType = {
+    id?: true
+    minKm?: true
+    maxKm?: true
+    createdAt?: true
+    updatedAt?: true
+    vehicleYearId?: true
+  }
+
+  export type MileageMaxAggregateInputType = {
+    id?: true
+    minKm?: true
+    maxKm?: true
+    createdAt?: true
+    updatedAt?: true
+    vehicleYearId?: true
+  }
+
+  export type MileageCountAggregateInputType = {
+    id?: true
+    minKm?: true
+    maxKm?: true
+    createdAt?: true
+    updatedAt?: true
+    vehicleYearId?: true
+    _all?: true
+  }
+
+  export type MileageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Mileage to aggregate.
+     */
+    where?: MileageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Mileages to fetch.
+     */
+    orderBy?: MileageOrderByWithRelationInput | MileageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MileageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Mileages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Mileages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Mileages
+    **/
+    _count?: true | MileageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MileageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MileageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MileageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MileageMaxAggregateInputType
+  }
+
+  export type GetMileageAggregateType<T extends MileageAggregateArgs> = {
+        [P in keyof T & keyof AggregateMileage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMileage[P]>
+      : GetScalarType<T[P], AggregateMileage[P]>
+  }
+
+
+
+
+  export type MileageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MileageWhereInput
+    orderBy?: MileageOrderByWithAggregationInput | MileageOrderByWithAggregationInput[]
+    by: MileageScalarFieldEnum[] | MileageScalarFieldEnum
+    having?: MileageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MileageCountAggregateInputType | true
+    _avg?: MileageAvgAggregateInputType
+    _sum?: MileageSumAggregateInputType
+    _min?: MileageMinAggregateInputType
+    _max?: MileageMaxAggregateInputType
+  }
+
+  export type MileageGroupByOutputType = {
+    id: number
+    minKm: number
+    maxKm: number
+    createdAt: Date
+    updatedAt: Date
+    vehicleYearId: number
+    _count: MileageCountAggregateOutputType | null
+    _avg: MileageAvgAggregateOutputType | null
+    _sum: MileageSumAggregateOutputType | null
+    _min: MileageMinAggregateOutputType | null
+    _max: MileageMaxAggregateOutputType | null
+  }
+
+  type GetMileageGroupByPayload<T extends MileageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MileageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MileageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MileageGroupByOutputType[P]>
+            : GetScalarType<T[P], MileageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MileageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    minKm?: boolean
+    maxKm?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    vehicleYearId?: boolean
+    vehicleYear?: boolean | VehicleYearDefaultArgs<ExtArgs>
+    colors?: boolean | Mileage$colorsArgs<ExtArgs>
+    _count?: boolean | MileageCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mileage"]>
+
+  export type MileageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    minKm?: boolean
+    maxKm?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    vehicleYearId?: boolean
+    vehicleYear?: boolean | VehicleYearDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mileage"]>
+
+  export type MileageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    minKm?: boolean
+    maxKm?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    vehicleYearId?: boolean
+    vehicleYear?: boolean | VehicleYearDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mileage"]>
+
+  export type MileageSelectScalar = {
+    id?: boolean
+    minKm?: boolean
+    maxKm?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    vehicleYearId?: boolean
+  }
+
+  export type MileageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "minKm" | "maxKm" | "createdAt" | "updatedAt" | "vehicleYearId", ExtArgs["result"]["mileage"]>
+  export type MileageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    vehicleYear?: boolean | VehicleYearDefaultArgs<ExtArgs>
+    colors?: boolean | Mileage$colorsArgs<ExtArgs>
+    _count?: boolean | MileageCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MileageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    vehicleYear?: boolean | VehicleYearDefaultArgs<ExtArgs>
+  }
+  export type MileageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    vehicleYear?: boolean | VehicleYearDefaultArgs<ExtArgs>
+  }
+
+  export type $MileagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Mileage"
+    objects: {
+      vehicleYear: Prisma.$VehicleYearPayload<ExtArgs>
+      colors: Prisma.$ColorMileagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      minKm: number
+      maxKm: number
+      createdAt: Date
+      updatedAt: Date
+      vehicleYearId: number
+    }, ExtArgs["result"]["mileage"]>
+    composites: {}
+  }
+
+  type MileageGetPayload<S extends boolean | null | undefined | MileageDefaultArgs> = $Result.GetResult<Prisma.$MileagePayload, S>
+
+  type MileageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MileageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MileageCountAggregateInputType | true
+    }
+
+  export interface MileageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Mileage'], meta: { name: 'Mileage' } }
+    /**
+     * Find zero or one Mileage that matches the filter.
+     * @param {MileageFindUniqueArgs} args - Arguments to find a Mileage
+     * @example
+     * // Get one Mileage
+     * const mileage = await prisma.mileage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MileageFindUniqueArgs>(args: SelectSubset<T, MileageFindUniqueArgs<ExtArgs>>): Prisma__MileageClient<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Mileage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MileageFindUniqueOrThrowArgs} args - Arguments to find a Mileage
+     * @example
+     * // Get one Mileage
+     * const mileage = await prisma.mileage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MileageFindUniqueOrThrowArgs>(args: SelectSubset<T, MileageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MileageClient<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Mileage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MileageFindFirstArgs} args - Arguments to find a Mileage
+     * @example
+     * // Get one Mileage
+     * const mileage = await prisma.mileage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MileageFindFirstArgs>(args?: SelectSubset<T, MileageFindFirstArgs<ExtArgs>>): Prisma__MileageClient<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Mileage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MileageFindFirstOrThrowArgs} args - Arguments to find a Mileage
+     * @example
+     * // Get one Mileage
+     * const mileage = await prisma.mileage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MileageFindFirstOrThrowArgs>(args?: SelectSubset<T, MileageFindFirstOrThrowArgs<ExtArgs>>): Prisma__MileageClient<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Mileages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MileageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Mileages
+     * const mileages = await prisma.mileage.findMany()
+     * 
+     * // Get first 10 Mileages
+     * const mileages = await prisma.mileage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mileageWithIdOnly = await prisma.mileage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MileageFindManyArgs>(args?: SelectSubset<T, MileageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Mileage.
+     * @param {MileageCreateArgs} args - Arguments to create a Mileage.
+     * @example
+     * // Create one Mileage
+     * const Mileage = await prisma.mileage.create({
+     *   data: {
+     *     // ... data to create a Mileage
+     *   }
+     * })
+     * 
+     */
+    create<T extends MileageCreateArgs>(args: SelectSubset<T, MileageCreateArgs<ExtArgs>>): Prisma__MileageClient<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Mileages.
+     * @param {MileageCreateManyArgs} args - Arguments to create many Mileages.
+     * @example
+     * // Create many Mileages
+     * const mileage = await prisma.mileage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MileageCreateManyArgs>(args?: SelectSubset<T, MileageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Mileages and returns the data saved in the database.
+     * @param {MileageCreateManyAndReturnArgs} args - Arguments to create many Mileages.
+     * @example
+     * // Create many Mileages
+     * const mileage = await prisma.mileage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Mileages and only return the `id`
+     * const mileageWithIdOnly = await prisma.mileage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MileageCreateManyAndReturnArgs>(args?: SelectSubset<T, MileageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Mileage.
+     * @param {MileageDeleteArgs} args - Arguments to delete one Mileage.
+     * @example
+     * // Delete one Mileage
+     * const Mileage = await prisma.mileage.delete({
+     *   where: {
+     *     // ... filter to delete one Mileage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MileageDeleteArgs>(args: SelectSubset<T, MileageDeleteArgs<ExtArgs>>): Prisma__MileageClient<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Mileage.
+     * @param {MileageUpdateArgs} args - Arguments to update one Mileage.
+     * @example
+     * // Update one Mileage
+     * const mileage = await prisma.mileage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MileageUpdateArgs>(args: SelectSubset<T, MileageUpdateArgs<ExtArgs>>): Prisma__MileageClient<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Mileages.
+     * @param {MileageDeleteManyArgs} args - Arguments to filter Mileages to delete.
+     * @example
+     * // Delete a few Mileages
+     * const { count } = await prisma.mileage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MileageDeleteManyArgs>(args?: SelectSubset<T, MileageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Mileages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MileageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Mileages
+     * const mileage = await prisma.mileage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MileageUpdateManyArgs>(args: SelectSubset<T, MileageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Mileages and returns the data updated in the database.
+     * @param {MileageUpdateManyAndReturnArgs} args - Arguments to update many Mileages.
+     * @example
+     * // Update many Mileages
+     * const mileage = await prisma.mileage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Mileages and only return the `id`
+     * const mileageWithIdOnly = await prisma.mileage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MileageUpdateManyAndReturnArgs>(args: SelectSubset<T, MileageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Mileage.
+     * @param {MileageUpsertArgs} args - Arguments to update or create a Mileage.
+     * @example
+     * // Update or create a Mileage
+     * const mileage = await prisma.mileage.upsert({
+     *   create: {
+     *     // ... data to create a Mileage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Mileage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MileageUpsertArgs>(args: SelectSubset<T, MileageUpsertArgs<ExtArgs>>): Prisma__MileageClient<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Mileages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MileageCountArgs} args - Arguments to filter Mileages to count.
+     * @example
+     * // Count the number of Mileages
+     * const count = await prisma.mileage.count({
+     *   where: {
+     *     // ... the filter for the Mileages we want to count
+     *   }
+     * })
+    **/
+    count<T extends MileageCountArgs>(
+      args?: Subset<T, MileageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MileageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Mileage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MileageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MileageAggregateArgs>(args: Subset<T, MileageAggregateArgs>): Prisma.PrismaPromise<GetMileageAggregateType<T>>
+
+    /**
+     * Group by Mileage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MileageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MileageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MileageGroupByArgs['orderBy'] }
+        : { orderBy?: MileageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MileageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMileageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Mileage model
+   */
+  readonly fields: MileageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Mileage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MileageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    vehicleYear<T extends VehicleYearDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleYearDefaultArgs<ExtArgs>>): Prisma__VehicleYearClient<$Result.GetResult<Prisma.$VehicleYearPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    colors<T extends Mileage$colorsArgs<ExtArgs> = {}>(args?: Subset<T, Mileage$colorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Mileage model
+   */
+  interface MileageFieldRefs {
+    readonly id: FieldRef<"Mileage", 'Int'>
+    readonly minKm: FieldRef<"Mileage", 'Int'>
+    readonly maxKm: FieldRef<"Mileage", 'Int'>
+    readonly createdAt: FieldRef<"Mileage", 'DateTime'>
+    readonly updatedAt: FieldRef<"Mileage", 'DateTime'>
+    readonly vehicleYearId: FieldRef<"Mileage", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Mileage findUnique
+   */
+  export type MileageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+    /**
+     * Filter, which Mileage to fetch.
+     */
+    where: MileageWhereUniqueInput
+  }
+
+  /**
+   * Mileage findUniqueOrThrow
+   */
+  export type MileageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+    /**
+     * Filter, which Mileage to fetch.
+     */
+    where: MileageWhereUniqueInput
+  }
+
+  /**
+   * Mileage findFirst
+   */
+  export type MileageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+    /**
+     * Filter, which Mileage to fetch.
+     */
+    where?: MileageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Mileages to fetch.
+     */
+    orderBy?: MileageOrderByWithRelationInput | MileageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Mileages.
+     */
+    cursor?: MileageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Mileages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Mileages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Mileages.
+     */
+    distinct?: MileageScalarFieldEnum | MileageScalarFieldEnum[]
+  }
+
+  /**
+   * Mileage findFirstOrThrow
+   */
+  export type MileageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+    /**
+     * Filter, which Mileage to fetch.
+     */
+    where?: MileageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Mileages to fetch.
+     */
+    orderBy?: MileageOrderByWithRelationInput | MileageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Mileages.
+     */
+    cursor?: MileageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Mileages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Mileages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Mileages.
+     */
+    distinct?: MileageScalarFieldEnum | MileageScalarFieldEnum[]
+  }
+
+  /**
+   * Mileage findMany
+   */
+  export type MileageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+    /**
+     * Filter, which Mileages to fetch.
+     */
+    where?: MileageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Mileages to fetch.
+     */
+    orderBy?: MileageOrderByWithRelationInput | MileageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Mileages.
+     */
+    cursor?: MileageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Mileages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Mileages.
+     */
+    skip?: number
+    distinct?: MileageScalarFieldEnum | MileageScalarFieldEnum[]
+  }
+
+  /**
+   * Mileage create
+   */
+  export type MileageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Mileage.
+     */
+    data: XOR<MileageCreateInput, MileageUncheckedCreateInput>
+  }
+
+  /**
+   * Mileage createMany
+   */
+  export type MileageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Mileages.
+     */
+    data: MileageCreateManyInput | MileageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Mileage createManyAndReturn
+   */
+  export type MileageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * The data used to create many Mileages.
+     */
+    data: MileageCreateManyInput | MileageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Mileage update
+   */
+  export type MileageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Mileage.
+     */
+    data: XOR<MileageUpdateInput, MileageUncheckedUpdateInput>
+    /**
+     * Choose, which Mileage to update.
+     */
+    where: MileageWhereUniqueInput
+  }
+
+  /**
+   * Mileage updateMany
+   */
+  export type MileageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Mileages.
+     */
+    data: XOR<MileageUpdateManyMutationInput, MileageUncheckedUpdateManyInput>
+    /**
+     * Filter which Mileages to update
+     */
+    where?: MileageWhereInput
+    /**
+     * Limit how many Mileages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Mileage updateManyAndReturn
+   */
+  export type MileageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * The data used to update Mileages.
+     */
+    data: XOR<MileageUpdateManyMutationInput, MileageUncheckedUpdateManyInput>
+    /**
+     * Filter which Mileages to update
+     */
+    where?: MileageWhereInput
+    /**
+     * Limit how many Mileages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Mileage upsert
+   */
+  export type MileageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Mileage to update in case it exists.
+     */
+    where: MileageWhereUniqueInput
+    /**
+     * In case the Mileage found by the `where` argument doesn't exist, create a new Mileage with this data.
+     */
+    create: XOR<MileageCreateInput, MileageUncheckedCreateInput>
+    /**
+     * In case the Mileage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MileageUpdateInput, MileageUncheckedUpdateInput>
+  }
+
+  /**
+   * Mileage delete
+   */
+  export type MileageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+    /**
+     * Filter which Mileage to delete.
+     */
+    where: MileageWhereUniqueInput
+  }
+
+  /**
+   * Mileage deleteMany
+   */
+  export type MileageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Mileages to delete
+     */
+    where?: MileageWhereInput
+    /**
+     * Limit how many Mileages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Mileage.colors
+   */
+  export type Mileage$colorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    where?: ColorMileageWhereInput
+    orderBy?: ColorMileageOrderByWithRelationInput | ColorMileageOrderByWithRelationInput[]
+    cursor?: ColorMileageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ColorMileageScalarFieldEnum | ColorMileageScalarFieldEnum[]
+  }
+
+  /**
+   * Mileage without action
+   */
+  export type MileageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mileage
+     */
+    select?: MileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Mileage
+     */
+    omit?: MileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MileageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Color
+   */
+
+  export type AggregateColor = {
+    _count: ColorCountAggregateOutputType | null
+    _avg: ColorAvgAggregateOutputType | null
+    _sum: ColorSumAggregateOutputType | null
+    _min: ColorMinAggregateOutputType | null
+    _max: ColorMaxAggregateOutputType | null
+  }
+
+  export type ColorAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ColorSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ColorMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ColorMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ColorCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ColorAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ColorSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ColorMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ColorMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ColorCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ColorAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Color to aggregate.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Colors
+    **/
+    _count?: true | ColorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ColorAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ColorSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ColorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ColorMaxAggregateInputType
+  }
+
+  export type GetColorAggregateType<T extends ColorAggregateArgs> = {
+        [P in keyof T & keyof AggregateColor]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateColor[P]>
+      : GetScalarType<T[P], AggregateColor[P]>
+  }
+
+
+
+
+  export type ColorGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ColorWhereInput
+    orderBy?: ColorOrderByWithAggregationInput | ColorOrderByWithAggregationInput[]
+    by: ColorScalarFieldEnum[] | ColorScalarFieldEnum
+    having?: ColorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ColorCountAggregateInputType | true
+    _avg?: ColorAvgAggregateInputType
+    _sum?: ColorSumAggregateInputType
+    _min?: ColorMinAggregateInputType
+    _max?: ColorMaxAggregateInputType
+  }
+
+  export type ColorGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ColorCountAggregateOutputType | null
+    _avg: ColorAvgAggregateOutputType | null
+    _sum: ColorSumAggregateOutputType | null
+    _min: ColorMinAggregateOutputType | null
+    _max: ColorMaxAggregateOutputType | null
+  }
+
+  type GetColorGroupByPayload<T extends ColorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ColorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ColorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ColorGroupByOutputType[P]>
+            : GetScalarType<T[P], ColorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ColorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mileages?: boolean | Color$mileagesArgs<ExtArgs>
+    _count?: boolean | ColorCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["color"]>
+
+  export type ColorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["color"]>
+
+  export type ColorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["color"]>
+
+  export type ColorSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ColorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["color"]>
+  export type ColorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mileages?: boolean | Color$mileagesArgs<ExtArgs>
+    _count?: boolean | ColorCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ColorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ColorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ColorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Color"
+    objects: {
+      mileages: Prisma.$ColorMileagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["color"]>
+    composites: {}
+  }
+
+  type ColorGetPayload<S extends boolean | null | undefined | ColorDefaultArgs> = $Result.GetResult<Prisma.$ColorPayload, S>
+
+  type ColorCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ColorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ColorCountAggregateInputType | true
+    }
+
+  export interface ColorDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Color'], meta: { name: 'Color' } }
+    /**
+     * Find zero or one Color that matches the filter.
+     * @param {ColorFindUniqueArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ColorFindUniqueArgs>(args: SelectSubset<T, ColorFindUniqueArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Color that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ColorFindUniqueOrThrowArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ColorFindUniqueOrThrowArgs>(args: SelectSubset<T, ColorFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Color that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorFindFirstArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ColorFindFirstArgs>(args?: SelectSubset<T, ColorFindFirstArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Color that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorFindFirstOrThrowArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ColorFindFirstOrThrowArgs>(args?: SelectSubset<T, ColorFindFirstOrThrowArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Colors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Colors
+     * const colors = await prisma.color.findMany()
+     * 
+     * // Get first 10 Colors
+     * const colors = await prisma.color.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const colorWithIdOnly = await prisma.color.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ColorFindManyArgs>(args?: SelectSubset<T, ColorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Color.
+     * @param {ColorCreateArgs} args - Arguments to create a Color.
+     * @example
+     * // Create one Color
+     * const Color = await prisma.color.create({
+     *   data: {
+     *     // ... data to create a Color
+     *   }
+     * })
+     * 
+     */
+    create<T extends ColorCreateArgs>(args: SelectSubset<T, ColorCreateArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Colors.
+     * @param {ColorCreateManyArgs} args - Arguments to create many Colors.
+     * @example
+     * // Create many Colors
+     * const color = await prisma.color.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ColorCreateManyArgs>(args?: SelectSubset<T, ColorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Colors and returns the data saved in the database.
+     * @param {ColorCreateManyAndReturnArgs} args - Arguments to create many Colors.
+     * @example
+     * // Create many Colors
+     * const color = await prisma.color.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Colors and only return the `id`
+     * const colorWithIdOnly = await prisma.color.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ColorCreateManyAndReturnArgs>(args?: SelectSubset<T, ColorCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Color.
+     * @param {ColorDeleteArgs} args - Arguments to delete one Color.
+     * @example
+     * // Delete one Color
+     * const Color = await prisma.color.delete({
+     *   where: {
+     *     // ... filter to delete one Color
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ColorDeleteArgs>(args: SelectSubset<T, ColorDeleteArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Color.
+     * @param {ColorUpdateArgs} args - Arguments to update one Color.
+     * @example
+     * // Update one Color
+     * const color = await prisma.color.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ColorUpdateArgs>(args: SelectSubset<T, ColorUpdateArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Colors.
+     * @param {ColorDeleteManyArgs} args - Arguments to filter Colors to delete.
+     * @example
+     * // Delete a few Colors
+     * const { count } = await prisma.color.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ColorDeleteManyArgs>(args?: SelectSubset<T, ColorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Colors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Colors
+     * const color = await prisma.color.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ColorUpdateManyArgs>(args: SelectSubset<T, ColorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Colors and returns the data updated in the database.
+     * @param {ColorUpdateManyAndReturnArgs} args - Arguments to update many Colors.
+     * @example
+     * // Update many Colors
+     * const color = await prisma.color.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Colors and only return the `id`
+     * const colorWithIdOnly = await prisma.color.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ColorUpdateManyAndReturnArgs>(args: SelectSubset<T, ColorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Color.
+     * @param {ColorUpsertArgs} args - Arguments to update or create a Color.
+     * @example
+     * // Update or create a Color
+     * const color = await prisma.color.upsert({
+     *   create: {
+     *     // ... data to create a Color
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Color we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ColorUpsertArgs>(args: SelectSubset<T, ColorUpsertArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Colors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorCountArgs} args - Arguments to filter Colors to count.
+     * @example
+     * // Count the number of Colors
+     * const count = await prisma.color.count({
+     *   where: {
+     *     // ... the filter for the Colors we want to count
+     *   }
+     * })
+    **/
+    count<T extends ColorCountArgs>(
+      args?: Subset<T, ColorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ColorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Color.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ColorAggregateArgs>(args: Subset<T, ColorAggregateArgs>): Prisma.PrismaPromise<GetColorAggregateType<T>>
+
+    /**
+     * Group by Color.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ColorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ColorGroupByArgs['orderBy'] }
+        : { orderBy?: ColorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ColorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetColorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Color model
+   */
+  readonly fields: ColorFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Color.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ColorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    mileages<T extends Color$mileagesArgs<ExtArgs> = {}>(args?: Subset<T, Color$mileagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Color model
+   */
+  interface ColorFieldRefs {
+    readonly id: FieldRef<"Color", 'Int'>
+    readonly name: FieldRef<"Color", 'String'>
+    readonly createdAt: FieldRef<"Color", 'DateTime'>
+    readonly updatedAt: FieldRef<"Color", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Color findUnique
+   */
+  export type ColorFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color findUniqueOrThrow
+   */
+  export type ColorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color findFirst
+   */
+  export type ColorFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Colors.
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Colors.
+     */
+    distinct?: ColorScalarFieldEnum | ColorScalarFieldEnum[]
+  }
+
+  /**
+   * Color findFirstOrThrow
+   */
+  export type ColorFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Colors.
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Colors.
+     */
+    distinct?: ColorScalarFieldEnum | ColorScalarFieldEnum[]
+  }
+
+  /**
+   * Color findMany
+   */
+  export type ColorFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Colors to fetch.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Colors.
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    distinct?: ColorScalarFieldEnum | ColorScalarFieldEnum[]
+  }
+
+  /**
+   * Color create
+   */
+  export type ColorCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Color.
+     */
+    data: XOR<ColorCreateInput, ColorUncheckedCreateInput>
+  }
+
+  /**
+   * Color createMany
+   */
+  export type ColorCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Colors.
+     */
+    data: ColorCreateManyInput | ColorCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Color createManyAndReturn
+   */
+  export type ColorCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * The data used to create many Colors.
+     */
+    data: ColorCreateManyInput | ColorCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Color update
+   */
+  export type ColorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Color.
+     */
+    data: XOR<ColorUpdateInput, ColorUncheckedUpdateInput>
+    /**
+     * Choose, which Color to update.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color updateMany
+   */
+  export type ColorUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Colors.
+     */
+    data: XOR<ColorUpdateManyMutationInput, ColorUncheckedUpdateManyInput>
+    /**
+     * Filter which Colors to update
+     */
+    where?: ColorWhereInput
+    /**
+     * Limit how many Colors to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Color updateManyAndReturn
+   */
+  export type ColorUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * The data used to update Colors.
+     */
+    data: XOR<ColorUpdateManyMutationInput, ColorUncheckedUpdateManyInput>
+    /**
+     * Filter which Colors to update
+     */
+    where?: ColorWhereInput
+    /**
+     * Limit how many Colors to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Color upsert
+   */
+  export type ColorUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Color to update in case it exists.
+     */
+    where: ColorWhereUniqueInput
+    /**
+     * In case the Color found by the `where` argument doesn't exist, create a new Color with this data.
+     */
+    create: XOR<ColorCreateInput, ColorUncheckedCreateInput>
+    /**
+     * In case the Color was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ColorUpdateInput, ColorUncheckedUpdateInput>
+  }
+
+  /**
+   * Color delete
+   */
+  export type ColorDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter which Color to delete.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color deleteMany
+   */
+  export type ColorDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Colors to delete
+     */
+    where?: ColorWhereInput
+    /**
+     * Limit how many Colors to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Color.mileages
+   */
+  export type Color$mileagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    where?: ColorMileageWhereInput
+    orderBy?: ColorMileageOrderByWithRelationInput | ColorMileageOrderByWithRelationInput[]
+    cursor?: ColorMileageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ColorMileageScalarFieldEnum | ColorMileageScalarFieldEnum[]
+  }
+
+  /**
+   * Color without action
+   */
+  export type ColorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ColorMileage
+   */
+
+  export type AggregateColorMileage = {
+    _count: ColorMileageCountAggregateOutputType | null
+    _avg: ColorMileageAvgAggregateOutputType | null
+    _sum: ColorMileageSumAggregateOutputType | null
+    _min: ColorMileageMinAggregateOutputType | null
+    _max: ColorMileageMaxAggregateOutputType | null
+  }
+
+  export type ColorMileageAvgAggregateOutputType = {
+    id: number | null
+    mileageId: number | null
+    colorId: number | null
+  }
+
+  export type ColorMileageSumAggregateOutputType = {
+    id: number | null
+    mileageId: number | null
+    colorId: number | null
+  }
+
+  export type ColorMileageMinAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    mileageId: number | null
+    colorId: number | null
+  }
+
+  export type ColorMileageMaxAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    mileageId: number | null
+    colorId: number | null
+  }
+
+  export type ColorMileageCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    mileageId: number
+    colorId: number
+    _all: number
+  }
+
+
+  export type ColorMileageAvgAggregateInputType = {
+    id?: true
+    mileageId?: true
+    colorId?: true
+  }
+
+  export type ColorMileageSumAggregateInputType = {
+    id?: true
+    mileageId?: true
+    colorId?: true
+  }
+
+  export type ColorMileageMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    mileageId?: true
+    colorId?: true
+  }
+
+  export type ColorMileageMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    mileageId?: true
+    colorId?: true
+  }
+
+  export type ColorMileageCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    mileageId?: true
+    colorId?: true
+    _all?: true
+  }
+
+  export type ColorMileageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ColorMileage to aggregate.
+     */
+    where?: ColorMileageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ColorMileages to fetch.
+     */
+    orderBy?: ColorMileageOrderByWithRelationInput | ColorMileageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ColorMileageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ColorMileages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ColorMileages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ColorMileages
+    **/
+    _count?: true | ColorMileageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ColorMileageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ColorMileageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ColorMileageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ColorMileageMaxAggregateInputType
+  }
+
+  export type GetColorMileageAggregateType<T extends ColorMileageAggregateArgs> = {
+        [P in keyof T & keyof AggregateColorMileage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateColorMileage[P]>
+      : GetScalarType<T[P], AggregateColorMileage[P]>
+  }
+
+
+
+
+  export type ColorMileageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ColorMileageWhereInput
+    orderBy?: ColorMileageOrderByWithAggregationInput | ColorMileageOrderByWithAggregationInput[]
+    by: ColorMileageScalarFieldEnum[] | ColorMileageScalarFieldEnum
+    having?: ColorMileageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ColorMileageCountAggregateInputType | true
+    _avg?: ColorMileageAvgAggregateInputType
+    _sum?: ColorMileageSumAggregateInputType
+    _min?: ColorMileageMinAggregateInputType
+    _max?: ColorMileageMaxAggregateInputType
+  }
+
+  export type ColorMileageGroupByOutputType = {
+    id: number
+    createdAt: Date
+    updatedAt: Date
+    mileageId: number
+    colorId: number
+    _count: ColorMileageCountAggregateOutputType | null
+    _avg: ColorMileageAvgAggregateOutputType | null
+    _sum: ColorMileageSumAggregateOutputType | null
+    _min: ColorMileageMinAggregateOutputType | null
+    _max: ColorMileageMaxAggregateOutputType | null
+  }
+
+  type GetColorMileageGroupByPayload<T extends ColorMileageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ColorMileageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ColorMileageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ColorMileageGroupByOutputType[P]>
+            : GetScalarType<T[P], ColorMileageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ColorMileageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mileageId?: boolean
+    colorId?: boolean
+    mileage?: boolean | MileageDefaultArgs<ExtArgs>
+    color?: boolean | ColorDefaultArgs<ExtArgs>
+    accidentRecords?: boolean | ColorMileage$accidentRecordsArgs<ExtArgs>
+    _count?: boolean | ColorMileageCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["colorMileage"]>
+
+  export type ColorMileageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mileageId?: boolean
+    colorId?: boolean
+    mileage?: boolean | MileageDefaultArgs<ExtArgs>
+    color?: boolean | ColorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["colorMileage"]>
+
+  export type ColorMileageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mileageId?: boolean
+    colorId?: boolean
+    mileage?: boolean | MileageDefaultArgs<ExtArgs>
+    color?: boolean | ColorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["colorMileage"]>
+
+  export type ColorMileageSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mileageId?: boolean
+    colorId?: boolean
+  }
+
+  export type ColorMileageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "mileageId" | "colorId", ExtArgs["result"]["colorMileage"]>
+  export type ColorMileageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mileage?: boolean | MileageDefaultArgs<ExtArgs>
+    color?: boolean | ColorDefaultArgs<ExtArgs>
+    accidentRecords?: boolean | ColorMileage$accidentRecordsArgs<ExtArgs>
+    _count?: boolean | ColorMileageCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ColorMileageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mileage?: boolean | MileageDefaultArgs<ExtArgs>
+    color?: boolean | ColorDefaultArgs<ExtArgs>
+  }
+  export type ColorMileageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mileage?: boolean | MileageDefaultArgs<ExtArgs>
+    color?: boolean | ColorDefaultArgs<ExtArgs>
+  }
+
+  export type $ColorMileagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ColorMileage"
+    objects: {
+      mileage: Prisma.$MileagePayload<ExtArgs>
+      color: Prisma.$ColorPayload<ExtArgs>
+      accidentRecords: Prisma.$AccidentRecordPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      createdAt: Date
+      updatedAt: Date
+      mileageId: number
+      colorId: number
+    }, ExtArgs["result"]["colorMileage"]>
+    composites: {}
+  }
+
+  type ColorMileageGetPayload<S extends boolean | null | undefined | ColorMileageDefaultArgs> = $Result.GetResult<Prisma.$ColorMileagePayload, S>
+
+  type ColorMileageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ColorMileageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ColorMileageCountAggregateInputType | true
+    }
+
+  export interface ColorMileageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ColorMileage'], meta: { name: 'ColorMileage' } }
+    /**
+     * Find zero or one ColorMileage that matches the filter.
+     * @param {ColorMileageFindUniqueArgs} args - Arguments to find a ColorMileage
+     * @example
+     * // Get one ColorMileage
+     * const colorMileage = await prisma.colorMileage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ColorMileageFindUniqueArgs>(args: SelectSubset<T, ColorMileageFindUniqueArgs<ExtArgs>>): Prisma__ColorMileageClient<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ColorMileage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ColorMileageFindUniqueOrThrowArgs} args - Arguments to find a ColorMileage
+     * @example
+     * // Get one ColorMileage
+     * const colorMileage = await prisma.colorMileage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ColorMileageFindUniqueOrThrowArgs>(args: SelectSubset<T, ColorMileageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ColorMileageClient<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ColorMileage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorMileageFindFirstArgs} args - Arguments to find a ColorMileage
+     * @example
+     * // Get one ColorMileage
+     * const colorMileage = await prisma.colorMileage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ColorMileageFindFirstArgs>(args?: SelectSubset<T, ColorMileageFindFirstArgs<ExtArgs>>): Prisma__ColorMileageClient<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ColorMileage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorMileageFindFirstOrThrowArgs} args - Arguments to find a ColorMileage
+     * @example
+     * // Get one ColorMileage
+     * const colorMileage = await prisma.colorMileage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ColorMileageFindFirstOrThrowArgs>(args?: SelectSubset<T, ColorMileageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ColorMileageClient<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ColorMileages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorMileageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ColorMileages
+     * const colorMileages = await prisma.colorMileage.findMany()
+     * 
+     * // Get first 10 ColorMileages
+     * const colorMileages = await prisma.colorMileage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const colorMileageWithIdOnly = await prisma.colorMileage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ColorMileageFindManyArgs>(args?: SelectSubset<T, ColorMileageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ColorMileage.
+     * @param {ColorMileageCreateArgs} args - Arguments to create a ColorMileage.
+     * @example
+     * // Create one ColorMileage
+     * const ColorMileage = await prisma.colorMileage.create({
+     *   data: {
+     *     // ... data to create a ColorMileage
+     *   }
+     * })
+     * 
+     */
+    create<T extends ColorMileageCreateArgs>(args: SelectSubset<T, ColorMileageCreateArgs<ExtArgs>>): Prisma__ColorMileageClient<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ColorMileages.
+     * @param {ColorMileageCreateManyArgs} args - Arguments to create many ColorMileages.
+     * @example
+     * // Create many ColorMileages
+     * const colorMileage = await prisma.colorMileage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ColorMileageCreateManyArgs>(args?: SelectSubset<T, ColorMileageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ColorMileages and returns the data saved in the database.
+     * @param {ColorMileageCreateManyAndReturnArgs} args - Arguments to create many ColorMileages.
+     * @example
+     * // Create many ColorMileages
+     * const colorMileage = await prisma.colorMileage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ColorMileages and only return the `id`
+     * const colorMileageWithIdOnly = await prisma.colorMileage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ColorMileageCreateManyAndReturnArgs>(args?: SelectSubset<T, ColorMileageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ColorMileage.
+     * @param {ColorMileageDeleteArgs} args - Arguments to delete one ColorMileage.
+     * @example
+     * // Delete one ColorMileage
+     * const ColorMileage = await prisma.colorMileage.delete({
+     *   where: {
+     *     // ... filter to delete one ColorMileage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ColorMileageDeleteArgs>(args: SelectSubset<T, ColorMileageDeleteArgs<ExtArgs>>): Prisma__ColorMileageClient<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ColorMileage.
+     * @param {ColorMileageUpdateArgs} args - Arguments to update one ColorMileage.
+     * @example
+     * // Update one ColorMileage
+     * const colorMileage = await prisma.colorMileage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ColorMileageUpdateArgs>(args: SelectSubset<T, ColorMileageUpdateArgs<ExtArgs>>): Prisma__ColorMileageClient<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ColorMileages.
+     * @param {ColorMileageDeleteManyArgs} args - Arguments to filter ColorMileages to delete.
+     * @example
+     * // Delete a few ColorMileages
+     * const { count } = await prisma.colorMileage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ColorMileageDeleteManyArgs>(args?: SelectSubset<T, ColorMileageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ColorMileages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorMileageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ColorMileages
+     * const colorMileage = await prisma.colorMileage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ColorMileageUpdateManyArgs>(args: SelectSubset<T, ColorMileageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ColorMileages and returns the data updated in the database.
+     * @param {ColorMileageUpdateManyAndReturnArgs} args - Arguments to update many ColorMileages.
+     * @example
+     * // Update many ColorMileages
+     * const colorMileage = await prisma.colorMileage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ColorMileages and only return the `id`
+     * const colorMileageWithIdOnly = await prisma.colorMileage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ColorMileageUpdateManyAndReturnArgs>(args: SelectSubset<T, ColorMileageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ColorMileage.
+     * @param {ColorMileageUpsertArgs} args - Arguments to update or create a ColorMileage.
+     * @example
+     * // Update or create a ColorMileage
+     * const colorMileage = await prisma.colorMileage.upsert({
+     *   create: {
+     *     // ... data to create a ColorMileage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ColorMileage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ColorMileageUpsertArgs>(args: SelectSubset<T, ColorMileageUpsertArgs<ExtArgs>>): Prisma__ColorMileageClient<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ColorMileages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorMileageCountArgs} args - Arguments to filter ColorMileages to count.
+     * @example
+     * // Count the number of ColorMileages
+     * const count = await prisma.colorMileage.count({
+     *   where: {
+     *     // ... the filter for the ColorMileages we want to count
+     *   }
+     * })
+    **/
+    count<T extends ColorMileageCountArgs>(
+      args?: Subset<T, ColorMileageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ColorMileageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ColorMileage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorMileageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ColorMileageAggregateArgs>(args: Subset<T, ColorMileageAggregateArgs>): Prisma.PrismaPromise<GetColorMileageAggregateType<T>>
+
+    /**
+     * Group by ColorMileage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorMileageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ColorMileageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ColorMileageGroupByArgs['orderBy'] }
+        : { orderBy?: ColorMileageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ColorMileageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetColorMileageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ColorMileage model
+   */
+  readonly fields: ColorMileageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ColorMileage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ColorMileageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    mileage<T extends MileageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MileageDefaultArgs<ExtArgs>>): Prisma__MileageClient<$Result.GetResult<Prisma.$MileagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    color<T extends ColorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ColorDefaultArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    accidentRecords<T extends ColorMileage$accidentRecordsArgs<ExtArgs> = {}>(args?: Subset<T, ColorMileage$accidentRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ColorMileage model
+   */
+  interface ColorMileageFieldRefs {
+    readonly id: FieldRef<"ColorMileage", 'Int'>
+    readonly createdAt: FieldRef<"ColorMileage", 'DateTime'>
+    readonly updatedAt: FieldRef<"ColorMileage", 'DateTime'>
+    readonly mileageId: FieldRef<"ColorMileage", 'Int'>
+    readonly colorId: FieldRef<"ColorMileage", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ColorMileage findUnique
+   */
+  export type ColorMileageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    /**
+     * Filter, which ColorMileage to fetch.
+     */
+    where: ColorMileageWhereUniqueInput
+  }
+
+  /**
+   * ColorMileage findUniqueOrThrow
+   */
+  export type ColorMileageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    /**
+     * Filter, which ColorMileage to fetch.
+     */
+    where: ColorMileageWhereUniqueInput
+  }
+
+  /**
+   * ColorMileage findFirst
+   */
+  export type ColorMileageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    /**
+     * Filter, which ColorMileage to fetch.
+     */
+    where?: ColorMileageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ColorMileages to fetch.
+     */
+    orderBy?: ColorMileageOrderByWithRelationInput | ColorMileageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ColorMileages.
+     */
+    cursor?: ColorMileageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ColorMileages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ColorMileages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ColorMileages.
+     */
+    distinct?: ColorMileageScalarFieldEnum | ColorMileageScalarFieldEnum[]
+  }
+
+  /**
+   * ColorMileage findFirstOrThrow
+   */
+  export type ColorMileageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    /**
+     * Filter, which ColorMileage to fetch.
+     */
+    where?: ColorMileageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ColorMileages to fetch.
+     */
+    orderBy?: ColorMileageOrderByWithRelationInput | ColorMileageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ColorMileages.
+     */
+    cursor?: ColorMileageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ColorMileages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ColorMileages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ColorMileages.
+     */
+    distinct?: ColorMileageScalarFieldEnum | ColorMileageScalarFieldEnum[]
+  }
+
+  /**
+   * ColorMileage findMany
+   */
+  export type ColorMileageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    /**
+     * Filter, which ColorMileages to fetch.
+     */
+    where?: ColorMileageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ColorMileages to fetch.
+     */
+    orderBy?: ColorMileageOrderByWithRelationInput | ColorMileageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ColorMileages.
+     */
+    cursor?: ColorMileageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ColorMileages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ColorMileages.
+     */
+    skip?: number
+    distinct?: ColorMileageScalarFieldEnum | ColorMileageScalarFieldEnum[]
+  }
+
+  /**
+   * ColorMileage create
+   */
+  export type ColorMileageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ColorMileage.
+     */
+    data: XOR<ColorMileageCreateInput, ColorMileageUncheckedCreateInput>
+  }
+
+  /**
+   * ColorMileage createMany
+   */
+  export type ColorMileageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ColorMileages.
+     */
+    data: ColorMileageCreateManyInput | ColorMileageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ColorMileage createManyAndReturn
+   */
+  export type ColorMileageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * The data used to create many ColorMileages.
+     */
+    data: ColorMileageCreateManyInput | ColorMileageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ColorMileage update
+   */
+  export type ColorMileageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ColorMileage.
+     */
+    data: XOR<ColorMileageUpdateInput, ColorMileageUncheckedUpdateInput>
+    /**
+     * Choose, which ColorMileage to update.
+     */
+    where: ColorMileageWhereUniqueInput
+  }
+
+  /**
+   * ColorMileage updateMany
+   */
+  export type ColorMileageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ColorMileages.
+     */
+    data: XOR<ColorMileageUpdateManyMutationInput, ColorMileageUncheckedUpdateManyInput>
+    /**
+     * Filter which ColorMileages to update
+     */
+    where?: ColorMileageWhereInput
+    /**
+     * Limit how many ColorMileages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ColorMileage updateManyAndReturn
+   */
+  export type ColorMileageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * The data used to update ColorMileages.
+     */
+    data: XOR<ColorMileageUpdateManyMutationInput, ColorMileageUncheckedUpdateManyInput>
+    /**
+     * Filter which ColorMileages to update
+     */
+    where?: ColorMileageWhereInput
+    /**
+     * Limit how many ColorMileages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ColorMileage upsert
+   */
+  export type ColorMileageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ColorMileage to update in case it exists.
+     */
+    where: ColorMileageWhereUniqueInput
+    /**
+     * In case the ColorMileage found by the `where` argument doesn't exist, create a new ColorMileage with this data.
+     */
+    create: XOR<ColorMileageCreateInput, ColorMileageUncheckedCreateInput>
+    /**
+     * In case the ColorMileage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ColorMileageUpdateInput, ColorMileageUncheckedUpdateInput>
+  }
+
+  /**
+   * ColorMileage delete
+   */
+  export type ColorMileageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+    /**
+     * Filter which ColorMileage to delete.
+     */
+    where: ColorMileageWhereUniqueInput
+  }
+
+  /**
+   * ColorMileage deleteMany
+   */
+  export type ColorMileageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ColorMileages to delete
+     */
+    where?: ColorMileageWhereInput
+    /**
+     * Limit how many ColorMileages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ColorMileage.accidentRecords
+   */
+  export type ColorMileage$accidentRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+    where?: AccidentRecordWhereInput
+    orderBy?: AccidentRecordOrderByWithRelationInput | AccidentRecordOrderByWithRelationInput[]
+    cursor?: AccidentRecordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AccidentRecordScalarFieldEnum | AccidentRecordScalarFieldEnum[]
+  }
+
+  /**
+   * ColorMileage without action
+   */
+  export type ColorMileageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorMileage
+     */
+    select?: ColorMileageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ColorMileage
+     */
+    omit?: ColorMileageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorMileageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AccidentRecord
+   */
+
+  export type AggregateAccidentRecord = {
+    _count: AccidentRecordCountAggregateOutputType | null
+    _avg: AccidentRecordAvgAggregateOutputType | null
+    _sum: AccidentRecordSumAggregateOutputType | null
+    _min: AccidentRecordMinAggregateOutputType | null
+    _max: AccidentRecordMaxAggregateOutputType | null
+  }
+
+  export type AccidentRecordAvgAggregateOutputType = {
+    id: number | null
+    amount: number | null
+    colorMileageId: number | null
+  }
+
+  export type AccidentRecordSumAggregateOutputType = {
+    id: number | null
+    amount: number | null
+    colorMileageId: number | null
+  }
+
+  export type AccidentRecordMinAggregateOutputType = {
+    id: number | null
+    status: string | null
+    amount: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    colorMileageId: number | null
+  }
+
+  export type AccidentRecordMaxAggregateOutputType = {
+    id: number | null
+    status: string | null
+    amount: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    colorMileageId: number | null
+  }
+
+  export type AccidentRecordCountAggregateOutputType = {
+    id: number
+    status: number
+    amount: number
+    createdAt: number
+    updatedAt: number
+    colorMileageId: number
+    _all: number
+  }
+
+
+  export type AccidentRecordAvgAggregateInputType = {
+    id?: true
+    amount?: true
+    colorMileageId?: true
+  }
+
+  export type AccidentRecordSumAggregateInputType = {
+    id?: true
+    amount?: true
+    colorMileageId?: true
+  }
+
+  export type AccidentRecordMinAggregateInputType = {
+    id?: true
+    status?: true
+    amount?: true
+    createdAt?: true
+    updatedAt?: true
+    colorMileageId?: true
+  }
+
+  export type AccidentRecordMaxAggregateInputType = {
+    id?: true
+    status?: true
+    amount?: true
+    createdAt?: true
+    updatedAt?: true
+    colorMileageId?: true
+  }
+
+  export type AccidentRecordCountAggregateInputType = {
+    id?: true
+    status?: true
+    amount?: true
+    createdAt?: true
+    updatedAt?: true
+    colorMileageId?: true
+    _all?: true
+  }
+
+  export type AccidentRecordAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AccidentRecord to aggregate.
+     */
+    where?: AccidentRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AccidentRecords to fetch.
+     */
+    orderBy?: AccidentRecordOrderByWithRelationInput | AccidentRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AccidentRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AccidentRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AccidentRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AccidentRecords
+    **/
+    _count?: true | AccidentRecordCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AccidentRecordAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AccidentRecordSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AccidentRecordMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AccidentRecordMaxAggregateInputType
+  }
+
+  export type GetAccidentRecordAggregateType<T extends AccidentRecordAggregateArgs> = {
+        [P in keyof T & keyof AggregateAccidentRecord]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAccidentRecord[P]>
+      : GetScalarType<T[P], AggregateAccidentRecord[P]>
+  }
+
+
+
+
+  export type AccidentRecordGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AccidentRecordWhereInput
+    orderBy?: AccidentRecordOrderByWithAggregationInput | AccidentRecordOrderByWithAggregationInput[]
+    by: AccidentRecordScalarFieldEnum[] | AccidentRecordScalarFieldEnum
+    having?: AccidentRecordScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AccidentRecordCountAggregateInputType | true
+    _avg?: AccidentRecordAvgAggregateInputType
+    _sum?: AccidentRecordSumAggregateInputType
+    _min?: AccidentRecordMinAggregateInputType
+    _max?: AccidentRecordMaxAggregateInputType
+  }
+
+  export type AccidentRecordGroupByOutputType = {
+    id: number
+    status: string
+    amount: number | null
+    createdAt: Date
+    updatedAt: Date
+    colorMileageId: number
+    _count: AccidentRecordCountAggregateOutputType | null
+    _avg: AccidentRecordAvgAggregateOutputType | null
+    _sum: AccidentRecordSumAggregateOutputType | null
+    _min: AccidentRecordMinAggregateOutputType | null
+    _max: AccidentRecordMaxAggregateOutputType | null
+  }
+
+  type GetAccidentRecordGroupByPayload<T extends AccidentRecordGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AccidentRecordGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AccidentRecordGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AccidentRecordGroupByOutputType[P]>
+            : GetScalarType<T[P], AccidentRecordGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AccidentRecordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    status?: boolean
+    amount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    colorMileageId?: boolean
+    colorMileage?: boolean | ColorMileageDefaultArgs<ExtArgs>
+    vehicles?: boolean | AccidentRecord$vehiclesArgs<ExtArgs>
+    _count?: boolean | AccidentRecordCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["accidentRecord"]>
+
+  export type AccidentRecordSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    status?: boolean
+    amount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    colorMileageId?: boolean
+    colorMileage?: boolean | ColorMileageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["accidentRecord"]>
+
+  export type AccidentRecordSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    status?: boolean
+    amount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    colorMileageId?: boolean
+    colorMileage?: boolean | ColorMileageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["accidentRecord"]>
+
+  export type AccidentRecordSelectScalar = {
+    id?: boolean
+    status?: boolean
+    amount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    colorMileageId?: boolean
+  }
+
+  export type AccidentRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "amount" | "createdAt" | "updatedAt" | "colorMileageId", ExtArgs["result"]["accidentRecord"]>
+  export type AccidentRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    colorMileage?: boolean | ColorMileageDefaultArgs<ExtArgs>
+    vehicles?: boolean | AccidentRecord$vehiclesArgs<ExtArgs>
+    _count?: boolean | AccidentRecordCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type AccidentRecordIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    colorMileage?: boolean | ColorMileageDefaultArgs<ExtArgs>
+  }
+  export type AccidentRecordIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    colorMileage?: boolean | ColorMileageDefaultArgs<ExtArgs>
+  }
+
+  export type $AccidentRecordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AccidentRecord"
+    objects: {
+      colorMileage: Prisma.$ColorMileagePayload<ExtArgs>
+      vehicles: Prisma.$VehiclePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      status: string
+      amount: number | null
+      createdAt: Date
+      updatedAt: Date
+      colorMileageId: number
+    }, ExtArgs["result"]["accidentRecord"]>
+    composites: {}
+  }
+
+  type AccidentRecordGetPayload<S extends boolean | null | undefined | AccidentRecordDefaultArgs> = $Result.GetResult<Prisma.$AccidentRecordPayload, S>
+
+  type AccidentRecordCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AccidentRecordFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AccidentRecordCountAggregateInputType | true
+    }
+
+  export interface AccidentRecordDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AccidentRecord'], meta: { name: 'AccidentRecord' } }
+    /**
+     * Find zero or one AccidentRecord that matches the filter.
+     * @param {AccidentRecordFindUniqueArgs} args - Arguments to find a AccidentRecord
+     * @example
+     * // Get one AccidentRecord
+     * const accidentRecord = await prisma.accidentRecord.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AccidentRecordFindUniqueArgs>(args: SelectSubset<T, AccidentRecordFindUniqueArgs<ExtArgs>>): Prisma__AccidentRecordClient<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AccidentRecord that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AccidentRecordFindUniqueOrThrowArgs} args - Arguments to find a AccidentRecord
+     * @example
+     * // Get one AccidentRecord
+     * const accidentRecord = await prisma.accidentRecord.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AccidentRecordFindUniqueOrThrowArgs>(args: SelectSubset<T, AccidentRecordFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AccidentRecordClient<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AccidentRecord that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccidentRecordFindFirstArgs} args - Arguments to find a AccidentRecord
+     * @example
+     * // Get one AccidentRecord
+     * const accidentRecord = await prisma.accidentRecord.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AccidentRecordFindFirstArgs>(args?: SelectSubset<T, AccidentRecordFindFirstArgs<ExtArgs>>): Prisma__AccidentRecordClient<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AccidentRecord that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccidentRecordFindFirstOrThrowArgs} args - Arguments to find a AccidentRecord
+     * @example
+     * // Get one AccidentRecord
+     * const accidentRecord = await prisma.accidentRecord.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AccidentRecordFindFirstOrThrowArgs>(args?: SelectSubset<T, AccidentRecordFindFirstOrThrowArgs<ExtArgs>>): Prisma__AccidentRecordClient<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AccidentRecords that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccidentRecordFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AccidentRecords
+     * const accidentRecords = await prisma.accidentRecord.findMany()
+     * 
+     * // Get first 10 AccidentRecords
+     * const accidentRecords = await prisma.accidentRecord.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const accidentRecordWithIdOnly = await prisma.accidentRecord.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AccidentRecordFindManyArgs>(args?: SelectSubset<T, AccidentRecordFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AccidentRecord.
+     * @param {AccidentRecordCreateArgs} args - Arguments to create a AccidentRecord.
+     * @example
+     * // Create one AccidentRecord
+     * const AccidentRecord = await prisma.accidentRecord.create({
+     *   data: {
+     *     // ... data to create a AccidentRecord
+     *   }
+     * })
+     * 
+     */
+    create<T extends AccidentRecordCreateArgs>(args: SelectSubset<T, AccidentRecordCreateArgs<ExtArgs>>): Prisma__AccidentRecordClient<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AccidentRecords.
+     * @param {AccidentRecordCreateManyArgs} args - Arguments to create many AccidentRecords.
+     * @example
+     * // Create many AccidentRecords
+     * const accidentRecord = await prisma.accidentRecord.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AccidentRecordCreateManyArgs>(args?: SelectSubset<T, AccidentRecordCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AccidentRecords and returns the data saved in the database.
+     * @param {AccidentRecordCreateManyAndReturnArgs} args - Arguments to create many AccidentRecords.
+     * @example
+     * // Create many AccidentRecords
+     * const accidentRecord = await prisma.accidentRecord.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AccidentRecords and only return the `id`
+     * const accidentRecordWithIdOnly = await prisma.accidentRecord.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AccidentRecordCreateManyAndReturnArgs>(args?: SelectSubset<T, AccidentRecordCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AccidentRecord.
+     * @param {AccidentRecordDeleteArgs} args - Arguments to delete one AccidentRecord.
+     * @example
+     * // Delete one AccidentRecord
+     * const AccidentRecord = await prisma.accidentRecord.delete({
+     *   where: {
+     *     // ... filter to delete one AccidentRecord
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AccidentRecordDeleteArgs>(args: SelectSubset<T, AccidentRecordDeleteArgs<ExtArgs>>): Prisma__AccidentRecordClient<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AccidentRecord.
+     * @param {AccidentRecordUpdateArgs} args - Arguments to update one AccidentRecord.
+     * @example
+     * // Update one AccidentRecord
+     * const accidentRecord = await prisma.accidentRecord.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AccidentRecordUpdateArgs>(args: SelectSubset<T, AccidentRecordUpdateArgs<ExtArgs>>): Prisma__AccidentRecordClient<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AccidentRecords.
+     * @param {AccidentRecordDeleteManyArgs} args - Arguments to filter AccidentRecords to delete.
+     * @example
+     * // Delete a few AccidentRecords
+     * const { count } = await prisma.accidentRecord.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AccidentRecordDeleteManyArgs>(args?: SelectSubset<T, AccidentRecordDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AccidentRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccidentRecordUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AccidentRecords
+     * const accidentRecord = await prisma.accidentRecord.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AccidentRecordUpdateManyArgs>(args: SelectSubset<T, AccidentRecordUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AccidentRecords and returns the data updated in the database.
+     * @param {AccidentRecordUpdateManyAndReturnArgs} args - Arguments to update many AccidentRecords.
+     * @example
+     * // Update many AccidentRecords
+     * const accidentRecord = await prisma.accidentRecord.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AccidentRecords and only return the `id`
+     * const accidentRecordWithIdOnly = await prisma.accidentRecord.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AccidentRecordUpdateManyAndReturnArgs>(args: SelectSubset<T, AccidentRecordUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AccidentRecord.
+     * @param {AccidentRecordUpsertArgs} args - Arguments to update or create a AccidentRecord.
+     * @example
+     * // Update or create a AccidentRecord
+     * const accidentRecord = await prisma.accidentRecord.upsert({
+     *   create: {
+     *     // ... data to create a AccidentRecord
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AccidentRecord we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AccidentRecordUpsertArgs>(args: SelectSubset<T, AccidentRecordUpsertArgs<ExtArgs>>): Prisma__AccidentRecordClient<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AccidentRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccidentRecordCountArgs} args - Arguments to filter AccidentRecords to count.
+     * @example
+     * // Count the number of AccidentRecords
+     * const count = await prisma.accidentRecord.count({
+     *   where: {
+     *     // ... the filter for the AccidentRecords we want to count
+     *   }
+     * })
+    **/
+    count<T extends AccidentRecordCountArgs>(
+      args?: Subset<T, AccidentRecordCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AccidentRecordCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AccidentRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccidentRecordAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AccidentRecordAggregateArgs>(args: Subset<T, AccidentRecordAggregateArgs>): Prisma.PrismaPromise<GetAccidentRecordAggregateType<T>>
+
+    /**
+     * Group by AccidentRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccidentRecordGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AccidentRecordGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AccidentRecordGroupByArgs['orderBy'] }
+        : { orderBy?: AccidentRecordGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AccidentRecordGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAccidentRecordGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AccidentRecord model
+   */
+  readonly fields: AccidentRecordFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AccidentRecord.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AccidentRecordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    colorMileage<T extends ColorMileageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ColorMileageDefaultArgs<ExtArgs>>): Prisma__ColorMileageClient<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    vehicles<T extends AccidentRecord$vehiclesArgs<ExtArgs> = {}>(args?: Subset<T, AccidentRecord$vehiclesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AccidentRecord model
+   */
+  interface AccidentRecordFieldRefs {
+    readonly id: FieldRef<"AccidentRecord", 'Int'>
+    readonly status: FieldRef<"AccidentRecord", 'String'>
+    readonly amount: FieldRef<"AccidentRecord", 'Float'>
+    readonly createdAt: FieldRef<"AccidentRecord", 'DateTime'>
+    readonly updatedAt: FieldRef<"AccidentRecord", 'DateTime'>
+    readonly colorMileageId: FieldRef<"AccidentRecord", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AccidentRecord findUnique
+   */
+  export type AccidentRecordFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which AccidentRecord to fetch.
+     */
+    where: AccidentRecordWhereUniqueInput
+  }
+
+  /**
+   * AccidentRecord findUniqueOrThrow
+   */
+  export type AccidentRecordFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which AccidentRecord to fetch.
+     */
+    where: AccidentRecordWhereUniqueInput
+  }
+
+  /**
+   * AccidentRecord findFirst
+   */
+  export type AccidentRecordFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which AccidentRecord to fetch.
+     */
+    where?: AccidentRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AccidentRecords to fetch.
+     */
+    orderBy?: AccidentRecordOrderByWithRelationInput | AccidentRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AccidentRecords.
+     */
+    cursor?: AccidentRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AccidentRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AccidentRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AccidentRecords.
+     */
+    distinct?: AccidentRecordScalarFieldEnum | AccidentRecordScalarFieldEnum[]
+  }
+
+  /**
+   * AccidentRecord findFirstOrThrow
+   */
+  export type AccidentRecordFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which AccidentRecord to fetch.
+     */
+    where?: AccidentRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AccidentRecords to fetch.
+     */
+    orderBy?: AccidentRecordOrderByWithRelationInput | AccidentRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AccidentRecords.
+     */
+    cursor?: AccidentRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AccidentRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AccidentRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AccidentRecords.
+     */
+    distinct?: AccidentRecordScalarFieldEnum | AccidentRecordScalarFieldEnum[]
+  }
+
+  /**
+   * AccidentRecord findMany
+   */
+  export type AccidentRecordFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which AccidentRecords to fetch.
+     */
+    where?: AccidentRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AccidentRecords to fetch.
+     */
+    orderBy?: AccidentRecordOrderByWithRelationInput | AccidentRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AccidentRecords.
+     */
+    cursor?: AccidentRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AccidentRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AccidentRecords.
+     */
+    skip?: number
+    distinct?: AccidentRecordScalarFieldEnum | AccidentRecordScalarFieldEnum[]
+  }
+
+  /**
+   * AccidentRecord create
+   */
+  export type AccidentRecordCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AccidentRecord.
+     */
+    data: XOR<AccidentRecordCreateInput, AccidentRecordUncheckedCreateInput>
+  }
+
+  /**
+   * AccidentRecord createMany
+   */
+  export type AccidentRecordCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AccidentRecords.
+     */
+    data: AccidentRecordCreateManyInput | AccidentRecordCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AccidentRecord createManyAndReturn
+   */
+  export type AccidentRecordCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * The data used to create many AccidentRecords.
+     */
+    data: AccidentRecordCreateManyInput | AccidentRecordCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AccidentRecord update
+   */
+  export type AccidentRecordUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AccidentRecord.
+     */
+    data: XOR<AccidentRecordUpdateInput, AccidentRecordUncheckedUpdateInput>
+    /**
+     * Choose, which AccidentRecord to update.
+     */
+    where: AccidentRecordWhereUniqueInput
+  }
+
+  /**
+   * AccidentRecord updateMany
+   */
+  export type AccidentRecordUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AccidentRecords.
+     */
+    data: XOR<AccidentRecordUpdateManyMutationInput, AccidentRecordUncheckedUpdateManyInput>
+    /**
+     * Filter which AccidentRecords to update
+     */
+    where?: AccidentRecordWhereInput
+    /**
+     * Limit how many AccidentRecords to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AccidentRecord updateManyAndReturn
+   */
+  export type AccidentRecordUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * The data used to update AccidentRecords.
+     */
+    data: XOR<AccidentRecordUpdateManyMutationInput, AccidentRecordUncheckedUpdateManyInput>
+    /**
+     * Filter which AccidentRecords to update
+     */
+    where?: AccidentRecordWhereInput
+    /**
+     * Limit how many AccidentRecords to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AccidentRecord upsert
+   */
+  export type AccidentRecordUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AccidentRecord to update in case it exists.
+     */
+    where: AccidentRecordWhereUniqueInput
+    /**
+     * In case the AccidentRecord found by the `where` argument doesn't exist, create a new AccidentRecord with this data.
+     */
+    create: XOR<AccidentRecordCreateInput, AccidentRecordUncheckedCreateInput>
+    /**
+     * In case the AccidentRecord was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AccidentRecordUpdateInput, AccidentRecordUncheckedUpdateInput>
+  }
+
+  /**
+   * AccidentRecord delete
+   */
+  export type AccidentRecordDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+    /**
+     * Filter which AccidentRecord to delete.
+     */
+    where: AccidentRecordWhereUniqueInput
+  }
+
+  /**
+   * AccidentRecord deleteMany
+   */
+  export type AccidentRecordDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AccidentRecords to delete
+     */
+    where?: AccidentRecordWhereInput
+    /**
+     * Limit how many AccidentRecords to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AccidentRecord.vehicles
+   */
+  export type AccidentRecord$vehiclesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+    where?: VehicleWhereInput
+    orderBy?: VehicleOrderByWithRelationInput | VehicleOrderByWithRelationInput[]
+    cursor?: VehicleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleScalarFieldEnum | VehicleScalarFieldEnum[]
+  }
+
+  /**
+   * AccidentRecord without action
+   */
+  export type AccidentRecordDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccidentRecord
+     */
+    select?: AccidentRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AccidentRecord
+     */
+    omit?: AccidentRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccidentRecordInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Vehicle
+   */
+
+  export type AggregateVehicle = {
+    _count: VehicleCountAggregateOutputType | null
+    _avg: VehicleAvgAggregateOutputType | null
+    _sum: VehicleSumAggregateOutputType | null
+    _min: VehicleMinAggregateOutputType | null
+    _max: VehicleMaxAggregateOutputType | null
+  }
+
+  export type VehicleAvgAggregateOutputType = {
+    id: number | null
+    price: number | null
+    accidentRecordId: number | null
+  }
+
+  export type VehicleSumAggregateOutputType = {
+    id: number | null
+    price: number | null
+    accidentRecordId: number | null
+  }
+
+  export type VehicleMinAggregateOutputType = {
+    id: number | null
+    price: number | null
+    registrationDate: Date | null
+    updateDate: Date | null
+    accidentRecordId: number | null
+    description: string | null
+    listingStatus: string | null
+  }
+
+  export type VehicleMaxAggregateOutputType = {
+    id: number | null
+    price: number | null
+    registrationDate: Date | null
+    updateDate: Date | null
+    accidentRecordId: number | null
+    description: string | null
+    listingStatus: string | null
+  }
+
+  export type VehicleCountAggregateOutputType = {
+    id: number
+    price: number
+    registrationDate: number
+    updateDate: number
+    accidentRecordId: number
+    description: number
+    listingStatus: number
+    _all: number
+  }
+
+
+  export type VehicleAvgAggregateInputType = {
+    id?: true
+    price?: true
+    accidentRecordId?: true
+  }
+
+  export type VehicleSumAggregateInputType = {
+    id?: true
+    price?: true
+    accidentRecordId?: true
+  }
+
+  export type VehicleMinAggregateInputType = {
+    id?: true
+    price?: true
+    registrationDate?: true
+    updateDate?: true
+    accidentRecordId?: true
+    description?: true
+    listingStatus?: true
+  }
+
+  export type VehicleMaxAggregateInputType = {
+    id?: true
+    price?: true
+    registrationDate?: true
+    updateDate?: true
+    accidentRecordId?: true
+    description?: true
+    listingStatus?: true
+  }
+
+  export type VehicleCountAggregateInputType = {
+    id?: true
+    price?: true
+    registrationDate?: true
+    updateDate?: true
+    accidentRecordId?: true
+    description?: true
+    listingStatus?: true
+    _all?: true
+  }
+
+  export type VehicleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Vehicle to aggregate.
+     */
+    where?: VehicleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Vehicles to fetch.
+     */
+    orderBy?: VehicleOrderByWithRelationInput | VehicleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VehicleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Vehicles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Vehicles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Vehicles
+    **/
+    _count?: true | VehicleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: VehicleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VehicleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VehicleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VehicleMaxAggregateInputType
+  }
+
+  export type GetVehicleAggregateType<T extends VehicleAggregateArgs> = {
+        [P in keyof T & keyof AggregateVehicle]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVehicle[P]>
+      : GetScalarType<T[P], AggregateVehicle[P]>
+  }
+
+
+
+
+  export type VehicleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleWhereInput
+    orderBy?: VehicleOrderByWithAggregationInput | VehicleOrderByWithAggregationInput[]
+    by: VehicleScalarFieldEnum[] | VehicleScalarFieldEnum
+    having?: VehicleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VehicleCountAggregateInputType | true
+    _avg?: VehicleAvgAggregateInputType
+    _sum?: VehicleSumAggregateInputType
+    _min?: VehicleMinAggregateInputType
+    _max?: VehicleMaxAggregateInputType
+  }
+
+  export type VehicleGroupByOutputType = {
+    id: number
+    price: number
+    registrationDate: Date
+    updateDate: Date
+    accidentRecordId: number
+    description: string | null
+    listingStatus: string
+    _count: VehicleCountAggregateOutputType | null
+    _avg: VehicleAvgAggregateOutputType | null
+    _sum: VehicleSumAggregateOutputType | null
+    _min: VehicleMinAggregateOutputType | null
+    _max: VehicleMaxAggregateOutputType | null
+  }
+
+  type GetVehicleGroupByPayload<T extends VehicleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VehicleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VehicleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VehicleGroupByOutputType[P]>
+            : GetScalarType<T[P], VehicleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VehicleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    price?: boolean
+    registrationDate?: boolean
+    updateDate?: boolean
+    accidentRecordId?: boolean
+    description?: boolean
+    listingStatus?: boolean
+    accidentRecord?: boolean | AccidentRecordDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicle"]>
+
+  export type VehicleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    price?: boolean
+    registrationDate?: boolean
+    updateDate?: boolean
+    accidentRecordId?: boolean
+    description?: boolean
+    listingStatus?: boolean
+    accidentRecord?: boolean | AccidentRecordDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicle"]>
+
+  export type VehicleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    price?: boolean
+    registrationDate?: boolean
+    updateDate?: boolean
+    accidentRecordId?: boolean
+    description?: boolean
+    listingStatus?: boolean
+    accidentRecord?: boolean | AccidentRecordDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicle"]>
+
+  export type VehicleSelectScalar = {
+    id?: boolean
+    price?: boolean
+    registrationDate?: boolean
+    updateDate?: boolean
+    accidentRecordId?: boolean
+    description?: boolean
+    listingStatus?: boolean
+  }
+
+  export type VehicleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "price" | "registrationDate" | "updateDate" | "accidentRecordId" | "description" | "listingStatus", ExtArgs["result"]["vehicle"]>
+  export type VehicleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    accidentRecord?: boolean | AccidentRecordDefaultArgs<ExtArgs>
+  }
+  export type VehicleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    accidentRecord?: boolean | AccidentRecordDefaultArgs<ExtArgs>
+  }
+  export type VehicleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    accidentRecord?: boolean | AccidentRecordDefaultArgs<ExtArgs>
+  }
+
+  export type $VehiclePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Vehicle"
+    objects: {
+      accidentRecord: Prisma.$AccidentRecordPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      price: number
+      registrationDate: Date
+      updateDate: Date
+      accidentRecordId: number
+      description: string | null
+      listingStatus: string
+    }, ExtArgs["result"]["vehicle"]>
+    composites: {}
+  }
+
+  type VehicleGetPayload<S extends boolean | null | undefined | VehicleDefaultArgs> = $Result.GetResult<Prisma.$VehiclePayload, S>
+
+  type VehicleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VehicleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VehicleCountAggregateInputType | true
+    }
+
+  export interface VehicleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Vehicle'], meta: { name: 'Vehicle' } }
+    /**
+     * Find zero or one Vehicle that matches the filter.
+     * @param {VehicleFindUniqueArgs} args - Arguments to find a Vehicle
+     * @example
+     * // Get one Vehicle
+     * const vehicle = await prisma.vehicle.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VehicleFindUniqueArgs>(args: SelectSubset<T, VehicleFindUniqueArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Vehicle that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VehicleFindUniqueOrThrowArgs} args - Arguments to find a Vehicle
+     * @example
+     * // Get one Vehicle
+     * const vehicle = await prisma.vehicle.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VehicleFindUniqueOrThrowArgs>(args: SelectSubset<T, VehicleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Vehicle that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleFindFirstArgs} args - Arguments to find a Vehicle
+     * @example
+     * // Get one Vehicle
+     * const vehicle = await prisma.vehicle.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VehicleFindFirstArgs>(args?: SelectSubset<T, VehicleFindFirstArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Vehicle that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleFindFirstOrThrowArgs} args - Arguments to find a Vehicle
+     * @example
+     * // Get one Vehicle
+     * const vehicle = await prisma.vehicle.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VehicleFindFirstOrThrowArgs>(args?: SelectSubset<T, VehicleFindFirstOrThrowArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Vehicles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Vehicles
+     * const vehicles = await prisma.vehicle.findMany()
+     * 
+     * // Get first 10 Vehicles
+     * const vehicles = await prisma.vehicle.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const vehicleWithIdOnly = await prisma.vehicle.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VehicleFindManyArgs>(args?: SelectSubset<T, VehicleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Vehicle.
+     * @param {VehicleCreateArgs} args - Arguments to create a Vehicle.
+     * @example
+     * // Create one Vehicle
+     * const Vehicle = await prisma.vehicle.create({
+     *   data: {
+     *     // ... data to create a Vehicle
+     *   }
+     * })
+     * 
+     */
+    create<T extends VehicleCreateArgs>(args: SelectSubset<T, VehicleCreateArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Vehicles.
+     * @param {VehicleCreateManyArgs} args - Arguments to create many Vehicles.
+     * @example
+     * // Create many Vehicles
+     * const vehicle = await prisma.vehicle.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VehicleCreateManyArgs>(args?: SelectSubset<T, VehicleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Vehicles and returns the data saved in the database.
+     * @param {VehicleCreateManyAndReturnArgs} args - Arguments to create many Vehicles.
+     * @example
+     * // Create many Vehicles
+     * const vehicle = await prisma.vehicle.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Vehicles and only return the `id`
+     * const vehicleWithIdOnly = await prisma.vehicle.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VehicleCreateManyAndReturnArgs>(args?: SelectSubset<T, VehicleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Vehicle.
+     * @param {VehicleDeleteArgs} args - Arguments to delete one Vehicle.
+     * @example
+     * // Delete one Vehicle
+     * const Vehicle = await prisma.vehicle.delete({
+     *   where: {
+     *     // ... filter to delete one Vehicle
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VehicleDeleteArgs>(args: SelectSubset<T, VehicleDeleteArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Vehicle.
+     * @param {VehicleUpdateArgs} args - Arguments to update one Vehicle.
+     * @example
+     * // Update one Vehicle
+     * const vehicle = await prisma.vehicle.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VehicleUpdateArgs>(args: SelectSubset<T, VehicleUpdateArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Vehicles.
+     * @param {VehicleDeleteManyArgs} args - Arguments to filter Vehicles to delete.
+     * @example
+     * // Delete a few Vehicles
+     * const { count } = await prisma.vehicle.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VehicleDeleteManyArgs>(args?: SelectSubset<T, VehicleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Vehicles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Vehicles
+     * const vehicle = await prisma.vehicle.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VehicleUpdateManyArgs>(args: SelectSubset<T, VehicleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Vehicles and returns the data updated in the database.
+     * @param {VehicleUpdateManyAndReturnArgs} args - Arguments to update many Vehicles.
+     * @example
+     * // Update many Vehicles
+     * const vehicle = await prisma.vehicle.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Vehicles and only return the `id`
+     * const vehicleWithIdOnly = await prisma.vehicle.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VehicleUpdateManyAndReturnArgs>(args: SelectSubset<T, VehicleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Vehicle.
+     * @param {VehicleUpsertArgs} args - Arguments to update or create a Vehicle.
+     * @example
+     * // Update or create a Vehicle
+     * const vehicle = await prisma.vehicle.upsert({
+     *   create: {
+     *     // ... data to create a Vehicle
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Vehicle we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VehicleUpsertArgs>(args: SelectSubset<T, VehicleUpsertArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Vehicles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleCountArgs} args - Arguments to filter Vehicles to count.
+     * @example
+     * // Count the number of Vehicles
+     * const count = await prisma.vehicle.count({
+     *   where: {
+     *     // ... the filter for the Vehicles we want to count
+     *   }
+     * })
+    **/
+    count<T extends VehicleCountArgs>(
+      args?: Subset<T, VehicleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VehicleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Vehicle.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VehicleAggregateArgs>(args: Subset<T, VehicleAggregateArgs>): Prisma.PrismaPromise<GetVehicleAggregateType<T>>
+
+    /**
+     * Group by Vehicle.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VehicleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VehicleGroupByArgs['orderBy'] }
+        : { orderBy?: VehicleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VehicleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVehicleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Vehicle model
+   */
+  readonly fields: VehicleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Vehicle.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VehicleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    accidentRecord<T extends AccidentRecordDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AccidentRecordDefaultArgs<ExtArgs>>): Prisma__AccidentRecordClient<$Result.GetResult<Prisma.$AccidentRecordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Vehicle model
+   */
+  interface VehicleFieldRefs {
+    readonly id: FieldRef<"Vehicle", 'Int'>
+    readonly price: FieldRef<"Vehicle", 'Float'>
+    readonly registrationDate: FieldRef<"Vehicle", 'DateTime'>
+    readonly updateDate: FieldRef<"Vehicle", 'DateTime'>
+    readonly accidentRecordId: FieldRef<"Vehicle", 'Int'>
+    readonly description: FieldRef<"Vehicle", 'String'>
+    readonly listingStatus: FieldRef<"Vehicle", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Vehicle findUnique
+   */
+  export type VehicleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+    /**
+     * Filter, which Vehicle to fetch.
+     */
+    where: VehicleWhereUniqueInput
+  }
+
+  /**
+   * Vehicle findUniqueOrThrow
+   */
+  export type VehicleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+    /**
+     * Filter, which Vehicle to fetch.
+     */
+    where: VehicleWhereUniqueInput
+  }
+
+  /**
+   * Vehicle findFirst
+   */
+  export type VehicleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+    /**
+     * Filter, which Vehicle to fetch.
+     */
+    where?: VehicleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Vehicles to fetch.
+     */
+    orderBy?: VehicleOrderByWithRelationInput | VehicleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Vehicles.
+     */
+    cursor?: VehicleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Vehicles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Vehicles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Vehicles.
+     */
+    distinct?: VehicleScalarFieldEnum | VehicleScalarFieldEnum[]
+  }
+
+  /**
+   * Vehicle findFirstOrThrow
+   */
+  export type VehicleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+    /**
+     * Filter, which Vehicle to fetch.
+     */
+    where?: VehicleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Vehicles to fetch.
+     */
+    orderBy?: VehicleOrderByWithRelationInput | VehicleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Vehicles.
+     */
+    cursor?: VehicleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Vehicles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Vehicles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Vehicles.
+     */
+    distinct?: VehicleScalarFieldEnum | VehicleScalarFieldEnum[]
+  }
+
+  /**
+   * Vehicle findMany
+   */
+  export type VehicleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+    /**
+     * Filter, which Vehicles to fetch.
+     */
+    where?: VehicleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Vehicles to fetch.
+     */
+    orderBy?: VehicleOrderByWithRelationInput | VehicleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Vehicles.
+     */
+    cursor?: VehicleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Vehicles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Vehicles.
+     */
+    skip?: number
+    distinct?: VehicleScalarFieldEnum | VehicleScalarFieldEnum[]
+  }
+
+  /**
+   * Vehicle create
+   */
+  export type VehicleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Vehicle.
+     */
+    data: XOR<VehicleCreateInput, VehicleUncheckedCreateInput>
+  }
+
+  /**
+   * Vehicle createMany
+   */
+  export type VehicleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Vehicles.
+     */
+    data: VehicleCreateManyInput | VehicleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Vehicle createManyAndReturn
+   */
+  export type VehicleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * The data used to create many Vehicles.
+     */
+    data: VehicleCreateManyInput | VehicleCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Vehicle update
+   */
+  export type VehicleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Vehicle.
+     */
+    data: XOR<VehicleUpdateInput, VehicleUncheckedUpdateInput>
+    /**
+     * Choose, which Vehicle to update.
+     */
+    where: VehicleWhereUniqueInput
+  }
+
+  /**
+   * Vehicle updateMany
+   */
+  export type VehicleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Vehicles.
+     */
+    data: XOR<VehicleUpdateManyMutationInput, VehicleUncheckedUpdateManyInput>
+    /**
+     * Filter which Vehicles to update
+     */
+    where?: VehicleWhereInput
+    /**
+     * Limit how many Vehicles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Vehicle updateManyAndReturn
+   */
+  export type VehicleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * The data used to update Vehicles.
+     */
+    data: XOR<VehicleUpdateManyMutationInput, VehicleUncheckedUpdateManyInput>
+    /**
+     * Filter which Vehicles to update
+     */
+    where?: VehicleWhereInput
+    /**
+     * Limit how many Vehicles to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Vehicle upsert
+   */
+  export type VehicleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Vehicle to update in case it exists.
+     */
+    where: VehicleWhereUniqueInput
+    /**
+     * In case the Vehicle found by the `where` argument doesn't exist, create a new Vehicle with this data.
+     */
+    create: XOR<VehicleCreateInput, VehicleUncheckedCreateInput>
+    /**
+     * In case the Vehicle was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VehicleUpdateInput, VehicleUncheckedUpdateInput>
+  }
+
+  /**
+   * Vehicle delete
+   */
+  export type VehicleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+    /**
+     * Filter which Vehicle to delete.
+     */
+    where: VehicleWhereUniqueInput
+  }
+
+  /**
+   * Vehicle deleteMany
+   */
+  export type VehicleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Vehicles to delete
+     */
+    where?: VehicleWhereInput
+    /**
+     * Limit how many Vehicles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Vehicle without action
+   */
+  export type VehicleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vehicle
+     */
+    select?: VehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vehicle
+     */
+    omit?: VehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Enums
+   */
+
+  export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
+    Serializable: 'Serializable'
+  };
+
+  export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+  export const BrandScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BrandScalarFieldEnum = (typeof BrandScalarFieldEnum)[keyof typeof BrandScalarFieldEnum]
+
+
+  export const ModelScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    brandId: 'brandId'
+  };
+
+  export type ModelScalarFieldEnum = (typeof ModelScalarFieldEnum)[keyof typeof ModelScalarFieldEnum]
+
+
+  export const VersionScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    modelId: 'modelId'
+  };
+
+  export type VersionScalarFieldEnum = (typeof VersionScalarFieldEnum)[keyof typeof VersionScalarFieldEnum]
+
+
+  export const BodyTypeScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BodyTypeScalarFieldEnum = (typeof BodyTypeScalarFieldEnum)[keyof typeof BodyTypeScalarFieldEnum]
+
+
+  export const BodyTypeVersionScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    versionId: 'versionId',
+    bodyTypeId: 'bodyTypeId'
+  };
+
+  export type BodyTypeVersionScalarFieldEnum = (typeof BodyTypeVersionScalarFieldEnum)[keyof typeof BodyTypeVersionScalarFieldEnum]
+
+
+  export const FuelTypeScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type FuelTypeScalarFieldEnum = (typeof FuelTypeScalarFieldEnum)[keyof typeof FuelTypeScalarFieldEnum]
+
+
+  export const FuelTypeBodyScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    bodyVersionId: 'bodyVersionId',
+    fuelTypeId: 'fuelTypeId'
+  };
+
+  export type FuelTypeBodyScalarFieldEnum = (typeof FuelTypeBodyScalarFieldEnum)[keyof typeof FuelTypeBodyScalarFieldEnum]
+
+
+  export const TransmissionTypeScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TransmissionTypeScalarFieldEnum = (typeof TransmissionTypeScalarFieldEnum)[keyof typeof TransmissionTypeScalarFieldEnum]
+
+
+  export const TransmissionTypeFuelScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    fuelBodyId: 'fuelBodyId',
+    transmissionTypeId: 'transmissionTypeId'
+  };
+
+  export type TransmissionTypeFuelScalarFieldEnum = (typeof TransmissionTypeFuelScalarFieldEnum)[keyof typeof TransmissionTypeFuelScalarFieldEnum]
+
+
+  export const VehicleYearScalarFieldEnum: {
+    id: 'id',
+    year: 'year',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    transmissionTypeFuelId: 'transmissionTypeFuelId'
+  };
+
+  export type VehicleYearScalarFieldEnum = (typeof VehicleYearScalarFieldEnum)[keyof typeof VehicleYearScalarFieldEnum]
+
+
+  export const MileageScalarFieldEnum: {
+    id: 'id',
+    minKm: 'minKm',
+    maxKm: 'maxKm',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    vehicleYearId: 'vehicleYearId'
+  };
+
+  export type MileageScalarFieldEnum = (typeof MileageScalarFieldEnum)[keyof typeof MileageScalarFieldEnum]
+
+
+  export const ColorScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ColorScalarFieldEnum = (typeof ColorScalarFieldEnum)[keyof typeof ColorScalarFieldEnum]
+
+
+  export const ColorMileageScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    mileageId: 'mileageId',
+    colorId: 'colorId'
+  };
+
+  export type ColorMileageScalarFieldEnum = (typeof ColorMileageScalarFieldEnum)[keyof typeof ColorMileageScalarFieldEnum]
+
+
+  export const AccidentRecordScalarFieldEnum: {
+    id: 'id',
+    status: 'status',
+    amount: 'amount',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    colorMileageId: 'colorMileageId'
+  };
+
+  export type AccidentRecordScalarFieldEnum = (typeof AccidentRecordScalarFieldEnum)[keyof typeof AccidentRecordScalarFieldEnum]
+
+
+  export const VehicleScalarFieldEnum: {
+    id: 'id',
+    price: 'price',
+    registrationDate: 'registrationDate',
+    updateDate: 'updateDate',
+    accidentRecordId: 'accidentRecordId',
+    description: 'description',
+    listingStatus: 'listingStatus'
+  };
+
+  export type VehicleScalarFieldEnum = (typeof VehicleScalarFieldEnum)[keyof typeof VehicleScalarFieldEnum]
+
+
+  export const SortOrder: {
+    asc: 'asc',
+    desc: 'desc'
+  };
+
+  export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  /**
+   * Field references
+   */
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'String'
+   */
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+  /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+  /**
+   * Deep Input Types
+   */
+
+
+  export type BrandWhereInput = {
+    AND?: BrandWhereInput | BrandWhereInput[]
+    OR?: BrandWhereInput[]
+    NOT?: BrandWhereInput | BrandWhereInput[]
+    id?: IntFilter<"Brand"> | number
+    name?: StringFilter<"Brand"> | string
+    createdAt?: DateTimeFilter<"Brand"> | Date | string
+    updatedAt?: DateTimeFilter<"Brand"> | Date | string
+    models?: ModelListRelationFilter
+  }
+
+  export type BrandOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    models?: ModelOrderByRelationAggregateInput
+  }
+
+  export type BrandWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: BrandWhereInput | BrandWhereInput[]
+    OR?: BrandWhereInput[]
+    NOT?: BrandWhereInput | BrandWhereInput[]
+    createdAt?: DateTimeFilter<"Brand"> | Date | string
+    updatedAt?: DateTimeFilter<"Brand"> | Date | string
+    models?: ModelListRelationFilter
+  }, "id" | "name">
+
+  export type BrandOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BrandCountOrderByAggregateInput
+    _avg?: BrandAvgOrderByAggregateInput
+    _max?: BrandMaxOrderByAggregateInput
+    _min?: BrandMinOrderByAggregateInput
+    _sum?: BrandSumOrderByAggregateInput
+  }
+
+  export type BrandScalarWhereWithAggregatesInput = {
+    AND?: BrandScalarWhereWithAggregatesInput | BrandScalarWhereWithAggregatesInput[]
+    OR?: BrandScalarWhereWithAggregatesInput[]
+    NOT?: BrandScalarWhereWithAggregatesInput | BrandScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Brand"> | number
+    name?: StringWithAggregatesFilter<"Brand"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Brand"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Brand"> | Date | string
+  }
+
+  export type ModelWhereInput = {
+    AND?: ModelWhereInput | ModelWhereInput[]
+    OR?: ModelWhereInput[]
+    NOT?: ModelWhereInput | ModelWhereInput[]
+    id?: IntFilter<"Model"> | number
+    name?: StringFilter<"Model"> | string
+    createdAt?: DateTimeFilter<"Model"> | Date | string
+    updatedAt?: DateTimeFilter<"Model"> | Date | string
+    brandId?: IntFilter<"Model"> | number
+    brand?: XOR<BrandScalarRelationFilter, BrandWhereInput>
+    versions?: VersionListRelationFilter
+  }
+
+  export type ModelOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    brandId?: SortOrder
+    brand?: BrandOrderByWithRelationInput
+    versions?: VersionOrderByRelationAggregateInput
+  }
+
+  export type ModelWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    brandId_name?: ModelBrandIdNameCompoundUniqueInput
+    AND?: ModelWhereInput | ModelWhereInput[]
+    OR?: ModelWhereInput[]
+    NOT?: ModelWhereInput | ModelWhereInput[]
+    name?: StringFilter<"Model"> | string
+    createdAt?: DateTimeFilter<"Model"> | Date | string
+    updatedAt?: DateTimeFilter<"Model"> | Date | string
+    brandId?: IntFilter<"Model"> | number
+    brand?: XOR<BrandScalarRelationFilter, BrandWhereInput>
+    versions?: VersionListRelationFilter
+  }, "id" | "brandId_name">
+
+  export type ModelOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    brandId?: SortOrder
+    _count?: ModelCountOrderByAggregateInput
+    _avg?: ModelAvgOrderByAggregateInput
+    _max?: ModelMaxOrderByAggregateInput
+    _min?: ModelMinOrderByAggregateInput
+    _sum?: ModelSumOrderByAggregateInput
+  }
+
+  export type ModelScalarWhereWithAggregatesInput = {
+    AND?: ModelScalarWhereWithAggregatesInput | ModelScalarWhereWithAggregatesInput[]
+    OR?: ModelScalarWhereWithAggregatesInput[]
+    NOT?: ModelScalarWhereWithAggregatesInput | ModelScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Model"> | number
+    name?: StringWithAggregatesFilter<"Model"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Model"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Model"> | Date | string
+    brandId?: IntWithAggregatesFilter<"Model"> | number
+  }
+
+  export type VersionWhereInput = {
+    AND?: VersionWhereInput | VersionWhereInput[]
+    OR?: VersionWhereInput[]
+    NOT?: VersionWhereInput | VersionWhereInput[]
+    id?: IntFilter<"Version"> | number
+    name?: StringFilter<"Version"> | string
+    createdAt?: DateTimeFilter<"Version"> | Date | string
+    updatedAt?: DateTimeFilter<"Version"> | Date | string
+    modelId?: IntFilter<"Version"> | number
+    model?: XOR<ModelScalarRelationFilter, ModelWhereInput>
+    bodyTypes?: BodyTypeVersionListRelationFilter
+  }
+
+  export type VersionOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    modelId?: SortOrder
+    model?: ModelOrderByWithRelationInput
+    bodyTypes?: BodyTypeVersionOrderByRelationAggregateInput
+  }
+
+  export type VersionWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    modelId_name?: VersionModelIdNameCompoundUniqueInput
+    AND?: VersionWhereInput | VersionWhereInput[]
+    OR?: VersionWhereInput[]
+    NOT?: VersionWhereInput | VersionWhereInput[]
+    name?: StringFilter<"Version"> | string
+    createdAt?: DateTimeFilter<"Version"> | Date | string
+    updatedAt?: DateTimeFilter<"Version"> | Date | string
+    modelId?: IntFilter<"Version"> | number
+    model?: XOR<ModelScalarRelationFilter, ModelWhereInput>
+    bodyTypes?: BodyTypeVersionListRelationFilter
+  }, "id" | "modelId_name">
+
+  export type VersionOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    modelId?: SortOrder
+    _count?: VersionCountOrderByAggregateInput
+    _avg?: VersionAvgOrderByAggregateInput
+    _max?: VersionMaxOrderByAggregateInput
+    _min?: VersionMinOrderByAggregateInput
+    _sum?: VersionSumOrderByAggregateInput
+  }
+
+  export type VersionScalarWhereWithAggregatesInput = {
+    AND?: VersionScalarWhereWithAggregatesInput | VersionScalarWhereWithAggregatesInput[]
+    OR?: VersionScalarWhereWithAggregatesInput[]
+    NOT?: VersionScalarWhereWithAggregatesInput | VersionScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Version"> | number
+    name?: StringWithAggregatesFilter<"Version"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Version"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Version"> | Date | string
+    modelId?: IntWithAggregatesFilter<"Version"> | number
+  }
+
+  export type BodyTypeWhereInput = {
+    AND?: BodyTypeWhereInput | BodyTypeWhereInput[]
+    OR?: BodyTypeWhereInput[]
+    NOT?: BodyTypeWhereInput | BodyTypeWhereInput[]
+    id?: IntFilter<"BodyType"> | number
+    name?: StringFilter<"BodyType"> | string
+    createdAt?: DateTimeFilter<"BodyType"> | Date | string
+    updatedAt?: DateTimeFilter<"BodyType"> | Date | string
+    versions?: BodyTypeVersionListRelationFilter
+  }
+
+  export type BodyTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    versions?: BodyTypeVersionOrderByRelationAggregateInput
+  }
+
+  export type BodyTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: BodyTypeWhereInput | BodyTypeWhereInput[]
+    OR?: BodyTypeWhereInput[]
+    NOT?: BodyTypeWhereInput | BodyTypeWhereInput[]
+    createdAt?: DateTimeFilter<"BodyType"> | Date | string
+    updatedAt?: DateTimeFilter<"BodyType"> | Date | string
+    versions?: BodyTypeVersionListRelationFilter
+  }, "id" | "name">
+
+  export type BodyTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BodyTypeCountOrderByAggregateInput
+    _avg?: BodyTypeAvgOrderByAggregateInput
+    _max?: BodyTypeMaxOrderByAggregateInput
+    _min?: BodyTypeMinOrderByAggregateInput
+    _sum?: BodyTypeSumOrderByAggregateInput
+  }
+
+  export type BodyTypeScalarWhereWithAggregatesInput = {
+    AND?: BodyTypeScalarWhereWithAggregatesInput | BodyTypeScalarWhereWithAggregatesInput[]
+    OR?: BodyTypeScalarWhereWithAggregatesInput[]
+    NOT?: BodyTypeScalarWhereWithAggregatesInput | BodyTypeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"BodyType"> | number
+    name?: StringWithAggregatesFilter<"BodyType"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"BodyType"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BodyType"> | Date | string
+  }
+
+  export type BodyTypeVersionWhereInput = {
+    AND?: BodyTypeVersionWhereInput | BodyTypeVersionWhereInput[]
+    OR?: BodyTypeVersionWhereInput[]
+    NOT?: BodyTypeVersionWhereInput | BodyTypeVersionWhereInput[]
+    id?: IntFilter<"BodyTypeVersion"> | number
+    createdAt?: DateTimeFilter<"BodyTypeVersion"> | Date | string
+    updatedAt?: DateTimeFilter<"BodyTypeVersion"> | Date | string
+    versionId?: IntFilter<"BodyTypeVersion"> | number
+    bodyTypeId?: IntFilter<"BodyTypeVersion"> | number
+    version?: XOR<VersionScalarRelationFilter, VersionWhereInput>
+    bodyType?: XOR<BodyTypeScalarRelationFilter, BodyTypeWhereInput>
+    fuelTypes?: FuelTypeBodyListRelationFilter
+  }
+
+  export type BodyTypeVersionOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+    version?: VersionOrderByWithRelationInput
+    bodyType?: BodyTypeOrderByWithRelationInput
+    fuelTypes?: FuelTypeBodyOrderByRelationAggregateInput
+  }
+
+  export type BodyTypeVersionWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    versionId_bodyTypeId?: BodyTypeVersionVersionIdBodyTypeIdCompoundUniqueInput
+    AND?: BodyTypeVersionWhereInput | BodyTypeVersionWhereInput[]
+    OR?: BodyTypeVersionWhereInput[]
+    NOT?: BodyTypeVersionWhereInput | BodyTypeVersionWhereInput[]
+    createdAt?: DateTimeFilter<"BodyTypeVersion"> | Date | string
+    updatedAt?: DateTimeFilter<"BodyTypeVersion"> | Date | string
+    versionId?: IntFilter<"BodyTypeVersion"> | number
+    bodyTypeId?: IntFilter<"BodyTypeVersion"> | number
+    version?: XOR<VersionScalarRelationFilter, VersionWhereInput>
+    bodyType?: XOR<BodyTypeScalarRelationFilter, BodyTypeWhereInput>
+    fuelTypes?: FuelTypeBodyListRelationFilter
+  }, "id" | "versionId_bodyTypeId">
+
+  export type BodyTypeVersionOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+    _count?: BodyTypeVersionCountOrderByAggregateInput
+    _avg?: BodyTypeVersionAvgOrderByAggregateInput
+    _max?: BodyTypeVersionMaxOrderByAggregateInput
+    _min?: BodyTypeVersionMinOrderByAggregateInput
+    _sum?: BodyTypeVersionSumOrderByAggregateInput
+  }
+
+  export type BodyTypeVersionScalarWhereWithAggregatesInput = {
+    AND?: BodyTypeVersionScalarWhereWithAggregatesInput | BodyTypeVersionScalarWhereWithAggregatesInput[]
+    OR?: BodyTypeVersionScalarWhereWithAggregatesInput[]
+    NOT?: BodyTypeVersionScalarWhereWithAggregatesInput | BodyTypeVersionScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"BodyTypeVersion"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"BodyTypeVersion"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BodyTypeVersion"> | Date | string
+    versionId?: IntWithAggregatesFilter<"BodyTypeVersion"> | number
+    bodyTypeId?: IntWithAggregatesFilter<"BodyTypeVersion"> | number
+  }
+
+  export type FuelTypeWhereInput = {
+    AND?: FuelTypeWhereInput | FuelTypeWhereInput[]
+    OR?: FuelTypeWhereInput[]
+    NOT?: FuelTypeWhereInput | FuelTypeWhereInput[]
+    id?: IntFilter<"FuelType"> | number
+    name?: StringFilter<"FuelType"> | string
+    createdAt?: DateTimeFilter<"FuelType"> | Date | string
+    updatedAt?: DateTimeFilter<"FuelType"> | Date | string
+    bodyTypes?: FuelTypeBodyListRelationFilter
+  }
+
+  export type FuelTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    bodyTypes?: FuelTypeBodyOrderByRelationAggregateInput
+  }
+
+  export type FuelTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: FuelTypeWhereInput | FuelTypeWhereInput[]
+    OR?: FuelTypeWhereInput[]
+    NOT?: FuelTypeWhereInput | FuelTypeWhereInput[]
+    createdAt?: DateTimeFilter<"FuelType"> | Date | string
+    updatedAt?: DateTimeFilter<"FuelType"> | Date | string
+    bodyTypes?: FuelTypeBodyListRelationFilter
+  }, "id" | "name">
+
+  export type FuelTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: FuelTypeCountOrderByAggregateInput
+    _avg?: FuelTypeAvgOrderByAggregateInput
+    _max?: FuelTypeMaxOrderByAggregateInput
+    _min?: FuelTypeMinOrderByAggregateInput
+    _sum?: FuelTypeSumOrderByAggregateInput
+  }
+
+  export type FuelTypeScalarWhereWithAggregatesInput = {
+    AND?: FuelTypeScalarWhereWithAggregatesInput | FuelTypeScalarWhereWithAggregatesInput[]
+    OR?: FuelTypeScalarWhereWithAggregatesInput[]
+    NOT?: FuelTypeScalarWhereWithAggregatesInput | FuelTypeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FuelType"> | number
+    name?: StringWithAggregatesFilter<"FuelType"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"FuelType"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FuelType"> | Date | string
+  }
+
+  export type FuelTypeBodyWhereInput = {
+    AND?: FuelTypeBodyWhereInput | FuelTypeBodyWhereInput[]
+    OR?: FuelTypeBodyWhereInput[]
+    NOT?: FuelTypeBodyWhereInput | FuelTypeBodyWhereInput[]
+    id?: IntFilter<"FuelTypeBody"> | number
+    createdAt?: DateTimeFilter<"FuelTypeBody"> | Date | string
+    updatedAt?: DateTimeFilter<"FuelTypeBody"> | Date | string
+    bodyVersionId?: IntFilter<"FuelTypeBody"> | number
+    fuelTypeId?: IntFilter<"FuelTypeBody"> | number
+    bodyVersion?: XOR<BodyTypeVersionScalarRelationFilter, BodyTypeVersionWhereInput>
+    fuelType?: XOR<FuelTypeScalarRelationFilter, FuelTypeWhereInput>
+    transmissionTypes?: TransmissionTypeFuelListRelationFilter
+  }
+
+  export type FuelTypeBodyOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    bodyVersionId?: SortOrder
+    fuelTypeId?: SortOrder
+    bodyVersion?: BodyTypeVersionOrderByWithRelationInput
+    fuelType?: FuelTypeOrderByWithRelationInput
+    transmissionTypes?: TransmissionTypeFuelOrderByRelationAggregateInput
+  }
+
+  export type FuelTypeBodyWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    bodyVersionId_fuelTypeId?: FuelTypeBodyBodyVersionIdFuelTypeIdCompoundUniqueInput
+    AND?: FuelTypeBodyWhereInput | FuelTypeBodyWhereInput[]
+    OR?: FuelTypeBodyWhereInput[]
+    NOT?: FuelTypeBodyWhereInput | FuelTypeBodyWhereInput[]
+    createdAt?: DateTimeFilter<"FuelTypeBody"> | Date | string
+    updatedAt?: DateTimeFilter<"FuelTypeBody"> | Date | string
+    bodyVersionId?: IntFilter<"FuelTypeBody"> | number
+    fuelTypeId?: IntFilter<"FuelTypeBody"> | number
+    bodyVersion?: XOR<BodyTypeVersionScalarRelationFilter, BodyTypeVersionWhereInput>
+    fuelType?: XOR<FuelTypeScalarRelationFilter, FuelTypeWhereInput>
+    transmissionTypes?: TransmissionTypeFuelListRelationFilter
+  }, "id" | "bodyVersionId_fuelTypeId">
+
+  export type FuelTypeBodyOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    bodyVersionId?: SortOrder
+    fuelTypeId?: SortOrder
+    _count?: FuelTypeBodyCountOrderByAggregateInput
+    _avg?: FuelTypeBodyAvgOrderByAggregateInput
+    _max?: FuelTypeBodyMaxOrderByAggregateInput
+    _min?: FuelTypeBodyMinOrderByAggregateInput
+    _sum?: FuelTypeBodySumOrderByAggregateInput
+  }
+
+  export type FuelTypeBodyScalarWhereWithAggregatesInput = {
+    AND?: FuelTypeBodyScalarWhereWithAggregatesInput | FuelTypeBodyScalarWhereWithAggregatesInput[]
+    OR?: FuelTypeBodyScalarWhereWithAggregatesInput[]
+    NOT?: FuelTypeBodyScalarWhereWithAggregatesInput | FuelTypeBodyScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FuelTypeBody"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"FuelTypeBody"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FuelTypeBody"> | Date | string
+    bodyVersionId?: IntWithAggregatesFilter<"FuelTypeBody"> | number
+    fuelTypeId?: IntWithAggregatesFilter<"FuelTypeBody"> | number
+  }
+
+  export type TransmissionTypeWhereInput = {
+    AND?: TransmissionTypeWhereInput | TransmissionTypeWhereInput[]
+    OR?: TransmissionTypeWhereInput[]
+    NOT?: TransmissionTypeWhereInput | TransmissionTypeWhereInput[]
+    id?: IntFilter<"TransmissionType"> | number
+    name?: StringFilter<"TransmissionType"> | string
+    createdAt?: DateTimeFilter<"TransmissionType"> | Date | string
+    updatedAt?: DateTimeFilter<"TransmissionType"> | Date | string
+    fuelTypes?: TransmissionTypeFuelListRelationFilter
+  }
+
+  export type TransmissionTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    fuelTypes?: TransmissionTypeFuelOrderByRelationAggregateInput
+  }
+
+  export type TransmissionTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: TransmissionTypeWhereInput | TransmissionTypeWhereInput[]
+    OR?: TransmissionTypeWhereInput[]
+    NOT?: TransmissionTypeWhereInput | TransmissionTypeWhereInput[]
+    createdAt?: DateTimeFilter<"TransmissionType"> | Date | string
+    updatedAt?: DateTimeFilter<"TransmissionType"> | Date | string
+    fuelTypes?: TransmissionTypeFuelListRelationFilter
+  }, "id" | "name">
+
+  export type TransmissionTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TransmissionTypeCountOrderByAggregateInput
+    _avg?: TransmissionTypeAvgOrderByAggregateInput
+    _max?: TransmissionTypeMaxOrderByAggregateInput
+    _min?: TransmissionTypeMinOrderByAggregateInput
+    _sum?: TransmissionTypeSumOrderByAggregateInput
+  }
+
+  export type TransmissionTypeScalarWhereWithAggregatesInput = {
+    AND?: TransmissionTypeScalarWhereWithAggregatesInput | TransmissionTypeScalarWhereWithAggregatesInput[]
+    OR?: TransmissionTypeScalarWhereWithAggregatesInput[]
+    NOT?: TransmissionTypeScalarWhereWithAggregatesInput | TransmissionTypeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TransmissionType"> | number
+    name?: StringWithAggregatesFilter<"TransmissionType"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"TransmissionType"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TransmissionType"> | Date | string
+  }
+
+  export type TransmissionTypeFuelWhereInput = {
+    AND?: TransmissionTypeFuelWhereInput | TransmissionTypeFuelWhereInput[]
+    OR?: TransmissionTypeFuelWhereInput[]
+    NOT?: TransmissionTypeFuelWhereInput | TransmissionTypeFuelWhereInput[]
+    id?: IntFilter<"TransmissionTypeFuel"> | number
+    createdAt?: DateTimeFilter<"TransmissionTypeFuel"> | Date | string
+    updatedAt?: DateTimeFilter<"TransmissionTypeFuel"> | Date | string
+    fuelBodyId?: IntFilter<"TransmissionTypeFuel"> | number
+    transmissionTypeId?: IntFilter<"TransmissionTypeFuel"> | number
+    fuelBody?: XOR<FuelTypeBodyScalarRelationFilter, FuelTypeBodyWhereInput>
+    transmissionType?: XOR<TransmissionTypeScalarRelationFilter, TransmissionTypeWhereInput>
+    years?: VehicleYearListRelationFilter
+  }
+
+  export type TransmissionTypeFuelOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    fuelBodyId?: SortOrder
+    transmissionTypeId?: SortOrder
+    fuelBody?: FuelTypeBodyOrderByWithRelationInput
+    transmissionType?: TransmissionTypeOrderByWithRelationInput
+    years?: VehicleYearOrderByRelationAggregateInput
+  }
+
+  export type TransmissionTypeFuelWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    fuelBodyId_transmissionTypeId?: TransmissionTypeFuelFuelBodyIdTransmissionTypeIdCompoundUniqueInput
+    AND?: TransmissionTypeFuelWhereInput | TransmissionTypeFuelWhereInput[]
+    OR?: TransmissionTypeFuelWhereInput[]
+    NOT?: TransmissionTypeFuelWhereInput | TransmissionTypeFuelWhereInput[]
+    createdAt?: DateTimeFilter<"TransmissionTypeFuel"> | Date | string
+    updatedAt?: DateTimeFilter<"TransmissionTypeFuel"> | Date | string
+    fuelBodyId?: IntFilter<"TransmissionTypeFuel"> | number
+    transmissionTypeId?: IntFilter<"TransmissionTypeFuel"> | number
+    fuelBody?: XOR<FuelTypeBodyScalarRelationFilter, FuelTypeBodyWhereInput>
+    transmissionType?: XOR<TransmissionTypeScalarRelationFilter, TransmissionTypeWhereInput>
+    years?: VehicleYearListRelationFilter
+  }, "id" | "fuelBodyId_transmissionTypeId">
+
+  export type TransmissionTypeFuelOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    fuelBodyId?: SortOrder
+    transmissionTypeId?: SortOrder
+    _count?: TransmissionTypeFuelCountOrderByAggregateInput
+    _avg?: TransmissionTypeFuelAvgOrderByAggregateInput
+    _max?: TransmissionTypeFuelMaxOrderByAggregateInput
+    _min?: TransmissionTypeFuelMinOrderByAggregateInput
+    _sum?: TransmissionTypeFuelSumOrderByAggregateInput
+  }
+
+  export type TransmissionTypeFuelScalarWhereWithAggregatesInput = {
+    AND?: TransmissionTypeFuelScalarWhereWithAggregatesInput | TransmissionTypeFuelScalarWhereWithAggregatesInput[]
+    OR?: TransmissionTypeFuelScalarWhereWithAggregatesInput[]
+    NOT?: TransmissionTypeFuelScalarWhereWithAggregatesInput | TransmissionTypeFuelScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TransmissionTypeFuel"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"TransmissionTypeFuel"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TransmissionTypeFuel"> | Date | string
+    fuelBodyId?: IntWithAggregatesFilter<"TransmissionTypeFuel"> | number
+    transmissionTypeId?: IntWithAggregatesFilter<"TransmissionTypeFuel"> | number
+  }
+
+  export type VehicleYearWhereInput = {
+    AND?: VehicleYearWhereInput | VehicleYearWhereInput[]
+    OR?: VehicleYearWhereInput[]
+    NOT?: VehicleYearWhereInput | VehicleYearWhereInput[]
+    id?: IntFilter<"VehicleYear"> | number
+    year?: IntFilter<"VehicleYear"> | number
+    createdAt?: DateTimeFilter<"VehicleYear"> | Date | string
+    updatedAt?: DateTimeFilter<"VehicleYear"> | Date | string
+    transmissionTypeFuelId?: IntFilter<"VehicleYear"> | number
+    transmissionTypeFuel?: XOR<TransmissionTypeFuelScalarRelationFilter, TransmissionTypeFuelWhereInput>
+    mileages?: MileageListRelationFilter
+  }
+
+  export type VehicleYearOrderByWithRelationInput = {
+    id?: SortOrder
+    year?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    transmissionTypeFuelId?: SortOrder
+    transmissionTypeFuel?: TransmissionTypeFuelOrderByWithRelationInput
+    mileages?: MileageOrderByRelationAggregateInput
+  }
+
+  export type VehicleYearWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    transmissionTypeFuelId_year?: VehicleYearTransmissionTypeFuelIdYearCompoundUniqueInput
+    AND?: VehicleYearWhereInput | VehicleYearWhereInput[]
+    OR?: VehicleYearWhereInput[]
+    NOT?: VehicleYearWhereInput | VehicleYearWhereInput[]
+    year?: IntFilter<"VehicleYear"> | number
+    createdAt?: DateTimeFilter<"VehicleYear"> | Date | string
+    updatedAt?: DateTimeFilter<"VehicleYear"> | Date | string
+    transmissionTypeFuelId?: IntFilter<"VehicleYear"> | number
+    transmissionTypeFuel?: XOR<TransmissionTypeFuelScalarRelationFilter, TransmissionTypeFuelWhereInput>
+    mileages?: MileageListRelationFilter
+  }, "id" | "transmissionTypeFuelId_year">
+
+  export type VehicleYearOrderByWithAggregationInput = {
+    id?: SortOrder
+    year?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    transmissionTypeFuelId?: SortOrder
+    _count?: VehicleYearCountOrderByAggregateInput
+    _avg?: VehicleYearAvgOrderByAggregateInput
+    _max?: VehicleYearMaxOrderByAggregateInput
+    _min?: VehicleYearMinOrderByAggregateInput
+    _sum?: VehicleYearSumOrderByAggregateInput
+  }
+
+  export type VehicleYearScalarWhereWithAggregatesInput = {
+    AND?: VehicleYearScalarWhereWithAggregatesInput | VehicleYearScalarWhereWithAggregatesInput[]
+    OR?: VehicleYearScalarWhereWithAggregatesInput[]
+    NOT?: VehicleYearScalarWhereWithAggregatesInput | VehicleYearScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"VehicleYear"> | number
+    year?: IntWithAggregatesFilter<"VehicleYear"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"VehicleYear"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"VehicleYear"> | Date | string
+    transmissionTypeFuelId?: IntWithAggregatesFilter<"VehicleYear"> | number
+  }
+
+  export type MileageWhereInput = {
+    AND?: MileageWhereInput | MileageWhereInput[]
+    OR?: MileageWhereInput[]
+    NOT?: MileageWhereInput | MileageWhereInput[]
+    id?: IntFilter<"Mileage"> | number
+    minKm?: IntFilter<"Mileage"> | number
+    maxKm?: IntFilter<"Mileage"> | number
+    createdAt?: DateTimeFilter<"Mileage"> | Date | string
+    updatedAt?: DateTimeFilter<"Mileage"> | Date | string
+    vehicleYearId?: IntFilter<"Mileage"> | number
+    vehicleYear?: XOR<VehicleYearScalarRelationFilter, VehicleYearWhereInput>
+    colors?: ColorMileageListRelationFilter
+  }
+
+  export type MileageOrderByWithRelationInput = {
+    id?: SortOrder
+    minKm?: SortOrder
+    maxKm?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    vehicleYearId?: SortOrder
+    vehicleYear?: VehicleYearOrderByWithRelationInput
+    colors?: ColorMileageOrderByRelationAggregateInput
+  }
+
+  export type MileageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    vehicleYearId_minKm_maxKm?: MileageVehicleYearIdMinKmMaxKmCompoundUniqueInput
+    AND?: MileageWhereInput | MileageWhereInput[]
+    OR?: MileageWhereInput[]
+    NOT?: MileageWhereInput | MileageWhereInput[]
+    minKm?: IntFilter<"Mileage"> | number
+    maxKm?: IntFilter<"Mileage"> | number
+    createdAt?: DateTimeFilter<"Mileage"> | Date | string
+    updatedAt?: DateTimeFilter<"Mileage"> | Date | string
+    vehicleYearId?: IntFilter<"Mileage"> | number
+    vehicleYear?: XOR<VehicleYearScalarRelationFilter, VehicleYearWhereInput>
+    colors?: ColorMileageListRelationFilter
+  }, "id" | "vehicleYearId_minKm_maxKm">
+
+  export type MileageOrderByWithAggregationInput = {
+    id?: SortOrder
+    minKm?: SortOrder
+    maxKm?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    vehicleYearId?: SortOrder
+    _count?: MileageCountOrderByAggregateInput
+    _avg?: MileageAvgOrderByAggregateInput
+    _max?: MileageMaxOrderByAggregateInput
+    _min?: MileageMinOrderByAggregateInput
+    _sum?: MileageSumOrderByAggregateInput
+  }
+
+  export type MileageScalarWhereWithAggregatesInput = {
+    AND?: MileageScalarWhereWithAggregatesInput | MileageScalarWhereWithAggregatesInput[]
+    OR?: MileageScalarWhereWithAggregatesInput[]
+    NOT?: MileageScalarWhereWithAggregatesInput | MileageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Mileage"> | number
+    minKm?: IntWithAggregatesFilter<"Mileage"> | number
+    maxKm?: IntWithAggregatesFilter<"Mileage"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Mileage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Mileage"> | Date | string
+    vehicleYearId?: IntWithAggregatesFilter<"Mileage"> | number
+  }
+
+  export type ColorWhereInput = {
+    AND?: ColorWhereInput | ColorWhereInput[]
+    OR?: ColorWhereInput[]
+    NOT?: ColorWhereInput | ColorWhereInput[]
+    id?: IntFilter<"Color"> | number
+    name?: StringFilter<"Color"> | string
+    createdAt?: DateTimeFilter<"Color"> | Date | string
+    updatedAt?: DateTimeFilter<"Color"> | Date | string
+    mileages?: ColorMileageListRelationFilter
+  }
+
+  export type ColorOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mileages?: ColorMileageOrderByRelationAggregateInput
+  }
+
+  export type ColorWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: ColorWhereInput | ColorWhereInput[]
+    OR?: ColorWhereInput[]
+    NOT?: ColorWhereInput | ColorWhereInput[]
+    createdAt?: DateTimeFilter<"Color"> | Date | string
+    updatedAt?: DateTimeFilter<"Color"> | Date | string
+    mileages?: ColorMileageListRelationFilter
+  }, "id" | "name">
+
+  export type ColorOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ColorCountOrderByAggregateInput
+    _avg?: ColorAvgOrderByAggregateInput
+    _max?: ColorMaxOrderByAggregateInput
+    _min?: ColorMinOrderByAggregateInput
+    _sum?: ColorSumOrderByAggregateInput
+  }
+
+  export type ColorScalarWhereWithAggregatesInput = {
+    AND?: ColorScalarWhereWithAggregatesInput | ColorScalarWhereWithAggregatesInput[]
+    OR?: ColorScalarWhereWithAggregatesInput[]
+    NOT?: ColorScalarWhereWithAggregatesInput | ColorScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Color"> | number
+    name?: StringWithAggregatesFilter<"Color"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Color"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Color"> | Date | string
+  }
+
+  export type ColorMileageWhereInput = {
+    AND?: ColorMileageWhereInput | ColorMileageWhereInput[]
+    OR?: ColorMileageWhereInput[]
+    NOT?: ColorMileageWhereInput | ColorMileageWhereInput[]
+    id?: IntFilter<"ColorMileage"> | number
+    createdAt?: DateTimeFilter<"ColorMileage"> | Date | string
+    updatedAt?: DateTimeFilter<"ColorMileage"> | Date | string
+    mileageId?: IntFilter<"ColorMileage"> | number
+    colorId?: IntFilter<"ColorMileage"> | number
+    mileage?: XOR<MileageScalarRelationFilter, MileageWhereInput>
+    color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
+    accidentRecords?: AccidentRecordListRelationFilter
+  }
+
+  export type ColorMileageOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mileageId?: SortOrder
+    colorId?: SortOrder
+    mileage?: MileageOrderByWithRelationInput
+    color?: ColorOrderByWithRelationInput
+    accidentRecords?: AccidentRecordOrderByRelationAggregateInput
+  }
+
+  export type ColorMileageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    mileageId_colorId?: ColorMileageMileageIdColorIdCompoundUniqueInput
+    AND?: ColorMileageWhereInput | ColorMileageWhereInput[]
+    OR?: ColorMileageWhereInput[]
+    NOT?: ColorMileageWhereInput | ColorMileageWhereInput[]
+    createdAt?: DateTimeFilter<"ColorMileage"> | Date | string
+    updatedAt?: DateTimeFilter<"ColorMileage"> | Date | string
+    mileageId?: IntFilter<"ColorMileage"> | number
+    colorId?: IntFilter<"ColorMileage"> | number
+    mileage?: XOR<MileageScalarRelationFilter, MileageWhereInput>
+    color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
+    accidentRecords?: AccidentRecordListRelationFilter
+  }, "id" | "mileageId_colorId">
+
+  export type ColorMileageOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mileageId?: SortOrder
+    colorId?: SortOrder
+    _count?: ColorMileageCountOrderByAggregateInput
+    _avg?: ColorMileageAvgOrderByAggregateInput
+    _max?: ColorMileageMaxOrderByAggregateInput
+    _min?: ColorMileageMinOrderByAggregateInput
+    _sum?: ColorMileageSumOrderByAggregateInput
+  }
+
+  export type ColorMileageScalarWhereWithAggregatesInput = {
+    AND?: ColorMileageScalarWhereWithAggregatesInput | ColorMileageScalarWhereWithAggregatesInput[]
+    OR?: ColorMileageScalarWhereWithAggregatesInput[]
+    NOT?: ColorMileageScalarWhereWithAggregatesInput | ColorMileageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ColorMileage"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"ColorMileage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ColorMileage"> | Date | string
+    mileageId?: IntWithAggregatesFilter<"ColorMileage"> | number
+    colorId?: IntWithAggregatesFilter<"ColorMileage"> | number
+  }
+
+  export type AccidentRecordWhereInput = {
+    AND?: AccidentRecordWhereInput | AccidentRecordWhereInput[]
+    OR?: AccidentRecordWhereInput[]
+    NOT?: AccidentRecordWhereInput | AccidentRecordWhereInput[]
+    id?: IntFilter<"AccidentRecord"> | number
+    status?: StringFilter<"AccidentRecord"> | string
+    amount?: FloatNullableFilter<"AccidentRecord"> | number | null
+    createdAt?: DateTimeFilter<"AccidentRecord"> | Date | string
+    updatedAt?: DateTimeFilter<"AccidentRecord"> | Date | string
+    colorMileageId?: IntFilter<"AccidentRecord"> | number
+    colorMileage?: XOR<ColorMileageScalarRelationFilter, ColorMileageWhereInput>
+    vehicles?: VehicleListRelationFilter
+  }
+
+  export type AccidentRecordOrderByWithRelationInput = {
+    id?: SortOrder
+    status?: SortOrder
+    amount?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    colorMileageId?: SortOrder
+    colorMileage?: ColorMileageOrderByWithRelationInput
+    vehicles?: VehicleOrderByRelationAggregateInput
+  }
+
+  export type AccidentRecordWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: AccidentRecordWhereInput | AccidentRecordWhereInput[]
+    OR?: AccidentRecordWhereInput[]
+    NOT?: AccidentRecordWhereInput | AccidentRecordWhereInput[]
+    status?: StringFilter<"AccidentRecord"> | string
+    amount?: FloatNullableFilter<"AccidentRecord"> | number | null
+    createdAt?: DateTimeFilter<"AccidentRecord"> | Date | string
+    updatedAt?: DateTimeFilter<"AccidentRecord"> | Date | string
+    colorMileageId?: IntFilter<"AccidentRecord"> | number
+    colorMileage?: XOR<ColorMileageScalarRelationFilter, ColorMileageWhereInput>
+    vehicles?: VehicleListRelationFilter
+  }, "id">
+
+  export type AccidentRecordOrderByWithAggregationInput = {
+    id?: SortOrder
+    status?: SortOrder
+    amount?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    colorMileageId?: SortOrder
+    _count?: AccidentRecordCountOrderByAggregateInput
+    _avg?: AccidentRecordAvgOrderByAggregateInput
+    _max?: AccidentRecordMaxOrderByAggregateInput
+    _min?: AccidentRecordMinOrderByAggregateInput
+    _sum?: AccidentRecordSumOrderByAggregateInput
+  }
+
+  export type AccidentRecordScalarWhereWithAggregatesInput = {
+    AND?: AccidentRecordScalarWhereWithAggregatesInput | AccidentRecordScalarWhereWithAggregatesInput[]
+    OR?: AccidentRecordScalarWhereWithAggregatesInput[]
+    NOT?: AccidentRecordScalarWhereWithAggregatesInput | AccidentRecordScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"AccidentRecord"> | number
+    status?: StringWithAggregatesFilter<"AccidentRecord"> | string
+    amount?: FloatNullableWithAggregatesFilter<"AccidentRecord"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"AccidentRecord"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AccidentRecord"> | Date | string
+    colorMileageId?: IntWithAggregatesFilter<"AccidentRecord"> | number
+  }
+
+  export type VehicleWhereInput = {
+    AND?: VehicleWhereInput | VehicleWhereInput[]
+    OR?: VehicleWhereInput[]
+    NOT?: VehicleWhereInput | VehicleWhereInput[]
+    id?: IntFilter<"Vehicle"> | number
+    price?: FloatFilter<"Vehicle"> | number
+    registrationDate?: DateTimeFilter<"Vehicle"> | Date | string
+    updateDate?: DateTimeFilter<"Vehicle"> | Date | string
+    accidentRecordId?: IntFilter<"Vehicle"> | number
+    description?: StringNullableFilter<"Vehicle"> | string | null
+    listingStatus?: StringFilter<"Vehicle"> | string
+    accidentRecord?: XOR<AccidentRecordScalarRelationFilter, AccidentRecordWhereInput>
+  }
+
+  export type VehicleOrderByWithRelationInput = {
+    id?: SortOrder
+    price?: SortOrder
+    registrationDate?: SortOrder
+    updateDate?: SortOrder
+    accidentRecordId?: SortOrder
+    description?: SortOrderInput | SortOrder
+    listingStatus?: SortOrder
+    accidentRecord?: AccidentRecordOrderByWithRelationInput
+  }
+
+  export type VehicleWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: VehicleWhereInput | VehicleWhereInput[]
+    OR?: VehicleWhereInput[]
+    NOT?: VehicleWhereInput | VehicleWhereInput[]
+    price?: FloatFilter<"Vehicle"> | number
+    registrationDate?: DateTimeFilter<"Vehicle"> | Date | string
+    updateDate?: DateTimeFilter<"Vehicle"> | Date | string
+    accidentRecordId?: IntFilter<"Vehicle"> | number
+    description?: StringNullableFilter<"Vehicle"> | string | null
+    listingStatus?: StringFilter<"Vehicle"> | string
+    accidentRecord?: XOR<AccidentRecordScalarRelationFilter, AccidentRecordWhereInput>
+  }, "id">
+
+  export type VehicleOrderByWithAggregationInput = {
+    id?: SortOrder
+    price?: SortOrder
+    registrationDate?: SortOrder
+    updateDate?: SortOrder
+    accidentRecordId?: SortOrder
+    description?: SortOrderInput | SortOrder
+    listingStatus?: SortOrder
+    _count?: VehicleCountOrderByAggregateInput
+    _avg?: VehicleAvgOrderByAggregateInput
+    _max?: VehicleMaxOrderByAggregateInput
+    _min?: VehicleMinOrderByAggregateInput
+    _sum?: VehicleSumOrderByAggregateInput
+  }
+
+  export type VehicleScalarWhereWithAggregatesInput = {
+    AND?: VehicleScalarWhereWithAggregatesInput | VehicleScalarWhereWithAggregatesInput[]
+    OR?: VehicleScalarWhereWithAggregatesInput[]
+    NOT?: VehicleScalarWhereWithAggregatesInput | VehicleScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Vehicle"> | number
+    price?: FloatWithAggregatesFilter<"Vehicle"> | number
+    registrationDate?: DateTimeWithAggregatesFilter<"Vehicle"> | Date | string
+    updateDate?: DateTimeWithAggregatesFilter<"Vehicle"> | Date | string
+    accidentRecordId?: IntWithAggregatesFilter<"Vehicle"> | number
+    description?: StringNullableWithAggregatesFilter<"Vehicle"> | string | null
+    listingStatus?: StringWithAggregatesFilter<"Vehicle"> | string
+  }
+
+  export type BrandCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    models?: ModelCreateNestedManyWithoutBrandInput
+  }
+
+  export type BrandUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    models?: ModelUncheckedCreateNestedManyWithoutBrandInput
+  }
+
+  export type BrandUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    models?: ModelUpdateManyWithoutBrandNestedInput
+  }
+
+  export type BrandUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    models?: ModelUncheckedUpdateManyWithoutBrandNestedInput
+  }
+
+  export type BrandCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BrandUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BrandUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ModelCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    brand: BrandCreateNestedOneWithoutModelsInput
+    versions?: VersionCreateNestedManyWithoutModelInput
+  }
+
+  export type ModelUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    brandId: number
+    versions?: VersionUncheckedCreateNestedManyWithoutModelInput
+  }
+
+  export type ModelUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brand?: BrandUpdateOneRequiredWithoutModelsNestedInput
+    versions?: VersionUpdateManyWithoutModelNestedInput
+  }
+
+  export type ModelUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brandId?: IntFieldUpdateOperationsInput | number
+    versions?: VersionUncheckedUpdateManyWithoutModelNestedInput
+  }
+
+  export type ModelCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    brandId: number
+  }
+
+  export type ModelUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ModelUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brandId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type VersionCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    model: ModelCreateNestedOneWithoutVersionsInput
+    bodyTypes?: BodyTypeVersionCreateNestedManyWithoutVersionInput
+  }
+
+  export type VersionUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    modelId: number
+    bodyTypes?: BodyTypeVersionUncheckedCreateNestedManyWithoutVersionInput
+  }
+
+  export type VersionUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    model?: ModelUpdateOneRequiredWithoutVersionsNestedInput
+    bodyTypes?: BodyTypeVersionUpdateManyWithoutVersionNestedInput
+  }
+
+  export type VersionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    modelId?: IntFieldUpdateOperationsInput | number
+    bodyTypes?: BodyTypeVersionUncheckedUpdateManyWithoutVersionNestedInput
+  }
+
+  export type VersionCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    modelId: number
+  }
+
+  export type VersionUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VersionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    modelId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BodyTypeCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versions?: BodyTypeVersionCreateNestedManyWithoutBodyTypeInput
+  }
+
+  export type BodyTypeUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versions?: BodyTypeVersionUncheckedCreateNestedManyWithoutBodyTypeInput
+  }
+
+  export type BodyTypeUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versions?: BodyTypeVersionUpdateManyWithoutBodyTypeNestedInput
+  }
+
+  export type BodyTypeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versions?: BodyTypeVersionUncheckedUpdateManyWithoutBodyTypeNestedInput
+  }
+
+  export type BodyTypeCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BodyTypeUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BodyTypeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BodyTypeVersionCreateInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    version: VersionCreateNestedOneWithoutBodyTypesInput
+    bodyType: BodyTypeCreateNestedOneWithoutVersionsInput
+    fuelTypes?: FuelTypeBodyCreateNestedManyWithoutBodyVersionInput
+  }
+
+  export type BodyTypeVersionUncheckedCreateInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versionId: number
+    bodyTypeId: number
+    fuelTypes?: FuelTypeBodyUncheckedCreateNestedManyWithoutBodyVersionInput
+  }
+
+  export type BodyTypeVersionUpdateInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    version?: VersionUpdateOneRequiredWithoutBodyTypesNestedInput
+    bodyType?: BodyTypeUpdateOneRequiredWithoutVersionsNestedInput
+    fuelTypes?: FuelTypeBodyUpdateManyWithoutBodyVersionNestedInput
+  }
+
+  export type BodyTypeVersionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versionId?: IntFieldUpdateOperationsInput | number
+    bodyTypeId?: IntFieldUpdateOperationsInput | number
+    fuelTypes?: FuelTypeBodyUncheckedUpdateManyWithoutBodyVersionNestedInput
+  }
+
+  export type BodyTypeVersionCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versionId: number
+    bodyTypeId: number
+  }
+
+  export type BodyTypeVersionUpdateManyMutationInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BodyTypeVersionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versionId?: IntFieldUpdateOperationsInput | number
+    bodyTypeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FuelTypeCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyTypes?: FuelTypeBodyCreateNestedManyWithoutFuelTypeInput
+  }
+
+  export type FuelTypeUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyTypes?: FuelTypeBodyUncheckedCreateNestedManyWithoutFuelTypeInput
+  }
+
+  export type FuelTypeUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyTypes?: FuelTypeBodyUpdateManyWithoutFuelTypeNestedInput
+  }
+
+  export type FuelTypeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyTypes?: FuelTypeBodyUncheckedUpdateManyWithoutFuelTypeNestedInput
+  }
+
+  export type FuelTypeCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FuelTypeUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FuelTypeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FuelTypeBodyCreateInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyVersion: BodyTypeVersionCreateNestedOneWithoutFuelTypesInput
+    fuelType: FuelTypeCreateNestedOneWithoutBodyTypesInput
+    transmissionTypes?: TransmissionTypeFuelCreateNestedManyWithoutFuelBodyInput
+  }
+
+  export type FuelTypeBodyUncheckedCreateInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyVersionId: number
+    fuelTypeId: number
+    transmissionTypes?: TransmissionTypeFuelUncheckedCreateNestedManyWithoutFuelBodyInput
+  }
+
+  export type FuelTypeBodyUpdateInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyVersion?: BodyTypeVersionUpdateOneRequiredWithoutFuelTypesNestedInput
+    fuelType?: FuelTypeUpdateOneRequiredWithoutBodyTypesNestedInput
+    transmissionTypes?: TransmissionTypeFuelUpdateManyWithoutFuelBodyNestedInput
+  }
+
+  export type FuelTypeBodyUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyVersionId?: IntFieldUpdateOperationsInput | number
+    fuelTypeId?: IntFieldUpdateOperationsInput | number
+    transmissionTypes?: TransmissionTypeFuelUncheckedUpdateManyWithoutFuelBodyNestedInput
+  }
+
+  export type FuelTypeBodyCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyVersionId: number
+    fuelTypeId: number
+  }
+
+  export type FuelTypeBodyUpdateManyMutationInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FuelTypeBodyUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyVersionId?: IntFieldUpdateOperationsInput | number
+    fuelTypeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TransmissionTypeCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelTypes?: TransmissionTypeFuelCreateNestedManyWithoutTransmissionTypeInput
+  }
+
+  export type TransmissionTypeUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelTypes?: TransmissionTypeFuelUncheckedCreateNestedManyWithoutTransmissionTypeInput
+  }
+
+  export type TransmissionTypeUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelTypes?: TransmissionTypeFuelUpdateManyWithoutTransmissionTypeNestedInput
+  }
+
+  export type TransmissionTypeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelTypes?: TransmissionTypeFuelUncheckedUpdateManyWithoutTransmissionTypeNestedInput
+  }
+
+  export type TransmissionTypeCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TransmissionTypeUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransmissionTypeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransmissionTypeFuelCreateInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelBody: FuelTypeBodyCreateNestedOneWithoutTransmissionTypesInput
+    transmissionType: TransmissionTypeCreateNestedOneWithoutFuelTypesInput
+    years?: VehicleYearCreateNestedManyWithoutTransmissionTypeFuelInput
+  }
+
+  export type TransmissionTypeFuelUncheckedCreateInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelBodyId: number
+    transmissionTypeId: number
+    years?: VehicleYearUncheckedCreateNestedManyWithoutTransmissionTypeFuelInput
+  }
+
+  export type TransmissionTypeFuelUpdateInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelBody?: FuelTypeBodyUpdateOneRequiredWithoutTransmissionTypesNestedInput
+    transmissionType?: TransmissionTypeUpdateOneRequiredWithoutFuelTypesNestedInput
+    years?: VehicleYearUpdateManyWithoutTransmissionTypeFuelNestedInput
+  }
+
+  export type TransmissionTypeFuelUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelBodyId?: IntFieldUpdateOperationsInput | number
+    transmissionTypeId?: IntFieldUpdateOperationsInput | number
+    years?: VehicleYearUncheckedUpdateManyWithoutTransmissionTypeFuelNestedInput
+  }
+
+  export type TransmissionTypeFuelCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelBodyId: number
+    transmissionTypeId: number
+  }
+
+  export type TransmissionTypeFuelUpdateManyMutationInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransmissionTypeFuelUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelBodyId?: IntFieldUpdateOperationsInput | number
+    transmissionTypeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type VehicleYearCreateInput = {
+    year: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transmissionTypeFuel: TransmissionTypeFuelCreateNestedOneWithoutYearsInput
+    mileages?: MileageCreateNestedManyWithoutVehicleYearInput
+  }
+
+  export type VehicleYearUncheckedCreateInput = {
+    id?: number
+    year: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transmissionTypeFuelId: number
+    mileages?: MileageUncheckedCreateNestedManyWithoutVehicleYearInput
+  }
+
+  export type VehicleYearUpdateInput = {
+    year?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transmissionTypeFuel?: TransmissionTypeFuelUpdateOneRequiredWithoutYearsNestedInput
+    mileages?: MileageUpdateManyWithoutVehicleYearNestedInput
+  }
+
+  export type VehicleYearUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transmissionTypeFuelId?: IntFieldUpdateOperationsInput | number
+    mileages?: MileageUncheckedUpdateManyWithoutVehicleYearNestedInput
+  }
+
+  export type VehicleYearCreateManyInput = {
+    id?: number
+    year: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transmissionTypeFuelId: number
+  }
+
+  export type VehicleYearUpdateManyMutationInput = {
+    year?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VehicleYearUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transmissionTypeFuelId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MileageCreateInput = {
+    minKm: number
+    maxKm: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    vehicleYear: VehicleYearCreateNestedOneWithoutMileagesInput
+    colors?: ColorMileageCreateNestedManyWithoutMileageInput
+  }
+
+  export type MileageUncheckedCreateInput = {
+    id?: number
+    minKm: number
+    maxKm: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    vehicleYearId: number
+    colors?: ColorMileageUncheckedCreateNestedManyWithoutMileageInput
+  }
+
+  export type MileageUpdateInput = {
+    minKm?: IntFieldUpdateOperationsInput | number
+    maxKm?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleYear?: VehicleYearUpdateOneRequiredWithoutMileagesNestedInput
+    colors?: ColorMileageUpdateManyWithoutMileageNestedInput
+  }
+
+  export type MileageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    minKm?: IntFieldUpdateOperationsInput | number
+    maxKm?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleYearId?: IntFieldUpdateOperationsInput | number
+    colors?: ColorMileageUncheckedUpdateManyWithoutMileageNestedInput
+  }
+
+  export type MileageCreateManyInput = {
+    id?: number
+    minKm: number
+    maxKm: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    vehicleYearId: number
+  }
+
+  export type MileageUpdateManyMutationInput = {
+    minKm?: IntFieldUpdateOperationsInput | number
+    maxKm?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MileageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    minKm?: IntFieldUpdateOperationsInput | number
+    maxKm?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleYearId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ColorCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileages?: ColorMileageCreateNestedManyWithoutColorInput
+  }
+
+  export type ColorUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileages?: ColorMileageUncheckedCreateNestedManyWithoutColorInput
+  }
+
+  export type ColorUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileages?: ColorMileageUpdateManyWithoutColorNestedInput
+  }
+
+  export type ColorUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileages?: ColorMileageUncheckedUpdateManyWithoutColorNestedInput
+  }
+
+  export type ColorCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ColorUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorMileageCreateInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileage: MileageCreateNestedOneWithoutColorsInput
+    color: ColorCreateNestedOneWithoutMileagesInput
+    accidentRecords?: AccidentRecordCreateNestedManyWithoutColorMileageInput
+  }
+
+  export type ColorMileageUncheckedCreateInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileageId: number
+    colorId: number
+    accidentRecords?: AccidentRecordUncheckedCreateNestedManyWithoutColorMileageInput
+  }
+
+  export type ColorMileageUpdateInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileage?: MileageUpdateOneRequiredWithoutColorsNestedInput
+    color?: ColorUpdateOneRequiredWithoutMileagesNestedInput
+    accidentRecords?: AccidentRecordUpdateManyWithoutColorMileageNestedInput
+  }
+
+  export type ColorMileageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileageId?: IntFieldUpdateOperationsInput | number
+    colorId?: IntFieldUpdateOperationsInput | number
+    accidentRecords?: AccidentRecordUncheckedUpdateManyWithoutColorMileageNestedInput
+  }
+
+  export type ColorMileageCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileageId: number
+    colorId: number
+  }
+
+  export type ColorMileageUpdateManyMutationInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorMileageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileageId?: IntFieldUpdateOperationsInput | number
+    colorId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AccidentRecordCreateInput = {
+    status: string
+    amount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    colorMileage: ColorMileageCreateNestedOneWithoutAccidentRecordsInput
+    vehicles?: VehicleCreateNestedManyWithoutAccidentRecordInput
+  }
+
+  export type AccidentRecordUncheckedCreateInput = {
+    id?: number
+    status: string
+    amount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    colorMileageId: number
+    vehicles?: VehicleUncheckedCreateNestedManyWithoutAccidentRecordInput
+  }
+
+  export type AccidentRecordUpdateInput = {
+    status?: StringFieldUpdateOperationsInput | string
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    colorMileage?: ColorMileageUpdateOneRequiredWithoutAccidentRecordsNestedInput
+    vehicles?: VehicleUpdateManyWithoutAccidentRecordNestedInput
+  }
+
+  export type AccidentRecordUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    colorMileageId?: IntFieldUpdateOperationsInput | number
+    vehicles?: VehicleUncheckedUpdateManyWithoutAccidentRecordNestedInput
+  }
+
+  export type AccidentRecordCreateManyInput = {
+    id?: number
+    status: string
+    amount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    colorMileageId: number
+  }
+
+  export type AccidentRecordUpdateManyMutationInput = {
+    status?: StringFieldUpdateOperationsInput | string
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AccidentRecordUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    colorMileageId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type VehicleCreateInput = {
+    price: number
+    registrationDate?: Date | string
+    updateDate?: Date | string
+    description?: string | null
+    listingStatus?: string
+    accidentRecord: AccidentRecordCreateNestedOneWithoutVehiclesInput
+  }
+
+  export type VehicleUncheckedCreateInput = {
+    id?: number
+    price: number
+    registrationDate?: Date | string
+    updateDate?: Date | string
+    accidentRecordId: number
+    description?: string | null
+    listingStatus?: string
+  }
+
+  export type VehicleUpdateInput = {
+    price?: FloatFieldUpdateOperationsInput | number
+    registrationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    listingStatus?: StringFieldUpdateOperationsInput | string
+    accidentRecord?: AccidentRecordUpdateOneRequiredWithoutVehiclesNestedInput
+  }
+
+  export type VehicleUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    registrationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    accidentRecordId?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    listingStatus?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VehicleCreateManyInput = {
+    id?: number
+    price: number
+    registrationDate?: Date | string
+    updateDate?: Date | string
+    accidentRecordId: number
+    description?: string | null
+    listingStatus?: string
+  }
+
+  export type VehicleUpdateManyMutationInput = {
+    price?: FloatFieldUpdateOperationsInput | number
+    registrationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    listingStatus?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VehicleUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    registrationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    accidentRecordId?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    listingStatus?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type ModelListRelationFilter = {
+    every?: ModelWhereInput
+    some?: ModelWhereInput
+    none?: ModelWhereInput
+  }
+
+  export type ModelOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BrandCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BrandAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BrandMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BrandMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BrandSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BrandScalarRelationFilter = {
+    is?: BrandWhereInput
+    isNot?: BrandWhereInput
+  }
+
+  export type VersionListRelationFilter = {
+    every?: VersionWhereInput
+    some?: VersionWhereInput
+    none?: VersionWhereInput
+  }
+
+  export type VersionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ModelBrandIdNameCompoundUniqueInput = {
+    brandId: number
+    name: string
+  }
+
+  export type ModelCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    brandId?: SortOrder
+  }
+
+  export type ModelAvgOrderByAggregateInput = {
+    id?: SortOrder
+    brandId?: SortOrder
+  }
+
+  export type ModelMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    brandId?: SortOrder
+  }
+
+  export type ModelMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    brandId?: SortOrder
+  }
+
+  export type ModelSumOrderByAggregateInput = {
+    id?: SortOrder
+    brandId?: SortOrder
+  }
+
+  export type ModelScalarRelationFilter = {
+    is?: ModelWhereInput
+    isNot?: ModelWhereInput
+  }
+
+  export type BodyTypeVersionListRelationFilter = {
+    every?: BodyTypeVersionWhereInput
+    some?: BodyTypeVersionWhereInput
+    none?: BodyTypeVersionWhereInput
+  }
+
+  export type BodyTypeVersionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VersionModelIdNameCompoundUniqueInput = {
+    modelId: number
+    name: string
+  }
+
+  export type VersionCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    modelId?: SortOrder
+  }
+
+  export type VersionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    modelId?: SortOrder
+  }
+
+  export type VersionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    modelId?: SortOrder
+  }
+
+  export type VersionMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    modelId?: SortOrder
+  }
+
+  export type VersionSumOrderByAggregateInput = {
+    id?: SortOrder
+    modelId?: SortOrder
+  }
+
+  export type BodyTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BodyTypeAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BodyTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BodyTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BodyTypeSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type VersionScalarRelationFilter = {
+    is?: VersionWhereInput
+    isNot?: VersionWhereInput
+  }
+
+  export type BodyTypeScalarRelationFilter = {
+    is?: BodyTypeWhereInput
+    isNot?: BodyTypeWhereInput
+  }
+
+  export type FuelTypeBodyListRelationFilter = {
+    every?: FuelTypeBodyWhereInput
+    some?: FuelTypeBodyWhereInput
+    none?: FuelTypeBodyWhereInput
+  }
+
+  export type FuelTypeBodyOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BodyTypeVersionVersionIdBodyTypeIdCompoundUniqueInput = {
+    versionId: number
+    bodyTypeId: number
+  }
+
+  export type BodyTypeVersionCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+  }
+
+  export type BodyTypeVersionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+  }
+
+  export type BodyTypeVersionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+  }
+
+  export type BodyTypeVersionMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+  }
+
+  export type BodyTypeVersionSumOrderByAggregateInput = {
+    id?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+  }
+
+  export type FuelTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FuelTypeAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type FuelTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FuelTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FuelTypeSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BodyTypeVersionScalarRelationFilter = {
+    is?: BodyTypeVersionWhereInput
+    isNot?: BodyTypeVersionWhereInput
+  }
+
+  export type FuelTypeScalarRelationFilter = {
+    is?: FuelTypeWhereInput
+    isNot?: FuelTypeWhereInput
+  }
+
+  export type TransmissionTypeFuelListRelationFilter = {
+    every?: TransmissionTypeFuelWhereInput
+    some?: TransmissionTypeFuelWhereInput
+    none?: TransmissionTypeFuelWhereInput
+  }
+
+  export type TransmissionTypeFuelOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FuelTypeBodyBodyVersionIdFuelTypeIdCompoundUniqueInput = {
+    bodyVersionId: number
+    fuelTypeId: number
+  }
+
+  export type FuelTypeBodyCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    bodyVersionId?: SortOrder
+    fuelTypeId?: SortOrder
+  }
+
+  export type FuelTypeBodyAvgOrderByAggregateInput = {
+    id?: SortOrder
+    bodyVersionId?: SortOrder
+    fuelTypeId?: SortOrder
+  }
+
+  export type FuelTypeBodyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    bodyVersionId?: SortOrder
+    fuelTypeId?: SortOrder
+  }
+
+  export type FuelTypeBodyMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    bodyVersionId?: SortOrder
+    fuelTypeId?: SortOrder
+  }
+
+  export type FuelTypeBodySumOrderByAggregateInput = {
+    id?: SortOrder
+    bodyVersionId?: SortOrder
+    fuelTypeId?: SortOrder
+  }
+
+  export type TransmissionTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TransmissionTypeAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TransmissionTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TransmissionTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TransmissionTypeSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type FuelTypeBodyScalarRelationFilter = {
+    is?: FuelTypeBodyWhereInput
+    isNot?: FuelTypeBodyWhereInput
+  }
+
+  export type TransmissionTypeScalarRelationFilter = {
+    is?: TransmissionTypeWhereInput
+    isNot?: TransmissionTypeWhereInput
+  }
+
+  export type VehicleYearListRelationFilter = {
+    every?: VehicleYearWhereInput
+    some?: VehicleYearWhereInput
+    none?: VehicleYearWhereInput
+  }
+
+  export type VehicleYearOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TransmissionTypeFuelFuelBodyIdTransmissionTypeIdCompoundUniqueInput = {
+    fuelBodyId: number
+    transmissionTypeId: number
+  }
+
+  export type TransmissionTypeFuelCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    fuelBodyId?: SortOrder
+    transmissionTypeId?: SortOrder
+  }
+
+  export type TransmissionTypeFuelAvgOrderByAggregateInput = {
+    id?: SortOrder
+    fuelBodyId?: SortOrder
+    transmissionTypeId?: SortOrder
+  }
+
+  export type TransmissionTypeFuelMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    fuelBodyId?: SortOrder
+    transmissionTypeId?: SortOrder
+  }
+
+  export type TransmissionTypeFuelMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    fuelBodyId?: SortOrder
+    transmissionTypeId?: SortOrder
+  }
+
+  export type TransmissionTypeFuelSumOrderByAggregateInput = {
+    id?: SortOrder
+    fuelBodyId?: SortOrder
+    transmissionTypeId?: SortOrder
+  }
+
+  export type TransmissionTypeFuelScalarRelationFilter = {
+    is?: TransmissionTypeFuelWhereInput
+    isNot?: TransmissionTypeFuelWhereInput
+  }
+
+  export type MileageListRelationFilter = {
+    every?: MileageWhereInput
+    some?: MileageWhereInput
+    none?: MileageWhereInput
+  }
+
+  export type MileageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VehicleYearTransmissionTypeFuelIdYearCompoundUniqueInput = {
+    transmissionTypeFuelId: number
+    year: number
+  }
+
+  export type VehicleYearCountOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    transmissionTypeFuelId?: SortOrder
+  }
+
+  export type VehicleYearAvgOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    transmissionTypeFuelId?: SortOrder
+  }
+
+  export type VehicleYearMaxOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    transmissionTypeFuelId?: SortOrder
+  }
+
+  export type VehicleYearMinOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    transmissionTypeFuelId?: SortOrder
+  }
+
+  export type VehicleYearSumOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    transmissionTypeFuelId?: SortOrder
+  }
+
+  export type VehicleYearScalarRelationFilter = {
+    is?: VehicleYearWhereInput
+    isNot?: VehicleYearWhereInput
+  }
+
+  export type ColorMileageListRelationFilter = {
+    every?: ColorMileageWhereInput
+    some?: ColorMileageWhereInput
+    none?: ColorMileageWhereInput
+  }
+
+  export type ColorMileageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MileageVehicleYearIdMinKmMaxKmCompoundUniqueInput = {
+    vehicleYearId: number
+    minKm: number
+    maxKm: number
+  }
+
+  export type MileageCountOrderByAggregateInput = {
+    id?: SortOrder
+    minKm?: SortOrder
+    maxKm?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    vehicleYearId?: SortOrder
+  }
+
+  export type MileageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    minKm?: SortOrder
+    maxKm?: SortOrder
+    vehicleYearId?: SortOrder
+  }
+
+  export type MileageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    minKm?: SortOrder
+    maxKm?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    vehicleYearId?: SortOrder
+  }
+
+  export type MileageMinOrderByAggregateInput = {
+    id?: SortOrder
+    minKm?: SortOrder
+    maxKm?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    vehicleYearId?: SortOrder
+  }
+
+  export type MileageSumOrderByAggregateInput = {
+    id?: SortOrder
+    minKm?: SortOrder
+    maxKm?: SortOrder
+    vehicleYearId?: SortOrder
+  }
+
+  export type ColorCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ColorAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ColorMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ColorMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ColorSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type MileageScalarRelationFilter = {
+    is?: MileageWhereInput
+    isNot?: MileageWhereInput
+  }
+
+  export type ColorScalarRelationFilter = {
+    is?: ColorWhereInput
+    isNot?: ColorWhereInput
+  }
+
+  export type AccidentRecordListRelationFilter = {
+    every?: AccidentRecordWhereInput
+    some?: AccidentRecordWhereInput
+    none?: AccidentRecordWhereInput
+  }
+
+  export type AccidentRecordOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ColorMileageMileageIdColorIdCompoundUniqueInput = {
+    mileageId: number
+    colorId: number
+  }
+
+  export type ColorMileageCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mileageId?: SortOrder
+    colorId?: SortOrder
+  }
+
+  export type ColorMileageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    mileageId?: SortOrder
+    colorId?: SortOrder
+  }
+
+  export type ColorMileageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mileageId?: SortOrder
+    colorId?: SortOrder
+  }
+
+  export type ColorMileageMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mileageId?: SortOrder
+    colorId?: SortOrder
+  }
+
+  export type ColorMileageSumOrderByAggregateInput = {
+    id?: SortOrder
+    mileageId?: SortOrder
+    colorId?: SortOrder
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type ColorMileageScalarRelationFilter = {
+    is?: ColorMileageWhereInput
+    isNot?: ColorMileageWhereInput
+  }
+
+  export type VehicleListRelationFilter = {
+    every?: VehicleWhereInput
+    some?: VehicleWhereInput
+    none?: VehicleWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type VehicleOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AccidentRecordCountOrderByAggregateInput = {
+    id?: SortOrder
+    status?: SortOrder
+    amount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    colorMileageId?: SortOrder
+  }
+
+  export type AccidentRecordAvgOrderByAggregateInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    colorMileageId?: SortOrder
+  }
+
+  export type AccidentRecordMaxOrderByAggregateInput = {
+    id?: SortOrder
+    status?: SortOrder
+    amount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    colorMileageId?: SortOrder
+  }
+
+  export type AccidentRecordMinOrderByAggregateInput = {
+    id?: SortOrder
+    status?: SortOrder
+    amount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    colorMileageId?: SortOrder
+  }
+
+  export type AccidentRecordSumOrderByAggregateInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    colorMileageId?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type AccidentRecordScalarRelationFilter = {
+    is?: AccidentRecordWhereInput
+    isNot?: AccidentRecordWhereInput
+  }
+
+  export type VehicleCountOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+    registrationDate?: SortOrder
+    updateDate?: SortOrder
+    accidentRecordId?: SortOrder
+    description?: SortOrder
+    listingStatus?: SortOrder
+  }
+
+  export type VehicleAvgOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+    accidentRecordId?: SortOrder
+  }
+
+  export type VehicleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+    registrationDate?: SortOrder
+    updateDate?: SortOrder
+    accidentRecordId?: SortOrder
+    description?: SortOrder
+    listingStatus?: SortOrder
+  }
+
+  export type VehicleMinOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+    registrationDate?: SortOrder
+    updateDate?: SortOrder
+    accidentRecordId?: SortOrder
+    description?: SortOrder
+    listingStatus?: SortOrder
+  }
+
+  export type VehicleSumOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+    accidentRecordId?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type ModelCreateNestedManyWithoutBrandInput = {
+    create?: XOR<ModelCreateWithoutBrandInput, ModelUncheckedCreateWithoutBrandInput> | ModelCreateWithoutBrandInput[] | ModelUncheckedCreateWithoutBrandInput[]
+    connectOrCreate?: ModelCreateOrConnectWithoutBrandInput | ModelCreateOrConnectWithoutBrandInput[]
+    createMany?: ModelCreateManyBrandInputEnvelope
+    connect?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+  }
+
+  export type ModelUncheckedCreateNestedManyWithoutBrandInput = {
+    create?: XOR<ModelCreateWithoutBrandInput, ModelUncheckedCreateWithoutBrandInput> | ModelCreateWithoutBrandInput[] | ModelUncheckedCreateWithoutBrandInput[]
+    connectOrCreate?: ModelCreateOrConnectWithoutBrandInput | ModelCreateOrConnectWithoutBrandInput[]
+    createMany?: ModelCreateManyBrandInputEnvelope
+    connect?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type ModelUpdateManyWithoutBrandNestedInput = {
+    create?: XOR<ModelCreateWithoutBrandInput, ModelUncheckedCreateWithoutBrandInput> | ModelCreateWithoutBrandInput[] | ModelUncheckedCreateWithoutBrandInput[]
+    connectOrCreate?: ModelCreateOrConnectWithoutBrandInput | ModelCreateOrConnectWithoutBrandInput[]
+    upsert?: ModelUpsertWithWhereUniqueWithoutBrandInput | ModelUpsertWithWhereUniqueWithoutBrandInput[]
+    createMany?: ModelCreateManyBrandInputEnvelope
+    set?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+    disconnect?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+    delete?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+    connect?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+    update?: ModelUpdateWithWhereUniqueWithoutBrandInput | ModelUpdateWithWhereUniqueWithoutBrandInput[]
+    updateMany?: ModelUpdateManyWithWhereWithoutBrandInput | ModelUpdateManyWithWhereWithoutBrandInput[]
+    deleteMany?: ModelScalarWhereInput | ModelScalarWhereInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type ModelUncheckedUpdateManyWithoutBrandNestedInput = {
+    create?: XOR<ModelCreateWithoutBrandInput, ModelUncheckedCreateWithoutBrandInput> | ModelCreateWithoutBrandInput[] | ModelUncheckedCreateWithoutBrandInput[]
+    connectOrCreate?: ModelCreateOrConnectWithoutBrandInput | ModelCreateOrConnectWithoutBrandInput[]
+    upsert?: ModelUpsertWithWhereUniqueWithoutBrandInput | ModelUpsertWithWhereUniqueWithoutBrandInput[]
+    createMany?: ModelCreateManyBrandInputEnvelope
+    set?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+    disconnect?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+    delete?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+    connect?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+    update?: ModelUpdateWithWhereUniqueWithoutBrandInput | ModelUpdateWithWhereUniqueWithoutBrandInput[]
+    updateMany?: ModelUpdateManyWithWhereWithoutBrandInput | ModelUpdateManyWithWhereWithoutBrandInput[]
+    deleteMany?: ModelScalarWhereInput | ModelScalarWhereInput[]
+  }
+
+  export type BrandCreateNestedOneWithoutModelsInput = {
+    create?: XOR<BrandCreateWithoutModelsInput, BrandUncheckedCreateWithoutModelsInput>
+    connectOrCreate?: BrandCreateOrConnectWithoutModelsInput
+    connect?: BrandWhereUniqueInput
+  }
+
+  export type VersionCreateNestedManyWithoutModelInput = {
+    create?: XOR<VersionCreateWithoutModelInput, VersionUncheckedCreateWithoutModelInput> | VersionCreateWithoutModelInput[] | VersionUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: VersionCreateOrConnectWithoutModelInput | VersionCreateOrConnectWithoutModelInput[]
+    createMany?: VersionCreateManyModelInputEnvelope
+    connect?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+  }
+
+  export type VersionUncheckedCreateNestedManyWithoutModelInput = {
+    create?: XOR<VersionCreateWithoutModelInput, VersionUncheckedCreateWithoutModelInput> | VersionCreateWithoutModelInput[] | VersionUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: VersionCreateOrConnectWithoutModelInput | VersionCreateOrConnectWithoutModelInput[]
+    createMany?: VersionCreateManyModelInputEnvelope
+    connect?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+  }
+
+  export type BrandUpdateOneRequiredWithoutModelsNestedInput = {
+    create?: XOR<BrandCreateWithoutModelsInput, BrandUncheckedCreateWithoutModelsInput>
+    connectOrCreate?: BrandCreateOrConnectWithoutModelsInput
+    upsert?: BrandUpsertWithoutModelsInput
+    connect?: BrandWhereUniqueInput
+    update?: XOR<XOR<BrandUpdateToOneWithWhereWithoutModelsInput, BrandUpdateWithoutModelsInput>, BrandUncheckedUpdateWithoutModelsInput>
+  }
+
+  export type VersionUpdateManyWithoutModelNestedInput = {
+    create?: XOR<VersionCreateWithoutModelInput, VersionUncheckedCreateWithoutModelInput> | VersionCreateWithoutModelInput[] | VersionUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: VersionCreateOrConnectWithoutModelInput | VersionCreateOrConnectWithoutModelInput[]
+    upsert?: VersionUpsertWithWhereUniqueWithoutModelInput | VersionUpsertWithWhereUniqueWithoutModelInput[]
+    createMany?: VersionCreateManyModelInputEnvelope
+    set?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+    disconnect?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+    delete?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+    connect?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+    update?: VersionUpdateWithWhereUniqueWithoutModelInput | VersionUpdateWithWhereUniqueWithoutModelInput[]
+    updateMany?: VersionUpdateManyWithWhereWithoutModelInput | VersionUpdateManyWithWhereWithoutModelInput[]
+    deleteMany?: VersionScalarWhereInput | VersionScalarWhereInput[]
+  }
+
+  export type VersionUncheckedUpdateManyWithoutModelNestedInput = {
+    create?: XOR<VersionCreateWithoutModelInput, VersionUncheckedCreateWithoutModelInput> | VersionCreateWithoutModelInput[] | VersionUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: VersionCreateOrConnectWithoutModelInput | VersionCreateOrConnectWithoutModelInput[]
+    upsert?: VersionUpsertWithWhereUniqueWithoutModelInput | VersionUpsertWithWhereUniqueWithoutModelInput[]
+    createMany?: VersionCreateManyModelInputEnvelope
+    set?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+    disconnect?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+    delete?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+    connect?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+    update?: VersionUpdateWithWhereUniqueWithoutModelInput | VersionUpdateWithWhereUniqueWithoutModelInput[]
+    updateMany?: VersionUpdateManyWithWhereWithoutModelInput | VersionUpdateManyWithWhereWithoutModelInput[]
+    deleteMany?: VersionScalarWhereInput | VersionScalarWhereInput[]
+  }
+
+  export type ModelCreateNestedOneWithoutVersionsInput = {
+    create?: XOR<ModelCreateWithoutVersionsInput, ModelUncheckedCreateWithoutVersionsInput>
+    connectOrCreate?: ModelCreateOrConnectWithoutVersionsInput
+    connect?: ModelWhereUniqueInput
+  }
+
+  export type BodyTypeVersionCreateNestedManyWithoutVersionInput = {
+    create?: XOR<BodyTypeVersionCreateWithoutVersionInput, BodyTypeVersionUncheckedCreateWithoutVersionInput> | BodyTypeVersionCreateWithoutVersionInput[] | BodyTypeVersionUncheckedCreateWithoutVersionInput[]
+    connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutVersionInput | BodyTypeVersionCreateOrConnectWithoutVersionInput[]
+    createMany?: BodyTypeVersionCreateManyVersionInputEnvelope
+    connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+  }
+
+  export type BodyTypeVersionUncheckedCreateNestedManyWithoutVersionInput = {
+    create?: XOR<BodyTypeVersionCreateWithoutVersionInput, BodyTypeVersionUncheckedCreateWithoutVersionInput> | BodyTypeVersionCreateWithoutVersionInput[] | BodyTypeVersionUncheckedCreateWithoutVersionInput[]
+    connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutVersionInput | BodyTypeVersionCreateOrConnectWithoutVersionInput[]
+    createMany?: BodyTypeVersionCreateManyVersionInputEnvelope
+    connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+  }
+
+  export type ModelUpdateOneRequiredWithoutVersionsNestedInput = {
+    create?: XOR<ModelCreateWithoutVersionsInput, ModelUncheckedCreateWithoutVersionsInput>
+    connectOrCreate?: ModelCreateOrConnectWithoutVersionsInput
+    upsert?: ModelUpsertWithoutVersionsInput
+    connect?: ModelWhereUniqueInput
+    update?: XOR<XOR<ModelUpdateToOneWithWhereWithoutVersionsInput, ModelUpdateWithoutVersionsInput>, ModelUncheckedUpdateWithoutVersionsInput>
+  }
+
+  export type BodyTypeVersionUpdateManyWithoutVersionNestedInput = {
+    create?: XOR<BodyTypeVersionCreateWithoutVersionInput, BodyTypeVersionUncheckedCreateWithoutVersionInput> | BodyTypeVersionCreateWithoutVersionInput[] | BodyTypeVersionUncheckedCreateWithoutVersionInput[]
+    connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutVersionInput | BodyTypeVersionCreateOrConnectWithoutVersionInput[]
+    upsert?: BodyTypeVersionUpsertWithWhereUniqueWithoutVersionInput | BodyTypeVersionUpsertWithWhereUniqueWithoutVersionInput[]
+    createMany?: BodyTypeVersionCreateManyVersionInputEnvelope
+    set?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    disconnect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    delete?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    update?: BodyTypeVersionUpdateWithWhereUniqueWithoutVersionInput | BodyTypeVersionUpdateWithWhereUniqueWithoutVersionInput[]
+    updateMany?: BodyTypeVersionUpdateManyWithWhereWithoutVersionInput | BodyTypeVersionUpdateManyWithWhereWithoutVersionInput[]
+    deleteMany?: BodyTypeVersionScalarWhereInput | BodyTypeVersionScalarWhereInput[]
+  }
+
+  export type BodyTypeVersionUncheckedUpdateManyWithoutVersionNestedInput = {
+    create?: XOR<BodyTypeVersionCreateWithoutVersionInput, BodyTypeVersionUncheckedCreateWithoutVersionInput> | BodyTypeVersionCreateWithoutVersionInput[] | BodyTypeVersionUncheckedCreateWithoutVersionInput[]
+    connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutVersionInput | BodyTypeVersionCreateOrConnectWithoutVersionInput[]
+    upsert?: BodyTypeVersionUpsertWithWhereUniqueWithoutVersionInput | BodyTypeVersionUpsertWithWhereUniqueWithoutVersionInput[]
+    createMany?: BodyTypeVersionCreateManyVersionInputEnvelope
+    set?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    disconnect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    delete?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    update?: BodyTypeVersionUpdateWithWhereUniqueWithoutVersionInput | BodyTypeVersionUpdateWithWhereUniqueWithoutVersionInput[]
+    updateMany?: BodyTypeVersionUpdateManyWithWhereWithoutVersionInput | BodyTypeVersionUpdateManyWithWhereWithoutVersionInput[]
+    deleteMany?: BodyTypeVersionScalarWhereInput | BodyTypeVersionScalarWhereInput[]
+  }
+
+  export type BodyTypeVersionCreateNestedManyWithoutBodyTypeInput = {
+    create?: XOR<BodyTypeVersionCreateWithoutBodyTypeInput, BodyTypeVersionUncheckedCreateWithoutBodyTypeInput> | BodyTypeVersionCreateWithoutBodyTypeInput[] | BodyTypeVersionUncheckedCreateWithoutBodyTypeInput[]
+    connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutBodyTypeInput | BodyTypeVersionCreateOrConnectWithoutBodyTypeInput[]
+    createMany?: BodyTypeVersionCreateManyBodyTypeInputEnvelope
+    connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+  }
+
+  export type BodyTypeVersionUncheckedCreateNestedManyWithoutBodyTypeInput = {
+    create?: XOR<BodyTypeVersionCreateWithoutBodyTypeInput, BodyTypeVersionUncheckedCreateWithoutBodyTypeInput> | BodyTypeVersionCreateWithoutBodyTypeInput[] | BodyTypeVersionUncheckedCreateWithoutBodyTypeInput[]
+    connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutBodyTypeInput | BodyTypeVersionCreateOrConnectWithoutBodyTypeInput[]
+    createMany?: BodyTypeVersionCreateManyBodyTypeInputEnvelope
+    connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+  }
+
+  export type BodyTypeVersionUpdateManyWithoutBodyTypeNestedInput = {
+    create?: XOR<BodyTypeVersionCreateWithoutBodyTypeInput, BodyTypeVersionUncheckedCreateWithoutBodyTypeInput> | BodyTypeVersionCreateWithoutBodyTypeInput[] | BodyTypeVersionUncheckedCreateWithoutBodyTypeInput[]
+    connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutBodyTypeInput | BodyTypeVersionCreateOrConnectWithoutBodyTypeInput[]
+    upsert?: BodyTypeVersionUpsertWithWhereUniqueWithoutBodyTypeInput | BodyTypeVersionUpsertWithWhereUniqueWithoutBodyTypeInput[]
+    createMany?: BodyTypeVersionCreateManyBodyTypeInputEnvelope
+    set?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    disconnect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    delete?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    update?: BodyTypeVersionUpdateWithWhereUniqueWithoutBodyTypeInput | BodyTypeVersionUpdateWithWhereUniqueWithoutBodyTypeInput[]
+    updateMany?: BodyTypeVersionUpdateManyWithWhereWithoutBodyTypeInput | BodyTypeVersionUpdateManyWithWhereWithoutBodyTypeInput[]
+    deleteMany?: BodyTypeVersionScalarWhereInput | BodyTypeVersionScalarWhereInput[]
+  }
+
+  export type BodyTypeVersionUncheckedUpdateManyWithoutBodyTypeNestedInput = {
+    create?: XOR<BodyTypeVersionCreateWithoutBodyTypeInput, BodyTypeVersionUncheckedCreateWithoutBodyTypeInput> | BodyTypeVersionCreateWithoutBodyTypeInput[] | BodyTypeVersionUncheckedCreateWithoutBodyTypeInput[]
+    connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutBodyTypeInput | BodyTypeVersionCreateOrConnectWithoutBodyTypeInput[]
+    upsert?: BodyTypeVersionUpsertWithWhereUniqueWithoutBodyTypeInput | BodyTypeVersionUpsertWithWhereUniqueWithoutBodyTypeInput[]
+    createMany?: BodyTypeVersionCreateManyBodyTypeInputEnvelope
+    set?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    disconnect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    delete?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+    update?: BodyTypeVersionUpdateWithWhereUniqueWithoutBodyTypeInput | BodyTypeVersionUpdateWithWhereUniqueWithoutBodyTypeInput[]
+    updateMany?: BodyTypeVersionUpdateManyWithWhereWithoutBodyTypeInput | BodyTypeVersionUpdateManyWithWhereWithoutBodyTypeInput[]
+    deleteMany?: BodyTypeVersionScalarWhereInput | BodyTypeVersionScalarWhereInput[]
+  }
+
+  export type VersionCreateNestedOneWithoutBodyTypesInput = {
+    create?: XOR<VersionCreateWithoutBodyTypesInput, VersionUncheckedCreateWithoutBodyTypesInput>
+    connectOrCreate?: VersionCreateOrConnectWithoutBodyTypesInput
+    connect?: VersionWhereUniqueInput
+  }
+
+  export type BodyTypeCreateNestedOneWithoutVersionsInput = {
+    create?: XOR<BodyTypeCreateWithoutVersionsInput, BodyTypeUncheckedCreateWithoutVersionsInput>
+    connectOrCreate?: BodyTypeCreateOrConnectWithoutVersionsInput
+    connect?: BodyTypeWhereUniqueInput
+  }
+
+  export type FuelTypeBodyCreateNestedManyWithoutBodyVersionInput = {
+    create?: XOR<FuelTypeBodyCreateWithoutBodyVersionInput, FuelTypeBodyUncheckedCreateWithoutBodyVersionInput> | FuelTypeBodyCreateWithoutBodyVersionInput[] | FuelTypeBodyUncheckedCreateWithoutBodyVersionInput[]
+    connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutBodyVersionInput | FuelTypeBodyCreateOrConnectWithoutBodyVersionInput[]
+    createMany?: FuelTypeBodyCreateManyBodyVersionInputEnvelope
+    connect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+  }
+
+  export type FuelTypeBodyUncheckedCreateNestedManyWithoutBodyVersionInput = {
+    create?: XOR<FuelTypeBodyCreateWithoutBodyVersionInput, FuelTypeBodyUncheckedCreateWithoutBodyVersionInput> | FuelTypeBodyCreateWithoutBodyVersionInput[] | FuelTypeBodyUncheckedCreateWithoutBodyVersionInput[]
+    connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutBodyVersionInput | FuelTypeBodyCreateOrConnectWithoutBodyVersionInput[]
+    createMany?: FuelTypeBodyCreateManyBodyVersionInputEnvelope
+    connect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+  }
+
+  export type VersionUpdateOneRequiredWithoutBodyTypesNestedInput = {
+    create?: XOR<VersionCreateWithoutBodyTypesInput, VersionUncheckedCreateWithoutBodyTypesInput>
+    connectOrCreate?: VersionCreateOrConnectWithoutBodyTypesInput
+    upsert?: VersionUpsertWithoutBodyTypesInput
+    connect?: VersionWhereUniqueInput
+    update?: XOR<XOR<VersionUpdateToOneWithWhereWithoutBodyTypesInput, VersionUpdateWithoutBodyTypesInput>, VersionUncheckedUpdateWithoutBodyTypesInput>
+  }
+
+  export type BodyTypeUpdateOneRequiredWithoutVersionsNestedInput = {
+    create?: XOR<BodyTypeCreateWithoutVersionsInput, BodyTypeUncheckedCreateWithoutVersionsInput>
+    connectOrCreate?: BodyTypeCreateOrConnectWithoutVersionsInput
+    upsert?: BodyTypeUpsertWithoutVersionsInput
+    connect?: BodyTypeWhereUniqueInput
+    update?: XOR<XOR<BodyTypeUpdateToOneWithWhereWithoutVersionsInput, BodyTypeUpdateWithoutVersionsInput>, BodyTypeUncheckedUpdateWithoutVersionsInput>
+  }
+
+  export type FuelTypeBodyUpdateManyWithoutBodyVersionNestedInput = {
+    create?: XOR<FuelTypeBodyCreateWithoutBodyVersionInput, FuelTypeBodyUncheckedCreateWithoutBodyVersionInput> | FuelTypeBodyCreateWithoutBodyVersionInput[] | FuelTypeBodyUncheckedCreateWithoutBodyVersionInput[]
+    connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutBodyVersionInput | FuelTypeBodyCreateOrConnectWithoutBodyVersionInput[]
+    upsert?: FuelTypeBodyUpsertWithWhereUniqueWithoutBodyVersionInput | FuelTypeBodyUpsertWithWhereUniqueWithoutBodyVersionInput[]
+    createMany?: FuelTypeBodyCreateManyBodyVersionInputEnvelope
+    set?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    disconnect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    delete?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    connect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    update?: FuelTypeBodyUpdateWithWhereUniqueWithoutBodyVersionInput | FuelTypeBodyUpdateWithWhereUniqueWithoutBodyVersionInput[]
+    updateMany?: FuelTypeBodyUpdateManyWithWhereWithoutBodyVersionInput | FuelTypeBodyUpdateManyWithWhereWithoutBodyVersionInput[]
+    deleteMany?: FuelTypeBodyScalarWhereInput | FuelTypeBodyScalarWhereInput[]
+  }
+
+  export type FuelTypeBodyUncheckedUpdateManyWithoutBodyVersionNestedInput = {
+    create?: XOR<FuelTypeBodyCreateWithoutBodyVersionInput, FuelTypeBodyUncheckedCreateWithoutBodyVersionInput> | FuelTypeBodyCreateWithoutBodyVersionInput[] | FuelTypeBodyUncheckedCreateWithoutBodyVersionInput[]
+    connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutBodyVersionInput | FuelTypeBodyCreateOrConnectWithoutBodyVersionInput[]
+    upsert?: FuelTypeBodyUpsertWithWhereUniqueWithoutBodyVersionInput | FuelTypeBodyUpsertWithWhereUniqueWithoutBodyVersionInput[]
+    createMany?: FuelTypeBodyCreateManyBodyVersionInputEnvelope
+    set?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    disconnect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    delete?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    connect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    update?: FuelTypeBodyUpdateWithWhereUniqueWithoutBodyVersionInput | FuelTypeBodyUpdateWithWhereUniqueWithoutBodyVersionInput[]
+    updateMany?: FuelTypeBodyUpdateManyWithWhereWithoutBodyVersionInput | FuelTypeBodyUpdateManyWithWhereWithoutBodyVersionInput[]
+    deleteMany?: FuelTypeBodyScalarWhereInput | FuelTypeBodyScalarWhereInput[]
+  }
+
+  export type FuelTypeBodyCreateNestedManyWithoutFuelTypeInput = {
+    create?: XOR<FuelTypeBodyCreateWithoutFuelTypeInput, FuelTypeBodyUncheckedCreateWithoutFuelTypeInput> | FuelTypeBodyCreateWithoutFuelTypeInput[] | FuelTypeBodyUncheckedCreateWithoutFuelTypeInput[]
+    connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutFuelTypeInput | FuelTypeBodyCreateOrConnectWithoutFuelTypeInput[]
+    createMany?: FuelTypeBodyCreateManyFuelTypeInputEnvelope
+    connect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+  }
+
+  export type FuelTypeBodyUncheckedCreateNestedManyWithoutFuelTypeInput = {
+    create?: XOR<FuelTypeBodyCreateWithoutFuelTypeInput, FuelTypeBodyUncheckedCreateWithoutFuelTypeInput> | FuelTypeBodyCreateWithoutFuelTypeInput[] | FuelTypeBodyUncheckedCreateWithoutFuelTypeInput[]
+    connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutFuelTypeInput | FuelTypeBodyCreateOrConnectWithoutFuelTypeInput[]
+    createMany?: FuelTypeBodyCreateManyFuelTypeInputEnvelope
+    connect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+  }
+
+  export type FuelTypeBodyUpdateManyWithoutFuelTypeNestedInput = {
+    create?: XOR<FuelTypeBodyCreateWithoutFuelTypeInput, FuelTypeBodyUncheckedCreateWithoutFuelTypeInput> | FuelTypeBodyCreateWithoutFuelTypeInput[] | FuelTypeBodyUncheckedCreateWithoutFuelTypeInput[]
+    connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutFuelTypeInput | FuelTypeBodyCreateOrConnectWithoutFuelTypeInput[]
+    upsert?: FuelTypeBodyUpsertWithWhereUniqueWithoutFuelTypeInput | FuelTypeBodyUpsertWithWhereUniqueWithoutFuelTypeInput[]
+    createMany?: FuelTypeBodyCreateManyFuelTypeInputEnvelope
+    set?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    disconnect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    delete?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    connect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    update?: FuelTypeBodyUpdateWithWhereUniqueWithoutFuelTypeInput | FuelTypeBodyUpdateWithWhereUniqueWithoutFuelTypeInput[]
+    updateMany?: FuelTypeBodyUpdateManyWithWhereWithoutFuelTypeInput | FuelTypeBodyUpdateManyWithWhereWithoutFuelTypeInput[]
+    deleteMany?: FuelTypeBodyScalarWhereInput | FuelTypeBodyScalarWhereInput[]
+  }
+
+  export type FuelTypeBodyUncheckedUpdateManyWithoutFuelTypeNestedInput = {
+    create?: XOR<FuelTypeBodyCreateWithoutFuelTypeInput, FuelTypeBodyUncheckedCreateWithoutFuelTypeInput> | FuelTypeBodyCreateWithoutFuelTypeInput[] | FuelTypeBodyUncheckedCreateWithoutFuelTypeInput[]
+    connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutFuelTypeInput | FuelTypeBodyCreateOrConnectWithoutFuelTypeInput[]
+    upsert?: FuelTypeBodyUpsertWithWhereUniqueWithoutFuelTypeInput | FuelTypeBodyUpsertWithWhereUniqueWithoutFuelTypeInput[]
+    createMany?: FuelTypeBodyCreateManyFuelTypeInputEnvelope
+    set?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    disconnect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    delete?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    connect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+    update?: FuelTypeBodyUpdateWithWhereUniqueWithoutFuelTypeInput | FuelTypeBodyUpdateWithWhereUniqueWithoutFuelTypeInput[]
+    updateMany?: FuelTypeBodyUpdateManyWithWhereWithoutFuelTypeInput | FuelTypeBodyUpdateManyWithWhereWithoutFuelTypeInput[]
+    deleteMany?: FuelTypeBodyScalarWhereInput | FuelTypeBodyScalarWhereInput[]
+  }
+
+  export type BodyTypeVersionCreateNestedOneWithoutFuelTypesInput = {
+    create?: XOR<BodyTypeVersionCreateWithoutFuelTypesInput, BodyTypeVersionUncheckedCreateWithoutFuelTypesInput>
+    connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutFuelTypesInput
+    connect?: BodyTypeVersionWhereUniqueInput
+  }
+
+  export type FuelTypeCreateNestedOneWithoutBodyTypesInput = {
+    create?: XOR<FuelTypeCreateWithoutBodyTypesInput, FuelTypeUncheckedCreateWithoutBodyTypesInput>
+    connectOrCreate?: FuelTypeCreateOrConnectWithoutBodyTypesInput
+    connect?: FuelTypeWhereUniqueInput
+  }
+
+  export type TransmissionTypeFuelCreateNestedManyWithoutFuelBodyInput = {
+    create?: XOR<TransmissionTypeFuelCreateWithoutFuelBodyInput, TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput> | TransmissionTypeFuelCreateWithoutFuelBodyInput[] | TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput[]
+    connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutFuelBodyInput | TransmissionTypeFuelCreateOrConnectWithoutFuelBodyInput[]
+    createMany?: TransmissionTypeFuelCreateManyFuelBodyInputEnvelope
+    connect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+  }
+
+  export type TransmissionTypeFuelUncheckedCreateNestedManyWithoutFuelBodyInput = {
+    create?: XOR<TransmissionTypeFuelCreateWithoutFuelBodyInput, TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput> | TransmissionTypeFuelCreateWithoutFuelBodyInput[] | TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput[]
+    connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutFuelBodyInput | TransmissionTypeFuelCreateOrConnectWithoutFuelBodyInput[]
+    createMany?: TransmissionTypeFuelCreateManyFuelBodyInputEnvelope
+    connect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+  }
+
+  export type BodyTypeVersionUpdateOneRequiredWithoutFuelTypesNestedInput = {
+    create?: XOR<BodyTypeVersionCreateWithoutFuelTypesInput, BodyTypeVersionUncheckedCreateWithoutFuelTypesInput>
+    connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutFuelTypesInput
+    upsert?: BodyTypeVersionUpsertWithoutFuelTypesInput
+    connect?: BodyTypeVersionWhereUniqueInput
+    update?: XOR<XOR<BodyTypeVersionUpdateToOneWithWhereWithoutFuelTypesInput, BodyTypeVersionUpdateWithoutFuelTypesInput>, BodyTypeVersionUncheckedUpdateWithoutFuelTypesInput>
+  }
+
+  export type FuelTypeUpdateOneRequiredWithoutBodyTypesNestedInput = {
+    create?: XOR<FuelTypeCreateWithoutBodyTypesInput, FuelTypeUncheckedCreateWithoutBodyTypesInput>
+    connectOrCreate?: FuelTypeCreateOrConnectWithoutBodyTypesInput
+    upsert?: FuelTypeUpsertWithoutBodyTypesInput
+    connect?: FuelTypeWhereUniqueInput
+    update?: XOR<XOR<FuelTypeUpdateToOneWithWhereWithoutBodyTypesInput, FuelTypeUpdateWithoutBodyTypesInput>, FuelTypeUncheckedUpdateWithoutBodyTypesInput>
+  }
+
+  export type TransmissionTypeFuelUpdateManyWithoutFuelBodyNestedInput = {
+    create?: XOR<TransmissionTypeFuelCreateWithoutFuelBodyInput, TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput> | TransmissionTypeFuelCreateWithoutFuelBodyInput[] | TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput[]
+    connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutFuelBodyInput | TransmissionTypeFuelCreateOrConnectWithoutFuelBodyInput[]
+    upsert?: TransmissionTypeFuelUpsertWithWhereUniqueWithoutFuelBodyInput | TransmissionTypeFuelUpsertWithWhereUniqueWithoutFuelBodyInput[]
+    createMany?: TransmissionTypeFuelCreateManyFuelBodyInputEnvelope
+    set?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    disconnect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    delete?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    connect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    update?: TransmissionTypeFuelUpdateWithWhereUniqueWithoutFuelBodyInput | TransmissionTypeFuelUpdateWithWhereUniqueWithoutFuelBodyInput[]
+    updateMany?: TransmissionTypeFuelUpdateManyWithWhereWithoutFuelBodyInput | TransmissionTypeFuelUpdateManyWithWhereWithoutFuelBodyInput[]
+    deleteMany?: TransmissionTypeFuelScalarWhereInput | TransmissionTypeFuelScalarWhereInput[]
+  }
+
+  export type TransmissionTypeFuelUncheckedUpdateManyWithoutFuelBodyNestedInput = {
+    create?: XOR<TransmissionTypeFuelCreateWithoutFuelBodyInput, TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput> | TransmissionTypeFuelCreateWithoutFuelBodyInput[] | TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput[]
+    connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutFuelBodyInput | TransmissionTypeFuelCreateOrConnectWithoutFuelBodyInput[]
+    upsert?: TransmissionTypeFuelUpsertWithWhereUniqueWithoutFuelBodyInput | TransmissionTypeFuelUpsertWithWhereUniqueWithoutFuelBodyInput[]
+    createMany?: TransmissionTypeFuelCreateManyFuelBodyInputEnvelope
+    set?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    disconnect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    delete?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    connect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    update?: TransmissionTypeFuelUpdateWithWhereUniqueWithoutFuelBodyInput | TransmissionTypeFuelUpdateWithWhereUniqueWithoutFuelBodyInput[]
+    updateMany?: TransmissionTypeFuelUpdateManyWithWhereWithoutFuelBodyInput | TransmissionTypeFuelUpdateManyWithWhereWithoutFuelBodyInput[]
+    deleteMany?: TransmissionTypeFuelScalarWhereInput | TransmissionTypeFuelScalarWhereInput[]
+  }
+
+  export type TransmissionTypeFuelCreateNestedManyWithoutTransmissionTypeInput = {
+    create?: XOR<TransmissionTypeFuelCreateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput> | TransmissionTypeFuelCreateWithoutTransmissionTypeInput[] | TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput[]
+    connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput | TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput[]
+    createMany?: TransmissionTypeFuelCreateManyTransmissionTypeInputEnvelope
+    connect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+  }
+
+  export type TransmissionTypeFuelUncheckedCreateNestedManyWithoutTransmissionTypeInput = {
+    create?: XOR<TransmissionTypeFuelCreateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput> | TransmissionTypeFuelCreateWithoutTransmissionTypeInput[] | TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput[]
+    connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput | TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput[]
+    createMany?: TransmissionTypeFuelCreateManyTransmissionTypeInputEnvelope
+    connect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+  }
+
+  export type TransmissionTypeFuelUpdateManyWithoutTransmissionTypeNestedInput = {
+    create?: XOR<TransmissionTypeFuelCreateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput> | TransmissionTypeFuelCreateWithoutTransmissionTypeInput[] | TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput[]
+    connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput | TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput[]
+    upsert?: TransmissionTypeFuelUpsertWithWhereUniqueWithoutTransmissionTypeInput | TransmissionTypeFuelUpsertWithWhereUniqueWithoutTransmissionTypeInput[]
+    createMany?: TransmissionTypeFuelCreateManyTransmissionTypeInputEnvelope
+    set?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    disconnect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    delete?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    connect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    update?: TransmissionTypeFuelUpdateWithWhereUniqueWithoutTransmissionTypeInput | TransmissionTypeFuelUpdateWithWhereUniqueWithoutTransmissionTypeInput[]
+    updateMany?: TransmissionTypeFuelUpdateManyWithWhereWithoutTransmissionTypeInput | TransmissionTypeFuelUpdateManyWithWhereWithoutTransmissionTypeInput[]
+    deleteMany?: TransmissionTypeFuelScalarWhereInput | TransmissionTypeFuelScalarWhereInput[]
+  }
+
+  export type TransmissionTypeFuelUncheckedUpdateManyWithoutTransmissionTypeNestedInput = {
+    create?: XOR<TransmissionTypeFuelCreateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput> | TransmissionTypeFuelCreateWithoutTransmissionTypeInput[] | TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput[]
+    connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput | TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput[]
+    upsert?: TransmissionTypeFuelUpsertWithWhereUniqueWithoutTransmissionTypeInput | TransmissionTypeFuelUpsertWithWhereUniqueWithoutTransmissionTypeInput[]
+    createMany?: TransmissionTypeFuelCreateManyTransmissionTypeInputEnvelope
+    set?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    disconnect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    delete?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    connect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+    update?: TransmissionTypeFuelUpdateWithWhereUniqueWithoutTransmissionTypeInput | TransmissionTypeFuelUpdateWithWhereUniqueWithoutTransmissionTypeInput[]
+    updateMany?: TransmissionTypeFuelUpdateManyWithWhereWithoutTransmissionTypeInput | TransmissionTypeFuelUpdateManyWithWhereWithoutTransmissionTypeInput[]
+    deleteMany?: TransmissionTypeFuelScalarWhereInput | TransmissionTypeFuelScalarWhereInput[]
+  }
+
+  export type FuelTypeBodyCreateNestedOneWithoutTransmissionTypesInput = {
+    create?: XOR<FuelTypeBodyCreateWithoutTransmissionTypesInput, FuelTypeBodyUncheckedCreateWithoutTransmissionTypesInput>
+    connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutTransmissionTypesInput
+    connect?: FuelTypeBodyWhereUniqueInput
+  }
+
+  export type TransmissionTypeCreateNestedOneWithoutFuelTypesInput = {
+    create?: XOR<TransmissionTypeCreateWithoutFuelTypesInput, TransmissionTypeUncheckedCreateWithoutFuelTypesInput>
+    connectOrCreate?: TransmissionTypeCreateOrConnectWithoutFuelTypesInput
+    connect?: TransmissionTypeWhereUniqueInput
+  }
+
+  export type VehicleYearCreateNestedManyWithoutTransmissionTypeFuelInput = {
+    create?: XOR<VehicleYearCreateWithoutTransmissionTypeFuelInput, VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput> | VehicleYearCreateWithoutTransmissionTypeFuelInput[] | VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput[]
+    connectOrCreate?: VehicleYearCreateOrConnectWithoutTransmissionTypeFuelInput | VehicleYearCreateOrConnectWithoutTransmissionTypeFuelInput[]
+    createMany?: VehicleYearCreateManyTransmissionTypeFuelInputEnvelope
+    connect?: VehicleYearWhereUniqueInput | VehicleYearWhereUniqueInput[]
+  }
+
+  export type VehicleYearUncheckedCreateNestedManyWithoutTransmissionTypeFuelInput = {
+    create?: XOR<VehicleYearCreateWithoutTransmissionTypeFuelInput, VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput> | VehicleYearCreateWithoutTransmissionTypeFuelInput[] | VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput[]
+    connectOrCreate?: VehicleYearCreateOrConnectWithoutTransmissionTypeFuelInput | VehicleYearCreateOrConnectWithoutTransmissionTypeFuelInput[]
+    createMany?: VehicleYearCreateManyTransmissionTypeFuelInputEnvelope
+    connect?: VehicleYearWhereUniqueInput | VehicleYearWhereUniqueInput[]
+  }
+
+  export type FuelTypeBodyUpdateOneRequiredWithoutTransmissionTypesNestedInput = {
+    create?: XOR<FuelTypeBodyCreateWithoutTransmissionTypesInput, FuelTypeBodyUncheckedCreateWithoutTransmissionTypesInput>
+    connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutTransmissionTypesInput
+    upsert?: FuelTypeBodyUpsertWithoutTransmissionTypesInput
+    connect?: FuelTypeBodyWhereUniqueInput
+    update?: XOR<XOR<FuelTypeBodyUpdateToOneWithWhereWithoutTransmissionTypesInput, FuelTypeBodyUpdateWithoutTransmissionTypesInput>, FuelTypeBodyUncheckedUpdateWithoutTransmissionTypesInput>
+  }
+
+  export type TransmissionTypeUpdateOneRequiredWithoutFuelTypesNestedInput = {
+    create?: XOR<TransmissionTypeCreateWithoutFuelTypesInput, TransmissionTypeUncheckedCreateWithoutFuelTypesInput>
+    connectOrCreate?: TransmissionTypeCreateOrConnectWithoutFuelTypesInput
+    upsert?: TransmissionTypeUpsertWithoutFuelTypesInput
+    connect?: TransmissionTypeWhereUniqueInput
+    update?: XOR<XOR<TransmissionTypeUpdateToOneWithWhereWithoutFuelTypesInput, TransmissionTypeUpdateWithoutFuelTypesInput>, TransmissionTypeUncheckedUpdateWithoutFuelTypesInput>
+  }
+
+  export type VehicleYearUpdateManyWithoutTransmissionTypeFuelNestedInput = {
+    create?: XOR<VehicleYearCreateWithoutTransmissionTypeFuelInput, VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput> | VehicleYearCreateWithoutTransmissionTypeFuelInput[] | VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput[]
+    connectOrCreate?: VehicleYearCreateOrConnectWithoutTransmissionTypeFuelInput | VehicleYearCreateOrConnectWithoutTransmissionTypeFuelInput[]
+    upsert?: VehicleYearUpsertWithWhereUniqueWithoutTransmissionTypeFuelInput | VehicleYearUpsertWithWhereUniqueWithoutTransmissionTypeFuelInput[]
+    createMany?: VehicleYearCreateManyTransmissionTypeFuelInputEnvelope
+    set?: VehicleYearWhereUniqueInput | VehicleYearWhereUniqueInput[]
+    disconnect?: VehicleYearWhereUniqueInput | VehicleYearWhereUniqueInput[]
+    delete?: VehicleYearWhereUniqueInput | VehicleYearWhereUniqueInput[]
+    connect?: VehicleYearWhereUniqueInput | VehicleYearWhereUniqueInput[]
+    update?: VehicleYearUpdateWithWhereUniqueWithoutTransmissionTypeFuelInput | VehicleYearUpdateWithWhereUniqueWithoutTransmissionTypeFuelInput[]
+    updateMany?: VehicleYearUpdateManyWithWhereWithoutTransmissionTypeFuelInput | VehicleYearUpdateManyWithWhereWithoutTransmissionTypeFuelInput[]
+    deleteMany?: VehicleYearScalarWhereInput | VehicleYearScalarWhereInput[]
+  }
+
+  export type VehicleYearUncheckedUpdateManyWithoutTransmissionTypeFuelNestedInput = {
+    create?: XOR<VehicleYearCreateWithoutTransmissionTypeFuelInput, VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput> | VehicleYearCreateWithoutTransmissionTypeFuelInput[] | VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput[]
+    connectOrCreate?: VehicleYearCreateOrConnectWithoutTransmissionTypeFuelInput | VehicleYearCreateOrConnectWithoutTransmissionTypeFuelInput[]
+    upsert?: VehicleYearUpsertWithWhereUniqueWithoutTransmissionTypeFuelInput | VehicleYearUpsertWithWhereUniqueWithoutTransmissionTypeFuelInput[]
+    createMany?: VehicleYearCreateManyTransmissionTypeFuelInputEnvelope
+    set?: VehicleYearWhereUniqueInput | VehicleYearWhereUniqueInput[]
+    disconnect?: VehicleYearWhereUniqueInput | VehicleYearWhereUniqueInput[]
+    delete?: VehicleYearWhereUniqueInput | VehicleYearWhereUniqueInput[]
+    connect?: VehicleYearWhereUniqueInput | VehicleYearWhereUniqueInput[]
+    update?: VehicleYearUpdateWithWhereUniqueWithoutTransmissionTypeFuelInput | VehicleYearUpdateWithWhereUniqueWithoutTransmissionTypeFuelInput[]
+    updateMany?: VehicleYearUpdateManyWithWhereWithoutTransmissionTypeFuelInput | VehicleYearUpdateManyWithWhereWithoutTransmissionTypeFuelInput[]
+    deleteMany?: VehicleYearScalarWhereInput | VehicleYearScalarWhereInput[]
+  }
+
+  export type TransmissionTypeFuelCreateNestedOneWithoutYearsInput = {
+    create?: XOR<TransmissionTypeFuelCreateWithoutYearsInput, TransmissionTypeFuelUncheckedCreateWithoutYearsInput>
+    connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutYearsInput
+    connect?: TransmissionTypeFuelWhereUniqueInput
+  }
+
+  export type MileageCreateNestedManyWithoutVehicleYearInput = {
+    create?: XOR<MileageCreateWithoutVehicleYearInput, MileageUncheckedCreateWithoutVehicleYearInput> | MileageCreateWithoutVehicleYearInput[] | MileageUncheckedCreateWithoutVehicleYearInput[]
+    connectOrCreate?: MileageCreateOrConnectWithoutVehicleYearInput | MileageCreateOrConnectWithoutVehicleYearInput[]
+    createMany?: MileageCreateManyVehicleYearInputEnvelope
+    connect?: MileageWhereUniqueInput | MileageWhereUniqueInput[]
+  }
+
+  export type MileageUncheckedCreateNestedManyWithoutVehicleYearInput = {
+    create?: XOR<MileageCreateWithoutVehicleYearInput, MileageUncheckedCreateWithoutVehicleYearInput> | MileageCreateWithoutVehicleYearInput[] | MileageUncheckedCreateWithoutVehicleYearInput[]
+    connectOrCreate?: MileageCreateOrConnectWithoutVehicleYearInput | MileageCreateOrConnectWithoutVehicleYearInput[]
+    createMany?: MileageCreateManyVehicleYearInputEnvelope
+    connect?: MileageWhereUniqueInput | MileageWhereUniqueInput[]
+  }
+
+  export type TransmissionTypeFuelUpdateOneRequiredWithoutYearsNestedInput = {
+    create?: XOR<TransmissionTypeFuelCreateWithoutYearsInput, TransmissionTypeFuelUncheckedCreateWithoutYearsInput>
+    connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutYearsInput
+    upsert?: TransmissionTypeFuelUpsertWithoutYearsInput
+    connect?: TransmissionTypeFuelWhereUniqueInput
+    update?: XOR<XOR<TransmissionTypeFuelUpdateToOneWithWhereWithoutYearsInput, TransmissionTypeFuelUpdateWithoutYearsInput>, TransmissionTypeFuelUncheckedUpdateWithoutYearsInput>
+  }
+
+  export type MileageUpdateManyWithoutVehicleYearNestedInput = {
+    create?: XOR<MileageCreateWithoutVehicleYearInput, MileageUncheckedCreateWithoutVehicleYearInput> | MileageCreateWithoutVehicleYearInput[] | MileageUncheckedCreateWithoutVehicleYearInput[]
+    connectOrCreate?: MileageCreateOrConnectWithoutVehicleYearInput | MileageCreateOrConnectWithoutVehicleYearInput[]
+    upsert?: MileageUpsertWithWhereUniqueWithoutVehicleYearInput | MileageUpsertWithWhereUniqueWithoutVehicleYearInput[]
+    createMany?: MileageCreateManyVehicleYearInputEnvelope
+    set?: MileageWhereUniqueInput | MileageWhereUniqueInput[]
+    disconnect?: MileageWhereUniqueInput | MileageWhereUniqueInput[]
+    delete?: MileageWhereUniqueInput | MileageWhereUniqueInput[]
+    connect?: MileageWhereUniqueInput | MileageWhereUniqueInput[]
+    update?: MileageUpdateWithWhereUniqueWithoutVehicleYearInput | MileageUpdateWithWhereUniqueWithoutVehicleYearInput[]
+    updateMany?: MileageUpdateManyWithWhereWithoutVehicleYearInput | MileageUpdateManyWithWhereWithoutVehicleYearInput[]
+    deleteMany?: MileageScalarWhereInput | MileageScalarWhereInput[]
+  }
+
+  export type MileageUncheckedUpdateManyWithoutVehicleYearNestedInput = {
+    create?: XOR<MileageCreateWithoutVehicleYearInput, MileageUncheckedCreateWithoutVehicleYearInput> | MileageCreateWithoutVehicleYearInput[] | MileageUncheckedCreateWithoutVehicleYearInput[]
+    connectOrCreate?: MileageCreateOrConnectWithoutVehicleYearInput | MileageCreateOrConnectWithoutVehicleYearInput[]
+    upsert?: MileageUpsertWithWhereUniqueWithoutVehicleYearInput | MileageUpsertWithWhereUniqueWithoutVehicleYearInput[]
+    createMany?: MileageCreateManyVehicleYearInputEnvelope
+    set?: MileageWhereUniqueInput | MileageWhereUniqueInput[]
+    disconnect?: MileageWhereUniqueInput | MileageWhereUniqueInput[]
+    delete?: MileageWhereUniqueInput | MileageWhereUniqueInput[]
+    connect?: MileageWhereUniqueInput | MileageWhereUniqueInput[]
+    update?: MileageUpdateWithWhereUniqueWithoutVehicleYearInput | MileageUpdateWithWhereUniqueWithoutVehicleYearInput[]
+    updateMany?: MileageUpdateManyWithWhereWithoutVehicleYearInput | MileageUpdateManyWithWhereWithoutVehicleYearInput[]
+    deleteMany?: MileageScalarWhereInput | MileageScalarWhereInput[]
+  }
+
+  export type VehicleYearCreateNestedOneWithoutMileagesInput = {
+    create?: XOR<VehicleYearCreateWithoutMileagesInput, VehicleYearUncheckedCreateWithoutMileagesInput>
+    connectOrCreate?: VehicleYearCreateOrConnectWithoutMileagesInput
+    connect?: VehicleYearWhereUniqueInput
+  }
+
+  export type ColorMileageCreateNestedManyWithoutMileageInput = {
+    create?: XOR<ColorMileageCreateWithoutMileageInput, ColorMileageUncheckedCreateWithoutMileageInput> | ColorMileageCreateWithoutMileageInput[] | ColorMileageUncheckedCreateWithoutMileageInput[]
+    connectOrCreate?: ColorMileageCreateOrConnectWithoutMileageInput | ColorMileageCreateOrConnectWithoutMileageInput[]
+    createMany?: ColorMileageCreateManyMileageInputEnvelope
+    connect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+  }
+
+  export type ColorMileageUncheckedCreateNestedManyWithoutMileageInput = {
+    create?: XOR<ColorMileageCreateWithoutMileageInput, ColorMileageUncheckedCreateWithoutMileageInput> | ColorMileageCreateWithoutMileageInput[] | ColorMileageUncheckedCreateWithoutMileageInput[]
+    connectOrCreate?: ColorMileageCreateOrConnectWithoutMileageInput | ColorMileageCreateOrConnectWithoutMileageInput[]
+    createMany?: ColorMileageCreateManyMileageInputEnvelope
+    connect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+  }
+
+  export type VehicleYearUpdateOneRequiredWithoutMileagesNestedInput = {
+    create?: XOR<VehicleYearCreateWithoutMileagesInput, VehicleYearUncheckedCreateWithoutMileagesInput>
+    connectOrCreate?: VehicleYearCreateOrConnectWithoutMileagesInput
+    upsert?: VehicleYearUpsertWithoutMileagesInput
+    connect?: VehicleYearWhereUniqueInput
+    update?: XOR<XOR<VehicleYearUpdateToOneWithWhereWithoutMileagesInput, VehicleYearUpdateWithoutMileagesInput>, VehicleYearUncheckedUpdateWithoutMileagesInput>
+  }
+
+  export type ColorMileageUpdateManyWithoutMileageNestedInput = {
+    create?: XOR<ColorMileageCreateWithoutMileageInput, ColorMileageUncheckedCreateWithoutMileageInput> | ColorMileageCreateWithoutMileageInput[] | ColorMileageUncheckedCreateWithoutMileageInput[]
+    connectOrCreate?: ColorMileageCreateOrConnectWithoutMileageInput | ColorMileageCreateOrConnectWithoutMileageInput[]
+    upsert?: ColorMileageUpsertWithWhereUniqueWithoutMileageInput | ColorMileageUpsertWithWhereUniqueWithoutMileageInput[]
+    createMany?: ColorMileageCreateManyMileageInputEnvelope
+    set?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    disconnect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    delete?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    connect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    update?: ColorMileageUpdateWithWhereUniqueWithoutMileageInput | ColorMileageUpdateWithWhereUniqueWithoutMileageInput[]
+    updateMany?: ColorMileageUpdateManyWithWhereWithoutMileageInput | ColorMileageUpdateManyWithWhereWithoutMileageInput[]
+    deleteMany?: ColorMileageScalarWhereInput | ColorMileageScalarWhereInput[]
+  }
+
+  export type ColorMileageUncheckedUpdateManyWithoutMileageNestedInput = {
+    create?: XOR<ColorMileageCreateWithoutMileageInput, ColorMileageUncheckedCreateWithoutMileageInput> | ColorMileageCreateWithoutMileageInput[] | ColorMileageUncheckedCreateWithoutMileageInput[]
+    connectOrCreate?: ColorMileageCreateOrConnectWithoutMileageInput | ColorMileageCreateOrConnectWithoutMileageInput[]
+    upsert?: ColorMileageUpsertWithWhereUniqueWithoutMileageInput | ColorMileageUpsertWithWhereUniqueWithoutMileageInput[]
+    createMany?: ColorMileageCreateManyMileageInputEnvelope
+    set?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    disconnect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    delete?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    connect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    update?: ColorMileageUpdateWithWhereUniqueWithoutMileageInput | ColorMileageUpdateWithWhereUniqueWithoutMileageInput[]
+    updateMany?: ColorMileageUpdateManyWithWhereWithoutMileageInput | ColorMileageUpdateManyWithWhereWithoutMileageInput[]
+    deleteMany?: ColorMileageScalarWhereInput | ColorMileageScalarWhereInput[]
+  }
+
+  export type ColorMileageCreateNestedManyWithoutColorInput = {
+    create?: XOR<ColorMileageCreateWithoutColorInput, ColorMileageUncheckedCreateWithoutColorInput> | ColorMileageCreateWithoutColorInput[] | ColorMileageUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: ColorMileageCreateOrConnectWithoutColorInput | ColorMileageCreateOrConnectWithoutColorInput[]
+    createMany?: ColorMileageCreateManyColorInputEnvelope
+    connect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+  }
+
+  export type ColorMileageUncheckedCreateNestedManyWithoutColorInput = {
+    create?: XOR<ColorMileageCreateWithoutColorInput, ColorMileageUncheckedCreateWithoutColorInput> | ColorMileageCreateWithoutColorInput[] | ColorMileageUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: ColorMileageCreateOrConnectWithoutColorInput | ColorMileageCreateOrConnectWithoutColorInput[]
+    createMany?: ColorMileageCreateManyColorInputEnvelope
+    connect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+  }
+
+  export type ColorMileageUpdateManyWithoutColorNestedInput = {
+    create?: XOR<ColorMileageCreateWithoutColorInput, ColorMileageUncheckedCreateWithoutColorInput> | ColorMileageCreateWithoutColorInput[] | ColorMileageUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: ColorMileageCreateOrConnectWithoutColorInput | ColorMileageCreateOrConnectWithoutColorInput[]
+    upsert?: ColorMileageUpsertWithWhereUniqueWithoutColorInput | ColorMileageUpsertWithWhereUniqueWithoutColorInput[]
+    createMany?: ColorMileageCreateManyColorInputEnvelope
+    set?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    disconnect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    delete?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    connect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    update?: ColorMileageUpdateWithWhereUniqueWithoutColorInput | ColorMileageUpdateWithWhereUniqueWithoutColorInput[]
+    updateMany?: ColorMileageUpdateManyWithWhereWithoutColorInput | ColorMileageUpdateManyWithWhereWithoutColorInput[]
+    deleteMany?: ColorMileageScalarWhereInput | ColorMileageScalarWhereInput[]
+  }
+
+  export type ColorMileageUncheckedUpdateManyWithoutColorNestedInput = {
+    create?: XOR<ColorMileageCreateWithoutColorInput, ColorMileageUncheckedCreateWithoutColorInput> | ColorMileageCreateWithoutColorInput[] | ColorMileageUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: ColorMileageCreateOrConnectWithoutColorInput | ColorMileageCreateOrConnectWithoutColorInput[]
+    upsert?: ColorMileageUpsertWithWhereUniqueWithoutColorInput | ColorMileageUpsertWithWhereUniqueWithoutColorInput[]
+    createMany?: ColorMileageCreateManyColorInputEnvelope
+    set?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    disconnect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    delete?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    connect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+    update?: ColorMileageUpdateWithWhereUniqueWithoutColorInput | ColorMileageUpdateWithWhereUniqueWithoutColorInput[]
+    updateMany?: ColorMileageUpdateManyWithWhereWithoutColorInput | ColorMileageUpdateManyWithWhereWithoutColorInput[]
+    deleteMany?: ColorMileageScalarWhereInput | ColorMileageScalarWhereInput[]
+  }
+
+  export type MileageCreateNestedOneWithoutColorsInput = {
+    create?: XOR<MileageCreateWithoutColorsInput, MileageUncheckedCreateWithoutColorsInput>
+    connectOrCreate?: MileageCreateOrConnectWithoutColorsInput
+    connect?: MileageWhereUniqueInput
+  }
+
+  export type ColorCreateNestedOneWithoutMileagesInput = {
+    create?: XOR<ColorCreateWithoutMileagesInput, ColorUncheckedCreateWithoutMileagesInput>
+    connectOrCreate?: ColorCreateOrConnectWithoutMileagesInput
+    connect?: ColorWhereUniqueInput
+  }
+
+  export type AccidentRecordCreateNestedManyWithoutColorMileageInput = {
+    create?: XOR<AccidentRecordCreateWithoutColorMileageInput, AccidentRecordUncheckedCreateWithoutColorMileageInput> | AccidentRecordCreateWithoutColorMileageInput[] | AccidentRecordUncheckedCreateWithoutColorMileageInput[]
+    connectOrCreate?: AccidentRecordCreateOrConnectWithoutColorMileageInput | AccidentRecordCreateOrConnectWithoutColorMileageInput[]
+    createMany?: AccidentRecordCreateManyColorMileageInputEnvelope
+    connect?: AccidentRecordWhereUniqueInput | AccidentRecordWhereUniqueInput[]
+  }
+
+  export type AccidentRecordUncheckedCreateNestedManyWithoutColorMileageInput = {
+    create?: XOR<AccidentRecordCreateWithoutColorMileageInput, AccidentRecordUncheckedCreateWithoutColorMileageInput> | AccidentRecordCreateWithoutColorMileageInput[] | AccidentRecordUncheckedCreateWithoutColorMileageInput[]
+    connectOrCreate?: AccidentRecordCreateOrConnectWithoutColorMileageInput | AccidentRecordCreateOrConnectWithoutColorMileageInput[]
+    createMany?: AccidentRecordCreateManyColorMileageInputEnvelope
+    connect?: AccidentRecordWhereUniqueInput | AccidentRecordWhereUniqueInput[]
+  }
+
+  export type MileageUpdateOneRequiredWithoutColorsNestedInput = {
+    create?: XOR<MileageCreateWithoutColorsInput, MileageUncheckedCreateWithoutColorsInput>
+    connectOrCreate?: MileageCreateOrConnectWithoutColorsInput
+    upsert?: MileageUpsertWithoutColorsInput
+    connect?: MileageWhereUniqueInput
+    update?: XOR<XOR<MileageUpdateToOneWithWhereWithoutColorsInput, MileageUpdateWithoutColorsInput>, MileageUncheckedUpdateWithoutColorsInput>
+  }
+
+  export type ColorUpdateOneRequiredWithoutMileagesNestedInput = {
+    create?: XOR<ColorCreateWithoutMileagesInput, ColorUncheckedCreateWithoutMileagesInput>
+    connectOrCreate?: ColorCreateOrConnectWithoutMileagesInput
+    upsert?: ColorUpsertWithoutMileagesInput
+    connect?: ColorWhereUniqueInput
+    update?: XOR<XOR<ColorUpdateToOneWithWhereWithoutMileagesInput, ColorUpdateWithoutMileagesInput>, ColorUncheckedUpdateWithoutMileagesInput>
+  }
+
+  export type AccidentRecordUpdateManyWithoutColorMileageNestedInput = {
+    create?: XOR<AccidentRecordCreateWithoutColorMileageInput, AccidentRecordUncheckedCreateWithoutColorMileageInput> | AccidentRecordCreateWithoutColorMileageInput[] | AccidentRecordUncheckedCreateWithoutColorMileageInput[]
+    connectOrCreate?: AccidentRecordCreateOrConnectWithoutColorMileageInput | AccidentRecordCreateOrConnectWithoutColorMileageInput[]
+    upsert?: AccidentRecordUpsertWithWhereUniqueWithoutColorMileageInput | AccidentRecordUpsertWithWhereUniqueWithoutColorMileageInput[]
+    createMany?: AccidentRecordCreateManyColorMileageInputEnvelope
+    set?: AccidentRecordWhereUniqueInput | AccidentRecordWhereUniqueInput[]
+    disconnect?: AccidentRecordWhereUniqueInput | AccidentRecordWhereUniqueInput[]
+    delete?: AccidentRecordWhereUniqueInput | AccidentRecordWhereUniqueInput[]
+    connect?: AccidentRecordWhereUniqueInput | AccidentRecordWhereUniqueInput[]
+    update?: AccidentRecordUpdateWithWhereUniqueWithoutColorMileageInput | AccidentRecordUpdateWithWhereUniqueWithoutColorMileageInput[]
+    updateMany?: AccidentRecordUpdateManyWithWhereWithoutColorMileageInput | AccidentRecordUpdateManyWithWhereWithoutColorMileageInput[]
+    deleteMany?: AccidentRecordScalarWhereInput | AccidentRecordScalarWhereInput[]
+  }
+
+  export type AccidentRecordUncheckedUpdateManyWithoutColorMileageNestedInput = {
+    create?: XOR<AccidentRecordCreateWithoutColorMileageInput, AccidentRecordUncheckedCreateWithoutColorMileageInput> | AccidentRecordCreateWithoutColorMileageInput[] | AccidentRecordUncheckedCreateWithoutColorMileageInput[]
+    connectOrCreate?: AccidentRecordCreateOrConnectWithoutColorMileageInput | AccidentRecordCreateOrConnectWithoutColorMileageInput[]
+    upsert?: AccidentRecordUpsertWithWhereUniqueWithoutColorMileageInput | AccidentRecordUpsertWithWhereUniqueWithoutColorMileageInput[]
+    createMany?: AccidentRecordCreateManyColorMileageInputEnvelope
+    set?: AccidentRecordWhereUniqueInput | AccidentRecordWhereUniqueInput[]
+    disconnect?: AccidentRecordWhereUniqueInput | AccidentRecordWhereUniqueInput[]
+    delete?: AccidentRecordWhereUniqueInput | AccidentRecordWhereUniqueInput[]
+    connect?: AccidentRecordWhereUniqueInput | AccidentRecordWhereUniqueInput[]
+    update?: AccidentRecordUpdateWithWhereUniqueWithoutColorMileageInput | AccidentRecordUpdateWithWhereUniqueWithoutColorMileageInput[]
+    updateMany?: AccidentRecordUpdateManyWithWhereWithoutColorMileageInput | AccidentRecordUpdateManyWithWhereWithoutColorMileageInput[]
+    deleteMany?: AccidentRecordScalarWhereInput | AccidentRecordScalarWhereInput[]
+  }
+
+  export type ColorMileageCreateNestedOneWithoutAccidentRecordsInput = {
+    create?: XOR<ColorMileageCreateWithoutAccidentRecordsInput, ColorMileageUncheckedCreateWithoutAccidentRecordsInput>
+    connectOrCreate?: ColorMileageCreateOrConnectWithoutAccidentRecordsInput
+    connect?: ColorMileageWhereUniqueInput
+  }
+
+  export type VehicleCreateNestedManyWithoutAccidentRecordInput = {
+    create?: XOR<VehicleCreateWithoutAccidentRecordInput, VehicleUncheckedCreateWithoutAccidentRecordInput> | VehicleCreateWithoutAccidentRecordInput[] | VehicleUncheckedCreateWithoutAccidentRecordInput[]
+    connectOrCreate?: VehicleCreateOrConnectWithoutAccidentRecordInput | VehicleCreateOrConnectWithoutAccidentRecordInput[]
+    createMany?: VehicleCreateManyAccidentRecordInputEnvelope
+    connect?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+  }
+
+  export type VehicleUncheckedCreateNestedManyWithoutAccidentRecordInput = {
+    create?: XOR<VehicleCreateWithoutAccidentRecordInput, VehicleUncheckedCreateWithoutAccidentRecordInput> | VehicleCreateWithoutAccidentRecordInput[] | VehicleUncheckedCreateWithoutAccidentRecordInput[]
+    connectOrCreate?: VehicleCreateOrConnectWithoutAccidentRecordInput | VehicleCreateOrConnectWithoutAccidentRecordInput[]
+    createMany?: VehicleCreateManyAccidentRecordInputEnvelope
+    connect?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type ColorMileageUpdateOneRequiredWithoutAccidentRecordsNestedInput = {
+    create?: XOR<ColorMileageCreateWithoutAccidentRecordsInput, ColorMileageUncheckedCreateWithoutAccidentRecordsInput>
+    connectOrCreate?: ColorMileageCreateOrConnectWithoutAccidentRecordsInput
+    upsert?: ColorMileageUpsertWithoutAccidentRecordsInput
+    connect?: ColorMileageWhereUniqueInput
+    update?: XOR<XOR<ColorMileageUpdateToOneWithWhereWithoutAccidentRecordsInput, ColorMileageUpdateWithoutAccidentRecordsInput>, ColorMileageUncheckedUpdateWithoutAccidentRecordsInput>
+  }
+
+  export type VehicleUpdateManyWithoutAccidentRecordNestedInput = {
+    create?: XOR<VehicleCreateWithoutAccidentRecordInput, VehicleUncheckedCreateWithoutAccidentRecordInput> | VehicleCreateWithoutAccidentRecordInput[] | VehicleUncheckedCreateWithoutAccidentRecordInput[]
+    connectOrCreate?: VehicleCreateOrConnectWithoutAccidentRecordInput | VehicleCreateOrConnectWithoutAccidentRecordInput[]
+    upsert?: VehicleUpsertWithWhereUniqueWithoutAccidentRecordInput | VehicleUpsertWithWhereUniqueWithoutAccidentRecordInput[]
+    createMany?: VehicleCreateManyAccidentRecordInputEnvelope
+    set?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+    disconnect?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+    delete?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+    connect?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+    update?: VehicleUpdateWithWhereUniqueWithoutAccidentRecordInput | VehicleUpdateWithWhereUniqueWithoutAccidentRecordInput[]
+    updateMany?: VehicleUpdateManyWithWhereWithoutAccidentRecordInput | VehicleUpdateManyWithWhereWithoutAccidentRecordInput[]
+    deleteMany?: VehicleScalarWhereInput | VehicleScalarWhereInput[]
+  }
+
+  export type VehicleUncheckedUpdateManyWithoutAccidentRecordNestedInput = {
+    create?: XOR<VehicleCreateWithoutAccidentRecordInput, VehicleUncheckedCreateWithoutAccidentRecordInput> | VehicleCreateWithoutAccidentRecordInput[] | VehicleUncheckedCreateWithoutAccidentRecordInput[]
+    connectOrCreate?: VehicleCreateOrConnectWithoutAccidentRecordInput | VehicleCreateOrConnectWithoutAccidentRecordInput[]
+    upsert?: VehicleUpsertWithWhereUniqueWithoutAccidentRecordInput | VehicleUpsertWithWhereUniqueWithoutAccidentRecordInput[]
+    createMany?: VehicleCreateManyAccidentRecordInputEnvelope
+    set?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+    disconnect?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+    delete?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+    connect?: VehicleWhereUniqueInput | VehicleWhereUniqueInput[]
+    update?: VehicleUpdateWithWhereUniqueWithoutAccidentRecordInput | VehicleUpdateWithWhereUniqueWithoutAccidentRecordInput[]
+    updateMany?: VehicleUpdateManyWithWhereWithoutAccidentRecordInput | VehicleUpdateManyWithWhereWithoutAccidentRecordInput[]
+    deleteMany?: VehicleScalarWhereInput | VehicleScalarWhereInput[]
+  }
+
+  export type AccidentRecordCreateNestedOneWithoutVehiclesInput = {
+    create?: XOR<AccidentRecordCreateWithoutVehiclesInput, AccidentRecordUncheckedCreateWithoutVehiclesInput>
+    connectOrCreate?: AccidentRecordCreateOrConnectWithoutVehiclesInput
+    connect?: AccidentRecordWhereUniqueInput
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type AccidentRecordUpdateOneRequiredWithoutVehiclesNestedInput = {
+    create?: XOR<AccidentRecordCreateWithoutVehiclesInput, AccidentRecordUncheckedCreateWithoutVehiclesInput>
+    connectOrCreate?: AccidentRecordCreateOrConnectWithoutVehiclesInput
+    upsert?: AccidentRecordUpsertWithoutVehiclesInput
+    connect?: AccidentRecordWhereUniqueInput
+    update?: XOR<XOR<AccidentRecordUpdateToOneWithWhereWithoutVehiclesInput, AccidentRecordUpdateWithoutVehiclesInput>, AccidentRecordUncheckedUpdateWithoutVehiclesInput>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type ModelCreateWithoutBrandInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versions?: VersionCreateNestedManyWithoutModelInput
+  }
+
+  export type ModelUncheckedCreateWithoutBrandInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versions?: VersionUncheckedCreateNestedManyWithoutModelInput
+  }
+
+  export type ModelCreateOrConnectWithoutBrandInput = {
+    where: ModelWhereUniqueInput
+    create: XOR<ModelCreateWithoutBrandInput, ModelUncheckedCreateWithoutBrandInput>
+  }
+
+  export type ModelCreateManyBrandInputEnvelope = {
+    data: ModelCreateManyBrandInput | ModelCreateManyBrandInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ModelUpsertWithWhereUniqueWithoutBrandInput = {
+    where: ModelWhereUniqueInput
+    update: XOR<ModelUpdateWithoutBrandInput, ModelUncheckedUpdateWithoutBrandInput>
+    create: XOR<ModelCreateWithoutBrandInput, ModelUncheckedCreateWithoutBrandInput>
+  }
+
+  export type ModelUpdateWithWhereUniqueWithoutBrandInput = {
+    where: ModelWhereUniqueInput
+    data: XOR<ModelUpdateWithoutBrandInput, ModelUncheckedUpdateWithoutBrandInput>
+  }
+
+  export type ModelUpdateManyWithWhereWithoutBrandInput = {
+    where: ModelScalarWhereInput
+    data: XOR<ModelUpdateManyMutationInput, ModelUncheckedUpdateManyWithoutBrandInput>
+  }
+
+  export type ModelScalarWhereInput = {
+    AND?: ModelScalarWhereInput | ModelScalarWhereInput[]
+    OR?: ModelScalarWhereInput[]
+    NOT?: ModelScalarWhereInput | ModelScalarWhereInput[]
+    id?: IntFilter<"Model"> | number
+    name?: StringFilter<"Model"> | string
+    createdAt?: DateTimeFilter<"Model"> | Date | string
+    updatedAt?: DateTimeFilter<"Model"> | Date | string
+    brandId?: IntFilter<"Model"> | number
+  }
+
+  export type BrandCreateWithoutModelsInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BrandUncheckedCreateWithoutModelsInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BrandCreateOrConnectWithoutModelsInput = {
+    where: BrandWhereUniqueInput
+    create: XOR<BrandCreateWithoutModelsInput, BrandUncheckedCreateWithoutModelsInput>
+  }
+
+  export type VersionCreateWithoutModelInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyTypes?: BodyTypeVersionCreateNestedManyWithoutVersionInput
+  }
+
+  export type VersionUncheckedCreateWithoutModelInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyTypes?: BodyTypeVersionUncheckedCreateNestedManyWithoutVersionInput
+  }
+
+  export type VersionCreateOrConnectWithoutModelInput = {
+    where: VersionWhereUniqueInput
+    create: XOR<VersionCreateWithoutModelInput, VersionUncheckedCreateWithoutModelInput>
+  }
+
+  export type VersionCreateManyModelInputEnvelope = {
+    data: VersionCreateManyModelInput | VersionCreateManyModelInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BrandUpsertWithoutModelsInput = {
+    update: XOR<BrandUpdateWithoutModelsInput, BrandUncheckedUpdateWithoutModelsInput>
+    create: XOR<BrandCreateWithoutModelsInput, BrandUncheckedCreateWithoutModelsInput>
+    where?: BrandWhereInput
+  }
+
+  export type BrandUpdateToOneWithWhereWithoutModelsInput = {
+    where?: BrandWhereInput
+    data: XOR<BrandUpdateWithoutModelsInput, BrandUncheckedUpdateWithoutModelsInput>
+  }
+
+  export type BrandUpdateWithoutModelsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BrandUncheckedUpdateWithoutModelsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VersionUpsertWithWhereUniqueWithoutModelInput = {
+    where: VersionWhereUniqueInput
+    update: XOR<VersionUpdateWithoutModelInput, VersionUncheckedUpdateWithoutModelInput>
+    create: XOR<VersionCreateWithoutModelInput, VersionUncheckedCreateWithoutModelInput>
+  }
+
+  export type VersionUpdateWithWhereUniqueWithoutModelInput = {
+    where: VersionWhereUniqueInput
+    data: XOR<VersionUpdateWithoutModelInput, VersionUncheckedUpdateWithoutModelInput>
+  }
+
+  export type VersionUpdateManyWithWhereWithoutModelInput = {
+    where: VersionScalarWhereInput
+    data: XOR<VersionUpdateManyMutationInput, VersionUncheckedUpdateManyWithoutModelInput>
+  }
+
+  export type VersionScalarWhereInput = {
+    AND?: VersionScalarWhereInput | VersionScalarWhereInput[]
+    OR?: VersionScalarWhereInput[]
+    NOT?: VersionScalarWhereInput | VersionScalarWhereInput[]
+    id?: IntFilter<"Version"> | number
+    name?: StringFilter<"Version"> | string
+    createdAt?: DateTimeFilter<"Version"> | Date | string
+    updatedAt?: DateTimeFilter<"Version"> | Date | string
+    modelId?: IntFilter<"Version"> | number
+  }
+
+  export type ModelCreateWithoutVersionsInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    brand: BrandCreateNestedOneWithoutModelsInput
+  }
+
+  export type ModelUncheckedCreateWithoutVersionsInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    brandId: number
+  }
+
+  export type ModelCreateOrConnectWithoutVersionsInput = {
+    where: ModelWhereUniqueInput
+    create: XOR<ModelCreateWithoutVersionsInput, ModelUncheckedCreateWithoutVersionsInput>
+  }
+
+  export type BodyTypeVersionCreateWithoutVersionInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyType: BodyTypeCreateNestedOneWithoutVersionsInput
+    fuelTypes?: FuelTypeBodyCreateNestedManyWithoutBodyVersionInput
+  }
+
+  export type BodyTypeVersionUncheckedCreateWithoutVersionInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyTypeId: number
+    fuelTypes?: FuelTypeBodyUncheckedCreateNestedManyWithoutBodyVersionInput
+  }
+
+  export type BodyTypeVersionCreateOrConnectWithoutVersionInput = {
+    where: BodyTypeVersionWhereUniqueInput
+    create: XOR<BodyTypeVersionCreateWithoutVersionInput, BodyTypeVersionUncheckedCreateWithoutVersionInput>
+  }
+
+  export type BodyTypeVersionCreateManyVersionInputEnvelope = {
+    data: BodyTypeVersionCreateManyVersionInput | BodyTypeVersionCreateManyVersionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ModelUpsertWithoutVersionsInput = {
+    update: XOR<ModelUpdateWithoutVersionsInput, ModelUncheckedUpdateWithoutVersionsInput>
+    create: XOR<ModelCreateWithoutVersionsInput, ModelUncheckedCreateWithoutVersionsInput>
+    where?: ModelWhereInput
+  }
+
+  export type ModelUpdateToOneWithWhereWithoutVersionsInput = {
+    where?: ModelWhereInput
+    data: XOR<ModelUpdateWithoutVersionsInput, ModelUncheckedUpdateWithoutVersionsInput>
+  }
+
+  export type ModelUpdateWithoutVersionsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brand?: BrandUpdateOneRequiredWithoutModelsNestedInput
+  }
+
+  export type ModelUncheckedUpdateWithoutVersionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brandId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BodyTypeVersionUpsertWithWhereUniqueWithoutVersionInput = {
+    where: BodyTypeVersionWhereUniqueInput
+    update: XOR<BodyTypeVersionUpdateWithoutVersionInput, BodyTypeVersionUncheckedUpdateWithoutVersionInput>
+    create: XOR<BodyTypeVersionCreateWithoutVersionInput, BodyTypeVersionUncheckedCreateWithoutVersionInput>
+  }
+
+  export type BodyTypeVersionUpdateWithWhereUniqueWithoutVersionInput = {
+    where: BodyTypeVersionWhereUniqueInput
+    data: XOR<BodyTypeVersionUpdateWithoutVersionInput, BodyTypeVersionUncheckedUpdateWithoutVersionInput>
+  }
+
+  export type BodyTypeVersionUpdateManyWithWhereWithoutVersionInput = {
+    where: BodyTypeVersionScalarWhereInput
+    data: XOR<BodyTypeVersionUpdateManyMutationInput, BodyTypeVersionUncheckedUpdateManyWithoutVersionInput>
+  }
+
+  export type BodyTypeVersionScalarWhereInput = {
+    AND?: BodyTypeVersionScalarWhereInput | BodyTypeVersionScalarWhereInput[]
+    OR?: BodyTypeVersionScalarWhereInput[]
+    NOT?: BodyTypeVersionScalarWhereInput | BodyTypeVersionScalarWhereInput[]
+    id?: IntFilter<"BodyTypeVersion"> | number
+    createdAt?: DateTimeFilter<"BodyTypeVersion"> | Date | string
+    updatedAt?: DateTimeFilter<"BodyTypeVersion"> | Date | string
+    versionId?: IntFilter<"BodyTypeVersion"> | number
+    bodyTypeId?: IntFilter<"BodyTypeVersion"> | number
+  }
+
+  export type BodyTypeVersionCreateWithoutBodyTypeInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    version: VersionCreateNestedOneWithoutBodyTypesInput
+    fuelTypes?: FuelTypeBodyCreateNestedManyWithoutBodyVersionInput
+  }
+
+  export type BodyTypeVersionUncheckedCreateWithoutBodyTypeInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versionId: number
+    fuelTypes?: FuelTypeBodyUncheckedCreateNestedManyWithoutBodyVersionInput
+  }
+
+  export type BodyTypeVersionCreateOrConnectWithoutBodyTypeInput = {
+    where: BodyTypeVersionWhereUniqueInput
+    create: XOR<BodyTypeVersionCreateWithoutBodyTypeInput, BodyTypeVersionUncheckedCreateWithoutBodyTypeInput>
+  }
+
+  export type BodyTypeVersionCreateManyBodyTypeInputEnvelope = {
+    data: BodyTypeVersionCreateManyBodyTypeInput | BodyTypeVersionCreateManyBodyTypeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BodyTypeVersionUpsertWithWhereUniqueWithoutBodyTypeInput = {
+    where: BodyTypeVersionWhereUniqueInput
+    update: XOR<BodyTypeVersionUpdateWithoutBodyTypeInput, BodyTypeVersionUncheckedUpdateWithoutBodyTypeInput>
+    create: XOR<BodyTypeVersionCreateWithoutBodyTypeInput, BodyTypeVersionUncheckedCreateWithoutBodyTypeInput>
+  }
+
+  export type BodyTypeVersionUpdateWithWhereUniqueWithoutBodyTypeInput = {
+    where: BodyTypeVersionWhereUniqueInput
+    data: XOR<BodyTypeVersionUpdateWithoutBodyTypeInput, BodyTypeVersionUncheckedUpdateWithoutBodyTypeInput>
+  }
+
+  export type BodyTypeVersionUpdateManyWithWhereWithoutBodyTypeInput = {
+    where: BodyTypeVersionScalarWhereInput
+    data: XOR<BodyTypeVersionUpdateManyMutationInput, BodyTypeVersionUncheckedUpdateManyWithoutBodyTypeInput>
+  }
+
+  export type VersionCreateWithoutBodyTypesInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    model: ModelCreateNestedOneWithoutVersionsInput
+  }
+
+  export type VersionUncheckedCreateWithoutBodyTypesInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    modelId: number
+  }
+
+  export type VersionCreateOrConnectWithoutBodyTypesInput = {
+    where: VersionWhereUniqueInput
+    create: XOR<VersionCreateWithoutBodyTypesInput, VersionUncheckedCreateWithoutBodyTypesInput>
+  }
+
+  export type BodyTypeCreateWithoutVersionsInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BodyTypeUncheckedCreateWithoutVersionsInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BodyTypeCreateOrConnectWithoutVersionsInput = {
+    where: BodyTypeWhereUniqueInput
+    create: XOR<BodyTypeCreateWithoutVersionsInput, BodyTypeUncheckedCreateWithoutVersionsInput>
+  }
+
+  export type FuelTypeBodyCreateWithoutBodyVersionInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelType: FuelTypeCreateNestedOneWithoutBodyTypesInput
+    transmissionTypes?: TransmissionTypeFuelCreateNestedManyWithoutFuelBodyInput
+  }
+
+  export type FuelTypeBodyUncheckedCreateWithoutBodyVersionInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelTypeId: number
+    transmissionTypes?: TransmissionTypeFuelUncheckedCreateNestedManyWithoutFuelBodyInput
+  }
+
+  export type FuelTypeBodyCreateOrConnectWithoutBodyVersionInput = {
+    where: FuelTypeBodyWhereUniqueInput
+    create: XOR<FuelTypeBodyCreateWithoutBodyVersionInput, FuelTypeBodyUncheckedCreateWithoutBodyVersionInput>
+  }
+
+  export type FuelTypeBodyCreateManyBodyVersionInputEnvelope = {
+    data: FuelTypeBodyCreateManyBodyVersionInput | FuelTypeBodyCreateManyBodyVersionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VersionUpsertWithoutBodyTypesInput = {
+    update: XOR<VersionUpdateWithoutBodyTypesInput, VersionUncheckedUpdateWithoutBodyTypesInput>
+    create: XOR<VersionCreateWithoutBodyTypesInput, VersionUncheckedCreateWithoutBodyTypesInput>
+    where?: VersionWhereInput
+  }
+
+  export type VersionUpdateToOneWithWhereWithoutBodyTypesInput = {
+    where?: VersionWhereInput
+    data: XOR<VersionUpdateWithoutBodyTypesInput, VersionUncheckedUpdateWithoutBodyTypesInput>
+  }
+
+  export type VersionUpdateWithoutBodyTypesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    model?: ModelUpdateOneRequiredWithoutVersionsNestedInput
+  }
+
+  export type VersionUncheckedUpdateWithoutBodyTypesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    modelId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BodyTypeUpsertWithoutVersionsInput = {
+    update: XOR<BodyTypeUpdateWithoutVersionsInput, BodyTypeUncheckedUpdateWithoutVersionsInput>
+    create: XOR<BodyTypeCreateWithoutVersionsInput, BodyTypeUncheckedCreateWithoutVersionsInput>
+    where?: BodyTypeWhereInput
+  }
+
+  export type BodyTypeUpdateToOneWithWhereWithoutVersionsInput = {
+    where?: BodyTypeWhereInput
+    data: XOR<BodyTypeUpdateWithoutVersionsInput, BodyTypeUncheckedUpdateWithoutVersionsInput>
+  }
+
+  export type BodyTypeUpdateWithoutVersionsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BodyTypeUncheckedUpdateWithoutVersionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FuelTypeBodyUpsertWithWhereUniqueWithoutBodyVersionInput = {
+    where: FuelTypeBodyWhereUniqueInput
+    update: XOR<FuelTypeBodyUpdateWithoutBodyVersionInput, FuelTypeBodyUncheckedUpdateWithoutBodyVersionInput>
+    create: XOR<FuelTypeBodyCreateWithoutBodyVersionInput, FuelTypeBodyUncheckedCreateWithoutBodyVersionInput>
+  }
+
+  export type FuelTypeBodyUpdateWithWhereUniqueWithoutBodyVersionInput = {
+    where: FuelTypeBodyWhereUniqueInput
+    data: XOR<FuelTypeBodyUpdateWithoutBodyVersionInput, FuelTypeBodyUncheckedUpdateWithoutBodyVersionInput>
+  }
+
+  export type FuelTypeBodyUpdateManyWithWhereWithoutBodyVersionInput = {
+    where: FuelTypeBodyScalarWhereInput
+    data: XOR<FuelTypeBodyUpdateManyMutationInput, FuelTypeBodyUncheckedUpdateManyWithoutBodyVersionInput>
+  }
+
+  export type FuelTypeBodyScalarWhereInput = {
+    AND?: FuelTypeBodyScalarWhereInput | FuelTypeBodyScalarWhereInput[]
+    OR?: FuelTypeBodyScalarWhereInput[]
+    NOT?: FuelTypeBodyScalarWhereInput | FuelTypeBodyScalarWhereInput[]
+    id?: IntFilter<"FuelTypeBody"> | number
+    createdAt?: DateTimeFilter<"FuelTypeBody"> | Date | string
+    updatedAt?: DateTimeFilter<"FuelTypeBody"> | Date | string
+    bodyVersionId?: IntFilter<"FuelTypeBody"> | number
+    fuelTypeId?: IntFilter<"FuelTypeBody"> | number
+  }
+
+  export type FuelTypeBodyCreateWithoutFuelTypeInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyVersion: BodyTypeVersionCreateNestedOneWithoutFuelTypesInput
+    transmissionTypes?: TransmissionTypeFuelCreateNestedManyWithoutFuelBodyInput
+  }
+
+  export type FuelTypeBodyUncheckedCreateWithoutFuelTypeInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyVersionId: number
+    transmissionTypes?: TransmissionTypeFuelUncheckedCreateNestedManyWithoutFuelBodyInput
+  }
+
+  export type FuelTypeBodyCreateOrConnectWithoutFuelTypeInput = {
+    where: FuelTypeBodyWhereUniqueInput
+    create: XOR<FuelTypeBodyCreateWithoutFuelTypeInput, FuelTypeBodyUncheckedCreateWithoutFuelTypeInput>
+  }
+
+  export type FuelTypeBodyCreateManyFuelTypeInputEnvelope = {
+    data: FuelTypeBodyCreateManyFuelTypeInput | FuelTypeBodyCreateManyFuelTypeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FuelTypeBodyUpsertWithWhereUniqueWithoutFuelTypeInput = {
+    where: FuelTypeBodyWhereUniqueInput
+    update: XOR<FuelTypeBodyUpdateWithoutFuelTypeInput, FuelTypeBodyUncheckedUpdateWithoutFuelTypeInput>
+    create: XOR<FuelTypeBodyCreateWithoutFuelTypeInput, FuelTypeBodyUncheckedCreateWithoutFuelTypeInput>
+  }
+
+  export type FuelTypeBodyUpdateWithWhereUniqueWithoutFuelTypeInput = {
+    where: FuelTypeBodyWhereUniqueInput
+    data: XOR<FuelTypeBodyUpdateWithoutFuelTypeInput, FuelTypeBodyUncheckedUpdateWithoutFuelTypeInput>
+  }
+
+  export type FuelTypeBodyUpdateManyWithWhereWithoutFuelTypeInput = {
+    where: FuelTypeBodyScalarWhereInput
+    data: XOR<FuelTypeBodyUpdateManyMutationInput, FuelTypeBodyUncheckedUpdateManyWithoutFuelTypeInput>
+  }
+
+  export type BodyTypeVersionCreateWithoutFuelTypesInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    version: VersionCreateNestedOneWithoutBodyTypesInput
+    bodyType: BodyTypeCreateNestedOneWithoutVersionsInput
+  }
+
+  export type BodyTypeVersionUncheckedCreateWithoutFuelTypesInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versionId: number
+    bodyTypeId: number
+  }
+
+  export type BodyTypeVersionCreateOrConnectWithoutFuelTypesInput = {
+    where: BodyTypeVersionWhereUniqueInput
+    create: XOR<BodyTypeVersionCreateWithoutFuelTypesInput, BodyTypeVersionUncheckedCreateWithoutFuelTypesInput>
+  }
+
+  export type FuelTypeCreateWithoutBodyTypesInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FuelTypeUncheckedCreateWithoutBodyTypesInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FuelTypeCreateOrConnectWithoutBodyTypesInput = {
+    where: FuelTypeWhereUniqueInput
+    create: XOR<FuelTypeCreateWithoutBodyTypesInput, FuelTypeUncheckedCreateWithoutBodyTypesInput>
+  }
+
+  export type TransmissionTypeFuelCreateWithoutFuelBodyInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transmissionType: TransmissionTypeCreateNestedOneWithoutFuelTypesInput
+    years?: VehicleYearCreateNestedManyWithoutTransmissionTypeFuelInput
+  }
+
+  export type TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transmissionTypeId: number
+    years?: VehicleYearUncheckedCreateNestedManyWithoutTransmissionTypeFuelInput
+  }
+
+  export type TransmissionTypeFuelCreateOrConnectWithoutFuelBodyInput = {
+    where: TransmissionTypeFuelWhereUniqueInput
+    create: XOR<TransmissionTypeFuelCreateWithoutFuelBodyInput, TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput>
+  }
+
+  export type TransmissionTypeFuelCreateManyFuelBodyInputEnvelope = {
+    data: TransmissionTypeFuelCreateManyFuelBodyInput | TransmissionTypeFuelCreateManyFuelBodyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BodyTypeVersionUpsertWithoutFuelTypesInput = {
+    update: XOR<BodyTypeVersionUpdateWithoutFuelTypesInput, BodyTypeVersionUncheckedUpdateWithoutFuelTypesInput>
+    create: XOR<BodyTypeVersionCreateWithoutFuelTypesInput, BodyTypeVersionUncheckedCreateWithoutFuelTypesInput>
+    where?: BodyTypeVersionWhereInput
+  }
+
+  export type BodyTypeVersionUpdateToOneWithWhereWithoutFuelTypesInput = {
+    where?: BodyTypeVersionWhereInput
+    data: XOR<BodyTypeVersionUpdateWithoutFuelTypesInput, BodyTypeVersionUncheckedUpdateWithoutFuelTypesInput>
+  }
+
+  export type BodyTypeVersionUpdateWithoutFuelTypesInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    version?: VersionUpdateOneRequiredWithoutBodyTypesNestedInput
+    bodyType?: BodyTypeUpdateOneRequiredWithoutVersionsNestedInput
+  }
+
+  export type BodyTypeVersionUncheckedUpdateWithoutFuelTypesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versionId?: IntFieldUpdateOperationsInput | number
+    bodyTypeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FuelTypeUpsertWithoutBodyTypesInput = {
+    update: XOR<FuelTypeUpdateWithoutBodyTypesInput, FuelTypeUncheckedUpdateWithoutBodyTypesInput>
+    create: XOR<FuelTypeCreateWithoutBodyTypesInput, FuelTypeUncheckedCreateWithoutBodyTypesInput>
+    where?: FuelTypeWhereInput
+  }
+
+  export type FuelTypeUpdateToOneWithWhereWithoutBodyTypesInput = {
+    where?: FuelTypeWhereInput
+    data: XOR<FuelTypeUpdateWithoutBodyTypesInput, FuelTypeUncheckedUpdateWithoutBodyTypesInput>
+  }
+
+  export type FuelTypeUpdateWithoutBodyTypesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FuelTypeUncheckedUpdateWithoutBodyTypesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransmissionTypeFuelUpsertWithWhereUniqueWithoutFuelBodyInput = {
+    where: TransmissionTypeFuelWhereUniqueInput
+    update: XOR<TransmissionTypeFuelUpdateWithoutFuelBodyInput, TransmissionTypeFuelUncheckedUpdateWithoutFuelBodyInput>
+    create: XOR<TransmissionTypeFuelCreateWithoutFuelBodyInput, TransmissionTypeFuelUncheckedCreateWithoutFuelBodyInput>
+  }
+
+  export type TransmissionTypeFuelUpdateWithWhereUniqueWithoutFuelBodyInput = {
+    where: TransmissionTypeFuelWhereUniqueInput
+    data: XOR<TransmissionTypeFuelUpdateWithoutFuelBodyInput, TransmissionTypeFuelUncheckedUpdateWithoutFuelBodyInput>
+  }
+
+  export type TransmissionTypeFuelUpdateManyWithWhereWithoutFuelBodyInput = {
+    where: TransmissionTypeFuelScalarWhereInput
+    data: XOR<TransmissionTypeFuelUpdateManyMutationInput, TransmissionTypeFuelUncheckedUpdateManyWithoutFuelBodyInput>
+  }
+
+  export type TransmissionTypeFuelScalarWhereInput = {
+    AND?: TransmissionTypeFuelScalarWhereInput | TransmissionTypeFuelScalarWhereInput[]
+    OR?: TransmissionTypeFuelScalarWhereInput[]
+    NOT?: TransmissionTypeFuelScalarWhereInput | TransmissionTypeFuelScalarWhereInput[]
+    id?: IntFilter<"TransmissionTypeFuel"> | number
+    createdAt?: DateTimeFilter<"TransmissionTypeFuel"> | Date | string
+    updatedAt?: DateTimeFilter<"TransmissionTypeFuel"> | Date | string
+    fuelBodyId?: IntFilter<"TransmissionTypeFuel"> | number
+    transmissionTypeId?: IntFilter<"TransmissionTypeFuel"> | number
+  }
+
+  export type TransmissionTypeFuelCreateWithoutTransmissionTypeInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelBody: FuelTypeBodyCreateNestedOneWithoutTransmissionTypesInput
+    years?: VehicleYearCreateNestedManyWithoutTransmissionTypeFuelInput
+  }
+
+  export type TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelBodyId: number
+    years?: VehicleYearUncheckedCreateNestedManyWithoutTransmissionTypeFuelInput
+  }
+
+  export type TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput = {
+    where: TransmissionTypeFuelWhereUniqueInput
+    create: XOR<TransmissionTypeFuelCreateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput>
+  }
+
+  export type TransmissionTypeFuelCreateManyTransmissionTypeInputEnvelope = {
+    data: TransmissionTypeFuelCreateManyTransmissionTypeInput | TransmissionTypeFuelCreateManyTransmissionTypeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TransmissionTypeFuelUpsertWithWhereUniqueWithoutTransmissionTypeInput = {
+    where: TransmissionTypeFuelWhereUniqueInput
+    update: XOR<TransmissionTypeFuelUpdateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedUpdateWithoutTransmissionTypeInput>
+    create: XOR<TransmissionTypeFuelCreateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput>
+  }
+
+  export type TransmissionTypeFuelUpdateWithWhereUniqueWithoutTransmissionTypeInput = {
+    where: TransmissionTypeFuelWhereUniqueInput
+    data: XOR<TransmissionTypeFuelUpdateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedUpdateWithoutTransmissionTypeInput>
+  }
+
+  export type TransmissionTypeFuelUpdateManyWithWhereWithoutTransmissionTypeInput = {
+    where: TransmissionTypeFuelScalarWhereInput
+    data: XOR<TransmissionTypeFuelUpdateManyMutationInput, TransmissionTypeFuelUncheckedUpdateManyWithoutTransmissionTypeInput>
+  }
+
+  export type FuelTypeBodyCreateWithoutTransmissionTypesInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyVersion: BodyTypeVersionCreateNestedOneWithoutFuelTypesInput
+    fuelType: FuelTypeCreateNestedOneWithoutBodyTypesInput
+  }
+
+  export type FuelTypeBodyUncheckedCreateWithoutTransmissionTypesInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyVersionId: number
+    fuelTypeId: number
+  }
+
+  export type FuelTypeBodyCreateOrConnectWithoutTransmissionTypesInput = {
+    where: FuelTypeBodyWhereUniqueInput
+    create: XOR<FuelTypeBodyCreateWithoutTransmissionTypesInput, FuelTypeBodyUncheckedCreateWithoutTransmissionTypesInput>
+  }
+
+  export type TransmissionTypeCreateWithoutFuelTypesInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TransmissionTypeUncheckedCreateWithoutFuelTypesInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TransmissionTypeCreateOrConnectWithoutFuelTypesInput = {
+    where: TransmissionTypeWhereUniqueInput
+    create: XOR<TransmissionTypeCreateWithoutFuelTypesInput, TransmissionTypeUncheckedCreateWithoutFuelTypesInput>
+  }
+
+  export type VehicleYearCreateWithoutTransmissionTypeFuelInput = {
+    year: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileages?: MileageCreateNestedManyWithoutVehicleYearInput
+  }
+
+  export type VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput = {
+    id?: number
+    year: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileages?: MileageUncheckedCreateNestedManyWithoutVehicleYearInput
+  }
+
+  export type VehicleYearCreateOrConnectWithoutTransmissionTypeFuelInput = {
+    where: VehicleYearWhereUniqueInput
+    create: XOR<VehicleYearCreateWithoutTransmissionTypeFuelInput, VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput>
+  }
+
+  export type VehicleYearCreateManyTransmissionTypeFuelInputEnvelope = {
+    data: VehicleYearCreateManyTransmissionTypeFuelInput | VehicleYearCreateManyTransmissionTypeFuelInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FuelTypeBodyUpsertWithoutTransmissionTypesInput = {
+    update: XOR<FuelTypeBodyUpdateWithoutTransmissionTypesInput, FuelTypeBodyUncheckedUpdateWithoutTransmissionTypesInput>
+    create: XOR<FuelTypeBodyCreateWithoutTransmissionTypesInput, FuelTypeBodyUncheckedCreateWithoutTransmissionTypesInput>
+    where?: FuelTypeBodyWhereInput
+  }
+
+  export type FuelTypeBodyUpdateToOneWithWhereWithoutTransmissionTypesInput = {
+    where?: FuelTypeBodyWhereInput
+    data: XOR<FuelTypeBodyUpdateWithoutTransmissionTypesInput, FuelTypeBodyUncheckedUpdateWithoutTransmissionTypesInput>
+  }
+
+  export type FuelTypeBodyUpdateWithoutTransmissionTypesInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyVersion?: BodyTypeVersionUpdateOneRequiredWithoutFuelTypesNestedInput
+    fuelType?: FuelTypeUpdateOneRequiredWithoutBodyTypesNestedInput
+  }
+
+  export type FuelTypeBodyUncheckedUpdateWithoutTransmissionTypesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyVersionId?: IntFieldUpdateOperationsInput | number
+    fuelTypeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TransmissionTypeUpsertWithoutFuelTypesInput = {
+    update: XOR<TransmissionTypeUpdateWithoutFuelTypesInput, TransmissionTypeUncheckedUpdateWithoutFuelTypesInput>
+    create: XOR<TransmissionTypeCreateWithoutFuelTypesInput, TransmissionTypeUncheckedCreateWithoutFuelTypesInput>
+    where?: TransmissionTypeWhereInput
+  }
+
+  export type TransmissionTypeUpdateToOneWithWhereWithoutFuelTypesInput = {
+    where?: TransmissionTypeWhereInput
+    data: XOR<TransmissionTypeUpdateWithoutFuelTypesInput, TransmissionTypeUncheckedUpdateWithoutFuelTypesInput>
+  }
+
+  export type TransmissionTypeUpdateWithoutFuelTypesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransmissionTypeUncheckedUpdateWithoutFuelTypesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VehicleYearUpsertWithWhereUniqueWithoutTransmissionTypeFuelInput = {
+    where: VehicleYearWhereUniqueInput
+    update: XOR<VehicleYearUpdateWithoutTransmissionTypeFuelInput, VehicleYearUncheckedUpdateWithoutTransmissionTypeFuelInput>
+    create: XOR<VehicleYearCreateWithoutTransmissionTypeFuelInput, VehicleYearUncheckedCreateWithoutTransmissionTypeFuelInput>
+  }
+
+  export type VehicleYearUpdateWithWhereUniqueWithoutTransmissionTypeFuelInput = {
+    where: VehicleYearWhereUniqueInput
+    data: XOR<VehicleYearUpdateWithoutTransmissionTypeFuelInput, VehicleYearUncheckedUpdateWithoutTransmissionTypeFuelInput>
+  }
+
+  export type VehicleYearUpdateManyWithWhereWithoutTransmissionTypeFuelInput = {
+    where: VehicleYearScalarWhereInput
+    data: XOR<VehicleYearUpdateManyMutationInput, VehicleYearUncheckedUpdateManyWithoutTransmissionTypeFuelInput>
+  }
+
+  export type VehicleYearScalarWhereInput = {
+    AND?: VehicleYearScalarWhereInput | VehicleYearScalarWhereInput[]
+    OR?: VehicleYearScalarWhereInput[]
+    NOT?: VehicleYearScalarWhereInput | VehicleYearScalarWhereInput[]
+    id?: IntFilter<"VehicleYear"> | number
+    year?: IntFilter<"VehicleYear"> | number
+    createdAt?: DateTimeFilter<"VehicleYear"> | Date | string
+    updatedAt?: DateTimeFilter<"VehicleYear"> | Date | string
+    transmissionTypeFuelId?: IntFilter<"VehicleYear"> | number
+  }
+
+  export type TransmissionTypeFuelCreateWithoutYearsInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelBody: FuelTypeBodyCreateNestedOneWithoutTransmissionTypesInput
+    transmissionType: TransmissionTypeCreateNestedOneWithoutFuelTypesInput
+  }
+
+  export type TransmissionTypeFuelUncheckedCreateWithoutYearsInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelBodyId: number
+    transmissionTypeId: number
+  }
+
+  export type TransmissionTypeFuelCreateOrConnectWithoutYearsInput = {
+    where: TransmissionTypeFuelWhereUniqueInput
+    create: XOR<TransmissionTypeFuelCreateWithoutYearsInput, TransmissionTypeFuelUncheckedCreateWithoutYearsInput>
+  }
+
+  export type MileageCreateWithoutVehicleYearInput = {
+    minKm: number
+    maxKm: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    colors?: ColorMileageCreateNestedManyWithoutMileageInput
+  }
+
+  export type MileageUncheckedCreateWithoutVehicleYearInput = {
+    id?: number
+    minKm: number
+    maxKm: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    colors?: ColorMileageUncheckedCreateNestedManyWithoutMileageInput
+  }
+
+  export type MileageCreateOrConnectWithoutVehicleYearInput = {
+    where: MileageWhereUniqueInput
+    create: XOR<MileageCreateWithoutVehicleYearInput, MileageUncheckedCreateWithoutVehicleYearInput>
+  }
+
+  export type MileageCreateManyVehicleYearInputEnvelope = {
+    data: MileageCreateManyVehicleYearInput | MileageCreateManyVehicleYearInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TransmissionTypeFuelUpsertWithoutYearsInput = {
+    update: XOR<TransmissionTypeFuelUpdateWithoutYearsInput, TransmissionTypeFuelUncheckedUpdateWithoutYearsInput>
+    create: XOR<TransmissionTypeFuelCreateWithoutYearsInput, TransmissionTypeFuelUncheckedCreateWithoutYearsInput>
+    where?: TransmissionTypeFuelWhereInput
+  }
+
+  export type TransmissionTypeFuelUpdateToOneWithWhereWithoutYearsInput = {
+    where?: TransmissionTypeFuelWhereInput
+    data: XOR<TransmissionTypeFuelUpdateWithoutYearsInput, TransmissionTypeFuelUncheckedUpdateWithoutYearsInput>
+  }
+
+  export type TransmissionTypeFuelUpdateWithoutYearsInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelBody?: FuelTypeBodyUpdateOneRequiredWithoutTransmissionTypesNestedInput
+    transmissionType?: TransmissionTypeUpdateOneRequiredWithoutFuelTypesNestedInput
+  }
+
+  export type TransmissionTypeFuelUncheckedUpdateWithoutYearsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelBodyId?: IntFieldUpdateOperationsInput | number
+    transmissionTypeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MileageUpsertWithWhereUniqueWithoutVehicleYearInput = {
+    where: MileageWhereUniqueInput
+    update: XOR<MileageUpdateWithoutVehicleYearInput, MileageUncheckedUpdateWithoutVehicleYearInput>
+    create: XOR<MileageCreateWithoutVehicleYearInput, MileageUncheckedCreateWithoutVehicleYearInput>
+  }
+
+  export type MileageUpdateWithWhereUniqueWithoutVehicleYearInput = {
+    where: MileageWhereUniqueInput
+    data: XOR<MileageUpdateWithoutVehicleYearInput, MileageUncheckedUpdateWithoutVehicleYearInput>
+  }
+
+  export type MileageUpdateManyWithWhereWithoutVehicleYearInput = {
+    where: MileageScalarWhereInput
+    data: XOR<MileageUpdateManyMutationInput, MileageUncheckedUpdateManyWithoutVehicleYearInput>
+  }
+
+  export type MileageScalarWhereInput = {
+    AND?: MileageScalarWhereInput | MileageScalarWhereInput[]
+    OR?: MileageScalarWhereInput[]
+    NOT?: MileageScalarWhereInput | MileageScalarWhereInput[]
+    id?: IntFilter<"Mileage"> | number
+    minKm?: IntFilter<"Mileage"> | number
+    maxKm?: IntFilter<"Mileage"> | number
+    createdAt?: DateTimeFilter<"Mileage"> | Date | string
+    updatedAt?: DateTimeFilter<"Mileage"> | Date | string
+    vehicleYearId?: IntFilter<"Mileage"> | number
+  }
+
+  export type VehicleYearCreateWithoutMileagesInput = {
+    year: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transmissionTypeFuel: TransmissionTypeFuelCreateNestedOneWithoutYearsInput
+  }
+
+  export type VehicleYearUncheckedCreateWithoutMileagesInput = {
+    id?: number
+    year: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transmissionTypeFuelId: number
+  }
+
+  export type VehicleYearCreateOrConnectWithoutMileagesInput = {
+    where: VehicleYearWhereUniqueInput
+    create: XOR<VehicleYearCreateWithoutMileagesInput, VehicleYearUncheckedCreateWithoutMileagesInput>
+  }
+
+  export type ColorMileageCreateWithoutMileageInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    color: ColorCreateNestedOneWithoutMileagesInput
+    accidentRecords?: AccidentRecordCreateNestedManyWithoutColorMileageInput
+  }
+
+  export type ColorMileageUncheckedCreateWithoutMileageInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    colorId: number
+    accidentRecords?: AccidentRecordUncheckedCreateNestedManyWithoutColorMileageInput
+  }
+
+  export type ColorMileageCreateOrConnectWithoutMileageInput = {
+    where: ColorMileageWhereUniqueInput
+    create: XOR<ColorMileageCreateWithoutMileageInput, ColorMileageUncheckedCreateWithoutMileageInput>
+  }
+
+  export type ColorMileageCreateManyMileageInputEnvelope = {
+    data: ColorMileageCreateManyMileageInput | ColorMileageCreateManyMileageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VehicleYearUpsertWithoutMileagesInput = {
+    update: XOR<VehicleYearUpdateWithoutMileagesInput, VehicleYearUncheckedUpdateWithoutMileagesInput>
+    create: XOR<VehicleYearCreateWithoutMileagesInput, VehicleYearUncheckedCreateWithoutMileagesInput>
+    where?: VehicleYearWhereInput
+  }
+
+  export type VehicleYearUpdateToOneWithWhereWithoutMileagesInput = {
+    where?: VehicleYearWhereInput
+    data: XOR<VehicleYearUpdateWithoutMileagesInput, VehicleYearUncheckedUpdateWithoutMileagesInput>
+  }
+
+  export type VehicleYearUpdateWithoutMileagesInput = {
+    year?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transmissionTypeFuel?: TransmissionTypeFuelUpdateOneRequiredWithoutYearsNestedInput
+  }
+
+  export type VehicleYearUncheckedUpdateWithoutMileagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transmissionTypeFuelId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ColorMileageUpsertWithWhereUniqueWithoutMileageInput = {
+    where: ColorMileageWhereUniqueInput
+    update: XOR<ColorMileageUpdateWithoutMileageInput, ColorMileageUncheckedUpdateWithoutMileageInput>
+    create: XOR<ColorMileageCreateWithoutMileageInput, ColorMileageUncheckedCreateWithoutMileageInput>
+  }
+
+  export type ColorMileageUpdateWithWhereUniqueWithoutMileageInput = {
+    where: ColorMileageWhereUniqueInput
+    data: XOR<ColorMileageUpdateWithoutMileageInput, ColorMileageUncheckedUpdateWithoutMileageInput>
+  }
+
+  export type ColorMileageUpdateManyWithWhereWithoutMileageInput = {
+    where: ColorMileageScalarWhereInput
+    data: XOR<ColorMileageUpdateManyMutationInput, ColorMileageUncheckedUpdateManyWithoutMileageInput>
+  }
+
+  export type ColorMileageScalarWhereInput = {
+    AND?: ColorMileageScalarWhereInput | ColorMileageScalarWhereInput[]
+    OR?: ColorMileageScalarWhereInput[]
+    NOT?: ColorMileageScalarWhereInput | ColorMileageScalarWhereInput[]
+    id?: IntFilter<"ColorMileage"> | number
+    createdAt?: DateTimeFilter<"ColorMileage"> | Date | string
+    updatedAt?: DateTimeFilter<"ColorMileage"> | Date | string
+    mileageId?: IntFilter<"ColorMileage"> | number
+    colorId?: IntFilter<"ColorMileage"> | number
+  }
+
+  export type ColorMileageCreateWithoutColorInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileage: MileageCreateNestedOneWithoutColorsInput
+    accidentRecords?: AccidentRecordCreateNestedManyWithoutColorMileageInput
+  }
+
+  export type ColorMileageUncheckedCreateWithoutColorInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileageId: number
+    accidentRecords?: AccidentRecordUncheckedCreateNestedManyWithoutColorMileageInput
+  }
+
+  export type ColorMileageCreateOrConnectWithoutColorInput = {
+    where: ColorMileageWhereUniqueInput
+    create: XOR<ColorMileageCreateWithoutColorInput, ColorMileageUncheckedCreateWithoutColorInput>
+  }
+
+  export type ColorMileageCreateManyColorInputEnvelope = {
+    data: ColorMileageCreateManyColorInput | ColorMileageCreateManyColorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ColorMileageUpsertWithWhereUniqueWithoutColorInput = {
+    where: ColorMileageWhereUniqueInput
+    update: XOR<ColorMileageUpdateWithoutColorInput, ColorMileageUncheckedUpdateWithoutColorInput>
+    create: XOR<ColorMileageCreateWithoutColorInput, ColorMileageUncheckedCreateWithoutColorInput>
+  }
+
+  export type ColorMileageUpdateWithWhereUniqueWithoutColorInput = {
+    where: ColorMileageWhereUniqueInput
+    data: XOR<ColorMileageUpdateWithoutColorInput, ColorMileageUncheckedUpdateWithoutColorInput>
+  }
+
+  export type ColorMileageUpdateManyWithWhereWithoutColorInput = {
+    where: ColorMileageScalarWhereInput
+    data: XOR<ColorMileageUpdateManyMutationInput, ColorMileageUncheckedUpdateManyWithoutColorInput>
+  }
+
+  export type MileageCreateWithoutColorsInput = {
+    minKm: number
+    maxKm: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    vehicleYear: VehicleYearCreateNestedOneWithoutMileagesInput
+  }
+
+  export type MileageUncheckedCreateWithoutColorsInput = {
+    id?: number
+    minKm: number
+    maxKm: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    vehicleYearId: number
+  }
+
+  export type MileageCreateOrConnectWithoutColorsInput = {
+    where: MileageWhereUniqueInput
+    create: XOR<MileageCreateWithoutColorsInput, MileageUncheckedCreateWithoutColorsInput>
+  }
+
+  export type ColorCreateWithoutMileagesInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ColorUncheckedCreateWithoutMileagesInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ColorCreateOrConnectWithoutMileagesInput = {
+    where: ColorWhereUniqueInput
+    create: XOR<ColorCreateWithoutMileagesInput, ColorUncheckedCreateWithoutMileagesInput>
+  }
+
+  export type AccidentRecordCreateWithoutColorMileageInput = {
+    status: string
+    amount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    vehicles?: VehicleCreateNestedManyWithoutAccidentRecordInput
+  }
+
+  export type AccidentRecordUncheckedCreateWithoutColorMileageInput = {
+    id?: number
+    status: string
+    amount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    vehicles?: VehicleUncheckedCreateNestedManyWithoutAccidentRecordInput
+  }
+
+  export type AccidentRecordCreateOrConnectWithoutColorMileageInput = {
+    where: AccidentRecordWhereUniqueInput
+    create: XOR<AccidentRecordCreateWithoutColorMileageInput, AccidentRecordUncheckedCreateWithoutColorMileageInput>
+  }
+
+  export type AccidentRecordCreateManyColorMileageInputEnvelope = {
+    data: AccidentRecordCreateManyColorMileageInput | AccidentRecordCreateManyColorMileageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MileageUpsertWithoutColorsInput = {
+    update: XOR<MileageUpdateWithoutColorsInput, MileageUncheckedUpdateWithoutColorsInput>
+    create: XOR<MileageCreateWithoutColorsInput, MileageUncheckedCreateWithoutColorsInput>
+    where?: MileageWhereInput
+  }
+
+  export type MileageUpdateToOneWithWhereWithoutColorsInput = {
+    where?: MileageWhereInput
+    data: XOR<MileageUpdateWithoutColorsInput, MileageUncheckedUpdateWithoutColorsInput>
+  }
+
+  export type MileageUpdateWithoutColorsInput = {
+    minKm?: IntFieldUpdateOperationsInput | number
+    maxKm?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleYear?: VehicleYearUpdateOneRequiredWithoutMileagesNestedInput
+  }
+
+  export type MileageUncheckedUpdateWithoutColorsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    minKm?: IntFieldUpdateOperationsInput | number
+    maxKm?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleYearId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ColorUpsertWithoutMileagesInput = {
+    update: XOR<ColorUpdateWithoutMileagesInput, ColorUncheckedUpdateWithoutMileagesInput>
+    create: XOR<ColorCreateWithoutMileagesInput, ColorUncheckedCreateWithoutMileagesInput>
+    where?: ColorWhereInput
+  }
+
+  export type ColorUpdateToOneWithWhereWithoutMileagesInput = {
+    where?: ColorWhereInput
+    data: XOR<ColorUpdateWithoutMileagesInput, ColorUncheckedUpdateWithoutMileagesInput>
+  }
+
+  export type ColorUpdateWithoutMileagesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorUncheckedUpdateWithoutMileagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AccidentRecordUpsertWithWhereUniqueWithoutColorMileageInput = {
+    where: AccidentRecordWhereUniqueInput
+    update: XOR<AccidentRecordUpdateWithoutColorMileageInput, AccidentRecordUncheckedUpdateWithoutColorMileageInput>
+    create: XOR<AccidentRecordCreateWithoutColorMileageInput, AccidentRecordUncheckedCreateWithoutColorMileageInput>
+  }
+
+  export type AccidentRecordUpdateWithWhereUniqueWithoutColorMileageInput = {
+    where: AccidentRecordWhereUniqueInput
+    data: XOR<AccidentRecordUpdateWithoutColorMileageInput, AccidentRecordUncheckedUpdateWithoutColorMileageInput>
+  }
+
+  export type AccidentRecordUpdateManyWithWhereWithoutColorMileageInput = {
+    where: AccidentRecordScalarWhereInput
+    data: XOR<AccidentRecordUpdateManyMutationInput, AccidentRecordUncheckedUpdateManyWithoutColorMileageInput>
+  }
+
+  export type AccidentRecordScalarWhereInput = {
+    AND?: AccidentRecordScalarWhereInput | AccidentRecordScalarWhereInput[]
+    OR?: AccidentRecordScalarWhereInput[]
+    NOT?: AccidentRecordScalarWhereInput | AccidentRecordScalarWhereInput[]
+    id?: IntFilter<"AccidentRecord"> | number
+    status?: StringFilter<"AccidentRecord"> | string
+    amount?: FloatNullableFilter<"AccidentRecord"> | number | null
+    createdAt?: DateTimeFilter<"AccidentRecord"> | Date | string
+    updatedAt?: DateTimeFilter<"AccidentRecord"> | Date | string
+    colorMileageId?: IntFilter<"AccidentRecord"> | number
+  }
+
+  export type ColorMileageCreateWithoutAccidentRecordsInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileage: MileageCreateNestedOneWithoutColorsInput
+    color: ColorCreateNestedOneWithoutMileagesInput
+  }
+
+  export type ColorMileageUncheckedCreateWithoutAccidentRecordsInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileageId: number
+    colorId: number
+  }
+
+  export type ColorMileageCreateOrConnectWithoutAccidentRecordsInput = {
+    where: ColorMileageWhereUniqueInput
+    create: XOR<ColorMileageCreateWithoutAccidentRecordsInput, ColorMileageUncheckedCreateWithoutAccidentRecordsInput>
+  }
+
+  export type VehicleCreateWithoutAccidentRecordInput = {
+    price: number
+    registrationDate?: Date | string
+    updateDate?: Date | string
+    description?: string | null
+    listingStatus?: string
+  }
+
+  export type VehicleUncheckedCreateWithoutAccidentRecordInput = {
+    id?: number
+    price: number
+    registrationDate?: Date | string
+    updateDate?: Date | string
+    description?: string | null
+    listingStatus?: string
+  }
+
+  export type VehicleCreateOrConnectWithoutAccidentRecordInput = {
+    where: VehicleWhereUniqueInput
+    create: XOR<VehicleCreateWithoutAccidentRecordInput, VehicleUncheckedCreateWithoutAccidentRecordInput>
+  }
+
+  export type VehicleCreateManyAccidentRecordInputEnvelope = {
+    data: VehicleCreateManyAccidentRecordInput | VehicleCreateManyAccidentRecordInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ColorMileageUpsertWithoutAccidentRecordsInput = {
+    update: XOR<ColorMileageUpdateWithoutAccidentRecordsInput, ColorMileageUncheckedUpdateWithoutAccidentRecordsInput>
+    create: XOR<ColorMileageCreateWithoutAccidentRecordsInput, ColorMileageUncheckedCreateWithoutAccidentRecordsInput>
+    where?: ColorMileageWhereInput
+  }
+
+  export type ColorMileageUpdateToOneWithWhereWithoutAccidentRecordsInput = {
+    where?: ColorMileageWhereInput
+    data: XOR<ColorMileageUpdateWithoutAccidentRecordsInput, ColorMileageUncheckedUpdateWithoutAccidentRecordsInput>
+  }
+
+  export type ColorMileageUpdateWithoutAccidentRecordsInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileage?: MileageUpdateOneRequiredWithoutColorsNestedInput
+    color?: ColorUpdateOneRequiredWithoutMileagesNestedInput
+  }
+
+  export type ColorMileageUncheckedUpdateWithoutAccidentRecordsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileageId?: IntFieldUpdateOperationsInput | number
+    colorId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type VehicleUpsertWithWhereUniqueWithoutAccidentRecordInput = {
+    where: VehicleWhereUniqueInput
+    update: XOR<VehicleUpdateWithoutAccidentRecordInput, VehicleUncheckedUpdateWithoutAccidentRecordInput>
+    create: XOR<VehicleCreateWithoutAccidentRecordInput, VehicleUncheckedCreateWithoutAccidentRecordInput>
+  }
+
+  export type VehicleUpdateWithWhereUniqueWithoutAccidentRecordInput = {
+    where: VehicleWhereUniqueInput
+    data: XOR<VehicleUpdateWithoutAccidentRecordInput, VehicleUncheckedUpdateWithoutAccidentRecordInput>
+  }
+
+  export type VehicleUpdateManyWithWhereWithoutAccidentRecordInput = {
+    where: VehicleScalarWhereInput
+    data: XOR<VehicleUpdateManyMutationInput, VehicleUncheckedUpdateManyWithoutAccidentRecordInput>
+  }
+
+  export type VehicleScalarWhereInput = {
+    AND?: VehicleScalarWhereInput | VehicleScalarWhereInput[]
+    OR?: VehicleScalarWhereInput[]
+    NOT?: VehicleScalarWhereInput | VehicleScalarWhereInput[]
+    id?: IntFilter<"Vehicle"> | number
+    price?: FloatFilter<"Vehicle"> | number
+    registrationDate?: DateTimeFilter<"Vehicle"> | Date | string
+    updateDate?: DateTimeFilter<"Vehicle"> | Date | string
+    accidentRecordId?: IntFilter<"Vehicle"> | number
+    description?: StringNullableFilter<"Vehicle"> | string | null
+    listingStatus?: StringFilter<"Vehicle"> | string
+  }
+
+  export type AccidentRecordCreateWithoutVehiclesInput = {
+    status: string
+    amount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    colorMileage: ColorMileageCreateNestedOneWithoutAccidentRecordsInput
+  }
+
+  export type AccidentRecordUncheckedCreateWithoutVehiclesInput = {
+    id?: number
+    status: string
+    amount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    colorMileageId: number
+  }
+
+  export type AccidentRecordCreateOrConnectWithoutVehiclesInput = {
+    where: AccidentRecordWhereUniqueInput
+    create: XOR<AccidentRecordCreateWithoutVehiclesInput, AccidentRecordUncheckedCreateWithoutVehiclesInput>
+  }
+
+  export type AccidentRecordUpsertWithoutVehiclesInput = {
+    update: XOR<AccidentRecordUpdateWithoutVehiclesInput, AccidentRecordUncheckedUpdateWithoutVehiclesInput>
+    create: XOR<AccidentRecordCreateWithoutVehiclesInput, AccidentRecordUncheckedCreateWithoutVehiclesInput>
+    where?: AccidentRecordWhereInput
+  }
+
+  export type AccidentRecordUpdateToOneWithWhereWithoutVehiclesInput = {
+    where?: AccidentRecordWhereInput
+    data: XOR<AccidentRecordUpdateWithoutVehiclesInput, AccidentRecordUncheckedUpdateWithoutVehiclesInput>
+  }
+
+  export type AccidentRecordUpdateWithoutVehiclesInput = {
+    status?: StringFieldUpdateOperationsInput | string
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    colorMileage?: ColorMileageUpdateOneRequiredWithoutAccidentRecordsNestedInput
+  }
+
+  export type AccidentRecordUncheckedUpdateWithoutVehiclesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    colorMileageId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ModelCreateManyBrandInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ModelUpdateWithoutBrandInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versions?: VersionUpdateManyWithoutModelNestedInput
+  }
+
+  export type ModelUncheckedUpdateWithoutBrandInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versions?: VersionUncheckedUpdateManyWithoutModelNestedInput
+  }
+
+  export type ModelUncheckedUpdateManyWithoutBrandInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VersionCreateManyModelInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VersionUpdateWithoutModelInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyTypes?: BodyTypeVersionUpdateManyWithoutVersionNestedInput
+  }
+
+  export type VersionUncheckedUpdateWithoutModelInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyTypes?: BodyTypeVersionUncheckedUpdateManyWithoutVersionNestedInput
+  }
+
+  export type VersionUncheckedUpdateManyWithoutModelInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BodyTypeVersionCreateManyVersionInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyTypeId: number
+  }
+
+  export type BodyTypeVersionUpdateWithoutVersionInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyType?: BodyTypeUpdateOneRequiredWithoutVersionsNestedInput
+    fuelTypes?: FuelTypeBodyUpdateManyWithoutBodyVersionNestedInput
+  }
+
+  export type BodyTypeVersionUncheckedUpdateWithoutVersionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyTypeId?: IntFieldUpdateOperationsInput | number
+    fuelTypes?: FuelTypeBodyUncheckedUpdateManyWithoutBodyVersionNestedInput
+  }
+
+  export type BodyTypeVersionUncheckedUpdateManyWithoutVersionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyTypeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BodyTypeVersionCreateManyBodyTypeInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versionId: number
+  }
+
+  export type BodyTypeVersionUpdateWithoutBodyTypeInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    version?: VersionUpdateOneRequiredWithoutBodyTypesNestedInput
+    fuelTypes?: FuelTypeBodyUpdateManyWithoutBodyVersionNestedInput
+  }
+
+  export type BodyTypeVersionUncheckedUpdateWithoutBodyTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versionId?: IntFieldUpdateOperationsInput | number
+    fuelTypes?: FuelTypeBodyUncheckedUpdateManyWithoutBodyVersionNestedInput
+  }
+
+  export type BodyTypeVersionUncheckedUpdateManyWithoutBodyTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versionId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FuelTypeBodyCreateManyBodyVersionInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelTypeId: number
+  }
+
+  export type FuelTypeBodyUpdateWithoutBodyVersionInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelType?: FuelTypeUpdateOneRequiredWithoutBodyTypesNestedInput
+    transmissionTypes?: TransmissionTypeFuelUpdateManyWithoutFuelBodyNestedInput
+  }
+
+  export type FuelTypeBodyUncheckedUpdateWithoutBodyVersionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelTypeId?: IntFieldUpdateOperationsInput | number
+    transmissionTypes?: TransmissionTypeFuelUncheckedUpdateManyWithoutFuelBodyNestedInput
+  }
+
+  export type FuelTypeBodyUncheckedUpdateManyWithoutBodyVersionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelTypeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FuelTypeBodyCreateManyFuelTypeInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyVersionId: number
+  }
+
+  export type FuelTypeBodyUpdateWithoutFuelTypeInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyVersion?: BodyTypeVersionUpdateOneRequiredWithoutFuelTypesNestedInput
+    transmissionTypes?: TransmissionTypeFuelUpdateManyWithoutFuelBodyNestedInput
+  }
+
+  export type FuelTypeBodyUncheckedUpdateWithoutFuelTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyVersionId?: IntFieldUpdateOperationsInput | number
+    transmissionTypes?: TransmissionTypeFuelUncheckedUpdateManyWithoutFuelBodyNestedInput
+  }
+
+  export type FuelTypeBodyUncheckedUpdateManyWithoutFuelTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyVersionId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TransmissionTypeFuelCreateManyFuelBodyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transmissionTypeId: number
+  }
+
+  export type TransmissionTypeFuelUpdateWithoutFuelBodyInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transmissionType?: TransmissionTypeUpdateOneRequiredWithoutFuelTypesNestedInput
+    years?: VehicleYearUpdateManyWithoutTransmissionTypeFuelNestedInput
+  }
+
+  export type TransmissionTypeFuelUncheckedUpdateWithoutFuelBodyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transmissionTypeId?: IntFieldUpdateOperationsInput | number
+    years?: VehicleYearUncheckedUpdateManyWithoutTransmissionTypeFuelNestedInput
+  }
+
+  export type TransmissionTypeFuelUncheckedUpdateManyWithoutFuelBodyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transmissionTypeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TransmissionTypeFuelCreateManyTransmissionTypeInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelBodyId: number
+  }
+
+  export type TransmissionTypeFuelUpdateWithoutTransmissionTypeInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelBody?: FuelTypeBodyUpdateOneRequiredWithoutTransmissionTypesNestedInput
+    years?: VehicleYearUpdateManyWithoutTransmissionTypeFuelNestedInput
+  }
+
+  export type TransmissionTypeFuelUncheckedUpdateWithoutTransmissionTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelBodyId?: IntFieldUpdateOperationsInput | number
+    years?: VehicleYearUncheckedUpdateManyWithoutTransmissionTypeFuelNestedInput
+  }
+
+  export type TransmissionTypeFuelUncheckedUpdateManyWithoutTransmissionTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelBodyId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type VehicleYearCreateManyTransmissionTypeFuelInput = {
+    id?: number
+    year: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VehicleYearUpdateWithoutTransmissionTypeFuelInput = {
+    year?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileages?: MileageUpdateManyWithoutVehicleYearNestedInput
+  }
+
+  export type VehicleYearUncheckedUpdateWithoutTransmissionTypeFuelInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileages?: MileageUncheckedUpdateManyWithoutVehicleYearNestedInput
+  }
+
+  export type VehicleYearUncheckedUpdateManyWithoutTransmissionTypeFuelInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MileageCreateManyVehicleYearInput = {
+    id?: number
+    minKm: number
+    maxKm: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MileageUpdateWithoutVehicleYearInput = {
+    minKm?: IntFieldUpdateOperationsInput | number
+    maxKm?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    colors?: ColorMileageUpdateManyWithoutMileageNestedInput
+  }
+
+  export type MileageUncheckedUpdateWithoutVehicleYearInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    minKm?: IntFieldUpdateOperationsInput | number
+    maxKm?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    colors?: ColorMileageUncheckedUpdateManyWithoutMileageNestedInput
+  }
+
+  export type MileageUncheckedUpdateManyWithoutVehicleYearInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    minKm?: IntFieldUpdateOperationsInput | number
+    maxKm?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ColorMileageCreateManyMileageInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    colorId: number
+  }
+
+  export type ColorMileageUpdateWithoutMileageInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    color?: ColorUpdateOneRequiredWithoutMileagesNestedInput
+    accidentRecords?: AccidentRecordUpdateManyWithoutColorMileageNestedInput
+  }
+
+  export type ColorMileageUncheckedUpdateWithoutMileageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    colorId?: IntFieldUpdateOperationsInput | number
+    accidentRecords?: AccidentRecordUncheckedUpdateManyWithoutColorMileageNestedInput
+  }
+
+  export type ColorMileageUncheckedUpdateManyWithoutMileageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    colorId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ColorMileageCreateManyColorInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileageId: number
+  }
+
+  export type ColorMileageUpdateWithoutColorInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileage?: MileageUpdateOneRequiredWithoutColorsNestedInput
+    accidentRecords?: AccidentRecordUpdateManyWithoutColorMileageNestedInput
+  }
+
+  export type ColorMileageUncheckedUpdateWithoutColorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileageId?: IntFieldUpdateOperationsInput | number
+    accidentRecords?: AccidentRecordUncheckedUpdateManyWithoutColorMileageNestedInput
+  }
+
+  export type ColorMileageUncheckedUpdateManyWithoutColorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileageId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AccidentRecordCreateManyColorMileageInput = {
+    id?: number
+    status: string
+    amount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AccidentRecordUpdateWithoutColorMileageInput = {
+    status?: StringFieldUpdateOperationsInput | string
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicles?: VehicleUpdateManyWithoutAccidentRecordNestedInput
+  }
+
+  export type AccidentRecordUncheckedUpdateWithoutColorMileageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicles?: VehicleUncheckedUpdateManyWithoutAccidentRecordNestedInput
+  }
+
+  export type AccidentRecordUncheckedUpdateManyWithoutColorMileageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VehicleCreateManyAccidentRecordInput = {
+    id?: number
+    price: number
+    registrationDate?: Date | string
+    updateDate?: Date | string
+    description?: string | null
+    listingStatus?: string
+  }
+
+  export type VehicleUpdateWithoutAccidentRecordInput = {
+    price?: FloatFieldUpdateOperationsInput | number
+    registrationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    listingStatus?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VehicleUncheckedUpdateWithoutAccidentRecordInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    registrationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    listingStatus?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VehicleUncheckedUpdateManyWithoutAccidentRecordInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    registrationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    listingStatus?: StringFieldUpdateOperationsInput | string
+  }
+
+
+
+  /**
+   * Batch Payload for updateMany & deleteMany & createMany
+   */
+
+  export type BatchPayload = {
+    count: number
+  }
+
+  /**
+   * DMMF
+   */
+  export const dmmf: runtime.BaseDMMF
+}

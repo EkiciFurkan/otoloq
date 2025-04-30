@@ -1,0 +1,229 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Brand model
+model Brand {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  models Model[]
+}
+
+// Model model
+model Model {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  brandId  Int
+  brand    Brand     @relation(fields: [brandId], references: [id])
+  versions Version[]
+
+  // Composite unique constraint
+  @@unique([brandId, name])
+}
+
+// Version/Sub-Type model
+model Version {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  modelId   Int
+  model     Model             @relation(fields: [modelId], references: [id])
+  bodyTypes BodyTypeVersion[]
+
+  // Composite unique constraint
+  @@unique([modelId, name])
+}
+
+// Body Type main model
+model BodyType {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  versions BodyTypeVersion[]
+}
+
+// Relationship table between Version and Body Type
+model BodyTypeVersion {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  versionId  Int
+  version    Version        @relation(fields: [versionId], references: [id])
+  bodyTypeId Int
+  bodyType   BodyType       @relation(fields: [bodyTypeId], references: [id])
+  fuelTypes  FuelTypeBody[]
+
+  // Composite unique constraint
+  @@unique([versionId, bodyTypeId])
+}
+
+// Fuel Type main model
+model FuelType {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  bodyTypes FuelTypeBody[]
+}
+
+// Relationship table between Body Type and Fuel Type
+model FuelTypeBody {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  bodyVersionId     Int
+  bodyVersion       BodyTypeVersion        @relation(fields: [bodyVersionId], references: [id])
+  fuelTypeId        Int
+  fuelType          FuelType               @relation(fields: [fuelTypeId], references: [id])
+  transmissionTypes TransmissionTypeFuel[]
+
+  // Composite unique constraint
+  @@unique([bodyVersionId, fuelTypeId])
+}
+
+// Transmission Type main model
+model TransmissionType {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  fuelTypes TransmissionTypeFuel[]
+}
+
+// Relationship table between Fuel Type and Transmission Type
+model TransmissionTypeFuel {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  fuelBodyId         Int
+  fuelBody           FuelTypeBody     @relation(fields: [fuelBodyId], references: [id])
+  transmissionTypeId Int
+  transmissionType   TransmissionType @relation(fields: [transmissionTypeId], references: [id])
+  years              VehicleYear[]
+
+  // Composite unique constraint
+  @@unique([fuelBodyId, transmissionTypeId])
+}
+
+// Vehicle Year model
+model VehicleYear {
+  id        Int      @id @default(autoincrement())
+  year      Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  transmissionTypeFuelId Int
+  transmissionTypeFuel   TransmissionTypeFuel @relation(fields: [transmissionTypeFuelId], references: [id])
+  mileages               Mileage[]
+
+  // Composite unique constraint
+  @@unique([transmissionTypeFuelId, year])
+}
+
+// Mileage model
+model Mileage {
+  id        Int      @id @default(autoincrement())
+  minKm     Int
+  maxKm     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  vehicleYearId Int
+  vehicleYear   VehicleYear    @relation(fields: [vehicleYearId], references: [id])
+  colors        ColorMileage[]
+
+  // Composite unique constraint
+  @@unique([vehicleYearId, minKm, maxKm])
+}
+
+// Color main model
+model Color {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  mileages ColorMileage[]
+}
+
+// Relationship table between Mileage and Color
+model ColorMileage {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  mileageId       Int
+  mileage         Mileage          @relation(fields: [mileageId], references: [id])
+  colorId         Int
+  color           Color            @relation(fields: [colorId], references: [id])
+  accidentRecords AccidentRecord[]
+
+  // Composite unique constraint
+  @@unique([mileageId, colorId])
+}
+
+// Accident Record model
+model AccidentRecord {
+  id        Int      @id @default(autoincrement())
+  status    String // "None" or "Exists"
+  amount    Float? // If status is "Exists", the accident amount
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  colorMileageId Int
+  colorMileage   ColorMileage @relation(fields: [colorMileageId], references: [id])
+  vehicles       Vehicle[]
+}
+
+// Vehicle model (combination of all categories)
+model Vehicle {
+  id               Int      @id @default(autoincrement())
+  price            Float // Vehicle price
+  registrationDate DateTime @default(now())
+  updateDate       DateTime @updatedAt
+
+  // Relations
+  accidentRecordId Int
+  accidentRecord   AccidentRecord @relation(fields: [accidentRecordId], references: [id])
+
+  // Additional information related to vehicle listing
+  description   String?
+  listingStatus String  @default("Active") // Active, Sold, Cancelled etc.
+}
