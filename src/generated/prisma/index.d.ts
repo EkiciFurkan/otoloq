@@ -88,6 +88,11 @@ export type AccidentRecord = $Result.DefaultSelection<Prisma.$AccidentRecordPayl
  * 
  */
 export type Vehicle = $Result.DefaultSelection<Prisma.$VehiclePayload>
+/**
+ * Model VehicleOffer
+ * 
+ */
+export type VehicleOffer = $Result.DefaultSelection<Prisma.$VehicleOfferPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -363,6 +368,16 @@ export class PrismaClient<
     * ```
     */
   get vehicle(): Prisma.VehicleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.vehicleOffer`: Exposes CRUD operations for the **VehicleOffer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more VehicleOffers
+    * const vehicleOffers = await prisma.vehicleOffer.findMany()
+    * ```
+    */
+  get vehicleOffer(): Prisma.VehicleOfferDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -817,7 +832,8 @@ export namespace Prisma {
     Color: 'Color',
     ColorMileage: 'ColorMileage',
     AccidentRecord: 'AccidentRecord',
-    Vehicle: 'Vehicle'
+    Vehicle: 'Vehicle',
+    VehicleOffer: 'VehicleOffer'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -836,7 +852,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "brand" | "model" | "version" | "bodyType" | "bodyTypeVersion" | "fuelType" | "fuelTypeBody" | "transmissionType" | "transmissionTypeFuel" | "vehicleYear" | "mileage" | "color" | "colorMileage" | "accidentRecord" | "vehicle"
+      modelProps: "brand" | "model" | "version" | "bodyType" | "bodyTypeVersion" | "fuelType" | "fuelTypeBody" | "transmissionType" | "transmissionTypeFuel" | "vehicleYear" | "mileage" | "color" | "colorMileage" | "accidentRecord" | "vehicle" | "vehicleOffer"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1950,6 +1966,80 @@ export namespace Prisma {
           }
         }
       }
+      VehicleOffer: {
+        payload: Prisma.$VehicleOfferPayload<ExtArgs>
+        fields: Prisma.VehicleOfferFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VehicleOfferFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VehicleOfferFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload>
+          }
+          findFirst: {
+            args: Prisma.VehicleOfferFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VehicleOfferFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload>
+          }
+          findMany: {
+            args: Prisma.VehicleOfferFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload>[]
+          }
+          create: {
+            args: Prisma.VehicleOfferCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload>
+          }
+          createMany: {
+            args: Prisma.VehicleOfferCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VehicleOfferCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload>[]
+          }
+          delete: {
+            args: Prisma.VehicleOfferDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload>
+          }
+          update: {
+            args: Prisma.VehicleOfferUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload>
+          }
+          deleteMany: {
+            args: Prisma.VehicleOfferDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VehicleOfferUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VehicleOfferUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload>[]
+          }
+          upsert: {
+            args: Prisma.VehicleOfferUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehicleOfferPayload>
+          }
+          aggregate: {
+            args: Prisma.VehicleOfferAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVehicleOffer>
+          }
+          groupBy: {
+            args: Prisma.VehicleOfferGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VehicleOfferGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VehicleOfferCountArgs<ExtArgs>
+            result: $Utils.Optional<VehicleOfferCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2049,6 +2139,7 @@ export namespace Prisma {
     colorMileage?: ColorMileageOmit
     accidentRecord?: AccidentRecordOmit
     vehicle?: VehicleOmit
+    vehicleOffer?: VehicleOfferOmit
   }
 
   /* Types for Logging */
@@ -2144,10 +2235,12 @@ export namespace Prisma {
 
   export type BrandCountOutputType = {
     models: number
+    vehicleOffers: number
   }
 
   export type BrandCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     models?: boolean | BrandCountOutputTypeCountModelsArgs
+    vehicleOffers?: boolean | BrandCountOutputTypeCountVehicleOffersArgs
   }
 
   // Custom InputTypes
@@ -2168,6 +2261,13 @@ export namespace Prisma {
     where?: ModelWhereInput
   }
 
+  /**
+   * BrandCountOutputType without action
+   */
+  export type BrandCountOutputTypeCountVehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleOfferWhereInput
+  }
+
 
   /**
    * Count Type ModelCountOutputType
@@ -2175,10 +2275,12 @@ export namespace Prisma {
 
   export type ModelCountOutputType = {
     versions: number
+    vehicleOffers: number
   }
 
   export type ModelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     versions?: boolean | ModelCountOutputTypeCountVersionsArgs
+    vehicleOffers?: boolean | ModelCountOutputTypeCountVehicleOffersArgs
   }
 
   // Custom InputTypes
@@ -2199,6 +2301,13 @@ export namespace Prisma {
     where?: VersionWhereInput
   }
 
+  /**
+   * ModelCountOutputType without action
+   */
+  export type ModelCountOutputTypeCountVehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleOfferWhereInput
+  }
+
 
   /**
    * Count Type VersionCountOutputType
@@ -2206,10 +2315,12 @@ export namespace Prisma {
 
   export type VersionCountOutputType = {
     bodyTypes: number
+    vehicleOffers: number
   }
 
   export type VersionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bodyTypes?: boolean | VersionCountOutputTypeCountBodyTypesArgs
+    vehicleOffers?: boolean | VersionCountOutputTypeCountVehicleOffersArgs
   }
 
   // Custom InputTypes
@@ -2230,6 +2341,13 @@ export namespace Prisma {
     where?: BodyTypeVersionWhereInput
   }
 
+  /**
+   * VersionCountOutputType without action
+   */
+  export type VersionCountOutputTypeCountVehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleOfferWhereInput
+  }
+
 
   /**
    * Count Type BodyTypeCountOutputType
@@ -2237,10 +2355,12 @@ export namespace Prisma {
 
   export type BodyTypeCountOutputType = {
     versions: number
+    vehicleOffers: number
   }
 
   export type BodyTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     versions?: boolean | BodyTypeCountOutputTypeCountVersionsArgs
+    vehicleOffers?: boolean | BodyTypeCountOutputTypeCountVehicleOffersArgs
   }
 
   // Custom InputTypes
@@ -2259,6 +2379,13 @@ export namespace Prisma {
    */
   export type BodyTypeCountOutputTypeCountVersionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BodyTypeVersionWhereInput
+  }
+
+  /**
+   * BodyTypeCountOutputType without action
+   */
+  export type BodyTypeCountOutputTypeCountVehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleOfferWhereInput
   }
 
 
@@ -2299,10 +2426,12 @@ export namespace Prisma {
 
   export type FuelTypeCountOutputType = {
     bodyTypes: number
+    vehicleOffers: number
   }
 
   export type FuelTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bodyTypes?: boolean | FuelTypeCountOutputTypeCountBodyTypesArgs
+    vehicleOffers?: boolean | FuelTypeCountOutputTypeCountVehicleOffersArgs
   }
 
   // Custom InputTypes
@@ -2321,6 +2450,13 @@ export namespace Prisma {
    */
   export type FuelTypeCountOutputTypeCountBodyTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FuelTypeBodyWhereInput
+  }
+
+  /**
+   * FuelTypeCountOutputType without action
+   */
+  export type FuelTypeCountOutputTypeCountVehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleOfferWhereInput
   }
 
 
@@ -2361,10 +2497,12 @@ export namespace Prisma {
 
   export type TransmissionTypeCountOutputType = {
     fuelTypes: number
+    vehicleOffers: number
   }
 
   export type TransmissionTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     fuelTypes?: boolean | TransmissionTypeCountOutputTypeCountFuelTypesArgs
+    vehicleOffers?: boolean | TransmissionTypeCountOutputTypeCountVehicleOffersArgs
   }
 
   // Custom InputTypes
@@ -2383,6 +2521,13 @@ export namespace Prisma {
    */
   export type TransmissionTypeCountOutputTypeCountFuelTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TransmissionTypeFuelWhereInput
+  }
+
+  /**
+   * TransmissionTypeCountOutputType without action
+   */
+  export type TransmissionTypeCountOutputTypeCountVehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleOfferWhereInput
   }
 
 
@@ -2485,10 +2630,12 @@ export namespace Prisma {
 
   export type ColorCountOutputType = {
     mileages: number
+    vehicleOffers: number
   }
 
   export type ColorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     mileages?: boolean | ColorCountOutputTypeCountMileagesArgs
+    vehicleOffers?: boolean | ColorCountOutputTypeCountVehicleOffersArgs
   }
 
   // Custom InputTypes
@@ -2507,6 +2654,13 @@ export namespace Prisma {
    */
   export type ColorCountOutputTypeCountMileagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ColorMileageWhereInput
+  }
+
+  /**
+   * ColorCountOutputType without action
+   */
+  export type ColorCountOutputTypeCountVehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleOfferWhereInput
   }
 
 
@@ -2767,6 +2921,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     models?: boolean | Brand$modelsArgs<ExtArgs>
+    vehicleOffers?: boolean | Brand$vehicleOffersArgs<ExtArgs>
     _count?: boolean | BrandCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["brand"]>
 
@@ -2794,6 +2949,7 @@ export namespace Prisma {
   export type BrandOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["brand"]>
   export type BrandInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     models?: boolean | Brand$modelsArgs<ExtArgs>
+    vehicleOffers?: boolean | Brand$vehicleOffersArgs<ExtArgs>
     _count?: boolean | BrandCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BrandIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2803,6 +2959,7 @@ export namespace Prisma {
     name: "Brand"
     objects: {
       models: Prisma.$ModelPayload<ExtArgs>[]
+      vehicleOffers: Prisma.$VehicleOfferPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3204,6 +3361,7 @@ export namespace Prisma {
   export interface Prisma__BrandClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     models<T extends Brand$modelsArgs<ExtArgs> = {}>(args?: Subset<T, Brand$modelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    vehicleOffers<T extends Brand$vehicleOffersArgs<ExtArgs> = {}>(args?: Subset<T, Brand$vehicleOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3649,6 +3807,30 @@ export namespace Prisma {
   }
 
   /**
+   * Brand.vehicleOffers
+   */
+  export type Brand$vehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    where?: VehicleOfferWhereInput
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    cursor?: VehicleOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleOfferScalarFieldEnum | VehicleOfferScalarFieldEnum[]
+  }
+
+  /**
    * Brand without action
    */
   export type BrandDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3871,6 +4053,7 @@ export namespace Prisma {
     brandId?: boolean
     brand?: boolean | BrandDefaultArgs<ExtArgs>
     versions?: boolean | Model$versionsArgs<ExtArgs>
+    vehicleOffers?: boolean | Model$vehicleOffersArgs<ExtArgs>
     _count?: boolean | ModelCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["model"]>
 
@@ -3904,6 +4087,7 @@ export namespace Prisma {
   export type ModelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     brand?: boolean | BrandDefaultArgs<ExtArgs>
     versions?: boolean | Model$versionsArgs<ExtArgs>
+    vehicleOffers?: boolean | Model$vehicleOffersArgs<ExtArgs>
     _count?: boolean | ModelCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ModelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3918,6 +4102,7 @@ export namespace Prisma {
     objects: {
       brand: Prisma.$BrandPayload<ExtArgs>
       versions: Prisma.$VersionPayload<ExtArgs>[]
+      vehicleOffers: Prisma.$VehicleOfferPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4321,6 +4506,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     brand<T extends BrandDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BrandDefaultArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     versions<T extends Model$versionsArgs<ExtArgs> = {}>(args?: Subset<T, Model$versionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    vehicleOffers<T extends Model$vehicleOffersArgs<ExtArgs> = {}>(args?: Subset<T, Model$vehicleOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4775,6 +4961,30 @@ export namespace Prisma {
   }
 
   /**
+   * Model.vehicleOffers
+   */
+  export type Model$vehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    where?: VehicleOfferWhereInput
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    cursor?: VehicleOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleOfferScalarFieldEnum | VehicleOfferScalarFieldEnum[]
+  }
+
+  /**
    * Model without action
    */
   export type ModelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4997,6 +5207,7 @@ export namespace Prisma {
     modelId?: boolean
     model?: boolean | ModelDefaultArgs<ExtArgs>
     bodyTypes?: boolean | Version$bodyTypesArgs<ExtArgs>
+    vehicleOffers?: boolean | Version$vehicleOffersArgs<ExtArgs>
     _count?: boolean | VersionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["version"]>
 
@@ -5030,6 +5241,7 @@ export namespace Prisma {
   export type VersionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     model?: boolean | ModelDefaultArgs<ExtArgs>
     bodyTypes?: boolean | Version$bodyTypesArgs<ExtArgs>
+    vehicleOffers?: boolean | Version$vehicleOffersArgs<ExtArgs>
     _count?: boolean | VersionCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type VersionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5044,6 +5256,7 @@ export namespace Prisma {
     objects: {
       model: Prisma.$ModelPayload<ExtArgs>
       bodyTypes: Prisma.$BodyTypeVersionPayload<ExtArgs>[]
+      vehicleOffers: Prisma.$VehicleOfferPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5447,6 +5660,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     model<T extends ModelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ModelDefaultArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     bodyTypes<T extends Version$bodyTypesArgs<ExtArgs> = {}>(args?: Subset<T, Version$bodyTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    vehicleOffers<T extends Version$vehicleOffersArgs<ExtArgs> = {}>(args?: Subset<T, Version$vehicleOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5901,6 +6115,30 @@ export namespace Prisma {
   }
 
   /**
+   * Version.vehicleOffers
+   */
+  export type Version$vehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    where?: VehicleOfferWhereInput
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    cursor?: VehicleOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleOfferScalarFieldEnum | VehicleOfferScalarFieldEnum[]
+  }
+
+  /**
    * Version without action
    */
   export type VersionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6110,6 +6348,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     versions?: boolean | BodyType$versionsArgs<ExtArgs>
+    vehicleOffers?: boolean | BodyType$vehicleOffersArgs<ExtArgs>
     _count?: boolean | BodyTypeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["bodyType"]>
 
@@ -6137,6 +6376,7 @@ export namespace Prisma {
   export type BodyTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["bodyType"]>
   export type BodyTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     versions?: boolean | BodyType$versionsArgs<ExtArgs>
+    vehicleOffers?: boolean | BodyType$vehicleOffersArgs<ExtArgs>
     _count?: boolean | BodyTypeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BodyTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -6146,6 +6386,7 @@ export namespace Prisma {
     name: "BodyType"
     objects: {
       versions: Prisma.$BodyTypeVersionPayload<ExtArgs>[]
+      vehicleOffers: Prisma.$VehicleOfferPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6547,6 +6788,7 @@ export namespace Prisma {
   export interface Prisma__BodyTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     versions<T extends BodyType$versionsArgs<ExtArgs> = {}>(args?: Subset<T, BodyType$versionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BodyTypeVersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    vehicleOffers<T extends BodyType$vehicleOffersArgs<ExtArgs> = {}>(args?: Subset<T, BodyType$vehicleOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6989,6 +7231,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BodyTypeVersionScalarFieldEnum | BodyTypeVersionScalarFieldEnum[]
+  }
+
+  /**
+   * BodyType.vehicleOffers
+   */
+  export type BodyType$vehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    where?: VehicleOfferWhereInput
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    cursor?: VehicleOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleOfferScalarFieldEnum | VehicleOfferScalarFieldEnum[]
   }
 
   /**
@@ -8339,6 +8605,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     bodyTypes?: boolean | FuelType$bodyTypesArgs<ExtArgs>
+    vehicleOffers?: boolean | FuelType$vehicleOffersArgs<ExtArgs>
     _count?: boolean | FuelTypeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["fuelType"]>
 
@@ -8366,6 +8633,7 @@ export namespace Prisma {
   export type FuelTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["fuelType"]>
   export type FuelTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bodyTypes?: boolean | FuelType$bodyTypesArgs<ExtArgs>
+    vehicleOffers?: boolean | FuelType$vehicleOffersArgs<ExtArgs>
     _count?: boolean | FuelTypeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type FuelTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -8375,6 +8643,7 @@ export namespace Prisma {
     name: "FuelType"
     objects: {
       bodyTypes: Prisma.$FuelTypeBodyPayload<ExtArgs>[]
+      vehicleOffers: Prisma.$VehicleOfferPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -8776,6 +9045,7 @@ export namespace Prisma {
   export interface Prisma__FuelTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     bodyTypes<T extends FuelType$bodyTypesArgs<ExtArgs> = {}>(args?: Subset<T, FuelType$bodyTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FuelTypeBodyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    vehicleOffers<T extends FuelType$vehicleOffersArgs<ExtArgs> = {}>(args?: Subset<T, FuelType$vehicleOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9218,6 +9488,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FuelTypeBodyScalarFieldEnum | FuelTypeBodyScalarFieldEnum[]
+  }
+
+  /**
+   * FuelType.vehicleOffers
+   */
+  export type FuelType$vehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    where?: VehicleOfferWhereInput
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    cursor?: VehicleOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleOfferScalarFieldEnum | VehicleOfferScalarFieldEnum[]
   }
 
   /**
@@ -10568,6 +10862,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     fuelTypes?: boolean | TransmissionType$fuelTypesArgs<ExtArgs>
+    vehicleOffers?: boolean | TransmissionType$vehicleOffersArgs<ExtArgs>
     _count?: boolean | TransmissionTypeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transmissionType"]>
 
@@ -10595,6 +10890,7 @@ export namespace Prisma {
   export type TransmissionTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["transmissionType"]>
   export type TransmissionTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     fuelTypes?: boolean | TransmissionType$fuelTypesArgs<ExtArgs>
+    vehicleOffers?: boolean | TransmissionType$vehicleOffersArgs<ExtArgs>
     _count?: boolean | TransmissionTypeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TransmissionTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -10604,6 +10900,7 @@ export namespace Prisma {
     name: "TransmissionType"
     objects: {
       fuelTypes: Prisma.$TransmissionTypeFuelPayload<ExtArgs>[]
+      vehicleOffers: Prisma.$VehicleOfferPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -11005,6 +11302,7 @@ export namespace Prisma {
   export interface Prisma__TransmissionTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     fuelTypes<T extends TransmissionType$fuelTypesArgs<ExtArgs> = {}>(args?: Subset<T, TransmissionType$fuelTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransmissionTypeFuelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    vehicleOffers<T extends TransmissionType$vehicleOffersArgs<ExtArgs> = {}>(args?: Subset<T, TransmissionType$vehicleOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11447,6 +11745,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TransmissionTypeFuelScalarFieldEnum | TransmissionTypeFuelScalarFieldEnum[]
+  }
+
+  /**
+   * TransmissionType.vehicleOffers
+   */
+  export type TransmissionType$vehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    where?: VehicleOfferWhereInput
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    cursor?: VehicleOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleOfferScalarFieldEnum | VehicleOfferScalarFieldEnum[]
   }
 
   /**
@@ -15074,6 +15396,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     mileages?: boolean | Color$mileagesArgs<ExtArgs>
+    vehicleOffers?: boolean | Color$vehicleOffersArgs<ExtArgs>
     _count?: boolean | ColorCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["color"]>
 
@@ -15101,6 +15424,7 @@ export namespace Prisma {
   export type ColorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["color"]>
   export type ColorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     mileages?: boolean | Color$mileagesArgs<ExtArgs>
+    vehicleOffers?: boolean | Color$vehicleOffersArgs<ExtArgs>
     _count?: boolean | ColorCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ColorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -15110,6 +15434,7 @@ export namespace Prisma {
     name: "Color"
     objects: {
       mileages: Prisma.$ColorMileagePayload<ExtArgs>[]
+      vehicleOffers: Prisma.$VehicleOfferPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -15511,6 +15836,7 @@ export namespace Prisma {
   export interface Prisma__ColorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     mileages<T extends Color$mileagesArgs<ExtArgs> = {}>(args?: Subset<T, Color$mileagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorMileagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    vehicleOffers<T extends Color$vehicleOffersArgs<ExtArgs> = {}>(args?: Subset<T, Color$vehicleOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15953,6 +16279,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ColorMileageScalarFieldEnum | ColorMileageScalarFieldEnum[]
+  }
+
+  /**
+   * Color.vehicleOffers
+   */
+  export type Color$vehicleOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    where?: VehicleOfferWhereInput
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    cursor?: VehicleOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleOfferScalarFieldEnum | VehicleOfferScalarFieldEnum[]
   }
 
   /**
@@ -19382,6 +19732,1514 @@ export namespace Prisma {
 
 
   /**
+   * Model VehicleOffer
+   */
+
+  export type AggregateVehicleOffer = {
+    _count: VehicleOfferCountAggregateOutputType | null
+    _avg: VehicleOfferAvgAggregateOutputType | null
+    _sum: VehicleOfferSumAggregateOutputType | null
+    _min: VehicleOfferMinAggregateOutputType | null
+    _max: VehicleOfferMaxAggregateOutputType | null
+  }
+
+  export type VehicleOfferAvgAggregateOutputType = {
+    id: number | null
+    year: number | null
+    kilometer: number | null
+    accidentAmount: number | null
+    brandId: number | null
+    modelId: number | null
+    versionId: number | null
+    bodyTypeId: number | null
+    fuelTypeId: number | null
+    transmissionTypeId: number | null
+    colorId: number | null
+  }
+
+  export type VehicleOfferSumAggregateOutputType = {
+    id: number | null
+    year: number | null
+    kilometer: number | null
+    accidentAmount: number | null
+    brandId: number | null
+    modelId: number | null
+    versionId: number | null
+    bodyTypeId: number | null
+    fuelTypeId: number | null
+    transmissionTypeId: number | null
+    colorId: number | null
+  }
+
+  export type VehicleOfferMinAggregateOutputType = {
+    id: number | null
+    year: number | null
+    kilometer: number | null
+    accidentStatus: string | null
+    accidentAmount: number | null
+    status: string | null
+    displayValues: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    processedAt: Date | null
+    brandId: number | null
+    modelId: number | null
+    versionId: number | null
+    bodyTypeId: number | null
+    fuelTypeId: number | null
+    transmissionTypeId: number | null
+    colorId: number | null
+    notes: string | null
+    adminNotes: string | null
+  }
+
+  export type VehicleOfferMaxAggregateOutputType = {
+    id: number | null
+    year: number | null
+    kilometer: number | null
+    accidentStatus: string | null
+    accidentAmount: number | null
+    status: string | null
+    displayValues: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    processedAt: Date | null
+    brandId: number | null
+    modelId: number | null
+    versionId: number | null
+    bodyTypeId: number | null
+    fuelTypeId: number | null
+    transmissionTypeId: number | null
+    colorId: number | null
+    notes: string | null
+    adminNotes: string | null
+  }
+
+  export type VehicleOfferCountAggregateOutputType = {
+    id: number
+    year: number
+    kilometer: number
+    accidentStatus: number
+    accidentAmount: number
+    status: number
+    displayValues: number
+    userId: number
+    createdAt: number
+    updatedAt: number
+    processedAt: number
+    brandId: number
+    modelId: number
+    versionId: number
+    bodyTypeId: number
+    fuelTypeId: number
+    transmissionTypeId: number
+    colorId: number
+    notes: number
+    adminNotes: number
+    _all: number
+  }
+
+
+  export type VehicleOfferAvgAggregateInputType = {
+    id?: true
+    year?: true
+    kilometer?: true
+    accidentAmount?: true
+    brandId?: true
+    modelId?: true
+    versionId?: true
+    bodyTypeId?: true
+    fuelTypeId?: true
+    transmissionTypeId?: true
+    colorId?: true
+  }
+
+  export type VehicleOfferSumAggregateInputType = {
+    id?: true
+    year?: true
+    kilometer?: true
+    accidentAmount?: true
+    brandId?: true
+    modelId?: true
+    versionId?: true
+    bodyTypeId?: true
+    fuelTypeId?: true
+    transmissionTypeId?: true
+    colorId?: true
+  }
+
+  export type VehicleOfferMinAggregateInputType = {
+    id?: true
+    year?: true
+    kilometer?: true
+    accidentStatus?: true
+    accidentAmount?: true
+    status?: true
+    displayValues?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+    processedAt?: true
+    brandId?: true
+    modelId?: true
+    versionId?: true
+    bodyTypeId?: true
+    fuelTypeId?: true
+    transmissionTypeId?: true
+    colorId?: true
+    notes?: true
+    adminNotes?: true
+  }
+
+  export type VehicleOfferMaxAggregateInputType = {
+    id?: true
+    year?: true
+    kilometer?: true
+    accidentStatus?: true
+    accidentAmount?: true
+    status?: true
+    displayValues?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+    processedAt?: true
+    brandId?: true
+    modelId?: true
+    versionId?: true
+    bodyTypeId?: true
+    fuelTypeId?: true
+    transmissionTypeId?: true
+    colorId?: true
+    notes?: true
+    adminNotes?: true
+  }
+
+  export type VehicleOfferCountAggregateInputType = {
+    id?: true
+    year?: true
+    kilometer?: true
+    accidentStatus?: true
+    accidentAmount?: true
+    status?: true
+    displayValues?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+    processedAt?: true
+    brandId?: true
+    modelId?: true
+    versionId?: true
+    bodyTypeId?: true
+    fuelTypeId?: true
+    transmissionTypeId?: true
+    colorId?: true
+    notes?: true
+    adminNotes?: true
+    _all?: true
+  }
+
+  export type VehicleOfferAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VehicleOffer to aggregate.
+     */
+    where?: VehicleOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleOffers to fetch.
+     */
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VehicleOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned VehicleOffers
+    **/
+    _count?: true | VehicleOfferCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: VehicleOfferAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VehicleOfferSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VehicleOfferMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VehicleOfferMaxAggregateInputType
+  }
+
+  export type GetVehicleOfferAggregateType<T extends VehicleOfferAggregateArgs> = {
+        [P in keyof T & keyof AggregateVehicleOffer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVehicleOffer[P]>
+      : GetScalarType<T[P], AggregateVehicleOffer[P]>
+  }
+
+
+
+
+  export type VehicleOfferGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleOfferWhereInput
+    orderBy?: VehicleOfferOrderByWithAggregationInput | VehicleOfferOrderByWithAggregationInput[]
+    by: VehicleOfferScalarFieldEnum[] | VehicleOfferScalarFieldEnum
+    having?: VehicleOfferScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VehicleOfferCountAggregateInputType | true
+    _avg?: VehicleOfferAvgAggregateInputType
+    _sum?: VehicleOfferSumAggregateInputType
+    _min?: VehicleOfferMinAggregateInputType
+    _max?: VehicleOfferMaxAggregateInputType
+  }
+
+  export type VehicleOfferGroupByOutputType = {
+    id: number
+    year: number | null
+    kilometer: number | null
+    accidentStatus: string | null
+    accidentAmount: number | null
+    status: string
+    displayValues: string | null
+    userId: string
+    createdAt: Date
+    updatedAt: Date
+    processedAt: Date | null
+    brandId: number | null
+    modelId: number | null
+    versionId: number | null
+    bodyTypeId: number | null
+    fuelTypeId: number | null
+    transmissionTypeId: number | null
+    colorId: number | null
+    notes: string | null
+    adminNotes: string | null
+    _count: VehicleOfferCountAggregateOutputType | null
+    _avg: VehicleOfferAvgAggregateOutputType | null
+    _sum: VehicleOfferSumAggregateOutputType | null
+    _min: VehicleOfferMinAggregateOutputType | null
+    _max: VehicleOfferMaxAggregateOutputType | null
+  }
+
+  type GetVehicleOfferGroupByPayload<T extends VehicleOfferGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VehicleOfferGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VehicleOfferGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VehicleOfferGroupByOutputType[P]>
+            : GetScalarType<T[P], VehicleOfferGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VehicleOfferSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    year?: boolean
+    kilometer?: boolean
+    accidentStatus?: boolean
+    accidentAmount?: boolean
+    status?: boolean
+    displayValues?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    processedAt?: boolean
+    brandId?: boolean
+    modelId?: boolean
+    versionId?: boolean
+    bodyTypeId?: boolean
+    fuelTypeId?: boolean
+    transmissionTypeId?: boolean
+    colorId?: boolean
+    notes?: boolean
+    adminNotes?: boolean
+    brand?: boolean | VehicleOffer$brandArgs<ExtArgs>
+    model?: boolean | VehicleOffer$modelArgs<ExtArgs>
+    version?: boolean | VehicleOffer$versionArgs<ExtArgs>
+    bodyType?: boolean | VehicleOffer$bodyTypeArgs<ExtArgs>
+    fuelType?: boolean | VehicleOffer$fuelTypeArgs<ExtArgs>
+    transmissionType?: boolean | VehicleOffer$transmissionTypeArgs<ExtArgs>
+    color?: boolean | VehicleOffer$colorArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicleOffer"]>
+
+  export type VehicleOfferSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    year?: boolean
+    kilometer?: boolean
+    accidentStatus?: boolean
+    accidentAmount?: boolean
+    status?: boolean
+    displayValues?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    processedAt?: boolean
+    brandId?: boolean
+    modelId?: boolean
+    versionId?: boolean
+    bodyTypeId?: boolean
+    fuelTypeId?: boolean
+    transmissionTypeId?: boolean
+    colorId?: boolean
+    notes?: boolean
+    adminNotes?: boolean
+    brand?: boolean | VehicleOffer$brandArgs<ExtArgs>
+    model?: boolean | VehicleOffer$modelArgs<ExtArgs>
+    version?: boolean | VehicleOffer$versionArgs<ExtArgs>
+    bodyType?: boolean | VehicleOffer$bodyTypeArgs<ExtArgs>
+    fuelType?: boolean | VehicleOffer$fuelTypeArgs<ExtArgs>
+    transmissionType?: boolean | VehicleOffer$transmissionTypeArgs<ExtArgs>
+    color?: boolean | VehicleOffer$colorArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicleOffer"]>
+
+  export type VehicleOfferSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    year?: boolean
+    kilometer?: boolean
+    accidentStatus?: boolean
+    accidentAmount?: boolean
+    status?: boolean
+    displayValues?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    processedAt?: boolean
+    brandId?: boolean
+    modelId?: boolean
+    versionId?: boolean
+    bodyTypeId?: boolean
+    fuelTypeId?: boolean
+    transmissionTypeId?: boolean
+    colorId?: boolean
+    notes?: boolean
+    adminNotes?: boolean
+    brand?: boolean | VehicleOffer$brandArgs<ExtArgs>
+    model?: boolean | VehicleOffer$modelArgs<ExtArgs>
+    version?: boolean | VehicleOffer$versionArgs<ExtArgs>
+    bodyType?: boolean | VehicleOffer$bodyTypeArgs<ExtArgs>
+    fuelType?: boolean | VehicleOffer$fuelTypeArgs<ExtArgs>
+    transmissionType?: boolean | VehicleOffer$transmissionTypeArgs<ExtArgs>
+    color?: boolean | VehicleOffer$colorArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicleOffer"]>
+
+  export type VehicleOfferSelectScalar = {
+    id?: boolean
+    year?: boolean
+    kilometer?: boolean
+    accidentStatus?: boolean
+    accidentAmount?: boolean
+    status?: boolean
+    displayValues?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    processedAt?: boolean
+    brandId?: boolean
+    modelId?: boolean
+    versionId?: boolean
+    bodyTypeId?: boolean
+    fuelTypeId?: boolean
+    transmissionTypeId?: boolean
+    colorId?: boolean
+    notes?: boolean
+    adminNotes?: boolean
+  }
+
+  export type VehicleOfferOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "year" | "kilometer" | "accidentStatus" | "accidentAmount" | "status" | "displayValues" | "userId" | "createdAt" | "updatedAt" | "processedAt" | "brandId" | "modelId" | "versionId" | "bodyTypeId" | "fuelTypeId" | "transmissionTypeId" | "colorId" | "notes" | "adminNotes", ExtArgs["result"]["vehicleOffer"]>
+  export type VehicleOfferInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    brand?: boolean | VehicleOffer$brandArgs<ExtArgs>
+    model?: boolean | VehicleOffer$modelArgs<ExtArgs>
+    version?: boolean | VehicleOffer$versionArgs<ExtArgs>
+    bodyType?: boolean | VehicleOffer$bodyTypeArgs<ExtArgs>
+    fuelType?: boolean | VehicleOffer$fuelTypeArgs<ExtArgs>
+    transmissionType?: boolean | VehicleOffer$transmissionTypeArgs<ExtArgs>
+    color?: boolean | VehicleOffer$colorArgs<ExtArgs>
+  }
+  export type VehicleOfferIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    brand?: boolean | VehicleOffer$brandArgs<ExtArgs>
+    model?: boolean | VehicleOffer$modelArgs<ExtArgs>
+    version?: boolean | VehicleOffer$versionArgs<ExtArgs>
+    bodyType?: boolean | VehicleOffer$bodyTypeArgs<ExtArgs>
+    fuelType?: boolean | VehicleOffer$fuelTypeArgs<ExtArgs>
+    transmissionType?: boolean | VehicleOffer$transmissionTypeArgs<ExtArgs>
+    color?: boolean | VehicleOffer$colorArgs<ExtArgs>
+  }
+  export type VehicleOfferIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    brand?: boolean | VehicleOffer$brandArgs<ExtArgs>
+    model?: boolean | VehicleOffer$modelArgs<ExtArgs>
+    version?: boolean | VehicleOffer$versionArgs<ExtArgs>
+    bodyType?: boolean | VehicleOffer$bodyTypeArgs<ExtArgs>
+    fuelType?: boolean | VehicleOffer$fuelTypeArgs<ExtArgs>
+    transmissionType?: boolean | VehicleOffer$transmissionTypeArgs<ExtArgs>
+    color?: boolean | VehicleOffer$colorArgs<ExtArgs>
+  }
+
+  export type $VehicleOfferPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "VehicleOffer"
+    objects: {
+      brand: Prisma.$BrandPayload<ExtArgs> | null
+      model: Prisma.$ModelPayload<ExtArgs> | null
+      version: Prisma.$VersionPayload<ExtArgs> | null
+      bodyType: Prisma.$BodyTypePayload<ExtArgs> | null
+      fuelType: Prisma.$FuelTypePayload<ExtArgs> | null
+      transmissionType: Prisma.$TransmissionTypePayload<ExtArgs> | null
+      color: Prisma.$ColorPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      year: number | null
+      kilometer: number | null
+      accidentStatus: string | null
+      accidentAmount: number | null
+      status: string
+      displayValues: string | null
+      userId: string
+      createdAt: Date
+      updatedAt: Date
+      processedAt: Date | null
+      brandId: number | null
+      modelId: number | null
+      versionId: number | null
+      bodyTypeId: number | null
+      fuelTypeId: number | null
+      transmissionTypeId: number | null
+      colorId: number | null
+      notes: string | null
+      adminNotes: string | null
+    }, ExtArgs["result"]["vehicleOffer"]>
+    composites: {}
+  }
+
+  type VehicleOfferGetPayload<S extends boolean | null | undefined | VehicleOfferDefaultArgs> = $Result.GetResult<Prisma.$VehicleOfferPayload, S>
+
+  type VehicleOfferCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VehicleOfferFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VehicleOfferCountAggregateInputType | true
+    }
+
+  export interface VehicleOfferDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['VehicleOffer'], meta: { name: 'VehicleOffer' } }
+    /**
+     * Find zero or one VehicleOffer that matches the filter.
+     * @param {VehicleOfferFindUniqueArgs} args - Arguments to find a VehicleOffer
+     * @example
+     * // Get one VehicleOffer
+     * const vehicleOffer = await prisma.vehicleOffer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VehicleOfferFindUniqueArgs>(args: SelectSubset<T, VehicleOfferFindUniqueArgs<ExtArgs>>): Prisma__VehicleOfferClient<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one VehicleOffer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VehicleOfferFindUniqueOrThrowArgs} args - Arguments to find a VehicleOffer
+     * @example
+     * // Get one VehicleOffer
+     * const vehicleOffer = await prisma.vehicleOffer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VehicleOfferFindUniqueOrThrowArgs>(args: SelectSubset<T, VehicleOfferFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VehicleOfferClient<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VehicleOffer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleOfferFindFirstArgs} args - Arguments to find a VehicleOffer
+     * @example
+     * // Get one VehicleOffer
+     * const vehicleOffer = await prisma.vehicleOffer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VehicleOfferFindFirstArgs>(args?: SelectSubset<T, VehicleOfferFindFirstArgs<ExtArgs>>): Prisma__VehicleOfferClient<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VehicleOffer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleOfferFindFirstOrThrowArgs} args - Arguments to find a VehicleOffer
+     * @example
+     * // Get one VehicleOffer
+     * const vehicleOffer = await prisma.vehicleOffer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VehicleOfferFindFirstOrThrowArgs>(args?: SelectSubset<T, VehicleOfferFindFirstOrThrowArgs<ExtArgs>>): Prisma__VehicleOfferClient<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more VehicleOffers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleOfferFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all VehicleOffers
+     * const vehicleOffers = await prisma.vehicleOffer.findMany()
+     * 
+     * // Get first 10 VehicleOffers
+     * const vehicleOffers = await prisma.vehicleOffer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const vehicleOfferWithIdOnly = await prisma.vehicleOffer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VehicleOfferFindManyArgs>(args?: SelectSubset<T, VehicleOfferFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a VehicleOffer.
+     * @param {VehicleOfferCreateArgs} args - Arguments to create a VehicleOffer.
+     * @example
+     * // Create one VehicleOffer
+     * const VehicleOffer = await prisma.vehicleOffer.create({
+     *   data: {
+     *     // ... data to create a VehicleOffer
+     *   }
+     * })
+     * 
+     */
+    create<T extends VehicleOfferCreateArgs>(args: SelectSubset<T, VehicleOfferCreateArgs<ExtArgs>>): Prisma__VehicleOfferClient<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many VehicleOffers.
+     * @param {VehicleOfferCreateManyArgs} args - Arguments to create many VehicleOffers.
+     * @example
+     * // Create many VehicleOffers
+     * const vehicleOffer = await prisma.vehicleOffer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VehicleOfferCreateManyArgs>(args?: SelectSubset<T, VehicleOfferCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many VehicleOffers and returns the data saved in the database.
+     * @param {VehicleOfferCreateManyAndReturnArgs} args - Arguments to create many VehicleOffers.
+     * @example
+     * // Create many VehicleOffers
+     * const vehicleOffer = await prisma.vehicleOffer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many VehicleOffers and only return the `id`
+     * const vehicleOfferWithIdOnly = await prisma.vehicleOffer.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VehicleOfferCreateManyAndReturnArgs>(args?: SelectSubset<T, VehicleOfferCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a VehicleOffer.
+     * @param {VehicleOfferDeleteArgs} args - Arguments to delete one VehicleOffer.
+     * @example
+     * // Delete one VehicleOffer
+     * const VehicleOffer = await prisma.vehicleOffer.delete({
+     *   where: {
+     *     // ... filter to delete one VehicleOffer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VehicleOfferDeleteArgs>(args: SelectSubset<T, VehicleOfferDeleteArgs<ExtArgs>>): Prisma__VehicleOfferClient<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one VehicleOffer.
+     * @param {VehicleOfferUpdateArgs} args - Arguments to update one VehicleOffer.
+     * @example
+     * // Update one VehicleOffer
+     * const vehicleOffer = await prisma.vehicleOffer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VehicleOfferUpdateArgs>(args: SelectSubset<T, VehicleOfferUpdateArgs<ExtArgs>>): Prisma__VehicleOfferClient<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more VehicleOffers.
+     * @param {VehicleOfferDeleteManyArgs} args - Arguments to filter VehicleOffers to delete.
+     * @example
+     * // Delete a few VehicleOffers
+     * const { count } = await prisma.vehicleOffer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VehicleOfferDeleteManyArgs>(args?: SelectSubset<T, VehicleOfferDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VehicleOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleOfferUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many VehicleOffers
+     * const vehicleOffer = await prisma.vehicleOffer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VehicleOfferUpdateManyArgs>(args: SelectSubset<T, VehicleOfferUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VehicleOffers and returns the data updated in the database.
+     * @param {VehicleOfferUpdateManyAndReturnArgs} args - Arguments to update many VehicleOffers.
+     * @example
+     * // Update many VehicleOffers
+     * const vehicleOffer = await prisma.vehicleOffer.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more VehicleOffers and only return the `id`
+     * const vehicleOfferWithIdOnly = await prisma.vehicleOffer.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VehicleOfferUpdateManyAndReturnArgs>(args: SelectSubset<T, VehicleOfferUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one VehicleOffer.
+     * @param {VehicleOfferUpsertArgs} args - Arguments to update or create a VehicleOffer.
+     * @example
+     * // Update or create a VehicleOffer
+     * const vehicleOffer = await prisma.vehicleOffer.upsert({
+     *   create: {
+     *     // ... data to create a VehicleOffer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the VehicleOffer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VehicleOfferUpsertArgs>(args: SelectSubset<T, VehicleOfferUpsertArgs<ExtArgs>>): Prisma__VehicleOfferClient<$Result.GetResult<Prisma.$VehicleOfferPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of VehicleOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleOfferCountArgs} args - Arguments to filter VehicleOffers to count.
+     * @example
+     * // Count the number of VehicleOffers
+     * const count = await prisma.vehicleOffer.count({
+     *   where: {
+     *     // ... the filter for the VehicleOffers we want to count
+     *   }
+     * })
+    **/
+    count<T extends VehicleOfferCountArgs>(
+      args?: Subset<T, VehicleOfferCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VehicleOfferCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a VehicleOffer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleOfferAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VehicleOfferAggregateArgs>(args: Subset<T, VehicleOfferAggregateArgs>): Prisma.PrismaPromise<GetVehicleOfferAggregateType<T>>
+
+    /**
+     * Group by VehicleOffer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VehicleOfferGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VehicleOfferGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VehicleOfferGroupByArgs['orderBy'] }
+        : { orderBy?: VehicleOfferGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VehicleOfferGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVehicleOfferGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the VehicleOffer model
+   */
+  readonly fields: VehicleOfferFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for VehicleOffer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VehicleOfferClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    brand<T extends VehicleOffer$brandArgs<ExtArgs> = {}>(args?: Subset<T, VehicleOffer$brandArgs<ExtArgs>>): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    model<T extends VehicleOffer$modelArgs<ExtArgs> = {}>(args?: Subset<T, VehicleOffer$modelArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    version<T extends VehicleOffer$versionArgs<ExtArgs> = {}>(args?: Subset<T, VehicleOffer$versionArgs<ExtArgs>>): Prisma__VersionClient<$Result.GetResult<Prisma.$VersionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    bodyType<T extends VehicleOffer$bodyTypeArgs<ExtArgs> = {}>(args?: Subset<T, VehicleOffer$bodyTypeArgs<ExtArgs>>): Prisma__BodyTypeClient<$Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    fuelType<T extends VehicleOffer$fuelTypeArgs<ExtArgs> = {}>(args?: Subset<T, VehicleOffer$fuelTypeArgs<ExtArgs>>): Prisma__FuelTypeClient<$Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    transmissionType<T extends VehicleOffer$transmissionTypeArgs<ExtArgs> = {}>(args?: Subset<T, VehicleOffer$transmissionTypeArgs<ExtArgs>>): Prisma__TransmissionTypeClient<$Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    color<T extends VehicleOffer$colorArgs<ExtArgs> = {}>(args?: Subset<T, VehicleOffer$colorArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the VehicleOffer model
+   */
+  interface VehicleOfferFieldRefs {
+    readonly id: FieldRef<"VehicleOffer", 'Int'>
+    readonly year: FieldRef<"VehicleOffer", 'Int'>
+    readonly kilometer: FieldRef<"VehicleOffer", 'Int'>
+    readonly accidentStatus: FieldRef<"VehicleOffer", 'String'>
+    readonly accidentAmount: FieldRef<"VehicleOffer", 'Float'>
+    readonly status: FieldRef<"VehicleOffer", 'String'>
+    readonly displayValues: FieldRef<"VehicleOffer", 'String'>
+    readonly userId: FieldRef<"VehicleOffer", 'String'>
+    readonly createdAt: FieldRef<"VehicleOffer", 'DateTime'>
+    readonly updatedAt: FieldRef<"VehicleOffer", 'DateTime'>
+    readonly processedAt: FieldRef<"VehicleOffer", 'DateTime'>
+    readonly brandId: FieldRef<"VehicleOffer", 'Int'>
+    readonly modelId: FieldRef<"VehicleOffer", 'Int'>
+    readonly versionId: FieldRef<"VehicleOffer", 'Int'>
+    readonly bodyTypeId: FieldRef<"VehicleOffer", 'Int'>
+    readonly fuelTypeId: FieldRef<"VehicleOffer", 'Int'>
+    readonly transmissionTypeId: FieldRef<"VehicleOffer", 'Int'>
+    readonly colorId: FieldRef<"VehicleOffer", 'Int'>
+    readonly notes: FieldRef<"VehicleOffer", 'String'>
+    readonly adminNotes: FieldRef<"VehicleOffer", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * VehicleOffer findUnique
+   */
+  export type VehicleOfferFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleOffer to fetch.
+     */
+    where: VehicleOfferWhereUniqueInput
+  }
+
+  /**
+   * VehicleOffer findUniqueOrThrow
+   */
+  export type VehicleOfferFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleOffer to fetch.
+     */
+    where: VehicleOfferWhereUniqueInput
+  }
+
+  /**
+   * VehicleOffer findFirst
+   */
+  export type VehicleOfferFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleOffer to fetch.
+     */
+    where?: VehicleOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleOffers to fetch.
+     */
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VehicleOffers.
+     */
+    cursor?: VehicleOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VehicleOffers.
+     */
+    distinct?: VehicleOfferScalarFieldEnum | VehicleOfferScalarFieldEnum[]
+  }
+
+  /**
+   * VehicleOffer findFirstOrThrow
+   */
+  export type VehicleOfferFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleOffer to fetch.
+     */
+    where?: VehicleOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleOffers to fetch.
+     */
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VehicleOffers.
+     */
+    cursor?: VehicleOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VehicleOffers.
+     */
+    distinct?: VehicleOfferScalarFieldEnum | VehicleOfferScalarFieldEnum[]
+  }
+
+  /**
+   * VehicleOffer findMany
+   */
+  export type VehicleOfferFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which VehicleOffers to fetch.
+     */
+    where?: VehicleOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VehicleOffers to fetch.
+     */
+    orderBy?: VehicleOfferOrderByWithRelationInput | VehicleOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing VehicleOffers.
+     */
+    cursor?: VehicleOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VehicleOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VehicleOffers.
+     */
+    skip?: number
+    distinct?: VehicleOfferScalarFieldEnum | VehicleOfferScalarFieldEnum[]
+  }
+
+  /**
+   * VehicleOffer create
+   */
+  export type VehicleOfferCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    /**
+     * The data needed to create a VehicleOffer.
+     */
+    data: XOR<VehicleOfferCreateInput, VehicleOfferUncheckedCreateInput>
+  }
+
+  /**
+   * VehicleOffer createMany
+   */
+  export type VehicleOfferCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many VehicleOffers.
+     */
+    data: VehicleOfferCreateManyInput | VehicleOfferCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * VehicleOffer createManyAndReturn
+   */
+  export type VehicleOfferCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * The data used to create many VehicleOffers.
+     */
+    data: VehicleOfferCreateManyInput | VehicleOfferCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * VehicleOffer update
+   */
+  export type VehicleOfferUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    /**
+     * The data needed to update a VehicleOffer.
+     */
+    data: XOR<VehicleOfferUpdateInput, VehicleOfferUncheckedUpdateInput>
+    /**
+     * Choose, which VehicleOffer to update.
+     */
+    where: VehicleOfferWhereUniqueInput
+  }
+
+  /**
+   * VehicleOffer updateMany
+   */
+  export type VehicleOfferUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update VehicleOffers.
+     */
+    data: XOR<VehicleOfferUpdateManyMutationInput, VehicleOfferUncheckedUpdateManyInput>
+    /**
+     * Filter which VehicleOffers to update
+     */
+    where?: VehicleOfferWhereInput
+    /**
+     * Limit how many VehicleOffers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * VehicleOffer updateManyAndReturn
+   */
+  export type VehicleOfferUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * The data used to update VehicleOffers.
+     */
+    data: XOR<VehicleOfferUpdateManyMutationInput, VehicleOfferUncheckedUpdateManyInput>
+    /**
+     * Filter which VehicleOffers to update
+     */
+    where?: VehicleOfferWhereInput
+    /**
+     * Limit how many VehicleOffers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * VehicleOffer upsert
+   */
+  export type VehicleOfferUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    /**
+     * The filter to search for the VehicleOffer to update in case it exists.
+     */
+    where: VehicleOfferWhereUniqueInput
+    /**
+     * In case the VehicleOffer found by the `where` argument doesn't exist, create a new VehicleOffer with this data.
+     */
+    create: XOR<VehicleOfferCreateInput, VehicleOfferUncheckedCreateInput>
+    /**
+     * In case the VehicleOffer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VehicleOfferUpdateInput, VehicleOfferUncheckedUpdateInput>
+  }
+
+  /**
+   * VehicleOffer delete
+   */
+  export type VehicleOfferDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+    /**
+     * Filter which VehicleOffer to delete.
+     */
+    where: VehicleOfferWhereUniqueInput
+  }
+
+  /**
+   * VehicleOffer deleteMany
+   */
+  export type VehicleOfferDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VehicleOffers to delete
+     */
+    where?: VehicleOfferWhereInput
+    /**
+     * Limit how many VehicleOffers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * VehicleOffer.brand
+   */
+  export type VehicleOffer$brandArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brand
+     */
+    select?: BrandSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Brand
+     */
+    omit?: BrandOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BrandInclude<ExtArgs> | null
+    where?: BrandWhereInput
+  }
+
+  /**
+   * VehicleOffer.model
+   */
+  export type VehicleOffer$modelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model
+     */
+    select?: ModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model
+     */
+    omit?: ModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModelInclude<ExtArgs> | null
+    where?: ModelWhereInput
+  }
+
+  /**
+   * VehicleOffer.version
+   */
+  export type VehicleOffer$versionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Version
+     */
+    select?: VersionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Version
+     */
+    omit?: VersionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VersionInclude<ExtArgs> | null
+    where?: VersionWhereInput
+  }
+
+  /**
+   * VehicleOffer.bodyType
+   */
+  export type VehicleOffer$bodyTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BodyType
+     */
+    select?: BodyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BodyType
+     */
+    omit?: BodyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BodyTypeInclude<ExtArgs> | null
+    where?: BodyTypeWhereInput
+  }
+
+  /**
+   * VehicleOffer.fuelType
+   */
+  export type VehicleOffer$fuelTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FuelType
+     */
+    select?: FuelTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FuelType
+     */
+    omit?: FuelTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FuelTypeInclude<ExtArgs> | null
+    where?: FuelTypeWhereInput
+  }
+
+  /**
+   * VehicleOffer.transmissionType
+   */
+  export type VehicleOffer$transmissionTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransmissionType
+     */
+    select?: TransmissionTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransmissionType
+     */
+    omit?: TransmissionTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransmissionTypeInclude<ExtArgs> | null
+    where?: TransmissionTypeWhereInput
+  }
+
+  /**
+   * VehicleOffer.color
+   */
+  export type VehicleOffer$colorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    where?: ColorWhereInput
+  }
+
+  /**
+   * VehicleOffer without action
+   */
+  export type VehicleOfferDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleOffer
+     */
+    select?: VehicleOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleOffer
+     */
+    omit?: VehicleOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleOfferInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -19559,6 +21417,32 @@ export namespace Prisma {
   export type VehicleScalarFieldEnum = (typeof VehicleScalarFieldEnum)[keyof typeof VehicleScalarFieldEnum]
 
 
+  export const VehicleOfferScalarFieldEnum: {
+    id: 'id',
+    year: 'year',
+    kilometer: 'kilometer',
+    accidentStatus: 'accidentStatus',
+    accidentAmount: 'accidentAmount',
+    status: 'status',
+    displayValues: 'displayValues',
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    processedAt: 'processedAt',
+    brandId: 'brandId',
+    modelId: 'modelId',
+    versionId: 'versionId',
+    bodyTypeId: 'bodyTypeId',
+    fuelTypeId: 'fuelTypeId',
+    transmissionTypeId: 'transmissionTypeId',
+    colorId: 'colorId',
+    notes: 'notes',
+    adminNotes: 'adminNotes'
+  };
+
+  export type VehicleOfferScalarFieldEnum = (typeof VehicleOfferScalarFieldEnum)[keyof typeof VehicleOfferScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -19656,6 +21540,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Brand"> | Date | string
     updatedAt?: DateTimeFilter<"Brand"> | Date | string
     models?: ModelListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }
 
   export type BrandOrderByWithRelationInput = {
@@ -19664,6 +21549,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     models?: ModelOrderByRelationAggregateInput
+    vehicleOffers?: VehicleOfferOrderByRelationAggregateInput
   }
 
   export type BrandWhereUniqueInput = Prisma.AtLeast<{
@@ -19675,6 +21561,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Brand"> | Date | string
     updatedAt?: DateTimeFilter<"Brand"> | Date | string
     models?: ModelListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }, "id" | "name">
 
   export type BrandOrderByWithAggregationInput = {
@@ -19710,6 +21597,7 @@ export namespace Prisma {
     brandId?: IntFilter<"Model"> | number
     brand?: XOR<BrandScalarRelationFilter, BrandWhereInput>
     versions?: VersionListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }
 
   export type ModelOrderByWithRelationInput = {
@@ -19720,6 +21608,7 @@ export namespace Prisma {
     brandId?: SortOrder
     brand?: BrandOrderByWithRelationInput
     versions?: VersionOrderByRelationAggregateInput
+    vehicleOffers?: VehicleOfferOrderByRelationAggregateInput
   }
 
   export type ModelWhereUniqueInput = Prisma.AtLeast<{
@@ -19734,6 +21623,7 @@ export namespace Prisma {
     brandId?: IntFilter<"Model"> | number
     brand?: XOR<BrandScalarRelationFilter, BrandWhereInput>
     versions?: VersionListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }, "id" | "brandId_name">
 
   export type ModelOrderByWithAggregationInput = {
@@ -19771,6 +21661,7 @@ export namespace Prisma {
     modelId?: IntFilter<"Version"> | number
     model?: XOR<ModelScalarRelationFilter, ModelWhereInput>
     bodyTypes?: BodyTypeVersionListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }
 
   export type VersionOrderByWithRelationInput = {
@@ -19781,6 +21672,7 @@ export namespace Prisma {
     modelId?: SortOrder
     model?: ModelOrderByWithRelationInput
     bodyTypes?: BodyTypeVersionOrderByRelationAggregateInput
+    vehicleOffers?: VehicleOfferOrderByRelationAggregateInput
   }
 
   export type VersionWhereUniqueInput = Prisma.AtLeast<{
@@ -19795,6 +21687,7 @@ export namespace Prisma {
     modelId?: IntFilter<"Version"> | number
     model?: XOR<ModelScalarRelationFilter, ModelWhereInput>
     bodyTypes?: BodyTypeVersionListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }, "id" | "modelId_name">
 
   export type VersionOrderByWithAggregationInput = {
@@ -19830,6 +21723,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"BodyType"> | Date | string
     updatedAt?: DateTimeFilter<"BodyType"> | Date | string
     versions?: BodyTypeVersionListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }
 
   export type BodyTypeOrderByWithRelationInput = {
@@ -19838,6 +21732,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     versions?: BodyTypeVersionOrderByRelationAggregateInput
+    vehicleOffers?: VehicleOfferOrderByRelationAggregateInput
   }
 
   export type BodyTypeWhereUniqueInput = Prisma.AtLeast<{
@@ -19849,6 +21744,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"BodyType"> | Date | string
     updatedAt?: DateTimeFilter<"BodyType"> | Date | string
     versions?: BodyTypeVersionListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }, "id" | "name">
 
   export type BodyTypeOrderByWithAggregationInput = {
@@ -19946,6 +21842,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"FuelType"> | Date | string
     updatedAt?: DateTimeFilter<"FuelType"> | Date | string
     bodyTypes?: FuelTypeBodyListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }
 
   export type FuelTypeOrderByWithRelationInput = {
@@ -19954,6 +21851,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     bodyTypes?: FuelTypeBodyOrderByRelationAggregateInput
+    vehicleOffers?: VehicleOfferOrderByRelationAggregateInput
   }
 
   export type FuelTypeWhereUniqueInput = Prisma.AtLeast<{
@@ -19965,6 +21863,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"FuelType"> | Date | string
     updatedAt?: DateTimeFilter<"FuelType"> | Date | string
     bodyTypes?: FuelTypeBodyListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }, "id" | "name">
 
   export type FuelTypeOrderByWithAggregationInput = {
@@ -20062,6 +21961,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TransmissionType"> | Date | string
     updatedAt?: DateTimeFilter<"TransmissionType"> | Date | string
     fuelTypes?: TransmissionTypeFuelListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }
 
   export type TransmissionTypeOrderByWithRelationInput = {
@@ -20070,6 +21970,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     fuelTypes?: TransmissionTypeFuelOrderByRelationAggregateInput
+    vehicleOffers?: VehicleOfferOrderByRelationAggregateInput
   }
 
   export type TransmissionTypeWhereUniqueInput = Prisma.AtLeast<{
@@ -20081,6 +21982,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TransmissionType"> | Date | string
     updatedAt?: DateTimeFilter<"TransmissionType"> | Date | string
     fuelTypes?: TransmissionTypeFuelListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }, "id" | "name">
 
   export type TransmissionTypeOrderByWithAggregationInput = {
@@ -20305,6 +22207,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Color"> | Date | string
     updatedAt?: DateTimeFilter<"Color"> | Date | string
     mileages?: ColorMileageListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }
 
   export type ColorOrderByWithRelationInput = {
@@ -20313,6 +22216,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     mileages?: ColorMileageOrderByRelationAggregateInput
+    vehicleOffers?: VehicleOfferOrderByRelationAggregateInput
   }
 
   export type ColorWhereUniqueInput = Prisma.AtLeast<{
@@ -20324,6 +22228,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Color"> | Date | string
     updatedAt?: DateTimeFilter<"Color"> | Date | string
     mileages?: ColorMileageListRelationFilter
+    vehicleOffers?: VehicleOfferListRelationFilter
   }, "id" | "name">
 
   export type ColorOrderByWithAggregationInput = {
@@ -20544,11 +22449,162 @@ export namespace Prisma {
     listingStatus?: StringWithAggregatesFilter<"Vehicle"> | string
   }
 
+  export type VehicleOfferWhereInput = {
+    AND?: VehicleOfferWhereInput | VehicleOfferWhereInput[]
+    OR?: VehicleOfferWhereInput[]
+    NOT?: VehicleOfferWhereInput | VehicleOfferWhereInput[]
+    id?: IntFilter<"VehicleOffer"> | number
+    year?: IntNullableFilter<"VehicleOffer"> | number | null
+    kilometer?: IntNullableFilter<"VehicleOffer"> | number | null
+    accidentStatus?: StringNullableFilter<"VehicleOffer"> | string | null
+    accidentAmount?: FloatNullableFilter<"VehicleOffer"> | number | null
+    status?: StringFilter<"VehicleOffer"> | string
+    displayValues?: StringNullableFilter<"VehicleOffer"> | string | null
+    userId?: StringFilter<"VehicleOffer"> | string
+    createdAt?: DateTimeFilter<"VehicleOffer"> | Date | string
+    updatedAt?: DateTimeFilter<"VehicleOffer"> | Date | string
+    processedAt?: DateTimeNullableFilter<"VehicleOffer"> | Date | string | null
+    brandId?: IntNullableFilter<"VehicleOffer"> | number | null
+    modelId?: IntNullableFilter<"VehicleOffer"> | number | null
+    versionId?: IntNullableFilter<"VehicleOffer"> | number | null
+    bodyTypeId?: IntNullableFilter<"VehicleOffer"> | number | null
+    fuelTypeId?: IntNullableFilter<"VehicleOffer"> | number | null
+    transmissionTypeId?: IntNullableFilter<"VehicleOffer"> | number | null
+    colorId?: IntNullableFilter<"VehicleOffer"> | number | null
+    notes?: StringNullableFilter<"VehicleOffer"> | string | null
+    adminNotes?: StringNullableFilter<"VehicleOffer"> | string | null
+    brand?: XOR<BrandNullableScalarRelationFilter, BrandWhereInput> | null
+    model?: XOR<ModelNullableScalarRelationFilter, ModelWhereInput> | null
+    version?: XOR<VersionNullableScalarRelationFilter, VersionWhereInput> | null
+    bodyType?: XOR<BodyTypeNullableScalarRelationFilter, BodyTypeWhereInput> | null
+    fuelType?: XOR<FuelTypeNullableScalarRelationFilter, FuelTypeWhereInput> | null
+    transmissionType?: XOR<TransmissionTypeNullableScalarRelationFilter, TransmissionTypeWhereInput> | null
+    color?: XOR<ColorNullableScalarRelationFilter, ColorWhereInput> | null
+  }
+
+  export type VehicleOfferOrderByWithRelationInput = {
+    id?: SortOrder
+    year?: SortOrderInput | SortOrder
+    kilometer?: SortOrderInput | SortOrder
+    accidentStatus?: SortOrderInput | SortOrder
+    accidentAmount?: SortOrderInput | SortOrder
+    status?: SortOrder
+    displayValues?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    processedAt?: SortOrderInput | SortOrder
+    brandId?: SortOrderInput | SortOrder
+    modelId?: SortOrderInput | SortOrder
+    versionId?: SortOrderInput | SortOrder
+    bodyTypeId?: SortOrderInput | SortOrder
+    fuelTypeId?: SortOrderInput | SortOrder
+    transmissionTypeId?: SortOrderInput | SortOrder
+    colorId?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    adminNotes?: SortOrderInput | SortOrder
+    brand?: BrandOrderByWithRelationInput
+    model?: ModelOrderByWithRelationInput
+    version?: VersionOrderByWithRelationInput
+    bodyType?: BodyTypeOrderByWithRelationInput
+    fuelType?: FuelTypeOrderByWithRelationInput
+    transmissionType?: TransmissionTypeOrderByWithRelationInput
+    color?: ColorOrderByWithRelationInput
+  }
+
+  export type VehicleOfferWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: VehicleOfferWhereInput | VehicleOfferWhereInput[]
+    OR?: VehicleOfferWhereInput[]
+    NOT?: VehicleOfferWhereInput | VehicleOfferWhereInput[]
+    year?: IntNullableFilter<"VehicleOffer"> | number | null
+    kilometer?: IntNullableFilter<"VehicleOffer"> | number | null
+    accidentStatus?: StringNullableFilter<"VehicleOffer"> | string | null
+    accidentAmount?: FloatNullableFilter<"VehicleOffer"> | number | null
+    status?: StringFilter<"VehicleOffer"> | string
+    displayValues?: StringNullableFilter<"VehicleOffer"> | string | null
+    userId?: StringFilter<"VehicleOffer"> | string
+    createdAt?: DateTimeFilter<"VehicleOffer"> | Date | string
+    updatedAt?: DateTimeFilter<"VehicleOffer"> | Date | string
+    processedAt?: DateTimeNullableFilter<"VehicleOffer"> | Date | string | null
+    brandId?: IntNullableFilter<"VehicleOffer"> | number | null
+    modelId?: IntNullableFilter<"VehicleOffer"> | number | null
+    versionId?: IntNullableFilter<"VehicleOffer"> | number | null
+    bodyTypeId?: IntNullableFilter<"VehicleOffer"> | number | null
+    fuelTypeId?: IntNullableFilter<"VehicleOffer"> | number | null
+    transmissionTypeId?: IntNullableFilter<"VehicleOffer"> | number | null
+    colorId?: IntNullableFilter<"VehicleOffer"> | number | null
+    notes?: StringNullableFilter<"VehicleOffer"> | string | null
+    adminNotes?: StringNullableFilter<"VehicleOffer"> | string | null
+    brand?: XOR<BrandNullableScalarRelationFilter, BrandWhereInput> | null
+    model?: XOR<ModelNullableScalarRelationFilter, ModelWhereInput> | null
+    version?: XOR<VersionNullableScalarRelationFilter, VersionWhereInput> | null
+    bodyType?: XOR<BodyTypeNullableScalarRelationFilter, BodyTypeWhereInput> | null
+    fuelType?: XOR<FuelTypeNullableScalarRelationFilter, FuelTypeWhereInput> | null
+    transmissionType?: XOR<TransmissionTypeNullableScalarRelationFilter, TransmissionTypeWhereInput> | null
+    color?: XOR<ColorNullableScalarRelationFilter, ColorWhereInput> | null
+  }, "id">
+
+  export type VehicleOfferOrderByWithAggregationInput = {
+    id?: SortOrder
+    year?: SortOrderInput | SortOrder
+    kilometer?: SortOrderInput | SortOrder
+    accidentStatus?: SortOrderInput | SortOrder
+    accidentAmount?: SortOrderInput | SortOrder
+    status?: SortOrder
+    displayValues?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    processedAt?: SortOrderInput | SortOrder
+    brandId?: SortOrderInput | SortOrder
+    modelId?: SortOrderInput | SortOrder
+    versionId?: SortOrderInput | SortOrder
+    bodyTypeId?: SortOrderInput | SortOrder
+    fuelTypeId?: SortOrderInput | SortOrder
+    transmissionTypeId?: SortOrderInput | SortOrder
+    colorId?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    adminNotes?: SortOrderInput | SortOrder
+    _count?: VehicleOfferCountOrderByAggregateInput
+    _avg?: VehicleOfferAvgOrderByAggregateInput
+    _max?: VehicleOfferMaxOrderByAggregateInput
+    _min?: VehicleOfferMinOrderByAggregateInput
+    _sum?: VehicleOfferSumOrderByAggregateInput
+  }
+
+  export type VehicleOfferScalarWhereWithAggregatesInput = {
+    AND?: VehicleOfferScalarWhereWithAggregatesInput | VehicleOfferScalarWhereWithAggregatesInput[]
+    OR?: VehicleOfferScalarWhereWithAggregatesInput[]
+    NOT?: VehicleOfferScalarWhereWithAggregatesInput | VehicleOfferScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"VehicleOffer"> | number
+    year?: IntNullableWithAggregatesFilter<"VehicleOffer"> | number | null
+    kilometer?: IntNullableWithAggregatesFilter<"VehicleOffer"> | number | null
+    accidentStatus?: StringNullableWithAggregatesFilter<"VehicleOffer"> | string | null
+    accidentAmount?: FloatNullableWithAggregatesFilter<"VehicleOffer"> | number | null
+    status?: StringWithAggregatesFilter<"VehicleOffer"> | string
+    displayValues?: StringNullableWithAggregatesFilter<"VehicleOffer"> | string | null
+    userId?: StringWithAggregatesFilter<"VehicleOffer"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"VehicleOffer"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"VehicleOffer"> | Date | string
+    processedAt?: DateTimeNullableWithAggregatesFilter<"VehicleOffer"> | Date | string | null
+    brandId?: IntNullableWithAggregatesFilter<"VehicleOffer"> | number | null
+    modelId?: IntNullableWithAggregatesFilter<"VehicleOffer"> | number | null
+    versionId?: IntNullableWithAggregatesFilter<"VehicleOffer"> | number | null
+    bodyTypeId?: IntNullableWithAggregatesFilter<"VehicleOffer"> | number | null
+    fuelTypeId?: IntNullableWithAggregatesFilter<"VehicleOffer"> | number | null
+    transmissionTypeId?: IntNullableWithAggregatesFilter<"VehicleOffer"> | number | null
+    colorId?: IntNullableWithAggregatesFilter<"VehicleOffer"> | number | null
+    notes?: StringNullableWithAggregatesFilter<"VehicleOffer"> | string | null
+    adminNotes?: StringNullableWithAggregatesFilter<"VehicleOffer"> | string | null
+  }
+
   export type BrandCreateInput = {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
     models?: ModelCreateNestedManyWithoutBrandInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutBrandInput
   }
 
   export type BrandUncheckedCreateInput = {
@@ -20557,6 +22613,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     models?: ModelUncheckedCreateNestedManyWithoutBrandInput
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutBrandInput
   }
 
   export type BrandUpdateInput = {
@@ -20564,6 +22621,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     models?: ModelUpdateManyWithoutBrandNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutBrandNestedInput
   }
 
   export type BrandUncheckedUpdateInput = {
@@ -20572,6 +22630,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     models?: ModelUncheckedUpdateManyWithoutBrandNestedInput
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutBrandNestedInput
   }
 
   export type BrandCreateManyInput = {
@@ -20600,6 +22659,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     brand: BrandCreateNestedOneWithoutModelsInput
     versions?: VersionCreateNestedManyWithoutModelInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutModelInput
   }
 
   export type ModelUncheckedCreateInput = {
@@ -20609,6 +22669,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     brandId: number
     versions?: VersionUncheckedCreateNestedManyWithoutModelInput
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutModelInput
   }
 
   export type ModelUpdateInput = {
@@ -20617,6 +22678,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     brand?: BrandUpdateOneRequiredWithoutModelsNestedInput
     versions?: VersionUpdateManyWithoutModelNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutModelNestedInput
   }
 
   export type ModelUncheckedUpdateInput = {
@@ -20626,6 +22688,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     brandId?: IntFieldUpdateOperationsInput | number
     versions?: VersionUncheckedUpdateManyWithoutModelNestedInput
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutModelNestedInput
   }
 
   export type ModelCreateManyInput = {
@@ -20656,6 +22719,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     model: ModelCreateNestedOneWithoutVersionsInput
     bodyTypes?: BodyTypeVersionCreateNestedManyWithoutVersionInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutVersionInput
   }
 
   export type VersionUncheckedCreateInput = {
@@ -20665,6 +22729,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     modelId: number
     bodyTypes?: BodyTypeVersionUncheckedCreateNestedManyWithoutVersionInput
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutVersionInput
   }
 
   export type VersionUpdateInput = {
@@ -20673,6 +22738,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: ModelUpdateOneRequiredWithoutVersionsNestedInput
     bodyTypes?: BodyTypeVersionUpdateManyWithoutVersionNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutVersionNestedInput
   }
 
   export type VersionUncheckedUpdateInput = {
@@ -20682,6 +22748,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     modelId?: IntFieldUpdateOperationsInput | number
     bodyTypes?: BodyTypeVersionUncheckedUpdateManyWithoutVersionNestedInput
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutVersionNestedInput
   }
 
   export type VersionCreateManyInput = {
@@ -20711,6 +22778,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     versions?: BodyTypeVersionCreateNestedManyWithoutBodyTypeInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutBodyTypeInput
   }
 
   export type BodyTypeUncheckedCreateInput = {
@@ -20719,6 +22787,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     versions?: BodyTypeVersionUncheckedCreateNestedManyWithoutBodyTypeInput
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutBodyTypeInput
   }
 
   export type BodyTypeUpdateInput = {
@@ -20726,6 +22795,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     versions?: BodyTypeVersionUpdateManyWithoutBodyTypeNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutBodyTypeNestedInput
   }
 
   export type BodyTypeUncheckedUpdateInput = {
@@ -20734,6 +22804,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     versions?: BodyTypeVersionUncheckedUpdateManyWithoutBodyTypeNestedInput
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutBodyTypeNestedInput
   }
 
   export type BodyTypeCreateManyInput = {
@@ -20816,6 +22887,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     bodyTypes?: FuelTypeBodyCreateNestedManyWithoutFuelTypeInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutFuelTypeInput
   }
 
   export type FuelTypeUncheckedCreateInput = {
@@ -20824,6 +22896,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     bodyTypes?: FuelTypeBodyUncheckedCreateNestedManyWithoutFuelTypeInput
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutFuelTypeInput
   }
 
   export type FuelTypeUpdateInput = {
@@ -20831,6 +22904,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bodyTypes?: FuelTypeBodyUpdateManyWithoutFuelTypeNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutFuelTypeNestedInput
   }
 
   export type FuelTypeUncheckedUpdateInput = {
@@ -20839,6 +22913,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bodyTypes?: FuelTypeBodyUncheckedUpdateManyWithoutFuelTypeNestedInput
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutFuelTypeNestedInput
   }
 
   export type FuelTypeCreateManyInput = {
@@ -20921,6 +22996,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     fuelTypes?: TransmissionTypeFuelCreateNestedManyWithoutTransmissionTypeInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutTransmissionTypeInput
   }
 
   export type TransmissionTypeUncheckedCreateInput = {
@@ -20929,6 +23005,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     fuelTypes?: TransmissionTypeFuelUncheckedCreateNestedManyWithoutTransmissionTypeInput
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutTransmissionTypeInput
   }
 
   export type TransmissionTypeUpdateInput = {
@@ -20936,6 +23013,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     fuelTypes?: TransmissionTypeFuelUpdateManyWithoutTransmissionTypeNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutTransmissionTypeNestedInput
   }
 
   export type TransmissionTypeUncheckedUpdateInput = {
@@ -20944,6 +23022,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     fuelTypes?: TransmissionTypeFuelUncheckedUpdateManyWithoutTransmissionTypeNestedInput
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutTransmissionTypeNestedInput
   }
 
   export type TransmissionTypeCreateManyInput = {
@@ -21145,6 +23224,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     mileages?: ColorMileageCreateNestedManyWithoutColorInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutColorInput
   }
 
   export type ColorUncheckedCreateInput = {
@@ -21153,6 +23233,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     mileages?: ColorMileageUncheckedCreateNestedManyWithoutColorInput
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutColorInput
   }
 
   export type ColorUpdateInput = {
@@ -21160,6 +23241,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mileages?: ColorMileageUpdateManyWithoutColorNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutColorNestedInput
   }
 
   export type ColorUncheckedUpdateInput = {
@@ -21168,6 +23250,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mileages?: ColorMileageUncheckedUpdateManyWithoutColorNestedInput
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutColorNestedInput
   }
 
   export type ColorCreateManyInput = {
@@ -21374,6 +23457,157 @@ export namespace Prisma {
     listingStatus?: StringFieldUpdateOperationsInput | string
   }
 
+  export type VehicleOfferCreateInput = {
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    notes?: string | null
+    adminNotes?: string | null
+    brand?: BrandCreateNestedOneWithoutVehicleOffersInput
+    model?: ModelCreateNestedOneWithoutVehicleOffersInput
+    version?: VersionCreateNestedOneWithoutVehicleOffersInput
+    bodyType?: BodyTypeCreateNestedOneWithoutVehicleOffersInput
+    fuelType?: FuelTypeCreateNestedOneWithoutVehicleOffersInput
+    transmissionType?: TransmissionTypeCreateNestedOneWithoutVehicleOffersInput
+    color?: ColorCreateNestedOneWithoutVehicleOffersInput
+  }
+
+  export type VehicleOfferUncheckedCreateInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
+  export type VehicleOfferUpdateInput = {
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    brand?: BrandUpdateOneWithoutVehicleOffersNestedInput
+    model?: ModelUpdateOneWithoutVehicleOffersNestedInput
+    version?: VersionUpdateOneWithoutVehicleOffersNestedInput
+    bodyType?: BodyTypeUpdateOneWithoutVehicleOffersNestedInput
+    fuelType?: FuelTypeUpdateOneWithoutVehicleOffersNestedInput
+    transmissionType?: TransmissionTypeUpdateOneWithoutVehicleOffersNestedInput
+    color?: ColorUpdateOneWithoutVehicleOffersNestedInput
+  }
+
+  export type VehicleOfferUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VehicleOfferCreateManyInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
+  export type VehicleOfferUpdateManyMutationInput = {
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VehicleOfferUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -21417,7 +23651,17 @@ export namespace Prisma {
     none?: ModelWhereInput
   }
 
+  export type VehicleOfferListRelationFilter = {
+    every?: VehicleOfferWhereInput
+    some?: VehicleOfferWhereInput
+    none?: VehicleOfferWhereInput
+  }
+
   export type ModelOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VehicleOfferOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -22277,6 +24521,190 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type BrandNullableScalarRelationFilter = {
+    is?: BrandWhereInput | null
+    isNot?: BrandWhereInput | null
+  }
+
+  export type ModelNullableScalarRelationFilter = {
+    is?: ModelWhereInput | null
+    isNot?: ModelWhereInput | null
+  }
+
+  export type VersionNullableScalarRelationFilter = {
+    is?: VersionWhereInput | null
+    isNot?: VersionWhereInput | null
+  }
+
+  export type BodyTypeNullableScalarRelationFilter = {
+    is?: BodyTypeWhereInput | null
+    isNot?: BodyTypeWhereInput | null
+  }
+
+  export type FuelTypeNullableScalarRelationFilter = {
+    is?: FuelTypeWhereInput | null
+    isNot?: FuelTypeWhereInput | null
+  }
+
+  export type TransmissionTypeNullableScalarRelationFilter = {
+    is?: TransmissionTypeWhereInput | null
+    isNot?: TransmissionTypeWhereInput | null
+  }
+
+  export type ColorNullableScalarRelationFilter = {
+    is?: ColorWhereInput | null
+    isNot?: ColorWhereInput | null
+  }
+
+  export type VehicleOfferCountOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    kilometer?: SortOrder
+    accidentStatus?: SortOrder
+    accidentAmount?: SortOrder
+    status?: SortOrder
+    displayValues?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    processedAt?: SortOrder
+    brandId?: SortOrder
+    modelId?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+    fuelTypeId?: SortOrder
+    transmissionTypeId?: SortOrder
+    colorId?: SortOrder
+    notes?: SortOrder
+    adminNotes?: SortOrder
+  }
+
+  export type VehicleOfferAvgOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    kilometer?: SortOrder
+    accidentAmount?: SortOrder
+    brandId?: SortOrder
+    modelId?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+    fuelTypeId?: SortOrder
+    transmissionTypeId?: SortOrder
+    colorId?: SortOrder
+  }
+
+  export type VehicleOfferMaxOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    kilometer?: SortOrder
+    accidentStatus?: SortOrder
+    accidentAmount?: SortOrder
+    status?: SortOrder
+    displayValues?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    processedAt?: SortOrder
+    brandId?: SortOrder
+    modelId?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+    fuelTypeId?: SortOrder
+    transmissionTypeId?: SortOrder
+    colorId?: SortOrder
+    notes?: SortOrder
+    adminNotes?: SortOrder
+  }
+
+  export type VehicleOfferMinOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    kilometer?: SortOrder
+    accidentStatus?: SortOrder
+    accidentAmount?: SortOrder
+    status?: SortOrder
+    displayValues?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    processedAt?: SortOrder
+    brandId?: SortOrder
+    modelId?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+    fuelTypeId?: SortOrder
+    transmissionTypeId?: SortOrder
+    colorId?: SortOrder
+    notes?: SortOrder
+    adminNotes?: SortOrder
+  }
+
+  export type VehicleOfferSumOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    kilometer?: SortOrder
+    accidentAmount?: SortOrder
+    brandId?: SortOrder
+    modelId?: SortOrder
+    versionId?: SortOrder
+    bodyTypeId?: SortOrder
+    fuelTypeId?: SortOrder
+    transmissionTypeId?: SortOrder
+    colorId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type ModelCreateNestedManyWithoutBrandInput = {
     create?: XOR<ModelCreateWithoutBrandInput, ModelUncheckedCreateWithoutBrandInput> | ModelCreateWithoutBrandInput[] | ModelUncheckedCreateWithoutBrandInput[]
     connectOrCreate?: ModelCreateOrConnectWithoutBrandInput | ModelCreateOrConnectWithoutBrandInput[]
@@ -22284,11 +24712,25 @@ export namespace Prisma {
     connect?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
   }
 
+  export type VehicleOfferCreateNestedManyWithoutBrandInput = {
+    create?: XOR<VehicleOfferCreateWithoutBrandInput, VehicleOfferUncheckedCreateWithoutBrandInput> | VehicleOfferCreateWithoutBrandInput[] | VehicleOfferUncheckedCreateWithoutBrandInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutBrandInput | VehicleOfferCreateOrConnectWithoutBrandInput[]
+    createMany?: VehicleOfferCreateManyBrandInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+  }
+
   export type ModelUncheckedCreateNestedManyWithoutBrandInput = {
     create?: XOR<ModelCreateWithoutBrandInput, ModelUncheckedCreateWithoutBrandInput> | ModelCreateWithoutBrandInput[] | ModelUncheckedCreateWithoutBrandInput[]
     connectOrCreate?: ModelCreateOrConnectWithoutBrandInput | ModelCreateOrConnectWithoutBrandInput[]
     createMany?: ModelCreateManyBrandInputEnvelope
     connect?: ModelWhereUniqueInput | ModelWhereUniqueInput[]
+  }
+
+  export type VehicleOfferUncheckedCreateNestedManyWithoutBrandInput = {
+    create?: XOR<VehicleOfferCreateWithoutBrandInput, VehicleOfferUncheckedCreateWithoutBrandInput> | VehicleOfferCreateWithoutBrandInput[] | VehicleOfferUncheckedCreateWithoutBrandInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutBrandInput | VehicleOfferCreateOrConnectWithoutBrandInput[]
+    createMany?: VehicleOfferCreateManyBrandInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -22313,6 +24755,20 @@ export namespace Prisma {
     deleteMany?: ModelScalarWhereInput | ModelScalarWhereInput[]
   }
 
+  export type VehicleOfferUpdateManyWithoutBrandNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutBrandInput, VehicleOfferUncheckedCreateWithoutBrandInput> | VehicleOfferCreateWithoutBrandInput[] | VehicleOfferUncheckedCreateWithoutBrandInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutBrandInput | VehicleOfferCreateOrConnectWithoutBrandInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutBrandInput | VehicleOfferUpsertWithWhereUniqueWithoutBrandInput[]
+    createMany?: VehicleOfferCreateManyBrandInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutBrandInput | VehicleOfferUpdateWithWhereUniqueWithoutBrandInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutBrandInput | VehicleOfferUpdateManyWithWhereWithoutBrandInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -22335,6 +24791,20 @@ export namespace Prisma {
     deleteMany?: ModelScalarWhereInput | ModelScalarWhereInput[]
   }
 
+  export type VehicleOfferUncheckedUpdateManyWithoutBrandNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutBrandInput, VehicleOfferUncheckedCreateWithoutBrandInput> | VehicleOfferCreateWithoutBrandInput[] | VehicleOfferUncheckedCreateWithoutBrandInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutBrandInput | VehicleOfferCreateOrConnectWithoutBrandInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutBrandInput | VehicleOfferUpsertWithWhereUniqueWithoutBrandInput[]
+    createMany?: VehicleOfferCreateManyBrandInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutBrandInput | VehicleOfferUpdateWithWhereUniqueWithoutBrandInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutBrandInput | VehicleOfferUpdateManyWithWhereWithoutBrandInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+  }
+
   export type BrandCreateNestedOneWithoutModelsInput = {
     create?: XOR<BrandCreateWithoutModelsInput, BrandUncheckedCreateWithoutModelsInput>
     connectOrCreate?: BrandCreateOrConnectWithoutModelsInput
@@ -22348,11 +24818,25 @@ export namespace Prisma {
     connect?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
   }
 
+  export type VehicleOfferCreateNestedManyWithoutModelInput = {
+    create?: XOR<VehicleOfferCreateWithoutModelInput, VehicleOfferUncheckedCreateWithoutModelInput> | VehicleOfferCreateWithoutModelInput[] | VehicleOfferUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutModelInput | VehicleOfferCreateOrConnectWithoutModelInput[]
+    createMany?: VehicleOfferCreateManyModelInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+  }
+
   export type VersionUncheckedCreateNestedManyWithoutModelInput = {
     create?: XOR<VersionCreateWithoutModelInput, VersionUncheckedCreateWithoutModelInput> | VersionCreateWithoutModelInput[] | VersionUncheckedCreateWithoutModelInput[]
     connectOrCreate?: VersionCreateOrConnectWithoutModelInput | VersionCreateOrConnectWithoutModelInput[]
     createMany?: VersionCreateManyModelInputEnvelope
     connect?: VersionWhereUniqueInput | VersionWhereUniqueInput[]
+  }
+
+  export type VehicleOfferUncheckedCreateNestedManyWithoutModelInput = {
+    create?: XOR<VehicleOfferCreateWithoutModelInput, VehicleOfferUncheckedCreateWithoutModelInput> | VehicleOfferCreateWithoutModelInput[] | VehicleOfferUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutModelInput | VehicleOfferCreateOrConnectWithoutModelInput[]
+    createMany?: VehicleOfferCreateManyModelInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
   }
 
   export type BrandUpdateOneRequiredWithoutModelsNestedInput = {
@@ -22377,6 +24861,20 @@ export namespace Prisma {
     deleteMany?: VersionScalarWhereInput | VersionScalarWhereInput[]
   }
 
+  export type VehicleOfferUpdateManyWithoutModelNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutModelInput, VehicleOfferUncheckedCreateWithoutModelInput> | VehicleOfferCreateWithoutModelInput[] | VehicleOfferUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutModelInput | VehicleOfferCreateOrConnectWithoutModelInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutModelInput | VehicleOfferUpsertWithWhereUniqueWithoutModelInput[]
+    createMany?: VehicleOfferCreateManyModelInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutModelInput | VehicleOfferUpdateWithWhereUniqueWithoutModelInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutModelInput | VehicleOfferUpdateManyWithWhereWithoutModelInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+  }
+
   export type VersionUncheckedUpdateManyWithoutModelNestedInput = {
     create?: XOR<VersionCreateWithoutModelInput, VersionUncheckedCreateWithoutModelInput> | VersionCreateWithoutModelInput[] | VersionUncheckedCreateWithoutModelInput[]
     connectOrCreate?: VersionCreateOrConnectWithoutModelInput | VersionCreateOrConnectWithoutModelInput[]
@@ -22389,6 +24887,20 @@ export namespace Prisma {
     update?: VersionUpdateWithWhereUniqueWithoutModelInput | VersionUpdateWithWhereUniqueWithoutModelInput[]
     updateMany?: VersionUpdateManyWithWhereWithoutModelInput | VersionUpdateManyWithWhereWithoutModelInput[]
     deleteMany?: VersionScalarWhereInput | VersionScalarWhereInput[]
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutModelNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutModelInput, VehicleOfferUncheckedCreateWithoutModelInput> | VehicleOfferCreateWithoutModelInput[] | VehicleOfferUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutModelInput | VehicleOfferCreateOrConnectWithoutModelInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutModelInput | VehicleOfferUpsertWithWhereUniqueWithoutModelInput[]
+    createMany?: VehicleOfferCreateManyModelInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutModelInput | VehicleOfferUpdateWithWhereUniqueWithoutModelInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutModelInput | VehicleOfferUpdateManyWithWhereWithoutModelInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
   }
 
   export type ModelCreateNestedOneWithoutVersionsInput = {
@@ -22404,11 +24916,25 @@ export namespace Prisma {
     connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
   }
 
+  export type VehicleOfferCreateNestedManyWithoutVersionInput = {
+    create?: XOR<VehicleOfferCreateWithoutVersionInput, VehicleOfferUncheckedCreateWithoutVersionInput> | VehicleOfferCreateWithoutVersionInput[] | VehicleOfferUncheckedCreateWithoutVersionInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutVersionInput | VehicleOfferCreateOrConnectWithoutVersionInput[]
+    createMany?: VehicleOfferCreateManyVersionInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+  }
+
   export type BodyTypeVersionUncheckedCreateNestedManyWithoutVersionInput = {
     create?: XOR<BodyTypeVersionCreateWithoutVersionInput, BodyTypeVersionUncheckedCreateWithoutVersionInput> | BodyTypeVersionCreateWithoutVersionInput[] | BodyTypeVersionUncheckedCreateWithoutVersionInput[]
     connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutVersionInput | BodyTypeVersionCreateOrConnectWithoutVersionInput[]
     createMany?: BodyTypeVersionCreateManyVersionInputEnvelope
     connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+  }
+
+  export type VehicleOfferUncheckedCreateNestedManyWithoutVersionInput = {
+    create?: XOR<VehicleOfferCreateWithoutVersionInput, VehicleOfferUncheckedCreateWithoutVersionInput> | VehicleOfferCreateWithoutVersionInput[] | VehicleOfferUncheckedCreateWithoutVersionInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutVersionInput | VehicleOfferCreateOrConnectWithoutVersionInput[]
+    createMany?: VehicleOfferCreateManyVersionInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
   }
 
   export type ModelUpdateOneRequiredWithoutVersionsNestedInput = {
@@ -22433,6 +24959,20 @@ export namespace Prisma {
     deleteMany?: BodyTypeVersionScalarWhereInput | BodyTypeVersionScalarWhereInput[]
   }
 
+  export type VehicleOfferUpdateManyWithoutVersionNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutVersionInput, VehicleOfferUncheckedCreateWithoutVersionInput> | VehicleOfferCreateWithoutVersionInput[] | VehicleOfferUncheckedCreateWithoutVersionInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutVersionInput | VehicleOfferCreateOrConnectWithoutVersionInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutVersionInput | VehicleOfferUpsertWithWhereUniqueWithoutVersionInput[]
+    createMany?: VehicleOfferCreateManyVersionInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutVersionInput | VehicleOfferUpdateWithWhereUniqueWithoutVersionInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutVersionInput | VehicleOfferUpdateManyWithWhereWithoutVersionInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+  }
+
   export type BodyTypeVersionUncheckedUpdateManyWithoutVersionNestedInput = {
     create?: XOR<BodyTypeVersionCreateWithoutVersionInput, BodyTypeVersionUncheckedCreateWithoutVersionInput> | BodyTypeVersionCreateWithoutVersionInput[] | BodyTypeVersionUncheckedCreateWithoutVersionInput[]
     connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutVersionInput | BodyTypeVersionCreateOrConnectWithoutVersionInput[]
@@ -22447,6 +24987,20 @@ export namespace Prisma {
     deleteMany?: BodyTypeVersionScalarWhereInput | BodyTypeVersionScalarWhereInput[]
   }
 
+  export type VehicleOfferUncheckedUpdateManyWithoutVersionNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutVersionInput, VehicleOfferUncheckedCreateWithoutVersionInput> | VehicleOfferCreateWithoutVersionInput[] | VehicleOfferUncheckedCreateWithoutVersionInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutVersionInput | VehicleOfferCreateOrConnectWithoutVersionInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutVersionInput | VehicleOfferUpsertWithWhereUniqueWithoutVersionInput[]
+    createMany?: VehicleOfferCreateManyVersionInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutVersionInput | VehicleOfferUpdateWithWhereUniqueWithoutVersionInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutVersionInput | VehicleOfferUpdateManyWithWhereWithoutVersionInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+  }
+
   export type BodyTypeVersionCreateNestedManyWithoutBodyTypeInput = {
     create?: XOR<BodyTypeVersionCreateWithoutBodyTypeInput, BodyTypeVersionUncheckedCreateWithoutBodyTypeInput> | BodyTypeVersionCreateWithoutBodyTypeInput[] | BodyTypeVersionUncheckedCreateWithoutBodyTypeInput[]
     connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutBodyTypeInput | BodyTypeVersionCreateOrConnectWithoutBodyTypeInput[]
@@ -22454,11 +25008,25 @@ export namespace Prisma {
     connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
   }
 
+  export type VehicleOfferCreateNestedManyWithoutBodyTypeInput = {
+    create?: XOR<VehicleOfferCreateWithoutBodyTypeInput, VehicleOfferUncheckedCreateWithoutBodyTypeInput> | VehicleOfferCreateWithoutBodyTypeInput[] | VehicleOfferUncheckedCreateWithoutBodyTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutBodyTypeInput | VehicleOfferCreateOrConnectWithoutBodyTypeInput[]
+    createMany?: VehicleOfferCreateManyBodyTypeInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+  }
+
   export type BodyTypeVersionUncheckedCreateNestedManyWithoutBodyTypeInput = {
     create?: XOR<BodyTypeVersionCreateWithoutBodyTypeInput, BodyTypeVersionUncheckedCreateWithoutBodyTypeInput> | BodyTypeVersionCreateWithoutBodyTypeInput[] | BodyTypeVersionUncheckedCreateWithoutBodyTypeInput[]
     connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutBodyTypeInput | BodyTypeVersionCreateOrConnectWithoutBodyTypeInput[]
     createMany?: BodyTypeVersionCreateManyBodyTypeInputEnvelope
     connect?: BodyTypeVersionWhereUniqueInput | BodyTypeVersionWhereUniqueInput[]
+  }
+
+  export type VehicleOfferUncheckedCreateNestedManyWithoutBodyTypeInput = {
+    create?: XOR<VehicleOfferCreateWithoutBodyTypeInput, VehicleOfferUncheckedCreateWithoutBodyTypeInput> | VehicleOfferCreateWithoutBodyTypeInput[] | VehicleOfferUncheckedCreateWithoutBodyTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutBodyTypeInput | VehicleOfferCreateOrConnectWithoutBodyTypeInput[]
+    createMany?: VehicleOfferCreateManyBodyTypeInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
   }
 
   export type BodyTypeVersionUpdateManyWithoutBodyTypeNestedInput = {
@@ -22475,6 +25043,20 @@ export namespace Prisma {
     deleteMany?: BodyTypeVersionScalarWhereInput | BodyTypeVersionScalarWhereInput[]
   }
 
+  export type VehicleOfferUpdateManyWithoutBodyTypeNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutBodyTypeInput, VehicleOfferUncheckedCreateWithoutBodyTypeInput> | VehicleOfferCreateWithoutBodyTypeInput[] | VehicleOfferUncheckedCreateWithoutBodyTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutBodyTypeInput | VehicleOfferCreateOrConnectWithoutBodyTypeInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutBodyTypeInput | VehicleOfferUpsertWithWhereUniqueWithoutBodyTypeInput[]
+    createMany?: VehicleOfferCreateManyBodyTypeInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutBodyTypeInput | VehicleOfferUpdateWithWhereUniqueWithoutBodyTypeInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutBodyTypeInput | VehicleOfferUpdateManyWithWhereWithoutBodyTypeInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+  }
+
   export type BodyTypeVersionUncheckedUpdateManyWithoutBodyTypeNestedInput = {
     create?: XOR<BodyTypeVersionCreateWithoutBodyTypeInput, BodyTypeVersionUncheckedCreateWithoutBodyTypeInput> | BodyTypeVersionCreateWithoutBodyTypeInput[] | BodyTypeVersionUncheckedCreateWithoutBodyTypeInput[]
     connectOrCreate?: BodyTypeVersionCreateOrConnectWithoutBodyTypeInput | BodyTypeVersionCreateOrConnectWithoutBodyTypeInput[]
@@ -22487,6 +25069,20 @@ export namespace Prisma {
     update?: BodyTypeVersionUpdateWithWhereUniqueWithoutBodyTypeInput | BodyTypeVersionUpdateWithWhereUniqueWithoutBodyTypeInput[]
     updateMany?: BodyTypeVersionUpdateManyWithWhereWithoutBodyTypeInput | BodyTypeVersionUpdateManyWithWhereWithoutBodyTypeInput[]
     deleteMany?: BodyTypeVersionScalarWhereInput | BodyTypeVersionScalarWhereInput[]
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutBodyTypeNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutBodyTypeInput, VehicleOfferUncheckedCreateWithoutBodyTypeInput> | VehicleOfferCreateWithoutBodyTypeInput[] | VehicleOfferUncheckedCreateWithoutBodyTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutBodyTypeInput | VehicleOfferCreateOrConnectWithoutBodyTypeInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutBodyTypeInput | VehicleOfferUpsertWithWhereUniqueWithoutBodyTypeInput[]
+    createMany?: VehicleOfferCreateManyBodyTypeInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutBodyTypeInput | VehicleOfferUpdateWithWhereUniqueWithoutBodyTypeInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutBodyTypeInput | VehicleOfferUpdateManyWithWhereWithoutBodyTypeInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
   }
 
   export type VersionCreateNestedOneWithoutBodyTypesInput = {
@@ -22566,11 +25162,25 @@ export namespace Prisma {
     connect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
   }
 
+  export type VehicleOfferCreateNestedManyWithoutFuelTypeInput = {
+    create?: XOR<VehicleOfferCreateWithoutFuelTypeInput, VehicleOfferUncheckedCreateWithoutFuelTypeInput> | VehicleOfferCreateWithoutFuelTypeInput[] | VehicleOfferUncheckedCreateWithoutFuelTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutFuelTypeInput | VehicleOfferCreateOrConnectWithoutFuelTypeInput[]
+    createMany?: VehicleOfferCreateManyFuelTypeInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+  }
+
   export type FuelTypeBodyUncheckedCreateNestedManyWithoutFuelTypeInput = {
     create?: XOR<FuelTypeBodyCreateWithoutFuelTypeInput, FuelTypeBodyUncheckedCreateWithoutFuelTypeInput> | FuelTypeBodyCreateWithoutFuelTypeInput[] | FuelTypeBodyUncheckedCreateWithoutFuelTypeInput[]
     connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutFuelTypeInput | FuelTypeBodyCreateOrConnectWithoutFuelTypeInput[]
     createMany?: FuelTypeBodyCreateManyFuelTypeInputEnvelope
     connect?: FuelTypeBodyWhereUniqueInput | FuelTypeBodyWhereUniqueInput[]
+  }
+
+  export type VehicleOfferUncheckedCreateNestedManyWithoutFuelTypeInput = {
+    create?: XOR<VehicleOfferCreateWithoutFuelTypeInput, VehicleOfferUncheckedCreateWithoutFuelTypeInput> | VehicleOfferCreateWithoutFuelTypeInput[] | VehicleOfferUncheckedCreateWithoutFuelTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutFuelTypeInput | VehicleOfferCreateOrConnectWithoutFuelTypeInput[]
+    createMany?: VehicleOfferCreateManyFuelTypeInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
   }
 
   export type FuelTypeBodyUpdateManyWithoutFuelTypeNestedInput = {
@@ -22587,6 +25197,20 @@ export namespace Prisma {
     deleteMany?: FuelTypeBodyScalarWhereInput | FuelTypeBodyScalarWhereInput[]
   }
 
+  export type VehicleOfferUpdateManyWithoutFuelTypeNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutFuelTypeInput, VehicleOfferUncheckedCreateWithoutFuelTypeInput> | VehicleOfferCreateWithoutFuelTypeInput[] | VehicleOfferUncheckedCreateWithoutFuelTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutFuelTypeInput | VehicleOfferCreateOrConnectWithoutFuelTypeInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutFuelTypeInput | VehicleOfferUpsertWithWhereUniqueWithoutFuelTypeInput[]
+    createMany?: VehicleOfferCreateManyFuelTypeInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutFuelTypeInput | VehicleOfferUpdateWithWhereUniqueWithoutFuelTypeInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutFuelTypeInput | VehicleOfferUpdateManyWithWhereWithoutFuelTypeInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+  }
+
   export type FuelTypeBodyUncheckedUpdateManyWithoutFuelTypeNestedInput = {
     create?: XOR<FuelTypeBodyCreateWithoutFuelTypeInput, FuelTypeBodyUncheckedCreateWithoutFuelTypeInput> | FuelTypeBodyCreateWithoutFuelTypeInput[] | FuelTypeBodyUncheckedCreateWithoutFuelTypeInput[]
     connectOrCreate?: FuelTypeBodyCreateOrConnectWithoutFuelTypeInput | FuelTypeBodyCreateOrConnectWithoutFuelTypeInput[]
@@ -22599,6 +25223,20 @@ export namespace Prisma {
     update?: FuelTypeBodyUpdateWithWhereUniqueWithoutFuelTypeInput | FuelTypeBodyUpdateWithWhereUniqueWithoutFuelTypeInput[]
     updateMany?: FuelTypeBodyUpdateManyWithWhereWithoutFuelTypeInput | FuelTypeBodyUpdateManyWithWhereWithoutFuelTypeInput[]
     deleteMany?: FuelTypeBodyScalarWhereInput | FuelTypeBodyScalarWhereInput[]
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutFuelTypeNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutFuelTypeInput, VehicleOfferUncheckedCreateWithoutFuelTypeInput> | VehicleOfferCreateWithoutFuelTypeInput[] | VehicleOfferUncheckedCreateWithoutFuelTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutFuelTypeInput | VehicleOfferCreateOrConnectWithoutFuelTypeInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutFuelTypeInput | VehicleOfferUpsertWithWhereUniqueWithoutFuelTypeInput[]
+    createMany?: VehicleOfferCreateManyFuelTypeInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutFuelTypeInput | VehicleOfferUpdateWithWhereUniqueWithoutFuelTypeInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutFuelTypeInput | VehicleOfferUpdateManyWithWhereWithoutFuelTypeInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
   }
 
   export type BodyTypeVersionCreateNestedOneWithoutFuelTypesInput = {
@@ -22678,11 +25316,25 @@ export namespace Prisma {
     connect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
   }
 
+  export type VehicleOfferCreateNestedManyWithoutTransmissionTypeInput = {
+    create?: XOR<VehicleOfferCreateWithoutTransmissionTypeInput, VehicleOfferUncheckedCreateWithoutTransmissionTypeInput> | VehicleOfferCreateWithoutTransmissionTypeInput[] | VehicleOfferUncheckedCreateWithoutTransmissionTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutTransmissionTypeInput | VehicleOfferCreateOrConnectWithoutTransmissionTypeInput[]
+    createMany?: VehicleOfferCreateManyTransmissionTypeInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+  }
+
   export type TransmissionTypeFuelUncheckedCreateNestedManyWithoutTransmissionTypeInput = {
     create?: XOR<TransmissionTypeFuelCreateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput> | TransmissionTypeFuelCreateWithoutTransmissionTypeInput[] | TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput[]
     connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput | TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput[]
     createMany?: TransmissionTypeFuelCreateManyTransmissionTypeInputEnvelope
     connect?: TransmissionTypeFuelWhereUniqueInput | TransmissionTypeFuelWhereUniqueInput[]
+  }
+
+  export type VehicleOfferUncheckedCreateNestedManyWithoutTransmissionTypeInput = {
+    create?: XOR<VehicleOfferCreateWithoutTransmissionTypeInput, VehicleOfferUncheckedCreateWithoutTransmissionTypeInput> | VehicleOfferCreateWithoutTransmissionTypeInput[] | VehicleOfferUncheckedCreateWithoutTransmissionTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutTransmissionTypeInput | VehicleOfferCreateOrConnectWithoutTransmissionTypeInput[]
+    createMany?: VehicleOfferCreateManyTransmissionTypeInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
   }
 
   export type TransmissionTypeFuelUpdateManyWithoutTransmissionTypeNestedInput = {
@@ -22699,6 +25351,20 @@ export namespace Prisma {
     deleteMany?: TransmissionTypeFuelScalarWhereInput | TransmissionTypeFuelScalarWhereInput[]
   }
 
+  export type VehicleOfferUpdateManyWithoutTransmissionTypeNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutTransmissionTypeInput, VehicleOfferUncheckedCreateWithoutTransmissionTypeInput> | VehicleOfferCreateWithoutTransmissionTypeInput[] | VehicleOfferUncheckedCreateWithoutTransmissionTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutTransmissionTypeInput | VehicleOfferCreateOrConnectWithoutTransmissionTypeInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutTransmissionTypeInput | VehicleOfferUpsertWithWhereUniqueWithoutTransmissionTypeInput[]
+    createMany?: VehicleOfferCreateManyTransmissionTypeInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutTransmissionTypeInput | VehicleOfferUpdateWithWhereUniqueWithoutTransmissionTypeInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutTransmissionTypeInput | VehicleOfferUpdateManyWithWhereWithoutTransmissionTypeInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+  }
+
   export type TransmissionTypeFuelUncheckedUpdateManyWithoutTransmissionTypeNestedInput = {
     create?: XOR<TransmissionTypeFuelCreateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput> | TransmissionTypeFuelCreateWithoutTransmissionTypeInput[] | TransmissionTypeFuelUncheckedCreateWithoutTransmissionTypeInput[]
     connectOrCreate?: TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput | TransmissionTypeFuelCreateOrConnectWithoutTransmissionTypeInput[]
@@ -22711,6 +25377,20 @@ export namespace Prisma {
     update?: TransmissionTypeFuelUpdateWithWhereUniqueWithoutTransmissionTypeInput | TransmissionTypeFuelUpdateWithWhereUniqueWithoutTransmissionTypeInput[]
     updateMany?: TransmissionTypeFuelUpdateManyWithWhereWithoutTransmissionTypeInput | TransmissionTypeFuelUpdateManyWithWhereWithoutTransmissionTypeInput[]
     deleteMany?: TransmissionTypeFuelScalarWhereInput | TransmissionTypeFuelScalarWhereInput[]
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutTransmissionTypeNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutTransmissionTypeInput, VehicleOfferUncheckedCreateWithoutTransmissionTypeInput> | VehicleOfferCreateWithoutTransmissionTypeInput[] | VehicleOfferUncheckedCreateWithoutTransmissionTypeInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutTransmissionTypeInput | VehicleOfferCreateOrConnectWithoutTransmissionTypeInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutTransmissionTypeInput | VehicleOfferUpsertWithWhereUniqueWithoutTransmissionTypeInput[]
+    createMany?: VehicleOfferCreateManyTransmissionTypeInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutTransmissionTypeInput | VehicleOfferUpdateWithWhereUniqueWithoutTransmissionTypeInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutTransmissionTypeInput | VehicleOfferUpdateManyWithWhereWithoutTransmissionTypeInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
   }
 
   export type FuelTypeBodyCreateNestedOneWithoutTransmissionTypesInput = {
@@ -22902,11 +25582,25 @@ export namespace Prisma {
     connect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
   }
 
+  export type VehicleOfferCreateNestedManyWithoutColorInput = {
+    create?: XOR<VehicleOfferCreateWithoutColorInput, VehicleOfferUncheckedCreateWithoutColorInput> | VehicleOfferCreateWithoutColorInput[] | VehicleOfferUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutColorInput | VehicleOfferCreateOrConnectWithoutColorInput[]
+    createMany?: VehicleOfferCreateManyColorInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+  }
+
   export type ColorMileageUncheckedCreateNestedManyWithoutColorInput = {
     create?: XOR<ColorMileageCreateWithoutColorInput, ColorMileageUncheckedCreateWithoutColorInput> | ColorMileageCreateWithoutColorInput[] | ColorMileageUncheckedCreateWithoutColorInput[]
     connectOrCreate?: ColorMileageCreateOrConnectWithoutColorInput | ColorMileageCreateOrConnectWithoutColorInput[]
     createMany?: ColorMileageCreateManyColorInputEnvelope
     connect?: ColorMileageWhereUniqueInput | ColorMileageWhereUniqueInput[]
+  }
+
+  export type VehicleOfferUncheckedCreateNestedManyWithoutColorInput = {
+    create?: XOR<VehicleOfferCreateWithoutColorInput, VehicleOfferUncheckedCreateWithoutColorInput> | VehicleOfferCreateWithoutColorInput[] | VehicleOfferUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutColorInput | VehicleOfferCreateOrConnectWithoutColorInput[]
+    createMany?: VehicleOfferCreateManyColorInputEnvelope
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
   }
 
   export type ColorMileageUpdateManyWithoutColorNestedInput = {
@@ -22923,6 +25617,20 @@ export namespace Prisma {
     deleteMany?: ColorMileageScalarWhereInput | ColorMileageScalarWhereInput[]
   }
 
+  export type VehicleOfferUpdateManyWithoutColorNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutColorInput, VehicleOfferUncheckedCreateWithoutColorInput> | VehicleOfferCreateWithoutColorInput[] | VehicleOfferUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutColorInput | VehicleOfferCreateOrConnectWithoutColorInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutColorInput | VehicleOfferUpsertWithWhereUniqueWithoutColorInput[]
+    createMany?: VehicleOfferCreateManyColorInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutColorInput | VehicleOfferUpdateWithWhereUniqueWithoutColorInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutColorInput | VehicleOfferUpdateManyWithWhereWithoutColorInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+  }
+
   export type ColorMileageUncheckedUpdateManyWithoutColorNestedInput = {
     create?: XOR<ColorMileageCreateWithoutColorInput, ColorMileageUncheckedCreateWithoutColorInput> | ColorMileageCreateWithoutColorInput[] | ColorMileageUncheckedCreateWithoutColorInput[]
     connectOrCreate?: ColorMileageCreateOrConnectWithoutColorInput | ColorMileageCreateOrConnectWithoutColorInput[]
@@ -22935,6 +25643,20 @@ export namespace Prisma {
     update?: ColorMileageUpdateWithWhereUniqueWithoutColorInput | ColorMileageUpdateWithWhereUniqueWithoutColorInput[]
     updateMany?: ColorMileageUpdateManyWithWhereWithoutColorInput | ColorMileageUpdateManyWithWhereWithoutColorInput[]
     deleteMany?: ColorMileageScalarWhereInput | ColorMileageScalarWhereInput[]
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutColorNestedInput = {
+    create?: XOR<VehicleOfferCreateWithoutColorInput, VehicleOfferUncheckedCreateWithoutColorInput> | VehicleOfferCreateWithoutColorInput[] | VehicleOfferUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: VehicleOfferCreateOrConnectWithoutColorInput | VehicleOfferCreateOrConnectWithoutColorInput[]
+    upsert?: VehicleOfferUpsertWithWhereUniqueWithoutColorInput | VehicleOfferUpsertWithWhereUniqueWithoutColorInput[]
+    createMany?: VehicleOfferCreateManyColorInputEnvelope
+    set?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    disconnect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    delete?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    connect?: VehicleOfferWhereUniqueInput | VehicleOfferWhereUniqueInput[]
+    update?: VehicleOfferUpdateWithWhereUniqueWithoutColorInput | VehicleOfferUpdateWithWhereUniqueWithoutColorInput[]
+    updateMany?: VehicleOfferUpdateManyWithWhereWithoutColorInput | VehicleOfferUpdateManyWithWhereWithoutColorInput[]
+    deleteMany?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
   }
 
   export type MileageCreateNestedOneWithoutColorsInput = {
@@ -23095,6 +25817,130 @@ export namespace Prisma {
     upsert?: AccidentRecordUpsertWithoutVehiclesInput
     connect?: AccidentRecordWhereUniqueInput
     update?: XOR<XOR<AccidentRecordUpdateToOneWithWhereWithoutVehiclesInput, AccidentRecordUpdateWithoutVehiclesInput>, AccidentRecordUncheckedUpdateWithoutVehiclesInput>
+  }
+
+  export type BrandCreateNestedOneWithoutVehicleOffersInput = {
+    create?: XOR<BrandCreateWithoutVehicleOffersInput, BrandUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: BrandCreateOrConnectWithoutVehicleOffersInput
+    connect?: BrandWhereUniqueInput
+  }
+
+  export type ModelCreateNestedOneWithoutVehicleOffersInput = {
+    create?: XOR<ModelCreateWithoutVehicleOffersInput, ModelUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: ModelCreateOrConnectWithoutVehicleOffersInput
+    connect?: ModelWhereUniqueInput
+  }
+
+  export type VersionCreateNestedOneWithoutVehicleOffersInput = {
+    create?: XOR<VersionCreateWithoutVehicleOffersInput, VersionUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: VersionCreateOrConnectWithoutVehicleOffersInput
+    connect?: VersionWhereUniqueInput
+  }
+
+  export type BodyTypeCreateNestedOneWithoutVehicleOffersInput = {
+    create?: XOR<BodyTypeCreateWithoutVehicleOffersInput, BodyTypeUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: BodyTypeCreateOrConnectWithoutVehicleOffersInput
+    connect?: BodyTypeWhereUniqueInput
+  }
+
+  export type FuelTypeCreateNestedOneWithoutVehicleOffersInput = {
+    create?: XOR<FuelTypeCreateWithoutVehicleOffersInput, FuelTypeUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: FuelTypeCreateOrConnectWithoutVehicleOffersInput
+    connect?: FuelTypeWhereUniqueInput
+  }
+
+  export type TransmissionTypeCreateNestedOneWithoutVehicleOffersInput = {
+    create?: XOR<TransmissionTypeCreateWithoutVehicleOffersInput, TransmissionTypeUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: TransmissionTypeCreateOrConnectWithoutVehicleOffersInput
+    connect?: TransmissionTypeWhereUniqueInput
+  }
+
+  export type ColorCreateNestedOneWithoutVehicleOffersInput = {
+    create?: XOR<ColorCreateWithoutVehicleOffersInput, ColorUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: ColorCreateOrConnectWithoutVehicleOffersInput
+    connect?: ColorWhereUniqueInput
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type BrandUpdateOneWithoutVehicleOffersNestedInput = {
+    create?: XOR<BrandCreateWithoutVehicleOffersInput, BrandUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: BrandCreateOrConnectWithoutVehicleOffersInput
+    upsert?: BrandUpsertWithoutVehicleOffersInput
+    disconnect?: BrandWhereInput | boolean
+    delete?: BrandWhereInput | boolean
+    connect?: BrandWhereUniqueInput
+    update?: XOR<XOR<BrandUpdateToOneWithWhereWithoutVehicleOffersInput, BrandUpdateWithoutVehicleOffersInput>, BrandUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type ModelUpdateOneWithoutVehicleOffersNestedInput = {
+    create?: XOR<ModelCreateWithoutVehicleOffersInput, ModelUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: ModelCreateOrConnectWithoutVehicleOffersInput
+    upsert?: ModelUpsertWithoutVehicleOffersInput
+    disconnect?: ModelWhereInput | boolean
+    delete?: ModelWhereInput | boolean
+    connect?: ModelWhereUniqueInput
+    update?: XOR<XOR<ModelUpdateToOneWithWhereWithoutVehicleOffersInput, ModelUpdateWithoutVehicleOffersInput>, ModelUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type VersionUpdateOneWithoutVehicleOffersNestedInput = {
+    create?: XOR<VersionCreateWithoutVehicleOffersInput, VersionUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: VersionCreateOrConnectWithoutVehicleOffersInput
+    upsert?: VersionUpsertWithoutVehicleOffersInput
+    disconnect?: VersionWhereInput | boolean
+    delete?: VersionWhereInput | boolean
+    connect?: VersionWhereUniqueInput
+    update?: XOR<XOR<VersionUpdateToOneWithWhereWithoutVehicleOffersInput, VersionUpdateWithoutVehicleOffersInput>, VersionUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type BodyTypeUpdateOneWithoutVehicleOffersNestedInput = {
+    create?: XOR<BodyTypeCreateWithoutVehicleOffersInput, BodyTypeUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: BodyTypeCreateOrConnectWithoutVehicleOffersInput
+    upsert?: BodyTypeUpsertWithoutVehicleOffersInput
+    disconnect?: BodyTypeWhereInput | boolean
+    delete?: BodyTypeWhereInput | boolean
+    connect?: BodyTypeWhereUniqueInput
+    update?: XOR<XOR<BodyTypeUpdateToOneWithWhereWithoutVehicleOffersInput, BodyTypeUpdateWithoutVehicleOffersInput>, BodyTypeUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type FuelTypeUpdateOneWithoutVehicleOffersNestedInput = {
+    create?: XOR<FuelTypeCreateWithoutVehicleOffersInput, FuelTypeUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: FuelTypeCreateOrConnectWithoutVehicleOffersInput
+    upsert?: FuelTypeUpsertWithoutVehicleOffersInput
+    disconnect?: FuelTypeWhereInput | boolean
+    delete?: FuelTypeWhereInput | boolean
+    connect?: FuelTypeWhereUniqueInput
+    update?: XOR<XOR<FuelTypeUpdateToOneWithWhereWithoutVehicleOffersInput, FuelTypeUpdateWithoutVehicleOffersInput>, FuelTypeUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type TransmissionTypeUpdateOneWithoutVehicleOffersNestedInput = {
+    create?: XOR<TransmissionTypeCreateWithoutVehicleOffersInput, TransmissionTypeUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: TransmissionTypeCreateOrConnectWithoutVehicleOffersInput
+    upsert?: TransmissionTypeUpsertWithoutVehicleOffersInput
+    disconnect?: TransmissionTypeWhereInput | boolean
+    delete?: TransmissionTypeWhereInput | boolean
+    connect?: TransmissionTypeWhereUniqueInput
+    update?: XOR<XOR<TransmissionTypeUpdateToOneWithWhereWithoutVehicleOffersInput, TransmissionTypeUpdateWithoutVehicleOffersInput>, TransmissionTypeUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type ColorUpdateOneWithoutVehicleOffersNestedInput = {
+    create?: XOR<ColorCreateWithoutVehicleOffersInput, ColorUncheckedCreateWithoutVehicleOffersInput>
+    connectOrCreate?: ColorCreateOrConnectWithoutVehicleOffersInput
+    upsert?: ColorUpsertWithoutVehicleOffersInput
+    disconnect?: ColorWhereInput | boolean
+    delete?: ColorWhereInput | boolean
+    connect?: ColorWhereUniqueInput
+    update?: XOR<XOR<ColorUpdateToOneWithWhereWithoutVehicleOffersInput, ColorUpdateWithoutVehicleOffersInput>, ColorUncheckedUpdateWithoutVehicleOffersInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -23276,11 +26122,53 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type ModelCreateWithoutBrandInput = {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
     versions?: VersionCreateNestedManyWithoutModelInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutModelInput
   }
 
   export type ModelUncheckedCreateWithoutBrandInput = {
@@ -23289,6 +26177,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     versions?: VersionUncheckedCreateNestedManyWithoutModelInput
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutModelInput
   }
 
   export type ModelCreateOrConnectWithoutBrandInput = {
@@ -23298,6 +26187,59 @@ export namespace Prisma {
 
   export type ModelCreateManyBrandInputEnvelope = {
     data: ModelCreateManyBrandInput | ModelCreateManyBrandInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VehicleOfferCreateWithoutBrandInput = {
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    notes?: string | null
+    adminNotes?: string | null
+    model?: ModelCreateNestedOneWithoutVehicleOffersInput
+    version?: VersionCreateNestedOneWithoutVehicleOffersInput
+    bodyType?: BodyTypeCreateNestedOneWithoutVehicleOffersInput
+    fuelType?: FuelTypeCreateNestedOneWithoutVehicleOffersInput
+    transmissionType?: TransmissionTypeCreateNestedOneWithoutVehicleOffersInput
+    color?: ColorCreateNestedOneWithoutVehicleOffersInput
+  }
+
+  export type VehicleOfferUncheckedCreateWithoutBrandInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    modelId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
+  export type VehicleOfferCreateOrConnectWithoutBrandInput = {
+    where: VehicleOfferWhereUniqueInput
+    create: XOR<VehicleOfferCreateWithoutBrandInput, VehicleOfferUncheckedCreateWithoutBrandInput>
+  }
+
+  export type VehicleOfferCreateManyBrandInputEnvelope = {
+    data: VehicleOfferCreateManyBrandInput | VehicleOfferCreateManyBrandInput[]
     skipDuplicates?: boolean
   }
 
@@ -23328,10 +26270,53 @@ export namespace Prisma {
     brandId?: IntFilter<"Model"> | number
   }
 
+  export type VehicleOfferUpsertWithWhereUniqueWithoutBrandInput = {
+    where: VehicleOfferWhereUniqueInput
+    update: XOR<VehicleOfferUpdateWithoutBrandInput, VehicleOfferUncheckedUpdateWithoutBrandInput>
+    create: XOR<VehicleOfferCreateWithoutBrandInput, VehicleOfferUncheckedCreateWithoutBrandInput>
+  }
+
+  export type VehicleOfferUpdateWithWhereUniqueWithoutBrandInput = {
+    where: VehicleOfferWhereUniqueInput
+    data: XOR<VehicleOfferUpdateWithoutBrandInput, VehicleOfferUncheckedUpdateWithoutBrandInput>
+  }
+
+  export type VehicleOfferUpdateManyWithWhereWithoutBrandInput = {
+    where: VehicleOfferScalarWhereInput
+    data: XOR<VehicleOfferUpdateManyMutationInput, VehicleOfferUncheckedUpdateManyWithoutBrandInput>
+  }
+
+  export type VehicleOfferScalarWhereInput = {
+    AND?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+    OR?: VehicleOfferScalarWhereInput[]
+    NOT?: VehicleOfferScalarWhereInput | VehicleOfferScalarWhereInput[]
+    id?: IntFilter<"VehicleOffer"> | number
+    year?: IntNullableFilter<"VehicleOffer"> | number | null
+    kilometer?: IntNullableFilter<"VehicleOffer"> | number | null
+    accidentStatus?: StringNullableFilter<"VehicleOffer"> | string | null
+    accidentAmount?: FloatNullableFilter<"VehicleOffer"> | number | null
+    status?: StringFilter<"VehicleOffer"> | string
+    displayValues?: StringNullableFilter<"VehicleOffer"> | string | null
+    userId?: StringFilter<"VehicleOffer"> | string
+    createdAt?: DateTimeFilter<"VehicleOffer"> | Date | string
+    updatedAt?: DateTimeFilter<"VehicleOffer"> | Date | string
+    processedAt?: DateTimeNullableFilter<"VehicleOffer"> | Date | string | null
+    brandId?: IntNullableFilter<"VehicleOffer"> | number | null
+    modelId?: IntNullableFilter<"VehicleOffer"> | number | null
+    versionId?: IntNullableFilter<"VehicleOffer"> | number | null
+    bodyTypeId?: IntNullableFilter<"VehicleOffer"> | number | null
+    fuelTypeId?: IntNullableFilter<"VehicleOffer"> | number | null
+    transmissionTypeId?: IntNullableFilter<"VehicleOffer"> | number | null
+    colorId?: IntNullableFilter<"VehicleOffer"> | number | null
+    notes?: StringNullableFilter<"VehicleOffer"> | string | null
+    adminNotes?: StringNullableFilter<"VehicleOffer"> | string | null
+  }
+
   export type BrandCreateWithoutModelsInput = {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutBrandInput
   }
 
   export type BrandUncheckedCreateWithoutModelsInput = {
@@ -23339,6 +26324,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutBrandInput
   }
 
   export type BrandCreateOrConnectWithoutModelsInput = {
@@ -23351,6 +26337,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     bodyTypes?: BodyTypeVersionCreateNestedManyWithoutVersionInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutVersionInput
   }
 
   export type VersionUncheckedCreateWithoutModelInput = {
@@ -23359,6 +26346,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     bodyTypes?: BodyTypeVersionUncheckedCreateNestedManyWithoutVersionInput
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutVersionInput
   }
 
   export type VersionCreateOrConnectWithoutModelInput = {
@@ -23368,6 +26356,59 @@ export namespace Prisma {
 
   export type VersionCreateManyModelInputEnvelope = {
     data: VersionCreateManyModelInput | VersionCreateManyModelInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VehicleOfferCreateWithoutModelInput = {
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    notes?: string | null
+    adminNotes?: string | null
+    brand?: BrandCreateNestedOneWithoutVehicleOffersInput
+    version?: VersionCreateNestedOneWithoutVehicleOffersInput
+    bodyType?: BodyTypeCreateNestedOneWithoutVehicleOffersInput
+    fuelType?: FuelTypeCreateNestedOneWithoutVehicleOffersInput
+    transmissionType?: TransmissionTypeCreateNestedOneWithoutVehicleOffersInput
+    color?: ColorCreateNestedOneWithoutVehicleOffersInput
+  }
+
+  export type VehicleOfferUncheckedCreateWithoutModelInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
+  export type VehicleOfferCreateOrConnectWithoutModelInput = {
+    where: VehicleOfferWhereUniqueInput
+    create: XOR<VehicleOfferCreateWithoutModelInput, VehicleOfferUncheckedCreateWithoutModelInput>
+  }
+
+  export type VehicleOfferCreateManyModelInputEnvelope = {
+    data: VehicleOfferCreateManyModelInput | VehicleOfferCreateManyModelInput[]
     skipDuplicates?: boolean
   }
 
@@ -23386,6 +26427,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleOffers?: VehicleOfferUpdateManyWithoutBrandNestedInput
   }
 
   export type BrandUncheckedUpdateWithoutModelsInput = {
@@ -23393,6 +26435,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutBrandNestedInput
   }
 
   export type VersionUpsertWithWhereUniqueWithoutModelInput = {
@@ -23422,11 +26465,28 @@ export namespace Prisma {
     modelId?: IntFilter<"Version"> | number
   }
 
+  export type VehicleOfferUpsertWithWhereUniqueWithoutModelInput = {
+    where: VehicleOfferWhereUniqueInput
+    update: XOR<VehicleOfferUpdateWithoutModelInput, VehicleOfferUncheckedUpdateWithoutModelInput>
+    create: XOR<VehicleOfferCreateWithoutModelInput, VehicleOfferUncheckedCreateWithoutModelInput>
+  }
+
+  export type VehicleOfferUpdateWithWhereUniqueWithoutModelInput = {
+    where: VehicleOfferWhereUniqueInput
+    data: XOR<VehicleOfferUpdateWithoutModelInput, VehicleOfferUncheckedUpdateWithoutModelInput>
+  }
+
+  export type VehicleOfferUpdateManyWithWhereWithoutModelInput = {
+    where: VehicleOfferScalarWhereInput
+    data: XOR<VehicleOfferUpdateManyMutationInput, VehicleOfferUncheckedUpdateManyWithoutModelInput>
+  }
+
   export type ModelCreateWithoutVersionsInput = {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
     brand: BrandCreateNestedOneWithoutModelsInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutModelInput
   }
 
   export type ModelUncheckedCreateWithoutVersionsInput = {
@@ -23435,6 +26495,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     brandId: number
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutModelInput
   }
 
   export type ModelCreateOrConnectWithoutVersionsInput = {
@@ -23467,6 +26528,59 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type VehicleOfferCreateWithoutVersionInput = {
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    notes?: string | null
+    adminNotes?: string | null
+    brand?: BrandCreateNestedOneWithoutVehicleOffersInput
+    model?: ModelCreateNestedOneWithoutVehicleOffersInput
+    bodyType?: BodyTypeCreateNestedOneWithoutVehicleOffersInput
+    fuelType?: FuelTypeCreateNestedOneWithoutVehicleOffersInput
+    transmissionType?: TransmissionTypeCreateNestedOneWithoutVehicleOffersInput
+    color?: ColorCreateNestedOneWithoutVehicleOffersInput
+  }
+
+  export type VehicleOfferUncheckedCreateWithoutVersionInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
+  export type VehicleOfferCreateOrConnectWithoutVersionInput = {
+    where: VehicleOfferWhereUniqueInput
+    create: XOR<VehicleOfferCreateWithoutVersionInput, VehicleOfferUncheckedCreateWithoutVersionInput>
+  }
+
+  export type VehicleOfferCreateManyVersionInputEnvelope = {
+    data: VehicleOfferCreateManyVersionInput | VehicleOfferCreateManyVersionInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ModelUpsertWithoutVersionsInput = {
     update: XOR<ModelUpdateWithoutVersionsInput, ModelUncheckedUpdateWithoutVersionsInput>
     create: XOR<ModelCreateWithoutVersionsInput, ModelUncheckedCreateWithoutVersionsInput>
@@ -23483,6 +26597,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     brand?: BrandUpdateOneRequiredWithoutModelsNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutModelNestedInput
   }
 
   export type ModelUncheckedUpdateWithoutVersionsInput = {
@@ -23491,6 +26606,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     brandId?: IntFieldUpdateOperationsInput | number
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutModelNestedInput
   }
 
   export type BodyTypeVersionUpsertWithWhereUniqueWithoutVersionInput = {
@@ -23520,6 +26636,22 @@ export namespace Prisma {
     bodyTypeId?: IntFilter<"BodyTypeVersion"> | number
   }
 
+  export type VehicleOfferUpsertWithWhereUniqueWithoutVersionInput = {
+    where: VehicleOfferWhereUniqueInput
+    update: XOR<VehicleOfferUpdateWithoutVersionInput, VehicleOfferUncheckedUpdateWithoutVersionInput>
+    create: XOR<VehicleOfferCreateWithoutVersionInput, VehicleOfferUncheckedCreateWithoutVersionInput>
+  }
+
+  export type VehicleOfferUpdateWithWhereUniqueWithoutVersionInput = {
+    where: VehicleOfferWhereUniqueInput
+    data: XOR<VehicleOfferUpdateWithoutVersionInput, VehicleOfferUncheckedUpdateWithoutVersionInput>
+  }
+
+  export type VehicleOfferUpdateManyWithWhereWithoutVersionInput = {
+    where: VehicleOfferScalarWhereInput
+    data: XOR<VehicleOfferUpdateManyMutationInput, VehicleOfferUncheckedUpdateManyWithoutVersionInput>
+  }
+
   export type BodyTypeVersionCreateWithoutBodyTypeInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -23545,6 +26677,59 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type VehicleOfferCreateWithoutBodyTypeInput = {
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    notes?: string | null
+    adminNotes?: string | null
+    brand?: BrandCreateNestedOneWithoutVehicleOffersInput
+    model?: ModelCreateNestedOneWithoutVehicleOffersInput
+    version?: VersionCreateNestedOneWithoutVehicleOffersInput
+    fuelType?: FuelTypeCreateNestedOneWithoutVehicleOffersInput
+    transmissionType?: TransmissionTypeCreateNestedOneWithoutVehicleOffersInput
+    color?: ColorCreateNestedOneWithoutVehicleOffersInput
+  }
+
+  export type VehicleOfferUncheckedCreateWithoutBodyTypeInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    versionId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
+  export type VehicleOfferCreateOrConnectWithoutBodyTypeInput = {
+    where: VehicleOfferWhereUniqueInput
+    create: XOR<VehicleOfferCreateWithoutBodyTypeInput, VehicleOfferUncheckedCreateWithoutBodyTypeInput>
+  }
+
+  export type VehicleOfferCreateManyBodyTypeInputEnvelope = {
+    data: VehicleOfferCreateManyBodyTypeInput | VehicleOfferCreateManyBodyTypeInput[]
+    skipDuplicates?: boolean
+  }
+
   export type BodyTypeVersionUpsertWithWhereUniqueWithoutBodyTypeInput = {
     where: BodyTypeVersionWhereUniqueInput
     update: XOR<BodyTypeVersionUpdateWithoutBodyTypeInput, BodyTypeVersionUncheckedUpdateWithoutBodyTypeInput>
@@ -23561,11 +26746,28 @@ export namespace Prisma {
     data: XOR<BodyTypeVersionUpdateManyMutationInput, BodyTypeVersionUncheckedUpdateManyWithoutBodyTypeInput>
   }
 
+  export type VehicleOfferUpsertWithWhereUniqueWithoutBodyTypeInput = {
+    where: VehicleOfferWhereUniqueInput
+    update: XOR<VehicleOfferUpdateWithoutBodyTypeInput, VehicleOfferUncheckedUpdateWithoutBodyTypeInput>
+    create: XOR<VehicleOfferCreateWithoutBodyTypeInput, VehicleOfferUncheckedCreateWithoutBodyTypeInput>
+  }
+
+  export type VehicleOfferUpdateWithWhereUniqueWithoutBodyTypeInput = {
+    where: VehicleOfferWhereUniqueInput
+    data: XOR<VehicleOfferUpdateWithoutBodyTypeInput, VehicleOfferUncheckedUpdateWithoutBodyTypeInput>
+  }
+
+  export type VehicleOfferUpdateManyWithWhereWithoutBodyTypeInput = {
+    where: VehicleOfferScalarWhereInput
+    data: XOR<VehicleOfferUpdateManyMutationInput, VehicleOfferUncheckedUpdateManyWithoutBodyTypeInput>
+  }
+
   export type VersionCreateWithoutBodyTypesInput = {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
     model: ModelCreateNestedOneWithoutVersionsInput
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutVersionInput
   }
 
   export type VersionUncheckedCreateWithoutBodyTypesInput = {
@@ -23574,6 +26776,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     modelId: number
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutVersionInput
   }
 
   export type VersionCreateOrConnectWithoutBodyTypesInput = {
@@ -23585,6 +26788,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutBodyTypeInput
   }
 
   export type BodyTypeUncheckedCreateWithoutVersionsInput = {
@@ -23592,6 +26796,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutBodyTypeInput
   }
 
   export type BodyTypeCreateOrConnectWithoutVersionsInput = {
@@ -23640,6 +26845,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: ModelUpdateOneRequiredWithoutVersionsNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutVersionNestedInput
   }
 
   export type VersionUncheckedUpdateWithoutBodyTypesInput = {
@@ -23648,6 +26854,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     modelId?: IntFieldUpdateOperationsInput | number
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutVersionNestedInput
   }
 
   export type BodyTypeUpsertWithoutVersionsInput = {
@@ -23665,6 +26872,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleOffers?: VehicleOfferUpdateManyWithoutBodyTypeNestedInput
   }
 
   export type BodyTypeUncheckedUpdateWithoutVersionsInput = {
@@ -23672,6 +26880,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutBodyTypeNestedInput
   }
 
   export type FuelTypeBodyUpsertWithWhereUniqueWithoutBodyVersionInput = {
@@ -23726,6 +26935,59 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type VehicleOfferCreateWithoutFuelTypeInput = {
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    notes?: string | null
+    adminNotes?: string | null
+    brand?: BrandCreateNestedOneWithoutVehicleOffersInput
+    model?: ModelCreateNestedOneWithoutVehicleOffersInput
+    version?: VersionCreateNestedOneWithoutVehicleOffersInput
+    bodyType?: BodyTypeCreateNestedOneWithoutVehicleOffersInput
+    transmissionType?: TransmissionTypeCreateNestedOneWithoutVehicleOffersInput
+    color?: ColorCreateNestedOneWithoutVehicleOffersInput
+  }
+
+  export type VehicleOfferUncheckedCreateWithoutFuelTypeInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
+  export type VehicleOfferCreateOrConnectWithoutFuelTypeInput = {
+    where: VehicleOfferWhereUniqueInput
+    create: XOR<VehicleOfferCreateWithoutFuelTypeInput, VehicleOfferUncheckedCreateWithoutFuelTypeInput>
+  }
+
+  export type VehicleOfferCreateManyFuelTypeInputEnvelope = {
+    data: VehicleOfferCreateManyFuelTypeInput | VehicleOfferCreateManyFuelTypeInput[]
+    skipDuplicates?: boolean
+  }
+
   export type FuelTypeBodyUpsertWithWhereUniqueWithoutFuelTypeInput = {
     where: FuelTypeBodyWhereUniqueInput
     update: XOR<FuelTypeBodyUpdateWithoutFuelTypeInput, FuelTypeBodyUncheckedUpdateWithoutFuelTypeInput>
@@ -23740,6 +27002,22 @@ export namespace Prisma {
   export type FuelTypeBodyUpdateManyWithWhereWithoutFuelTypeInput = {
     where: FuelTypeBodyScalarWhereInput
     data: XOR<FuelTypeBodyUpdateManyMutationInput, FuelTypeBodyUncheckedUpdateManyWithoutFuelTypeInput>
+  }
+
+  export type VehicleOfferUpsertWithWhereUniqueWithoutFuelTypeInput = {
+    where: VehicleOfferWhereUniqueInput
+    update: XOR<VehicleOfferUpdateWithoutFuelTypeInput, VehicleOfferUncheckedUpdateWithoutFuelTypeInput>
+    create: XOR<VehicleOfferCreateWithoutFuelTypeInput, VehicleOfferUncheckedCreateWithoutFuelTypeInput>
+  }
+
+  export type VehicleOfferUpdateWithWhereUniqueWithoutFuelTypeInput = {
+    where: VehicleOfferWhereUniqueInput
+    data: XOR<VehicleOfferUpdateWithoutFuelTypeInput, VehicleOfferUncheckedUpdateWithoutFuelTypeInput>
+  }
+
+  export type VehicleOfferUpdateManyWithWhereWithoutFuelTypeInput = {
+    where: VehicleOfferScalarWhereInput
+    data: XOR<VehicleOfferUpdateManyMutationInput, VehicleOfferUncheckedUpdateManyWithoutFuelTypeInput>
   }
 
   export type BodyTypeVersionCreateWithoutFuelTypesInput = {
@@ -23766,6 +27044,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutFuelTypeInput
   }
 
   export type FuelTypeUncheckedCreateWithoutBodyTypesInput = {
@@ -23773,6 +27052,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutFuelTypeInput
   }
 
   export type FuelTypeCreateOrConnectWithoutBodyTypesInput = {
@@ -23846,6 +27126,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleOffers?: VehicleOfferUpdateManyWithoutFuelTypeNestedInput
   }
 
   export type FuelTypeUncheckedUpdateWithoutBodyTypesInput = {
@@ -23853,6 +27134,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutFuelTypeNestedInput
   }
 
   export type TransmissionTypeFuelUpsertWithWhereUniqueWithoutFuelBodyInput = {
@@ -23907,6 +27189,59 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type VehicleOfferCreateWithoutTransmissionTypeInput = {
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    notes?: string | null
+    adminNotes?: string | null
+    brand?: BrandCreateNestedOneWithoutVehicleOffersInput
+    model?: ModelCreateNestedOneWithoutVehicleOffersInput
+    version?: VersionCreateNestedOneWithoutVehicleOffersInput
+    bodyType?: BodyTypeCreateNestedOneWithoutVehicleOffersInput
+    fuelType?: FuelTypeCreateNestedOneWithoutVehicleOffersInput
+    color?: ColorCreateNestedOneWithoutVehicleOffersInput
+  }
+
+  export type VehicleOfferUncheckedCreateWithoutTransmissionTypeInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
+  export type VehicleOfferCreateOrConnectWithoutTransmissionTypeInput = {
+    where: VehicleOfferWhereUniqueInput
+    create: XOR<VehicleOfferCreateWithoutTransmissionTypeInput, VehicleOfferUncheckedCreateWithoutTransmissionTypeInput>
+  }
+
+  export type VehicleOfferCreateManyTransmissionTypeInputEnvelope = {
+    data: VehicleOfferCreateManyTransmissionTypeInput | VehicleOfferCreateManyTransmissionTypeInput[]
+    skipDuplicates?: boolean
+  }
+
   export type TransmissionTypeFuelUpsertWithWhereUniqueWithoutTransmissionTypeInput = {
     where: TransmissionTypeFuelWhereUniqueInput
     update: XOR<TransmissionTypeFuelUpdateWithoutTransmissionTypeInput, TransmissionTypeFuelUncheckedUpdateWithoutTransmissionTypeInput>
@@ -23921,6 +27256,22 @@ export namespace Prisma {
   export type TransmissionTypeFuelUpdateManyWithWhereWithoutTransmissionTypeInput = {
     where: TransmissionTypeFuelScalarWhereInput
     data: XOR<TransmissionTypeFuelUpdateManyMutationInput, TransmissionTypeFuelUncheckedUpdateManyWithoutTransmissionTypeInput>
+  }
+
+  export type VehicleOfferUpsertWithWhereUniqueWithoutTransmissionTypeInput = {
+    where: VehicleOfferWhereUniqueInput
+    update: XOR<VehicleOfferUpdateWithoutTransmissionTypeInput, VehicleOfferUncheckedUpdateWithoutTransmissionTypeInput>
+    create: XOR<VehicleOfferCreateWithoutTransmissionTypeInput, VehicleOfferUncheckedCreateWithoutTransmissionTypeInput>
+  }
+
+  export type VehicleOfferUpdateWithWhereUniqueWithoutTransmissionTypeInput = {
+    where: VehicleOfferWhereUniqueInput
+    data: XOR<VehicleOfferUpdateWithoutTransmissionTypeInput, VehicleOfferUncheckedUpdateWithoutTransmissionTypeInput>
+  }
+
+  export type VehicleOfferUpdateManyWithWhereWithoutTransmissionTypeInput = {
+    where: VehicleOfferScalarWhereInput
+    data: XOR<VehicleOfferUpdateManyMutationInput, VehicleOfferUncheckedUpdateManyWithoutTransmissionTypeInput>
   }
 
   export type FuelTypeBodyCreateWithoutTransmissionTypesInput = {
@@ -23947,6 +27298,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutTransmissionTypeInput
   }
 
   export type TransmissionTypeUncheckedCreateWithoutFuelTypesInput = {
@@ -23954,6 +27306,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutTransmissionTypeInput
   }
 
   export type TransmissionTypeCreateOrConnectWithoutFuelTypesInput = {
@@ -24027,6 +27380,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleOffers?: VehicleOfferUpdateManyWithoutTransmissionTypeNestedInput
   }
 
   export type TransmissionTypeUncheckedUpdateWithoutFuelTypesInput = {
@@ -24034,6 +27388,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutTransmissionTypeNestedInput
   }
 
   export type VehicleYearUpsertWithWhereUniqueWithoutTransmissionTypeFuelInput = {
@@ -24287,6 +27642,59 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type VehicleOfferCreateWithoutColorInput = {
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    notes?: string | null
+    adminNotes?: string | null
+    brand?: BrandCreateNestedOneWithoutVehicleOffersInput
+    model?: ModelCreateNestedOneWithoutVehicleOffersInput
+    version?: VersionCreateNestedOneWithoutVehicleOffersInput
+    bodyType?: BodyTypeCreateNestedOneWithoutVehicleOffersInput
+    fuelType?: FuelTypeCreateNestedOneWithoutVehicleOffersInput
+    transmissionType?: TransmissionTypeCreateNestedOneWithoutVehicleOffersInput
+  }
+
+  export type VehicleOfferUncheckedCreateWithoutColorInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
+  export type VehicleOfferCreateOrConnectWithoutColorInput = {
+    where: VehicleOfferWhereUniqueInput
+    create: XOR<VehicleOfferCreateWithoutColorInput, VehicleOfferUncheckedCreateWithoutColorInput>
+  }
+
+  export type VehicleOfferCreateManyColorInputEnvelope = {
+    data: VehicleOfferCreateManyColorInput | VehicleOfferCreateManyColorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ColorMileageUpsertWithWhereUniqueWithoutColorInput = {
     where: ColorMileageWhereUniqueInput
     update: XOR<ColorMileageUpdateWithoutColorInput, ColorMileageUncheckedUpdateWithoutColorInput>
@@ -24301,6 +27709,22 @@ export namespace Prisma {
   export type ColorMileageUpdateManyWithWhereWithoutColorInput = {
     where: ColorMileageScalarWhereInput
     data: XOR<ColorMileageUpdateManyMutationInput, ColorMileageUncheckedUpdateManyWithoutColorInput>
+  }
+
+  export type VehicleOfferUpsertWithWhereUniqueWithoutColorInput = {
+    where: VehicleOfferWhereUniqueInput
+    update: XOR<VehicleOfferUpdateWithoutColorInput, VehicleOfferUncheckedUpdateWithoutColorInput>
+    create: XOR<VehicleOfferCreateWithoutColorInput, VehicleOfferUncheckedCreateWithoutColorInput>
+  }
+
+  export type VehicleOfferUpdateWithWhereUniqueWithoutColorInput = {
+    where: VehicleOfferWhereUniqueInput
+    data: XOR<VehicleOfferUpdateWithoutColorInput, VehicleOfferUncheckedUpdateWithoutColorInput>
+  }
+
+  export type VehicleOfferUpdateManyWithWhereWithoutColorInput = {
+    where: VehicleOfferScalarWhereInput
+    data: XOR<VehicleOfferUpdateManyMutationInput, VehicleOfferUncheckedUpdateManyWithoutColorInput>
   }
 
   export type MileageCreateWithoutColorsInput = {
@@ -24329,6 +27753,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    vehicleOffers?: VehicleOfferCreateNestedManyWithoutColorInput
   }
 
   export type ColorUncheckedCreateWithoutMileagesInput = {
@@ -24336,6 +27761,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    vehicleOffers?: VehicleOfferUncheckedCreateNestedManyWithoutColorInput
   }
 
   export type ColorCreateOrConnectWithoutMileagesInput = {
@@ -24413,6 +27839,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleOffers?: VehicleOfferUpdateManyWithoutColorNestedInput
   }
 
   export type ColorUncheckedUpdateWithoutMileagesInput = {
@@ -24420,6 +27847,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutColorNestedInput
   }
 
   export type AccidentRecordUpsertWithWhereUniqueWithoutColorMileageInput = {
@@ -24602,6 +28030,336 @@ export namespace Prisma {
     colorMileageId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type BrandCreateWithoutVehicleOffersInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    models?: ModelCreateNestedManyWithoutBrandInput
+  }
+
+  export type BrandUncheckedCreateWithoutVehicleOffersInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    models?: ModelUncheckedCreateNestedManyWithoutBrandInput
+  }
+
+  export type BrandCreateOrConnectWithoutVehicleOffersInput = {
+    where: BrandWhereUniqueInput
+    create: XOR<BrandCreateWithoutVehicleOffersInput, BrandUncheckedCreateWithoutVehicleOffersInput>
+  }
+
+  export type ModelCreateWithoutVehicleOffersInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    brand: BrandCreateNestedOneWithoutModelsInput
+    versions?: VersionCreateNestedManyWithoutModelInput
+  }
+
+  export type ModelUncheckedCreateWithoutVehicleOffersInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    brandId: number
+    versions?: VersionUncheckedCreateNestedManyWithoutModelInput
+  }
+
+  export type ModelCreateOrConnectWithoutVehicleOffersInput = {
+    where: ModelWhereUniqueInput
+    create: XOR<ModelCreateWithoutVehicleOffersInput, ModelUncheckedCreateWithoutVehicleOffersInput>
+  }
+
+  export type VersionCreateWithoutVehicleOffersInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    model: ModelCreateNestedOneWithoutVersionsInput
+    bodyTypes?: BodyTypeVersionCreateNestedManyWithoutVersionInput
+  }
+
+  export type VersionUncheckedCreateWithoutVehicleOffersInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    modelId: number
+    bodyTypes?: BodyTypeVersionUncheckedCreateNestedManyWithoutVersionInput
+  }
+
+  export type VersionCreateOrConnectWithoutVehicleOffersInput = {
+    where: VersionWhereUniqueInput
+    create: XOR<VersionCreateWithoutVehicleOffersInput, VersionUncheckedCreateWithoutVehicleOffersInput>
+  }
+
+  export type BodyTypeCreateWithoutVehicleOffersInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versions?: BodyTypeVersionCreateNestedManyWithoutBodyTypeInput
+  }
+
+  export type BodyTypeUncheckedCreateWithoutVehicleOffersInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    versions?: BodyTypeVersionUncheckedCreateNestedManyWithoutBodyTypeInput
+  }
+
+  export type BodyTypeCreateOrConnectWithoutVehicleOffersInput = {
+    where: BodyTypeWhereUniqueInput
+    create: XOR<BodyTypeCreateWithoutVehicleOffersInput, BodyTypeUncheckedCreateWithoutVehicleOffersInput>
+  }
+
+  export type FuelTypeCreateWithoutVehicleOffersInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyTypes?: FuelTypeBodyCreateNestedManyWithoutFuelTypeInput
+  }
+
+  export type FuelTypeUncheckedCreateWithoutVehicleOffersInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bodyTypes?: FuelTypeBodyUncheckedCreateNestedManyWithoutFuelTypeInput
+  }
+
+  export type FuelTypeCreateOrConnectWithoutVehicleOffersInput = {
+    where: FuelTypeWhereUniqueInput
+    create: XOR<FuelTypeCreateWithoutVehicleOffersInput, FuelTypeUncheckedCreateWithoutVehicleOffersInput>
+  }
+
+  export type TransmissionTypeCreateWithoutVehicleOffersInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelTypes?: TransmissionTypeFuelCreateNestedManyWithoutTransmissionTypeInput
+  }
+
+  export type TransmissionTypeUncheckedCreateWithoutVehicleOffersInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fuelTypes?: TransmissionTypeFuelUncheckedCreateNestedManyWithoutTransmissionTypeInput
+  }
+
+  export type TransmissionTypeCreateOrConnectWithoutVehicleOffersInput = {
+    where: TransmissionTypeWhereUniqueInput
+    create: XOR<TransmissionTypeCreateWithoutVehicleOffersInput, TransmissionTypeUncheckedCreateWithoutVehicleOffersInput>
+  }
+
+  export type ColorCreateWithoutVehicleOffersInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileages?: ColorMileageCreateNestedManyWithoutColorInput
+  }
+
+  export type ColorUncheckedCreateWithoutVehicleOffersInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mileages?: ColorMileageUncheckedCreateNestedManyWithoutColorInput
+  }
+
+  export type ColorCreateOrConnectWithoutVehicleOffersInput = {
+    where: ColorWhereUniqueInput
+    create: XOR<ColorCreateWithoutVehicleOffersInput, ColorUncheckedCreateWithoutVehicleOffersInput>
+  }
+
+  export type BrandUpsertWithoutVehicleOffersInput = {
+    update: XOR<BrandUpdateWithoutVehicleOffersInput, BrandUncheckedUpdateWithoutVehicleOffersInput>
+    create: XOR<BrandCreateWithoutVehicleOffersInput, BrandUncheckedCreateWithoutVehicleOffersInput>
+    where?: BrandWhereInput
+  }
+
+  export type BrandUpdateToOneWithWhereWithoutVehicleOffersInput = {
+    where?: BrandWhereInput
+    data: XOR<BrandUpdateWithoutVehicleOffersInput, BrandUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type BrandUpdateWithoutVehicleOffersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    models?: ModelUpdateManyWithoutBrandNestedInput
+  }
+
+  export type BrandUncheckedUpdateWithoutVehicleOffersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    models?: ModelUncheckedUpdateManyWithoutBrandNestedInput
+  }
+
+  export type ModelUpsertWithoutVehicleOffersInput = {
+    update: XOR<ModelUpdateWithoutVehicleOffersInput, ModelUncheckedUpdateWithoutVehicleOffersInput>
+    create: XOR<ModelCreateWithoutVehicleOffersInput, ModelUncheckedCreateWithoutVehicleOffersInput>
+    where?: ModelWhereInput
+  }
+
+  export type ModelUpdateToOneWithWhereWithoutVehicleOffersInput = {
+    where?: ModelWhereInput
+    data: XOR<ModelUpdateWithoutVehicleOffersInput, ModelUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type ModelUpdateWithoutVehicleOffersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brand?: BrandUpdateOneRequiredWithoutModelsNestedInput
+    versions?: VersionUpdateManyWithoutModelNestedInput
+  }
+
+  export type ModelUncheckedUpdateWithoutVehicleOffersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brandId?: IntFieldUpdateOperationsInput | number
+    versions?: VersionUncheckedUpdateManyWithoutModelNestedInput
+  }
+
+  export type VersionUpsertWithoutVehicleOffersInput = {
+    update: XOR<VersionUpdateWithoutVehicleOffersInput, VersionUncheckedUpdateWithoutVehicleOffersInput>
+    create: XOR<VersionCreateWithoutVehicleOffersInput, VersionUncheckedCreateWithoutVehicleOffersInput>
+    where?: VersionWhereInput
+  }
+
+  export type VersionUpdateToOneWithWhereWithoutVehicleOffersInput = {
+    where?: VersionWhereInput
+    data: XOR<VersionUpdateWithoutVehicleOffersInput, VersionUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type VersionUpdateWithoutVehicleOffersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    model?: ModelUpdateOneRequiredWithoutVersionsNestedInput
+    bodyTypes?: BodyTypeVersionUpdateManyWithoutVersionNestedInput
+  }
+
+  export type VersionUncheckedUpdateWithoutVehicleOffersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    modelId?: IntFieldUpdateOperationsInput | number
+    bodyTypes?: BodyTypeVersionUncheckedUpdateManyWithoutVersionNestedInput
+  }
+
+  export type BodyTypeUpsertWithoutVehicleOffersInput = {
+    update: XOR<BodyTypeUpdateWithoutVehicleOffersInput, BodyTypeUncheckedUpdateWithoutVehicleOffersInput>
+    create: XOR<BodyTypeCreateWithoutVehicleOffersInput, BodyTypeUncheckedCreateWithoutVehicleOffersInput>
+    where?: BodyTypeWhereInput
+  }
+
+  export type BodyTypeUpdateToOneWithWhereWithoutVehicleOffersInput = {
+    where?: BodyTypeWhereInput
+    data: XOR<BodyTypeUpdateWithoutVehicleOffersInput, BodyTypeUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type BodyTypeUpdateWithoutVehicleOffersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versions?: BodyTypeVersionUpdateManyWithoutBodyTypeNestedInput
+  }
+
+  export type BodyTypeUncheckedUpdateWithoutVehicleOffersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    versions?: BodyTypeVersionUncheckedUpdateManyWithoutBodyTypeNestedInput
+  }
+
+  export type FuelTypeUpsertWithoutVehicleOffersInput = {
+    update: XOR<FuelTypeUpdateWithoutVehicleOffersInput, FuelTypeUncheckedUpdateWithoutVehicleOffersInput>
+    create: XOR<FuelTypeCreateWithoutVehicleOffersInput, FuelTypeUncheckedCreateWithoutVehicleOffersInput>
+    where?: FuelTypeWhereInput
+  }
+
+  export type FuelTypeUpdateToOneWithWhereWithoutVehicleOffersInput = {
+    where?: FuelTypeWhereInput
+    data: XOR<FuelTypeUpdateWithoutVehicleOffersInput, FuelTypeUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type FuelTypeUpdateWithoutVehicleOffersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyTypes?: FuelTypeBodyUpdateManyWithoutFuelTypeNestedInput
+  }
+
+  export type FuelTypeUncheckedUpdateWithoutVehicleOffersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bodyTypes?: FuelTypeBodyUncheckedUpdateManyWithoutFuelTypeNestedInput
+  }
+
+  export type TransmissionTypeUpsertWithoutVehicleOffersInput = {
+    update: XOR<TransmissionTypeUpdateWithoutVehicleOffersInput, TransmissionTypeUncheckedUpdateWithoutVehicleOffersInput>
+    create: XOR<TransmissionTypeCreateWithoutVehicleOffersInput, TransmissionTypeUncheckedCreateWithoutVehicleOffersInput>
+    where?: TransmissionTypeWhereInput
+  }
+
+  export type TransmissionTypeUpdateToOneWithWhereWithoutVehicleOffersInput = {
+    where?: TransmissionTypeWhereInput
+    data: XOR<TransmissionTypeUpdateWithoutVehicleOffersInput, TransmissionTypeUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type TransmissionTypeUpdateWithoutVehicleOffersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelTypes?: TransmissionTypeFuelUpdateManyWithoutTransmissionTypeNestedInput
+  }
+
+  export type TransmissionTypeUncheckedUpdateWithoutVehicleOffersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fuelTypes?: TransmissionTypeFuelUncheckedUpdateManyWithoutTransmissionTypeNestedInput
+  }
+
+  export type ColorUpsertWithoutVehicleOffersInput = {
+    update: XOR<ColorUpdateWithoutVehicleOffersInput, ColorUncheckedUpdateWithoutVehicleOffersInput>
+    create: XOR<ColorCreateWithoutVehicleOffersInput, ColorUncheckedCreateWithoutVehicleOffersInput>
+    where?: ColorWhereInput
+  }
+
+  export type ColorUpdateToOneWithWhereWithoutVehicleOffersInput = {
+    where?: ColorWhereInput
+    data: XOR<ColorUpdateWithoutVehicleOffersInput, ColorUncheckedUpdateWithoutVehicleOffersInput>
+  }
+
+  export type ColorUpdateWithoutVehicleOffersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileages?: ColorMileageUpdateManyWithoutColorNestedInput
+  }
+
+  export type ColorUncheckedUpdateWithoutVehicleOffersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mileages?: ColorMileageUncheckedUpdateManyWithoutColorNestedInput
+  }
+
   export type ModelCreateManyBrandInput = {
     id?: number
     name: string
@@ -24609,11 +28367,34 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type VehicleOfferCreateManyBrandInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    modelId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
   export type ModelUpdateWithoutBrandInput = {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     versions?: VersionUpdateManyWithoutModelNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutModelNestedInput
   }
 
   export type ModelUncheckedUpdateWithoutBrandInput = {
@@ -24622,6 +28403,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     versions?: VersionUncheckedUpdateManyWithoutModelNestedInput
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutModelNestedInput
   }
 
   export type ModelUncheckedUpdateManyWithoutBrandInput = {
@@ -24631,6 +28413,71 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type VehicleOfferUpdateWithoutBrandInput = {
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: ModelUpdateOneWithoutVehicleOffersNestedInput
+    version?: VersionUpdateOneWithoutVehicleOffersNestedInput
+    bodyType?: BodyTypeUpdateOneWithoutVehicleOffersNestedInput
+    fuelType?: FuelTypeUpdateOneWithoutVehicleOffersNestedInput
+    transmissionType?: TransmissionTypeUpdateOneWithoutVehicleOffersNestedInput
+    color?: ColorUpdateOneWithoutVehicleOffersNestedInput
+  }
+
+  export type VehicleOfferUncheckedUpdateWithoutBrandInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutBrandInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type VersionCreateManyModelInput = {
     id?: number
     name: string
@@ -24638,11 +28485,34 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type VehicleOfferCreateManyModelInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
   export type VersionUpdateWithoutModelInput = {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bodyTypes?: BodyTypeVersionUpdateManyWithoutVersionNestedInput
+    vehicleOffers?: VehicleOfferUpdateManyWithoutVersionNestedInput
   }
 
   export type VersionUncheckedUpdateWithoutModelInput = {
@@ -24651,6 +28521,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bodyTypes?: BodyTypeVersionUncheckedUpdateManyWithoutVersionNestedInput
+    vehicleOffers?: VehicleOfferUncheckedUpdateManyWithoutVersionNestedInput
   }
 
   export type VersionUncheckedUpdateManyWithoutModelInput = {
@@ -24660,11 +28531,98 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type VehicleOfferUpdateWithoutModelInput = {
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    brand?: BrandUpdateOneWithoutVehicleOffersNestedInput
+    version?: VersionUpdateOneWithoutVehicleOffersNestedInput
+    bodyType?: BodyTypeUpdateOneWithoutVehicleOffersNestedInput
+    fuelType?: FuelTypeUpdateOneWithoutVehicleOffersNestedInput
+    transmissionType?: TransmissionTypeUpdateOneWithoutVehicleOffersNestedInput
+    color?: ColorUpdateOneWithoutVehicleOffersNestedInput
+  }
+
+  export type VehicleOfferUncheckedUpdateWithoutModelInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutModelInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type BodyTypeVersionCreateManyVersionInput = {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     bodyTypeId: number
+  }
+
+  export type VehicleOfferCreateManyVersionInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
   }
 
   export type BodyTypeVersionUpdateWithoutVersionInput = {
@@ -24689,11 +28647,98 @@ export namespace Prisma {
     bodyTypeId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type VehicleOfferUpdateWithoutVersionInput = {
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    brand?: BrandUpdateOneWithoutVehicleOffersNestedInput
+    model?: ModelUpdateOneWithoutVehicleOffersNestedInput
+    bodyType?: BodyTypeUpdateOneWithoutVehicleOffersNestedInput
+    fuelType?: FuelTypeUpdateOneWithoutVehicleOffersNestedInput
+    transmissionType?: TransmissionTypeUpdateOneWithoutVehicleOffersNestedInput
+    color?: ColorUpdateOneWithoutVehicleOffersNestedInput
+  }
+
+  export type VehicleOfferUncheckedUpdateWithoutVersionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutVersionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type BodyTypeVersionCreateManyBodyTypeInput = {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     versionId: number
+  }
+
+  export type VehicleOfferCreateManyBodyTypeInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    versionId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
   }
 
   export type BodyTypeVersionUpdateWithoutBodyTypeInput = {
@@ -24716,6 +28761,71 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     versionId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type VehicleOfferUpdateWithoutBodyTypeInput = {
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    brand?: BrandUpdateOneWithoutVehicleOffersNestedInput
+    model?: ModelUpdateOneWithoutVehicleOffersNestedInput
+    version?: VersionUpdateOneWithoutVehicleOffersNestedInput
+    fuelType?: FuelTypeUpdateOneWithoutVehicleOffersNestedInput
+    transmissionType?: TransmissionTypeUpdateOneWithoutVehicleOffersNestedInput
+    color?: ColorUpdateOneWithoutVehicleOffersNestedInput
+  }
+
+  export type VehicleOfferUncheckedUpdateWithoutBodyTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutBodyTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FuelTypeBodyCreateManyBodyVersionInput = {
@@ -24754,6 +28864,28 @@ export namespace Prisma {
     bodyVersionId: number
   }
 
+  export type VehicleOfferCreateManyFuelTypeInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    transmissionTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
   export type FuelTypeBodyUpdateWithoutFuelTypeInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24774,6 +28906,71 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bodyVersionId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type VehicleOfferUpdateWithoutFuelTypeInput = {
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    brand?: BrandUpdateOneWithoutVehicleOffersNestedInput
+    model?: ModelUpdateOneWithoutVehicleOffersNestedInput
+    version?: VersionUpdateOneWithoutVehicleOffersNestedInput
+    bodyType?: BodyTypeUpdateOneWithoutVehicleOffersNestedInput
+    transmissionType?: TransmissionTypeUpdateOneWithoutVehicleOffersNestedInput
+    color?: ColorUpdateOneWithoutVehicleOffersNestedInput
+  }
+
+  export type VehicleOfferUncheckedUpdateWithoutFuelTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutFuelTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TransmissionTypeFuelCreateManyFuelBodyInput = {
@@ -24812,6 +29009,28 @@ export namespace Prisma {
     fuelBodyId: number
   }
 
+  export type VehicleOfferCreateManyTransmissionTypeInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    colorId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
   export type TransmissionTypeFuelUpdateWithoutTransmissionTypeInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24832,6 +29051,71 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     fuelBodyId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type VehicleOfferUpdateWithoutTransmissionTypeInput = {
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    brand?: BrandUpdateOneWithoutVehicleOffersNestedInput
+    model?: ModelUpdateOneWithoutVehicleOffersNestedInput
+    version?: VersionUpdateOneWithoutVehicleOffersNestedInput
+    bodyType?: BodyTypeUpdateOneWithoutVehicleOffersNestedInput
+    fuelType?: FuelTypeUpdateOneWithoutVehicleOffersNestedInput
+    color?: ColorUpdateOneWithoutVehicleOffersNestedInput
+  }
+
+  export type VehicleOfferUncheckedUpdateWithoutTransmissionTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutTransmissionTypeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    colorId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type VehicleYearCreateManyTransmissionTypeFuelInput = {
@@ -24932,6 +29216,28 @@ export namespace Prisma {
     mileageId: number
   }
 
+  export type VehicleOfferCreateManyColorInput = {
+    id?: number
+    year?: number | null
+    kilometer?: number | null
+    accidentStatus?: string | null
+    accidentAmount?: number | null
+    status: string
+    displayValues?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    processedAt?: Date | string | null
+    brandId?: number | null
+    modelId?: number | null
+    versionId?: number | null
+    bodyTypeId?: number | null
+    fuelTypeId?: number | null
+    transmissionTypeId?: number | null
+    notes?: string | null
+    adminNotes?: string | null
+  }
+
   export type ColorMileageUpdateWithoutColorInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24952,6 +29258,71 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mileageId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type VehicleOfferUpdateWithoutColorInput = {
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    brand?: BrandUpdateOneWithoutVehicleOffersNestedInput
+    model?: ModelUpdateOneWithoutVehicleOffersNestedInput
+    version?: VersionUpdateOneWithoutVehicleOffersNestedInput
+    bodyType?: BodyTypeUpdateOneWithoutVehicleOffersNestedInput
+    fuelType?: FuelTypeUpdateOneWithoutVehicleOffersNestedInput
+    transmissionType?: TransmissionTypeUpdateOneWithoutVehicleOffersNestedInput
+  }
+
+  export type VehicleOfferUncheckedUpdateWithoutColorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VehicleOfferUncheckedUpdateManyWithoutColorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    kilometer?: NullableIntFieldUpdateOperationsInput | number | null
+    accidentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    accidentAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    displayValues?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    brandId?: NullableIntFieldUpdateOperationsInput | number | null
+    modelId?: NullableIntFieldUpdateOperationsInput | number | null
+    versionId?: NullableIntFieldUpdateOperationsInput | number | null
+    bodyTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    fuelTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    transmissionTypeId?: NullableIntFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AccidentRecordCreateManyColorMileageInput = {

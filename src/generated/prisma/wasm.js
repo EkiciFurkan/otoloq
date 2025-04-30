@@ -239,6 +239,29 @@ exports.Prisma.VehicleScalarFieldEnum = {
   listingStatus: 'listingStatus'
 };
 
+exports.Prisma.VehicleOfferScalarFieldEnum = {
+  id: 'id',
+  year: 'year',
+  kilometer: 'kilometer',
+  accidentStatus: 'accidentStatus',
+  accidentAmount: 'accidentAmount',
+  status: 'status',
+  displayValues: 'displayValues',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  processedAt: 'processedAt',
+  brandId: 'brandId',
+  modelId: 'modelId',
+  versionId: 'versionId',
+  bodyTypeId: 'bodyTypeId',
+  fuelTypeId: 'fuelTypeId',
+  transmissionTypeId: 'transmissionTypeId',
+  colorId: 'colorId',
+  notes: 'notes',
+  adminNotes: 'adminNotes'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -270,7 +293,8 @@ exports.Prisma.ModelName = {
   Color: 'Color',
   ColorMileage: 'ColorMileage',
   AccidentRecord: 'AccidentRecord',
-  Vehicle: 'Vehicle'
+  Vehicle: 'Vehicle',
+  VehicleOffer: 'VehicleOffer'
 };
 
 /**

@@ -1,4 +1,4 @@
-import VehicleSelectorContainer from "@/components/VehicleSelectorContainer";
+import VehicleSelectorContainer from "@/components/VehicleSelector/VehicleSelectorContainer";
 
 export default function Home() {
   return (

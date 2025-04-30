@@ -18,7 +18,9 @@ model Brand {
   updatedAt DateTime @updatedAt
 
   // Relations
-  models Model[]
+  models        Model[]
+  // Kullanıcı teklif verdiğinde marka referansı gerekli olacak
+  vehicleOffers VehicleOffer[]
 }
 
 // Model model
@@ -29,9 +31,11 @@ model Model {
   updatedAt DateTime @updatedAt
 
   // Relations
-  brandId  Int
-  brand    Brand     @relation(fields: [brandId], references: [id])
-  versions Version[]
+  brandId       Int
+  brand         Brand          @relation(fields: [brandId], references: [id])
+  versions      Version[]
+  // Kullanıcı teklif verdiğinde model referansı gerekli olacak
+  vehicleOffers VehicleOffer[]
 
   // Composite unique constraint
   @@unique([brandId, name])
@@ -45,9 +49,11 @@ model Version {
   updatedAt DateTime @updatedAt
 
   // Relations
-  modelId   Int
-  model     Model             @relation(fields: [modelId], references: [id])
-  bodyTypes BodyTypeVersion[]
+  modelId       Int
+  model         Model             @relation(fields: [modelId], references: [id])
+  bodyTypes     BodyTypeVersion[]
+  // Kullanıcı teklif verdiğinde versiyon referansı gerekli olacak
+  vehicleOffers VehicleOffer[]
 
   // Composite unique constraint
   @@unique([modelId, name])
@@ -61,7 +67,9 @@ model BodyType {
   updatedAt DateTime @updatedAt
 
   // Relations
-  versions BodyTypeVersion[]
+  versions      BodyTypeVersion[]
+  // Kullanıcı teklif verdiğinde gövde tipi referansı gerekli olacak
+  vehicleOffers VehicleOffer[]
 }
 
 // Relationship table between Version and Body Type
@@ -89,7 +97,9 @@ model FuelType {
   updatedAt DateTime @updatedAt
 
   // Relations
-  bodyTypes FuelTypeBody[]
+  bodyTypes     FuelTypeBody[]
+  // Kullanıcı teklif verdiğinde yakıt tipi referansı gerekli olacak
+  vehicleOffers VehicleOffer[]
 }
 
 // Relationship table between Body Type and Fuel Type
@@ -117,7 +127,9 @@ model TransmissionType {
   updatedAt DateTime @updatedAt
 
   // Relations
-  fuelTypes TransmissionTypeFuel[]
+  fuelTypes     TransmissionTypeFuel[]
+  // Kullanıcı teklif verdiğinde vites tipi referansı gerekli olacak
+  vehicleOffers VehicleOffer[]
 }
 
 // Relationship table between Fuel Type and Transmission Type
@@ -178,7 +190,9 @@ model Color {
   updatedAt DateTime @updatedAt
 
   // Relations
-  mileages ColorMileage[]
+  mileages      ColorMileage[]
+  // Kullanıcı teklif verdiğinde renk referansı gerekli olacak
+  vehicleOffers VehicleOffer[]
 }
 
 // Relationship table between Mileage and Color
@@ -226,4 +240,41 @@ model Vehicle {
   // Additional information related to vehicle listing
   description   String?
   listingStatus String  @default("Active") // Active, Sold, Cancelled etc.
+}
+
+// Yeni eklenen model: Araç Teklifi
+model VehicleOffer {
+  id             Int     @id @default(autoincrement())
+  year           Int?
+  kilometer      Int?
+  accidentStatus String? // "None" or "Exists"
+  accidentAmount Float? // Kaza tutarı (varsa)
+  status         String // "PENDING", "APPROVED", "REJECTED"
+  displayValues  String? // JSON formatında saklanan görünen değerler
+  userId         String // Teklifi oluşturan kullanıcı kimliği (anonim veya gerçek)
+
+  // Zaman damgaları
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  processedAt DateTime? // İşlendiği zaman
+
+  // İlişkiler - Burada sadece referans olarak kullanılan alan ilişkileri var
+  brandId            Int?
+  brand              Brand?            @relation(fields: [brandId], references: [id])
+  modelId            Int?
+  model              Model?            @relation(fields: [modelId], references: [id])
+  versionId          Int?
+  version            Version?          @relation(fields: [versionId], references: [id])
+  bodyTypeId         Int?
+  bodyType           BodyType?         @relation(fields: [bodyTypeId], references: [id])
+  fuelTypeId         Int?
+  fuelType           FuelType?         @relation(fields: [fuelTypeId], references: [id])
+  transmissionTypeId Int?
+  transmissionType   TransmissionType? @relation(fields: [transmissionTypeId], references: [id])
+  colorId            Int?
+  color              Color?            @relation(fields: [colorId], references: [id])
+
+  // Notlar
+  notes      String?
+  adminNotes String? // Sadece admin tarafından görülebilen notlar
 }
