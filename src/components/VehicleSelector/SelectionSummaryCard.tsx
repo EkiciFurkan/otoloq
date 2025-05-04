@@ -1,4 +1,3 @@
-// src/app/components/VehicleSelector/SelectionSummaryCard.tsx
 import { SelectionParams } from "./VehicleSelectorContainer";
 
 interface SelectionSummaryCardProps {
@@ -9,12 +8,10 @@ interface SelectionSummaryCardProps {
 }
 
 export function SelectionSummaryCard({
-										 selections,
 										 selectedOptions,
 										 steps,
 										 currentStep
 									 }: SelectionSummaryCardProps) {
-	// Henüz hiçbir seçim yapılmamışsa kartı gösterme
 	if (currentStep === 0 || !Object.keys(selectedOptions).length) {
 		return null;
 	}
@@ -24,7 +21,6 @@ export function SelectionSummaryCard({
 			<h3 className="text-lg font-semibold mb-2">Araba Teklif Özeti</h3>
 			<div className="grid grid-cols-2 gap-2">
 				{steps.map((step, index) => {
-					// Henüz seçilmemiş adımları gösterme
 					if (index >= currentStep) {
 						return null;
 					}

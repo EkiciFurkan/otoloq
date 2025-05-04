@@ -10,8 +10,8 @@ export async function GET(request: NextRequest) {
 		// Bağımsız sorgu parametresi - renk vb. için
 		const independentQuery = searchParams.get("independentQuery");
 
-		// Eğer renk için bağımsız bir sorgu istendiyse
-		if (independentQuery === "colors") {
+		// Eğer renk için bağımsız bir sorgu istendiyse (adım 7)
+		if (independentQuery === "colors" && step === "renk") {
 			// Doğrudan tüm renkleri getir
 			const colors = await prisma.color.findMany({
 				orderBy: { name: "asc" }
@@ -23,7 +23,6 @@ export async function GET(request: NextRequest) {
 			});
 		}
 
-		// Normal hiyerarşi sorgusu için diğer parametreleri al
 		const year = searchParams.get("year") ? parseInt(searchParams.get("year")!) : undefined;
 		const brandId = searchParams.get("brandId") ? parseInt(searchParams.get("brandId")!) : undefined;
 		const modelId = searchParams.get("modelId") ? parseInt(searchParams.get("modelId")!) : undefined;
@@ -31,16 +30,9 @@ export async function GET(request: NextRequest) {
 		const bodyTypeId = searchParams.get("bodyTypeId") ? parseInt(searchParams.get("bodyTypeId")!) : undefined;
 		const fuelTypeId = searchParams.get("fuelTypeId") ? parseInt(searchParams.get("fuelTypeId")!) : undefined;
 		const transmissionTypeId = searchParams.get("transmissionTypeId") ? parseInt(searchParams.get("transmissionTypeId")!) : undefined;
-		const colorId = searchParams.get("colorId") ? parseInt(searchParams.get("colorId")!) : undefined;
-		const kilometer = searchParams.get("kilometer") ? parseInt(searchParams.get("kilometer")!) : undefined;
-		const accidentStatus = searchParams.get("accidentStatus");
-		const accidentAmount = searchParams.get("accidentAmount") ? parseFloat(searchParams.get("accidentAmount")!) : undefined;
 
-		// Adım değerine göre sorguları ayarla
 		switch (step) {
 			case "yıl":
-				// Yıl için sorgu - kullanılabilir yılları getir
-				// Bu mevcut gerçek verilere dayalı olabilir veya hardcoded bir liste
 				const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024]; // Örnek veri
 				return NextResponse.json({
 					type: "years",
@@ -208,115 +200,22 @@ export async function GET(request: NextRequest) {
 				});
 
 			case "renk":
-				// Renk adımı - hiyerarşiden bağımsız olarak tüm renkleri getir
-				const colors = await prisma.color.findMany({
-					orderBy: { name: "asc" }
-				});
-
-				return NextResponse.json({
-					type: "colors",
-					data: colors
-				});
-
-			// Kilometre ve kaza durumu için ayrı formlar kullanılacağından API sorgusu gerekmez
-
-			default:
-				// Tüm seçimler tamamlandıysa araçları getir
-				if (
-					year && brandId && modelId && versionId && bodyTypeId &&
-					fuelTypeId && transmissionTypeId && colorId &&
-					kilometer !== undefined && accidentStatus
-				) {
-					// Sorgu koşullarını hazırla
-					const accidentCondition: any = {
-						status: accidentStatus,
-						colorMileage: {
-							colorId,
-							mileage: {
-								// Kilometre değeri ile aralık sorgusu (yaklaşık +/- %20 tolerans ile)
-								minKm: { lte: Math.round(kilometer * 1.2) }, // %20 daha yüksek
-								maxKm: { gte: Math.round(kilometer * 0.8) }, // %20 daha düşük
-								vehicleYear: {
-									year,
-									transmissionTypeFuel: {
-										transmissionTypeId,
-										fuelBody: {
-											fuelTypeId,
-											bodyVersion: {
-												bodyTypeId,
-												versionId
-											}
-										}
-									}
-								}
-							}
-						}
-					};
-
-					// Kaza durumu "Exists" ve hasar tutarı belirtilmişse
-					if (accidentStatus === "Exists" && accidentAmount !== undefined) {
-						accidentCondition.amount = accidentAmount;
-					}
-
-					const vehicles = await prisma.vehicle.findMany({
-						where: {
-							accidentRecord: accidentCondition
-						},
-						include: {
-							accidentRecord: {
-								include: {
-									colorMileage: {
-										include: {
-											color: true,
-											mileage: {
-												include: {
-													vehicleYear: {
-														include: {
-															transmissionTypeFuel: {
-																include: {
-																	transmissionType: true,
-																	fuelBody: {
-																		include: {
-																			fuelType: true,
-																			bodyVersion: {
-																				include: {
-																					bodyType: true,
-																					version: {
-																						include: {
-																							model: {
-																								include: {
-																									brand: true
-																								}
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						},
-						orderBy: { price: "asc" }
-					});
-
-					return NextResponse.json({
-						type: "vehicles",
-						data: vehicles
-					});
-				}
-
+				// Renk adımı - Bu case artık bağımsız sorgu ile yukarıda işleniyor.
+				// Eğer buraya düşerse, bağımsız sorgu parametresi eksik demektir.
 				return NextResponse.json({
 					type: "error",
-					message: "Geçersiz adım veya eksik parametreler"
+					message: "Renk sorgusu için bağımsız parametre eksik"
+				});
+
+
+			// Kilometre, kaza durumu, iletişim bilgileri ve onay adımları bu API route'u tarafından
+			// sadece GET isteğiyle seçenek sunmak için kullanılmaz.
+			// Teklif oluşturma (POST) yeni bir route'ta işlenecek.
+
+			default:
+				return NextResponse.json({
+					type: "error",
+					message: "Geçersiz adım"
 				});
 		}
 	} catch (error) {
@@ -330,3 +229,55 @@ export async function GET(request: NextRequest) {
 		);
 	}
 }
+
+// POST isteği için ayrı bir route oluşturulacak (örneğin src/app/api/vehicle/offer/route.ts)
+// Bu route, VehicleSelectorContainer component'inden gelen POST isteğini işleyecek.
+
+// src/app/api/vehicle/offer/route.ts (Yeni dosya oluşturulacak)
+// import { NextRequest, NextResponse } from "next/server";
+// import prisma from "@/lib/prisma";
+
+// export async function POST(request: NextRequest) {
+//     try {
+//         const { selections, displayValues } = await request.json();
+
+//         // selections objesi artık tüm bilgileri içeriyor:
+//         // year, brandId, modelId, versionId, bodyTypeId, fuelTypeId, transmissionTypeId,
+//         // colorId, kilometer, accidentStatus, accidentAmount (varsa), fullName, email, phoneNumber
+
+//         // Basic validation (more detailed validation can be added)
+//         if (!selections || !selections.fullName || !selections.email || !selections.phoneNumber || selections.kilometer === undefined || !selections.accidentStatus) {
+//             return NextResponse.json({ success: false, message: "Eksik bilgi gönderildi." }, { status: 400 });
+//         }
+
+//         // Burada Prisma kullanarak alınan bilgileri veritabanına kaydedebilirsiniz.
+//         // Örneğin, yeni bir Offer veya Lead tablosuna kaydedilebilir.
+
+//         // Örnek: Bir Teklif tablosuna kaydetme
+//         // const newOffer = await prisma.offer.create({
+//         //     data: {
+//         //         ...selections, // Tüm seçimleri kaydet
+//         //         // İlişkili verileri ID'ler üzerinden bağlayabilirsiniz
+//         //         brand: { connect: { id: selections.brandId } },
+//         //         model: { connect: { id: selections.modelId } },
+//         //         version: { connect: { id: selections.versionId } },
+//         //         bodyType: { connect: { id: selections.bodyTypeId } },
+//         //         fuelType: { connect: { id: selections.fuelTypeId } },
+//         //         transmissionType: { connect: { id: selections.transmissionTypeId } },
+//         //         color: { connect: { id: selections.colorId } },
+//         //         // accidentAmount, fullName, email, phoneNumber directly
+//         //     },
+//         // });
+
+
+//         // Başarılı yanıt dön
+//         return NextResponse.json({ success: true, message: "Teklifiniz başarıyla alındı." });
+
+//     } catch (error) {
+//         console.error("Teklif POST hatası:", error);
+//         return NextResponse.json(
+//             { success: false, message: "Teklif oluşturulurken bir hata oluştu." },
+//             { status: 500 }
+//         );
+//     }
+// }

@@ -10,38 +10,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Brand model
 model Brand {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id            Int            @id @default(autoincrement())
+  name          String         @unique
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   models        Model[]
-  // Kullanıcı teklif verdiğinde marka referansı gerekli olacak
   vehicleOffers VehicleOffer[]
 }
 
-// Model model
 model Model {
-  id        Int      @id @default(autoincrement())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id            Int            @id @default(autoincrement())
+  name          String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   brandId       Int
   brand         Brand          @relation(fields: [brandId], references: [id])
   versions      Version[]
-  // Kullanıcı teklif verdiğinde model referansı gerekli olacak
   vehicleOffers VehicleOffer[]
 
-  // Composite unique constraint
   @@unique([brandId, name])
 }
 
-// Version/Sub-Type model
 model Version {
   id        Int      @id @default(autoincrement())
   name      String
@@ -52,213 +42,163 @@ model Version {
   modelId       Int
   model         Model             @relation(fields: [modelId], references: [id])
   bodyTypes     BodyTypeVersion[]
-  // Kullanıcı teklif verdiğinde versiyon referansı gerekli olacak
   vehicleOffers VehicleOffer[]
 
-  // Composite unique constraint
   @@unique([modelId, name])
 }
 
 // Body Type main model
 model BodyType {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id            Int               @id @default(autoincrement())
+  name          String            @unique
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
   versions      BodyTypeVersion[]
-  // Kullanıcı teklif verdiğinde gövde tipi referansı gerekli olacak
   vehicleOffers VehicleOffer[]
 }
 
-// Relationship table between Version and Body Type
 model BodyTypeVersion {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id         Int            @id @default(autoincrement())
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
   versionId  Int
   version    Version        @relation(fields: [versionId], references: [id])
   bodyTypeId Int
   bodyType   BodyType       @relation(fields: [bodyTypeId], references: [id])
   fuelTypes  FuelTypeBody[]
 
-  // Composite unique constraint
   @@unique([versionId, bodyTypeId])
 }
 
 // Fuel Type main model
 model FuelType {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id            Int            @id @default(autoincrement())
+  name          String         @unique
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   bodyTypes     FuelTypeBody[]
-  // Kullanıcı teklif verdiğinde yakıt tipi referansı gerekli olacak
   vehicleOffers VehicleOffer[]
 }
 
 // Relationship table between Body Type and Fuel Type
 model FuelTypeBody {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id                Int                    @id @default(autoincrement())
+  createdAt         DateTime               @default(now())
+  updatedAt         DateTime               @updatedAt
   bodyVersionId     Int
   bodyVersion       BodyTypeVersion        @relation(fields: [bodyVersionId], references: [id])
   fuelTypeId        Int
   fuelType          FuelType               @relation(fields: [fuelTypeId], references: [id])
   transmissionTypes TransmissionTypeFuel[]
 
-  // Composite unique constraint
   @@unique([bodyVersionId, fuelTypeId])
 }
 
 // Transmission Type main model
 model TransmissionType {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id            Int                    @id @default(autoincrement())
+  name          String                 @unique
+  createdAt     DateTime               @default(now())
+  updatedAt     DateTime               @updatedAt
   fuelTypes     TransmissionTypeFuel[]
-  // Kullanıcı teklif verdiğinde vites tipi referansı gerekli olacak
   vehicleOffers VehicleOffer[]
 }
 
 // Relationship table between Fuel Type and Transmission Type
 model TransmissionTypeFuel {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id                 Int              @id @default(autoincrement())
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
   fuelBodyId         Int
   fuelBody           FuelTypeBody     @relation(fields: [fuelBodyId], references: [id])
   transmissionTypeId Int
   transmissionType   TransmissionType @relation(fields: [transmissionTypeId], references: [id])
   years              VehicleYear[]
 
-  // Composite unique constraint
   @@unique([fuelBodyId, transmissionTypeId])
 }
 
-// Vehicle Year model
 model VehicleYear {
-  id        Int      @id @default(autoincrement())
-  year      Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id                     Int                  @id @default(autoincrement())
+  year                   Int
+  createdAt              DateTime             @default(now())
+  updatedAt              DateTime             @updatedAt
   transmissionTypeFuelId Int
   transmissionTypeFuel   TransmissionTypeFuel @relation(fields: [transmissionTypeFuelId], references: [id])
   mileages               Mileage[]
 
-  // Composite unique constraint
   @@unique([transmissionTypeFuelId, year])
 }
 
-// Mileage model
 model Mileage {
-  id        Int      @id @default(autoincrement())
-  minKm     Int
-  maxKm     Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id            Int            @id @default(autoincrement())
+  minKm         Int
+  maxKm         Int
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   vehicleYearId Int
   vehicleYear   VehicleYear    @relation(fields: [vehicleYearId], references: [id])
   colors        ColorMileage[]
 
-  // Composite unique constraint
   @@unique([vehicleYearId, minKm, maxKm])
 }
 
-// Color main model
 model Color {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id            Int            @id @default(autoincrement())
+  name          String         @unique
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   mileages      ColorMileage[]
-  // Kullanıcı teklif verdiğinde renk referansı gerekli olacak
   vehicleOffers VehicleOffer[]
 }
 
-// Relationship table between Mileage and Color
 model ColorMileage {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id              Int              @id @default(autoincrement())
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
   mileageId       Int
   mileage         Mileage          @relation(fields: [mileageId], references: [id])
   colorId         Int
   color           Color            @relation(fields: [colorId], references: [id])
   accidentRecords AccidentRecord[]
 
-  // Composite unique constraint
   @@unique([mileageId, colorId])
 }
 
-// Accident Record model
 model AccidentRecord {
-  id        Int      @id @default(autoincrement())
-  status    String // "None" or "Exists"
-  amount    Float? // If status is "Exists", the accident amount
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
+  id             Int          @id @default(autoincrement())
+  status         String
+  amount         Float?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
   colorMileageId Int
   colorMileage   ColorMileage @relation(fields: [colorMileageId], references: [id])
   vehicles       Vehicle[]
 }
 
-// Vehicle model (combination of all categories)
 model Vehicle {
-  id               Int      @id @default(autoincrement())
-  price            Float // Vehicle price
-  registrationDate DateTime @default(now())
-  updateDate       DateTime @updatedAt
-
-  // Relations
+  id               Int            @id @default(autoincrement())
+  price            Float
+  registrationDate DateTime       @default(now())
+  updateDate       DateTime       @updatedAt
   accidentRecordId Int
   accidentRecord   AccidentRecord @relation(fields: [accidentRecordId], references: [id])
-
-  // Additional information related to vehicle listing
-  description   String?
-  listingStatus String  @default("Active") // Active, Sold, Cancelled etc.
+  description      String?
+  listingStatus    String         @default("Active")
 }
 
-// Yeni eklenen model: Araç Teklifi
 model VehicleOffer {
-  id             Int     @id @default(autoincrement())
-  year           Int?
-  kilometer      Int?
-  accidentStatus String? // "None" or "Exists"
-  accidentAmount Float? // Kaza tutarı (varsa)
-  status         String // "PENDING", "APPROVED", "REJECTED"
-  displayValues  String? // JSON formatında saklanan görünen değerler
-  userId         String // Teklifi oluşturan kullanıcı kimliği (anonim veya gerçek)
-
-  // Zaman damgaları
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  processedAt DateTime? // İşlendiği zaman
-
-  // İlişkiler - Burada sadece referans olarak kullanılan alan ilişkileri var
+  id                 Int               @id @default(autoincrement())
+  year               Int?
+  kilometer          Int?
+  accidentStatus     String?
+  accidentAmount     Float?
+  status             String
+  displayValues      String?
+  userId             String
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+  processedAt        DateTime?
   brandId            Int?
   brand              Brand?            @relation(fields: [brandId], references: [id])
   modelId            Int?
@@ -273,8 +213,6 @@ model VehicleOffer {
   transmissionType   TransmissionType? @relation(fields: [transmissionTypeId], references: [id])
   colorId            Int?
   color              Color?            @relation(fields: [colorId], references: [id])
-
-  // Notlar
-  notes      String?
-  adminNotes String? // Sadece admin tarafından görülebilen notlar
+  notes              String?
+  adminNotes         String?
 }
