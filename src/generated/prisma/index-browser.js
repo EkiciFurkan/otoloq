@@ -120,6 +120,29 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.VehicleTypeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VehicleYearScalarFieldEnum = {
+  id: 'id',
+  year: 'year',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  vehicleTypeId: 'vehicleTypeId'
+};
+
+exports.Prisma.YearBrandScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  yearId: 'yearId',
+  brandId: 'brandId'
+};
+
 exports.Prisma.BrandScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -127,20 +150,42 @@ exports.Prisma.BrandScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.YearModelScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  yearBrandId: 'yearBrandId',
+  modelId: 'modelId'
+};
+
 exports.Prisma.ModelScalarFieldEnum = {
   id: 'id',
   name: 'name',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.YearModelVersionScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  brandId: 'brandId'
+  yearModelId: 'yearModelId',
+  versionId: 'versionId'
 };
 
 exports.Prisma.VersionScalarFieldEnum = {
   id: 'id',
   name: 'name',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.YearModelVersionBodyTypeScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  modelId: 'modelId'
+  yearModelVersionId: 'yearModelVersionId',
+  bodyTypeId: 'bodyTypeId'
 };
 
 exports.Prisma.BodyTypeScalarFieldEnum = {
@@ -150,12 +195,12 @@ exports.Prisma.BodyTypeScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.BodyTypeVersionScalarFieldEnum = {
+exports.Prisma.YearModelVersionBodyTypeFuelScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  versionId: 'versionId',
-  bodyTypeId: 'bodyTypeId'
+  yearModelVersionBodyTypeId: 'yearModelVersionBodyTypeId',
+  fuelTypeId: 'fuelTypeId'
 };
 
 exports.Prisma.FuelTypeScalarFieldEnum = {
@@ -165,12 +210,12 @@ exports.Prisma.FuelTypeScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.FuelTypeBodyScalarFieldEnum = {
+exports.Prisma.YearModelVersionBodyTypeFuelTransmissionScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  bodyVersionId: 'bodyVersionId',
-  fuelTypeId: 'fuelTypeId'
+  yearModelVersionBodyTypeFuelId: 'yearModelVersionBodyTypeFuelId',
+  transmissionTypeId: 'transmissionTypeId'
 };
 
 exports.Prisma.TransmissionTypeScalarFieldEnum = {
@@ -180,31 +225,6 @@ exports.Prisma.TransmissionTypeScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.TransmissionTypeFuelScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  fuelBodyId: 'fuelBodyId',
-  transmissionTypeId: 'transmissionTypeId'
-};
-
-exports.Prisma.VehicleYearScalarFieldEnum = {
-  id: 'id',
-  year: 'year',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  transmissionTypeFuelId: 'transmissionTypeFuelId'
-};
-
-exports.Prisma.MileageScalarFieldEnum = {
-  id: 'id',
-  minKm: 'minKm',
-  maxKm: 'maxKm',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  vehicleYearId: 'vehicleYearId'
-};
-
 exports.Prisma.ColorScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -212,31 +232,13 @@ exports.Prisma.ColorScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ColorMileageScalarFieldEnum = {
+exports.Prisma.VehicleImageScalarFieldEnum = {
   id: 'id',
+  url: 'url',
+  isPrimary: 'isPrimary',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  mileageId: 'mileageId',
-  colorId: 'colorId'
-};
-
-exports.Prisma.AccidentRecordScalarFieldEnum = {
-  id: 'id',
-  status: 'status',
-  amount: 'amount',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  colorMileageId: 'colorMileageId'
-};
-
-exports.Prisma.VehicleScalarFieldEnum = {
-  id: 'id',
-  price: 'price',
-  registrationDate: 'registrationDate',
-  updateDate: 'updateDate',
-  accidentRecordId: 'accidentRecordId',
-  description: 'description',
-  listingStatus: 'listingStatus'
+  vehicleOfferId: 'vehicleOfferId'
 };
 
 exports.Prisma.VehicleOfferScalarFieldEnum = {
@@ -246,11 +248,14 @@ exports.Prisma.VehicleOfferScalarFieldEnum = {
   accidentStatus: 'accidentStatus',
   accidentAmount: 'accidentAmount',
   status: 'status',
+  price: 'price',
   displayValues: 'displayValues',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   processedAt: 'processedAt',
+  vehicleTypeId: 'vehicleTypeId',
+  vehicleYearId: 'vehicleYearId',
   brandId: 'brandId',
   modelId: 'modelId',
   versionId: 'versionId',
@@ -259,7 +264,10 @@ exports.Prisma.VehicleOfferScalarFieldEnum = {
   transmissionTypeId: 'transmissionTypeId',
   colorId: 'colorId',
   notes: 'notes',
-  adminNotes: 'adminNotes'
+  adminNotes: 'adminNotes',
+  description: 'description',
+  registrationDate: 'registrationDate',
+  listingStatus: 'listingStatus'
 };
 
 exports.Prisma.SortOrder = {
@@ -279,21 +287,22 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Brand: 'Brand',
-  Model: 'Model',
-  Version: 'Version',
-  BodyType: 'BodyType',
-  BodyTypeVersion: 'BodyTypeVersion',
-  FuelType: 'FuelType',
-  FuelTypeBody: 'FuelTypeBody',
-  TransmissionType: 'TransmissionType',
-  TransmissionTypeFuel: 'TransmissionTypeFuel',
+  VehicleType: 'VehicleType',
   VehicleYear: 'VehicleYear',
-  Mileage: 'Mileage',
+  YearBrand: 'YearBrand',
+  Brand: 'Brand',
+  YearModel: 'YearModel',
+  Model: 'Model',
+  YearModelVersion: 'YearModelVersion',
+  Version: 'Version',
+  YearModelVersionBodyType: 'YearModelVersionBodyType',
+  BodyType: 'BodyType',
+  YearModelVersionBodyTypeFuel: 'YearModelVersionBodyTypeFuel',
+  FuelType: 'FuelType',
+  YearModelVersionBodyTypeFuelTransmission: 'YearModelVersionBodyTypeFuelTransmission',
+  TransmissionType: 'TransmissionType',
   Color: 'Color',
-  ColorMileage: 'ColorMileage',
-  AccidentRecord: 'AccidentRecord',
-  Vehicle: 'Vehicle',
+  VehicleImage: 'VehicleImage',
   VehicleOffer: 'VehicleOffer'
 };
 

@@ -1,168 +1,368 @@
 // seed.mjs
-
-import { PrismaClient } from "../src/generated/prisma/client.js";
+import { PrismaClient, OfferStatus, DamageRecordStatus } from '@prisma/client';
+import { fakerTR as faker } from '@faker-js/faker'; // faker kütüphanesini ekliyoruz
 
 const prisma = new PrismaClient();
 
-// Yardımcı fonksiyonlar
-function getRandomElement(arr) {
-	if (!arr || arr.length === 0) return undefined;
-	return arr[Math.floor(Math.random() * arr.length)];
+// Daha güvenli bir silme sırası
+async function clearDatabase() {
+	console.log('Veritabanı temizleniyor...');
+	try {
+		// İlişki sırasının tersine göre silme işlemi (Önce en bağımlı olanlar)
+		await prisma.offer.deleteMany();
+		console.log('Teklifler silindi.');
+		await prisma.fuelType.deleteMany();
+		console.log('Yakıt tipleri silindi.');
+		await prisma.bodyType.deleteMany();
+		console.log('Gövde tipleri silindi.');
+		await prisma.subModel.deleteMany();
+		console.log('Alt modeller silindi.');
+		await prisma.model.deleteMany();
+		console.log('Modeller silindi.');
+		await prisma.year.deleteMany();
+		console.log('Yıllar silindi.');
+		await prisma.contact.deleteMany();
+		console.log('İletişim kişileri silindi.');
+		await prisma.color.deleteMany();
+		console.log('Renkler silindi.');
+		await prisma.transmissionType.deleteMany();
+		console.log('Vites tipleri silindi.');
+		await prisma.brand.deleteMany();
+		console.log('Markalar silindi.');
+		await prisma.vehicleType.deleteMany(); // En son VehicleType silinebilir
+		console.log('Vasıta tipleri silindi.');
+		console.log('Veritabanı başarıyla temizlendi.');
+	} catch (error) {
+		console.error('Veritabanı temizlenirken hata oluştu:', error);
+		// Hata durumunda detaylı loglama veya rethrow yapılabilir.
+		throw error; // Hatayı yukarı taşı
+	}
 }
 
-function getRandomSubset(arr, min, max) {
-	if (!arr) return [];
-	const count = Math.floor(Math.random() * (max - min + 1)) + min;
-	const shuffled = [...arr].sort(() => 0.5 - Math.random());
-	return shuffled.slice(0, count);
-}
 
-async function main() {
-	console.log("🌱 Veritabanı seed işlemi başlıyor...");
+async function seedData() {
+	console.log('Veri ekleme başlatılıyor...');
 
-	await clearDatabase();
+	// --- 1. Temel Kategorileri Oluşturma ---
+	console.log('Temel kategoriler oluşturuluyor...');
 
-	// --- Ana Veri Kategorileri ---
-	console.log("📝 Ana veri kategorileri ekleniyor...");
-	const brandsData = [ { name: "Toyota" }, { name: "Honda" }, { name: "BMW" }, { name: "Mercedes-Benz" }, { name: "Audi" }, { name: "Volkswagen" }, { name: "Ford" }, { name: "Hyundai" }, { name: "Kia" }, { name: "Nissan" }, { name: "Renault" }, { name: "Peugeot" }, { name: "Fiat" }, { name: "Skoda" }, { name: "Opel" } ];
-	await prisma.brand.createMany({ data: brandsData });
-	const brands = await prisma.brand.findMany();
-	const brandMap = new Map(brands.map(b => [b.name, b.id]));
-	console.log(`✅ ${brands.length} Marka eklendi.`);
+	const vehicleTypeData = [
+		{ name: 'Araba' },
+		{ name: 'Motosiklet' },
+		{ name: 'Kamyon' },
+		{ name: 'Ticari Vasıta' }, // Yeni eklenen vasıta tipi
+	];
+	const vehicleTypes = await prisma.vehicleType.createMany({ data: vehicleTypeData, skipDuplicates: true });
+	console.log(`Oluşturulan vasıta tipleri: ${vehicleTypes.count}`);
 
-	const bodyTypesData = [ { name: "Sedan" }, { name: "Hatchback" }, { name: "SUV" }, { name: "Coupe" }, { name: "Station Wagon" }, { name: "Cabrio" }, { name: "Pick-up" }, { name: "MPV" }, { name: "Roadster" } ];
-	await prisma.bodyType.createMany({ data: bodyTypesData });
-	const bodyTypes = await prisma.bodyType.findMany();
-	const bodyTypeMap = new Map(bodyTypes.map(bt => [bt.name, bt.id]));
-	console.log(`✅ ${bodyTypes.length} Gövde tipi eklendi.`);
+	const brandData = [
+		{ name: 'BMW' },
+		{ name: 'Audi' },
+		{ name: 'Mercedes' },
+		{ name: 'Honda' },
+		{ name: 'Ford' },
+		{ name: 'Volvo' },
+		{ name: 'Volkswagen' }, // Yeni marka
+		{ name: 'Toyota' },     // Yeni marka
+		{ name: 'Peugeot' },    // Yeni marka
+		{ name: 'Fiat' },       // Yeni marka
+		{ name: 'Renault' },    // Yeni marka
+		{ name: 'Nissan' },     // Yeni marka
+	];
+	const brands = await prisma.brand.createMany({ data: brandData, skipDuplicates: true });
+	console.log(`Oluşturulan markalar: ${brands.count}`);
 
-	const fuelTypesData = [ { name: "Benzin" }, { name: "Dizel" }, { name: "Hibrit" }, { name: "Elektrik" }, { name: "LPG" }, { name: "Benzin+LPG" } ];
-	await prisma.fuelType.createMany({ data: fuelTypesData });
-	const fuelTypes = await prisma.fuelType.findMany();
-	const fuelTypeMap = new Map(fuelTypes.map(ft => [ft.name, ft.id]));
-	console.log(`✅ ${fuelTypes.length} Yakıt tipi eklendi.`);
+	const transmissionTypeData = [
+		{ name: 'Manuel' },
+		{ name: 'Otomatik' },
+		{ name: 'Yarı Otomatik' },
+		{ name: 'CVT' }, // Yeni vites tipi
+	];
+	const transmissionTypes = await prisma.transmissionType.createMany({ data: transmissionTypeData, skipDuplicates: true });
+	console.log(`Oluşturulan vites tipleri: ${transmissionTypes.count}`);
 
-	const transmissionTypesData = [ { name: "Manuel" }, { name: "Otomatik" }, { name: "Yarı Otomatik" }, { name: "CVT" }, { name: "DSG" }, { name: "Tiptronic" } ];
-	await prisma.transmissionType.createMany({ data: transmissionTypesData });
-	const transmissionTypes = await prisma.transmissionType.findMany();
-	const transmissionTypeMap = new Map(transmissionTypes.map(tt => [tt.name, tt.id]));
-	console.log(`✅ ${transmissionTypes.length} Vites tipi eklendi.`);
+	const colorData = [
+		{ name: 'Siyah' },
+		{ name: 'Beyaz' },
+		{ name: 'Kırmızı' },
+		{ name: 'Mavi' },
+		{ name: 'Gri' },
+		{ name: 'Gümüş' },
+		{ name: 'Lacivert' },   // Yeni renk
+		{ name: 'Metalik Gri' }, // Yeni renk
+		{ name: 'Kahverengi' }, // Yeni renk
+		{ name: 'Yeşil' },      // Yeni renk
+	];
+	const colors = await prisma.color.createMany({ data: colorData, skipDuplicates: true });
+	console.log(`Oluşturulan renkler: ${colors.count}`);
 
-	const colorsData = [ { name: "Siyah" }, { name: "Beyaz" }, { name: "Gri" }, { name: "Kırmızı" }, { name: "Mavi" }, { name: "Yeşil" }, { name: "Sarı" }, { name: "Turuncu" }, { name: "Kahverengi" }, { name: "Gümüş" }, { name: "Lacivert" }, { name: "Bordo" } ];
-	await prisma.color.createMany({ data: colorsData });
-	const colors = await prisma.color.findMany();
-	console.log(`✅ ${colors.length} Renk eklendi.`);
+	const contactData = Array.from({ length: 20 }).map(() => ({ // Faker ile 20 rastgele kişi
+		fullName: faker.person.fullName(),
+		phone: faker.phone.number('5##-###-####'),
+		email: faker.datatype.boolean() ? faker.internet.email() : null, // Bazılarının emaili olmasın
+	}));
+	const contacts = await prisma.contact.createMany({ data: contactData, skipDuplicates: true });
+	console.log(`Oluşturulan iletişim kişileri: ${contacts.count}`);
 
-	// --- İlişkisel Veri Oluşturma ---
 
-	// Modeller
-	console.log("📝 Modeller ekleniyor...");
-	const modelsData = [ { name: "Corolla", brandName: "Toyota" }, { name: "Yaris", brandName: "Toyota" }, { name: "Camry", brandName: "Toyota" }, { name: "RAV4", brandName: "Toyota" }, { name: "C-HR", brandName: "Toyota" }, { name: "Civic", brandName: "Honda" }, { name: "Accord", brandName: "Honda" }, { name: "CR-V", brandName: "Honda" }, { name: "Jazz", brandName: "Honda" }, { name: "3 Serisi", brandName: "BMW" }, { name: "5 Serisi", brandName: "BMW" }, { name: "X3", brandName: "BMW" }, { name: "X5", brandName: "BMW" }, { name: "1 Serisi", brandName: "BMW" }, { name: "C Serisi", brandName: "Mercedes-Benz" }, { name: "E Serisi", brandName: "Mercedes-Benz" }, { name: "GLC", brandName: "Mercedes-Benz" }, { name: "A Serisi", brandName: "Mercedes-Benz" }, { name: "A3", brandName: "Audi" }, { name: "A4", brandName: "Audi" }, { name: "Q5", brandName: "Audi" }, { name: "A6", brandName: "Audi" }, { name: "Golf", brandName: "Volkswagen" }, { name: "Passat", brandName: "Volkswagen" }, { name: "Tiguan", brandName: "Volkswagen" }, { name: "Polo", brandName: "Volkswagen" }, { name: "Focus", brandName: "Ford" }, { name: "Fiesta", brandName: "Ford" }, { name: "Kuga", brandName: "Ford" }, { name: "Mondeo", brandName: "Ford" }, { name: "i20", brandName: "Hyundai" }, { name: "i30", brandName: "Hyundai" }, { name: "Tucson", brandName: "Hyundai" }, { name: "Elantra", brandName: "Hyundai" }, { name: "Sportage", brandName: "Kia" }, { name: "Ceed", brandName: "Kia" }, { name: "Rio", brandName: "Kia" }, { name: "Stonic", brandName: "Kia" }, { name: "Clio", brandName: "Renault" }, { name: "Megane", brandName: "Renault" }, { name: "Captur", brandName: "Renault" }, { name: "Kadjar", brandName: "Renault" }, { name: "208", brandName: "Peugeot" }, { name: "308", brandName: "Peugeot" }, { name: "3008", brandName: "Peugeot" }, { name: "508", brandName: "Peugeot" }, { name: "Egea", brandName: "Fiat" }, { name: "500", brandName: "Fiat" }, { name: "Doblo", brandName: "Fiat" }, { name: "Fiorino", brandName: "Fiat" }, { name: "Octavia", brandName: "Skoda" }, { name: "Superb", brandName: "Skoda" }, { name: "Kodiaq", brandName: "Skoda" }, { name: "Fabia", brandName: "Skoda" }, { name: "Astra", brandName: "Opel" }, { name: "Corsa", brandName: "Opel" }, { name: "Insignia", brandName: "Opel" }, { name: "Crossland", brandName: "Opel" }, ];
-	const modelInsertData = modelsData.map(m => ({ name: m.name, brandId: brandMap.get(m.brandName) })).filter(m => m.brandId !== undefined);
-	await prisma.model.createMany({ data: modelInsertData, skipDuplicates: true });
-	const models = await prisma.model.findMany({ include: { brand: true } }); // Include brand here too
-	const modelMap = new Map(models.map(m => [`${m.brandId}-${m.name}`, m]));
-	console.log(`✅ ${models.length} model eklendi.`);
+	// Oluşturulan temel verileri al (ID'ler gerekecek)
+	const createdVehicleTypes = await prisma.vehicleType.findMany();
+	const createdBrands = await prisma.brand.findMany();
+	const createdTransmissionTypes = await prisma.transmissionType.findMany();
+	const createdColors = await prisma.color.findMany();
+	const createdContacts = await prisma.contact.findMany();
 
-	// Versiyonlar
-	console.log("📝 Versiyonlar ekleniyor...");
-	const versionsData = [ { name: "1.6 Vision", modelName: "Corolla", brandName: "Toyota" }, { name: "1.5 Dream", modelName: "Corolla", brandName: "Toyota" }, { name: "1.8 Hybrid Dream", modelName: "Corolla", brandName: "Toyota" }, { name: "1.5 Flame X-Pack", modelName: "Corolla", brandName: "Toyota" }, { name: "1.5 VTEC Turbo Elegance", modelName: "Civic", brandName: "Honda" }, { name: "1.6 i-DTEC Elegance", modelName: "Civic", brandName: "Honda" }, { name: "1.5 VTEC Turbo Executive+", modelName: "Civic", brandName: "Honda" }, { name: "320i Sedan M Sport", modelName: "3 Serisi", brandName: "BMW" }, { name: "318i Sedan Sport Line", modelName: "3 Serisi", brandName: "BMW" }, { name: "320d xDrive Sedan Luxury Line", modelName: "3 Serisi", brandName: "BMW" }, { name: "C 200 4MATIC AMG", modelName: "C Serisi", brandName: "Mercedes-Benz" }, { name: "C 180 Avantgarde", modelName: "C Serisi", brandName: "Mercedes-Benz" }, { name: "1.0 TSI Life", modelName: "Golf", brandName: "Volkswagen" }, { name: "1.5 eTSI R-Line", modelName: "Golf", brandName: "Volkswagen" }, { name: "1.0 TSI Impression", modelName: "Golf", brandName: "Volkswagen" }, { name: "1.5 Ti-VCT TrendX", modelName: "Focus", brandName: "Ford" }, { name: "1.0 EcoBoost Titanium", modelName: "Focus", brandName: "Ford" }, { name: "1.5 EcoBlue ST-Line", modelName: "Focus", brandName: "Ford" }, { name: "1.4 Fire Easy", modelName: "Egea", brandName: "Fiat" }, { name: "1.3 Multijet Urban", modelName: "Egea", brandName: "Fiat" }, { name: "1.6 Multijet Lounge", modelName: "Egea", brandName: "Fiat" }, { name: "1.0 TCe Joy", modelName: "Clio", brandName: "Renault" }, { name: "1.0 TCe Touch", modelName: "Clio", brandName: "Renault" }, { name: "1.3 TCe Icon", modelName: "Clio", brandName: "Renault" }, { name: "1.3 TCe Joy", modelName: "Megane", brandName: "Renault" }, { name: "1.5 Blue dCi Touch", modelName: "Megane", brandName: "Renault" }, { name: "1.3 TCe Icon", modelName: "Megane", brandName: "Renault" }, { name: "1.4 MPI Jump", modelName: "i20", brandName: "Hyundai" }, { name: "1.0 T-GDI Style", modelName: "i20", brandName: "Hyundai" }, { name: "1.4 MPI Elite", modelName: "i20", brandName: "Hyundai" }, ];
-	const versionInsertData = [];
-	for (const v of versionsData) {
-		const brandId = brandMap.get(v.brandName);
-		if (!brandId) continue;
-		const model = modelMap.get(`${brandId}-${v.modelName}`);
-		if (model) {
-			versionInsertData.push({ name: v.name, modelId: model.id });
+	const carType = createdVehicleTypes.find(vt => vt.name === 'Araba');
+	const motoType = createdVehicleTypes.find(vt => vt.name === 'Motosiklet');
+	const truckType = createdVehicleTypes.find(vt => vt.name === 'Kamyon');
+	const commercialType = createdVehicleTypes.find(vt => vt.name === 'Ticari Vasıta'); // Yeni tip
+
+	// --- 2. Yılları Vasıta Tiplerine Bağlayarak Oluşturma ---
+	console.log('Yıllar oluşturuluyor...');
+	const yearsToCreate = [];
+	if (carType) {
+		yearsToCreate.push(...Array.from({ length: 25 }, (_, i) => 2000 + i).map(y => ({ year: y, vehicleTypeId: carType.id }))); // Arabalar için 2000-2024
+	}
+	if (commercialType) {
+		yearsToCreate.push(...Array.from({ length: 20 }, (_, i) => 2005 + i).map(y => ({ year: y, vehicleTypeId: commercialType.id }))); // Ticari için 2005-2024
+	}
+	if (motoType) {
+		yearsToCreate.push(...Array.from({ length: 15 }, (_, i) => 2010 + i).map(y => ({ year: y, vehicleTypeId: motoType.id }))); // Motosiklet için 2010-2024
+	}
+	if (truckType) {
+		yearsToCreate.push(...Array.from({ length: 10 }, (_, i) => 2015 + i).map(y => ({ year: y, vehicleTypeId: truckType.id }))); // Kamyon için 2015-2024
+	}
+
+	await prisma.year.createMany({ data: yearsToCreate, skipDuplicates: true });
+	const years = await prisma.year.findMany(); // Oluşturulan tüm yılları al
+	console.log(`Oluşturulan toplam yıl sayısı: ${years.length}`);
+
+	// --- 3. Modelleri Marka, Yıl ve Vasıta Tipine Bağlayarak Oluşturma ---
+	console.log('Modeller oluşturuluyor...');
+	const modelsToCreate = [];
+
+	// Veri yapısı: { brandName, vehicleTypeName, modelName, years (opsiyonel, yoksa tüm uygun yıllar kullanılır) }
+	const modelDefinitions = [
+		// BMW (Araba)
+		{ brandName: 'BMW', vehicleTypeName: 'Araba', modelName: '3 Serisi' },
+		{ brandName: 'BMW', vehicleTypeName: 'Araba', modelName: '5 Serisi' },
+		{ brandName: 'BMW', vehicleTypeName: 'Araba', modelName: 'X5' }, // Yeni Model
+		{ brandName: 'BMW', vehicleTypeName: 'Araba', modelName: '1 Serisi' }, // Yeni Model
+
+		// Audi (Araba)
+		{ brandName: 'Audi', vehicleTypeName: 'Araba', modelName: 'A4' },
+		{ brandName: 'Audi', vehicleTypeName: 'Araba', modelName: 'A6' }, // Yeni Model
+		{ brandName: 'Audi', vehicleTypeName: 'Araba', modelName: 'Q7' }, // Yeni Model
+
+		// Mercedes (Araba)
+		{ brandName: 'Mercedes', vehicleTypeName: 'Araba', modelName: 'C Serisi' }, // Yeni Marka/Model
+		{ brandName: 'Mercedes', vehicleTypeName: 'Araba', modelName: 'E Serisi' }, // Yeni Marka/Model
+		{ brandName: 'Mercedes', vehicleTypeName: 'Araba', modelName: 'GLC' },    // Yeni Marka/Model
+
+		// Volkswagen (Araba)
+		{ brandName: 'Volkswagen', vehicleTypeName: 'Araba', modelName: 'Golf' },   // Yeni Marka/Model
+		{ brandName: 'Volkswagen', vehicleTypeName: 'Araba', modelName: 'Passat' }, // Yeni Marka/Model
+		{ brandName: 'Volkswagen', vehicleTypeName: 'Araba', modelName: 'Tiguan' }, // Yeni Marka/Model
+
+		// Toyota (Araba)
+		{ brandName: 'Toyota', vehicleTypeName: 'Araba', modelName: 'Corolla' }, // Yeni Marka/Model
+		{ brandName: 'Toyota', vehicleTypeName: 'Araba', modelName: 'RAV4' },  // Yeni Marka/Model
+
+		// Peugeot (Araba)
+		{ brandName: 'Peugeot', vehicleTypeName: 'Araba', modelName: '308' }, // Yeni Marka/Model
+		{ brandName: 'Peugeot', vehicleTypeName: 'Araba', modelName: '5008' },// Yeni Marka/Model
+
+		// Fiat (Araba & Ticari)
+		{ brandName: 'Fiat', vehicleTypeName: 'Araba', modelName: 'Egea' },    // Yeni Marka/Model
+		{ brandName: 'Fiat', vehicleTypeName: 'Ticari Vasıta', modelName: 'Doblo' }, // Yeni Ticari Model
+
+		// Renault (Araba & Ticari)
+		{ brandName: 'Renault', vehicleTypeName: 'Araba', modelName: 'Clio' },   // Yeni Marka/Model
+		{ brandName: 'Renault', vehicleTypeName: 'Ticari Vasıta', modelName: 'Kangoo' }, // Yeni Ticari Model
+
+		// Honda (Motosiklet)
+		{ brandName: 'Honda', vehicleTypeName: 'Motosiklet', modelName: 'CBR650R' },
+		{ brandName: 'Honda', vehicleTypeName: 'Motosiklet', modelName: 'NC750X' }, // Yeni Motosiklet
+
+		// Ford (Kamyon)
+		{ brandName: 'Ford', vehicleTypeName: 'Kamyon', modelName: 'F-150' },
+		{ brandName: 'Ford', vehicleTypeName: 'Ticari Vasıta', modelName: 'Transit' }, // Yeni Ticari Model
+	];
+
+	for (const def of modelDefinitions) {
+		const brand = createdBrands.find(b => b.name === def.brandName);
+		const vehicleType = createdVehicleTypes.find(vt => vt.name === def.vehicleTypeName);
+
+		if (brand && vehicleType) {
+			const suitableYears = years.filter(y => y.vehicleTypeId === vehicleType.id);
+
+			if (suitableYears.length > 0) {
+				for (const year of suitableYears) {
+					modelsToCreate.push({
+						name: def.modelName,
+						brandId: brand.id,
+						yearId: year.id,
+						vehicleTypeId: vehicleType.id,
+					});
+				}
+			} else {
+				console.warn(`Uygun yıl bulunamadı: Marka ${def.brandName}, Vasıta Tip ${def.vehicleTypeName}`);
+			}
 		} else {
-			console.warn(`⚠️ Model bulunamadı: ${v.brandName} - ${v.modelName}`);
+			console.warn(`Marka veya Vasıta Tipi bulunamadı: Marka ${def.brandName}, Vasıta Tip ${def.vehicleTypeName}`);
 		}
 	}
-	await prisma.version.createMany({ data: versionInsertData, skipDuplicates: true });
-	const versions = await prisma.version.findMany({ include: { model: { include: { brand: true } } } }); // Include model and brand
-	console.log(`✅ ${versions.length} versiyon eklendi.`);
 
-	// BodyTypeVersion ilişkileri
-	console.log("📝 Versiyon-Gövde tipi ilişkileri ekleniyor...");
-	const bodyTypeVersionInsertData = [];
-	for (const version of versions) {
-		// Ensure version.model exists before accessing name
-		if (!version.model) {
-			console.warn(`⚠️ Version ID ${version.id} için model bilgisi eksik, atlanıyor.`);
-			continue;
-		}
-		const modelName = version.model.name.toLowerCase();
-		let possibleBodyTypeIds = [];
-		// --- Body type assignment logic (same as before) ---
-		if (modelName.includes("corolla") || modelName.includes("civic") || modelName.includes("megane") || modelName.includes("egea") || modelName.includes("focus") || modelName.includes("astra") || modelName.includes("octavia") || modelName.includes("3 serisi") || modelName.includes("c serisi") || modelName.includes("a4") || modelName.includes("passat") || modelName.includes("mondeo") || modelName.includes("elantra") || modelName.includes("insignia") || modelName.includes("superb") || modelName.includes("508") || modelName.includes("5 serisi") || modelName.includes("a6") || modelName.includes("e serisi")) { possibleBodyTypeIds.push(bodyTypeMap.get("Sedan")); if (Math.random() > 0.3) possibleBodyTypeIds.push(bodyTypeMap.get("Station Wagon")); }
-		if (modelName.includes("golf") || modelName.includes("clio") || modelName.includes("polo") || modelName.includes("fiesta") || modelName.includes("corsa") || modelName.includes("fabia") || modelName.includes("i20") || modelName.includes("rio") || modelName.includes("208") || modelName.includes("a3") || modelName.includes("1 serisi") || modelName.includes("a serisi") || modelName.includes("ceed") || modelName.includes("308") || modelName.includes("yaris")) { possibleBodyTypeIds.push(bodyTypeMap.get("Hatchback")); }
-		if (modelName.includes("rav4") || modelName.includes("cr-v") || modelName.includes("tiguan") || modelName.includes("kuga") || modelName.includes("tucson") || modelName.includes("sportage") || modelName.includes("captur") || modelName.includes("kadjar") || modelName.includes("3008") || modelName.includes("kodiaq") || modelName.includes("crossland") || modelName.includes("q5") || modelName.includes("x3") || modelName.includes("glc") || modelName.includes("c-hr") || modelName.includes("x5") || modelName.includes("stonic")) { possibleBodyTypeIds.push(bodyTypeMap.get("SUV")); }
-		if (modelName.includes("doblo") || modelName.includes("fiorino")) { possibleBodyTypeIds.push(bodyTypeMap.get("MPV")); }
-		if (modelName.includes("500")) { possibleBodyTypeIds.push(bodyTypeMap.get("Hatchback")); if (Math.random() > 0.5) possibleBodyTypeIds.push(bodyTypeMap.get("Cabrio")); }
-		if (modelName.includes("3 serisi") || modelName.includes("c serisi")) { if (Math.random() > 0.8) possibleBodyTypeIds.push(bodyTypeMap.get("Coupe")); if (Math.random() > 0.9) possibleBodyTypeIds.push(bodyTypeMap.get("Cabrio")); }
-		// --- End Body type assignment ---
-		if (possibleBodyTypeIds.length === 0) {
-			const randomBodyType = getRandomElement(bodyTypes);
-			if (randomBodyType) possibleBodyTypeIds.push(randomBodyType.id);
-		}
-		possibleBodyTypeIds = [...new Set(possibleBodyTypeIds.filter(id => id !== undefined))];
-		for (const bodyTypeId of possibleBodyTypeIds) {
-			if(bodyTypeId) { // Ensure bodyTypeId is valid
-				bodyTypeVersionInsertData.push({ versionId: version.id, bodyTypeId: bodyTypeId });
+	// createMany kullanmak yerine, tek tek oluşturup döndürülen nesneleri topluyoruz
+	// createMany model oluşturup döndürmediği için ilişkilendirme zorlaşır
+	const models = [];
+	for(const modelData of modelsToCreate) {
+		try {
+			const createdModel = await prisma.model.create({ data: modelData });
+			models.push(createdModel);
+		} catch (error) {
+			if (error.code === 'P2002') { // Unique constraint violation
+				// console.log(`Model zaten mevcut, atlanıyor: ${modelData.name} (${modelData.yearId})`); // Çok fazla log olabilir
 			} else {
-				console.warn(`⚠️ Geçersiz bodyTypeId atlanıyor (Version ID: ${version.id})`);
+				console.error(`Model oluşturulurken hata:`, modelData, error);
 			}
 		}
 	}
-	await prisma.bodyTypeVersion.createMany({ data: bodyTypeVersionInsertData, skipDuplicates: true });
-	const bodyTypeVersions = await prisma.bodyTypeVersion.findMany({
-		include: { version: { include: { model: true } }, bodyType: true }, // Include necessary relations
+	console.log(`Oluşturulan model sayısı: ${models.length}`);
+
+
+	// --- 4. Alt Modelleri Modellere Bağlayarak Oluşturma ---
+	console.log('Alt modeller oluşturuluyor...');
+	const subModelsToCreate = [];
+
+	// Veri yapısı: { modelName, subModelNames: [] }
+	const subModelDefinitions = [
+		{ modelName: '1 Serisi', subModelNames: ['118i', '116d'] },
+		{ modelName: '3 Serisi', subModelNames: ['320i', '330e', '318d', 'M Sport'] },
+		{ modelName: '5 Serisi', subModelNames: ['520d', '530i', '530e', 'Luxury Line'] },
+		{ modelName: 'X5', subModelNames: ['xDrive40i', 'xDrive30d', 'M50i'] },
+		{ modelName: 'A4', subModelNames: ['A4 Sedan', 'A4 Avant', 'S Line'] },
+		{ modelName: 'A6', subModelNames: ['A6 Sedan', 'A6 Avant'] },
+		{ modelName: 'Q7', subModelNames: ['45 TDI', '50 TFSI'] },
+		{ modelName: 'C Serisi', subModelNames: ['C200', 'C220d', 'AMG Paket'] },
+		{ modelName: 'E Serisi', subModelNames: ['E200', 'E220d'] },
+		{ modelName: 'GLC', subModelNames: ['GLC 250', 'GLC 300d'] },
+		{ modelName: 'Golf', subModelNames: ['1.0 TSI', '1.5 TSI', '2.0 TDI', 'R-Line'] },
+		{ modelName: 'Passat', subModelNames: ['1.4 TSI', '1.6 TDI', '2.0 TSI'] },
+		{ modelName: 'Tiguan', subModelNames: ['1.4 TSI', '2.0 TDI'] },
+		{ modelName: 'Corolla', subModelNames: ['1.6 Benzin', '1.8 Hibrit', 'Dream', 'Flame'] },
+		{ modelName: 'RAV4', subModelNames: ['2.0 Benzin', '2.5 Hibrit'] },
+		{ modelName: '308', subModelNames: ['1.2 PureTech', '1.5 BlueHDi'] },
+		{ modelName: '5008', subModelNames: ['1.6 PureTech', '2.0 BlueHDi'] },
+		{ modelName: 'Egea', subModelNames: ['1.4 Fire', '1.3 MultiJet', '1.6 MultiJet', 'Urban', 'Lounge'] },
+		{ modelName: 'Doblo', subModelNames: ['1.3 MultiJet', '1.6 MultiJet'] },
+		{ modelName: 'Clio', subModelNames: ['1.0 SCe', '1.0 TCe', '1.5 Blue dCi'] },
+		{ modelName: 'Kangoo', subModelNames: ['1.5 Blue dCi', 'Expression'] },
+		{ modelName: 'CBR650R', subModelNames: ['Standart'] }, // Motosiklet alt model
+		{ modelName: 'NC750X', subModelNames: ['DCT', 'Manuel'] }, // Motosiklet alt model
+		{ modelName: 'F-150', subModelNames: ['Crew Cab', 'SuperCab', 'Raptor'] }, // Kamyon alt model
+		{ modelName: 'Transit', subModelNames: ['Connect', 'Custom', 'Büyük Kasa'] }, // Ticari Vasıta alt model
+	];
+
+	for (const model of models) {
+		const definition = subModelDefinitions.find(def => def.modelName === model.name);
+		if (definition) {
+			for (const subModelName of definition.subModelNames) {
+				subModelsToCreate.push({ name: subModelName, modelId: model.id });
+			}
+		}
+	}
+	const subModelsResult = await prisma.subModel.createMany({ data: subModelsToCreate, skipDuplicates: true });
+	const subModels = await prisma.subModel.findMany(); // Oluşturulan tüm alt modelleri al
+	console.log(`Oluşturulan toplam alt model sayısı: ${subModelsResult.count}`);
+
+
+	// --- 5. Gövde Tiplerini Alt Modellere Bağlayarak Oluşturma ---
+	console.log('Gövde tipleri oluşturuluyor...');
+	const bodyTypesToCreate = [];
+
+	// Veri yapısı: { subModelNames: [], bodyTypeNames: [] } veya { modelNames: [], bodyTypeNames: [] }
+	// Alt model bazında eşleşme daha spesifik olabilir
+	const bodyTypeDefinitions = [
+		{ subModelNames: ['A4 Sedan', 'A6 Sedan', 'C200', 'E200', 'Golf', 'Passat', 'Corolla', '308', 'Egea', 'Clio'], bodyTypeNames: ['Sedan'] },
+		{ subModelNames: ['A4 Avant', 'A6 Avant', '3 Serisi', '5 Serisi'], bodyTypeNames: ['Station Wagon', 'Touring'] }, // BMW'ye özel Touring de ekleyelim
+		{ subModelNames: ['X5', 'Q7', 'GLC', 'Tiguan', 'RAV4', '5008'], bodyTypeNames: ['SUV'] },
+		{ subModelNames: ['Golf', '308', 'Clio', '1 Serisi', 'Egea'], bodyTypeNames: ['Hatchback'] }, // Hatchback ekle
+		{ subModelNames: ['1 Serisi', '3 Serisi'], bodyTypeNames: ['Coupe'] }, // Coupe ekle (tüm alt modellere değil, modele bağlamak daha mantıklı olabilir ama şema alt modele bağlıyor)
+		{ subModelNames: ['CBR650R', 'NC750X'], bodyTypeNames: ['Spor', 'Naked'] }, // Motosiklet tipleri
+		{ subModelNames: ['F-150'], bodyTypeNames: ['Pickup'] }, // Kamyon tipi
+		{ subModelNames: ['Doblo', 'Kangoo', 'Transit'], bodyTypeNames: ['Panelvan', 'Minivan', 'Kamyonet'] }, // Ticari tipler
+	];
+
+	for (const subModel of subModels) {
+		const definition = bodyTypeDefinitions.find(def => def.subModelNames.includes(subModel.name) || def.subModelNames.includes(models.find(m => m.id === subModel.modelId)?.name || '')); // Alt modele veya model adına göre ara
+		if (definition) {
+			for (const bodyTypeName of definition.bodyTypeNames) {
+				// Aynı alt modele aynı bodyType'ı eklememek için kontrol yapalım (createMany skipDuplicates var ama emin olmak için)
+				bodyTypesToCreate.push({ name: bodyTypeName, subModelId: subModel.id });
+			}
+		}
+		// Generic Body Types for models not explicitly defined above (e.g., base trims)
+		// Bu kısım, yukarıdaki tanımlara girmeyen submodellere genel body type ekleyebilir
+		const model = models.find(m => m.id === subModel.modelId);
+		const vehicleType = createdVehicleTypes.find(vt => vt.id === model?.vehicleTypeId);
+		if (vehicleType?.name === 'Araba' && !definition) {
+			bodyTypesToCreate.push({ name: 'Sedan', subModelId: subModel.id }); // Varsayılan olarak Sedan ekle
+		} else if (vehicleType?.name === 'Motosiklet' && !definition) {
+			bodyTypesToCreate.push({ name: 'Diğer Motosiklet', subModelId: subModel.id });
+		} else if (vehicleType?.name === 'Kamyon' && !definition) {
+			bodyTypesToCreate.push({ name: 'Diğer Kamyon', subModelId: subModel.id });
+		}
+		else if (vehicleType?.name === 'Ticari Vasıta' && !definition) {
+			bodyTypesToCreate.push({ name: 'Diğer Ticari', subModelId: subModel.id });
+		}
+	}
+	const bodyTypesResult = await prisma.bodyType.createMany({
+		data: bodyTypesToCreate,
+		skipDuplicates: true, // Birden fazla eşleşme olursa veya manuel eklenenler çakışırsa
 	});
-	console.log(`✅ ${bodyTypeVersions.length} Versiyon-Gövde Tipi ilişkisi eklendi.`);
+	const bodyTypes = await prisma.bodyType.findMany(); // Oluşturulan tüm gövde tiplerini al
+	console.log(`Oluşturulan toplam gövde tipi sayısı: ${bodyTypesResult.count}`);
 
-	// FuelTypeBody ilişkileri
-	console.log("📝 Gövde-Yakıt ilişkileri ekleniyor...");
-	const fuelTypeBodyInsertData = [];
-	for (const btv of bodyTypeVersions) {
-		// Check if necessary relations exist
-		if (!btv || !btv.version || !btv.bodyType || !btv.version.model ) {
-			console.warn(`⚠️ BodyTypeVersion ID ${btv?.id} için eksik ilişki verisi, FuelTypeBody oluşturma atlanıyor.`);
-			continue;
-		}
-		let possibleFuelTypeIds = [];
-		const versionLower = btv.version.name.toLowerCase();
-		const bodyTypeLower = btv.bodyType.name.toLowerCase();
-		const modelNameLower = btv.version.model.name.toLowerCase();
-		// --- Fuel type assignment logic (same as before) ---
-		possibleFuelTypeIds.push(fuelTypeMap.get("Benzin"));
-		if (bodyTypeLower !== 'coupe' && bodyTypeLower !== 'cabrio' && bodyTypeLower !== 'roadster' && !versionLower.includes('tsi') && !versionLower.includes('tce') && !versionLower.includes('ecoboost') && !versionLower.includes('vtec') && Math.random() > 0.2) { possibleFuelTypeIds.push(fuelTypeMap.get("Dizel")); }
-		if (Math.random() > 0.6) { possibleFuelTypeIds.push(fuelTypeMap.get("Benzin+LPG")); }
-		if (versionLower.includes('hybrid') || versionLower.includes('etsi')) { possibleFuelTypeIds.push(fuelTypeMap.get("Hibrit")); possibleFuelTypeIds = possibleFuelTypeIds.filter(id => id !== fuelTypeMap.get("Dizel")); }
-		if (versionLower.includes('electric') || versionLower.includes('ev') || modelNameLower.includes('zoe') || modelNameLower.includes('kona electric')) { possibleFuelTypeIds = [fuelTypeMap.get("Elektrik")]; }
-		if (versionLower.includes('dci') || versionLower.includes('multijet') || versionLower.includes('ecoblue') || versionLower.includes('cdi') || versionLower.includes('dtec') || versionLower.includes('tdi') || versionLower.includes('20d') || versionLower.includes('bluehdi')) { possibleFuelTypeIds.push(fuelTypeMap.get("Dizel")); possibleFuelTypeIds = possibleFuelTypeIds.filter(id => id !== fuelTypeMap.get("Benzin+LPG")); }
-		// --- End Fuel type assignment ---
-		possibleFuelTypeIds = [...new Set(possibleFuelTypeIds.filter(id => id !== undefined))];
-		for (const fuelTypeId of possibleFuelTypeIds) {
-			if(fuelTypeId){ // Ensure fuelTypeId is valid
-				fuelTypeBodyInsertData.push({ bodyVersionId: btv.id, fuelTypeId });
-			} else {
-				console.warn(`⚠️ Geçersiz fuelTypeId atlanıyor (BodyTypeVersion ID: ${btv.id})`);
+
+	// --- 6. Yakıt Tiplerini Gövde Tiplerine Bağlayarak Oluşturma ---
+	console.log('Yakıt tipleri oluşturuluyor...');
+	const fuelTypesToCreate = [];
+
+	// Veri yapısı: { bodyTypeNames: [], fuelTypeNames: [] } veya { modelNames: [], fuelTypeNames: [] }
+	const fuelTypeDefinitions = [
+		{ bodyTypeNames: ['Sedan', 'Station Wagon', 'Touring', 'SUV', 'Hatchback', 'Coupe', 'Pickup', 'Panelvan', 'Minivan', 'Kamyonet'], fuelTypeNames: ['Benzin', 'Dizel', 'Hibrit', 'LPG'] }, // Genel yakıt tipleri
+		{ bodyTypeNames: ['Sedan', 'SUV', 'Hatchback'], fuelTypeNames: ['Elektrik'] }, // Bazı tiplere Elektrik ekle
+		{ bodyTypeNames: ['Spor', 'Naked', 'Diğer Motosiklet'], fuelTypeNames: ['Benzin'] }, // Motosiklet
+	];
+
+	for (const bodyType of bodyTypes) {
+		const definition = fuelTypeDefinitions.find(def => def.bodyTypeNames.includes(bodyType.name));
+		if (definition) {
+			for (const fuelTypeName of definition.fuelTypeNames) {
+				fuelTypesToCreate.push({ name: fuelTypeName, bodyTypeId: bodyType.id });
 			}
+		} else {
+			// Tanımlanmayan gövde tiplerine varsayılan yakıt tipi ekle
+			fuelTypesToCreate.push({ name: 'Benzin', bodyTypeId: bodyType.id });
 		}
 	}
-	await prisma.fuelTypeBody.createMany({ data: fuelTypeBodyInsertData, skipDuplicates: true });
-	// *** THIS IS THE CRITICAL QUERY *** Ensure it's exactly like this
-	const fuelTypeBodies = await prisma.fuelTypeBody.findMany({
+
+	const fuelTypesResult = await prisma.fuelType.createMany({
+		data: fuelTypesToCreate,
+		skipDuplicates: true,
+	});
+	const fuelTypes = await prisma.fuelType.findMany({ // Oluşturulan tüm yakıt tiplerini ilişkileriyle al
 		include: {
-			fuelType: true,         // Include FuelType
-			bodyVersion: {         // Include BodyTypeVersion
+			bodyType: {
 				include: {
-					bodyType: true, // Include BodyType from BodyTypeVersion
-					version: {       // Include Version from BodyTypeVersion
+					subModel: {
 						include: {
-							model: {       // Include Model from Version
+							model: {
 								include: {
-									brand: true  // <<<--- Include Brand from Model
+									brand: true,
+									year: true,
+									vehicleType: true,
 								}
 							}
 						}
@@ -171,343 +371,129 @@ async function main() {
 			}
 		}
 	});
-	console.log(`✅ ${fuelTypeBodies.length} Gövde-Yakıt ilişkisi eklendi.`);
-	if (fuelTypeBodies.length === 0 && fuelTypeBodyInsertData.length > 0) {
-		console.warn("⚠️ Uyarı: FuelTypeBody kayıtları eklendi ancak sorgu boş döndü. İlişki veya sorgu hatası olabilir.");
-	}
+	console.log(`Oluşturulan toplam yakıt tipi sayısı: ${fuelTypesResult.count}`);
 
 
-	// TransmissionTypeFuel ilişkileri
-	console.log("📝 Yakıt-Vites ilişkileri ekleniyor...");
-	const transmissionTypeFuelInsertData = [];
-	for (const ftb of fuelTypeBodies) {
+	// --- 7. Teklifleri Oluşturma ---
+	console.log('Teklifler oluşturuluyor...');
 
-		// --- DEBUGGING START (Kept from previous step) ---
-		if (!ftb) { console.error("❌ DEBUG: Mevcut 'ftb' objesi tanımsız."); continue; }
-		if (!ftb.bodyVersion) { console.error(`❌ DEBUG: 'ftb.bodyVersion' tanımsız. (ftb ID: ${ftb.id})`); continue; }
-		// Add check for bodyType within bodyVersion
-		if (!ftb.bodyVersion.bodyType) { console.error(`❌ DEBUG: 'ftb.bodyVersion.bodyType' tanımsız. (ftb ID: ${ftb.id}, bodyVersion ID: ${ftb.bodyVersion.id})`); continue; }
-		if (!ftb.bodyVersion.version) { console.error(`❌ DEBUG: 'ftb.bodyVersion.version' tanımsız. (ftb ID: ${ftb.id}, bodyVersion ID: ${ftb.bodyVersion.id})`); continue; }
-		if (!ftb.bodyVersion.version.model) { console.error(`❌ DEBUG: 'ftb.bodyVersion.version.model' tanımsız. (ftb ID: ${ftb.id}, version ID: ${ftb.bodyVersion.version.id})`); continue; }
-		if (!ftb.bodyVersion.version.model.brand) {
-			console.error(`❌ DEBUG: 'ftb.bodyVersion.version.model.brand' tanımsız. (ftb ID: ${ftb.id}, model ID: ${ftb.bodyVersion.version.model.id})`);
-			try { console.log("Problematic ftb object structure:", JSON.stringify(ftb, null, 2)); }
-			catch (stringifyError) { console.error("DEBUG: ftb objesi JSON.stringify ile loglanamadı."); }
-			continue;
-		}
-		// Check if name exists on the brand object
-		if (typeof ftb.bodyVersion.version.model.brand.name === 'undefined') {
-			console.error(`❌ DEBUG: 'ftb.bodyVersion.version.model.brand.name' tanımsız! (brand ID: ${ftb.bodyVersion.version.model.brand.id})`);
-			continue;
-		}
-		// Check fuelType name
-		if(!ftb.fuelType || typeof ftb.fuelType.name === 'undefined'){
-			console.error(`❌ DEBUG: 'ftb.fuelType.name' tanımsız! (ftb ID: ${ftb.id})`);
-			continue;
-		}
-		// Check version name
-		if(typeof ftb.bodyVersion.version.name === 'undefined'){
-			console.error(`❌ DEBUG: 'ftb.bodyVersion.version.name' tanımsız! (version ID: ${ftb.bodyVersion.version.id})`);
-			continue;
-		}
-		// --- DEBUGGING END ---
+	// Rastgele seçim için yardımcı fonksiyon
+	const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
+	const numberOfOffersToCreate = 200; // Oluşturulacak teklif sayısını artır
 
-		let possibleTransmissionIds = [];
-		const fuelTypeLower = ftb.fuelType.name.toLowerCase(); // Should be safe now
-		const versionLower = ftb.bodyVersion.version.name.toLowerCase(); // Should be safe now
+	for (let i = 0; i < numberOfOffersToCreate; i++) {
+		try {
+			// Teklif için bir zinciri en derin seviyeden (FuelType) başlayarak seç
+			const randomFuelTypeWithChain = getRandomItem(fuelTypes);
 
-		// --- More Robust Access for brandNameLower (Line ~223 original intent) ---
-		let brandNameLower = ''; // Default value
-		const brand = ftb.bodyVersion.version.model.brand; // We know brand exists from checks
-		// Ensure brand.name is accessible and a string before using toLowerCase()
-		if (brand && typeof brand.name === 'string') {
-			brandNameLower = brand.name.toLowerCase();
-		} else {
-			// Log if something unexpected happened despite earlier checks
-			console.warn(`⚠️ WARN: brand.name erişiminde sorun! ftb ID: ${ftb.id}, Brand: ${JSON.stringify(brand)}`);
-			// Assign a default or skip if critical
-			brandNameLower = 'unknown_brand'; // Assign a default to avoid downstream errors
-			// continue; // Or skip this record entirely if brand name is essential
-		}
-		// --- End Robust Access ---
-
-
-		// --- Transmission assignment logic (same as before) ---
-		if (fuelTypeLower === 'benzin' || fuelTypeLower === 'dizel' || fuelTypeLower === 'benzin+lpg') { possibleTransmissionIds.push(transmissionTypeMap.get("Manuel")); if (Math.random() > 0.3) possibleTransmissionIds.push(transmissionTypeMap.get("Otomatik")); if (Math.random() > 0.7 && fuelTypeLower === 'dizel') possibleTransmissionIds.push(transmissionTypeMap.get("Yarı Otomatik")); if ((brandNameLower.includes('volkswagen') || brandNameLower.includes('audi') || brandNameLower.includes('skoda') || brandNameLower.includes('seat')) && (versionLower.includes('tsi') || versionLower.includes('tfsi') || Math.random() > 0.7)) possibleTransmissionIds.push(transmissionTypeMap.get("DSG")); if ((brandNameLower.includes('bmw') || brandNameLower.includes('mercedes') || brandNameLower.includes('audi')) && Math.random() > 0.7) possibleTransmissionIds.push(transmissionTypeMap.get("Tiptronic")); }
-		if (fuelTypeLower === 'hibrit') { possibleTransmissionIds.push(transmissionTypeMap.get("Otomatik")); if (Math.random() > 0.4 || brandNameLower.includes("toyota")) possibleTransmissionIds.push(transmissionTypeMap.get("CVT")); }
-		if (fuelTypeLower === 'elektrik') { possibleTransmissionIds.push(transmissionTypeMap.get("Otomatik")); }
-		if (versionLower.includes('otomatik') || versionLower.includes('auto') || versionLower.includes('dsg') || versionLower.includes('cvt') || versionLower.includes('edc') || versionLower.includes('eat')) { possibleTransmissionIds.push(transmissionTypeMap.get("Otomatik")); if (versionLower.includes('dsg')) possibleTransmissionIds.push(transmissionTypeMap.get("DSG")); if (versionLower.includes('cvt')) possibleTransmissionIds.push(transmissionTypeMap.get("CVT")); if (possibleTransmissionIds.length > 1 && Math.random() > 0.2) { possibleTransmissionIds = possibleTransmissionIds.filter(id => id !== transmissionTypeMap.get("Manuel")); } }
-		// --- End Transmission assignment ---
-		possibleTransmissionIds = [...new Set(possibleTransmissionIds.filter(id => id !== undefined))];
-		if (possibleTransmissionIds.length === 0) {
-			const randomTransmission = getRandomElement(transmissionTypes);
-			if (randomTransmission) possibleTransmissionIds.push(randomTransmission.id);
-		}
-		for (const transmissionTypeId of possibleTransmissionIds) {
-			if(transmissionTypeId){ // Ensure transmissionTypeId is valid
-				transmissionTypeFuelInsertData.push({ fuelBodyId: ftb.id, transmissionTypeId });
-			} else {
-				console.warn(`⚠️ Geçersiz transmissionTypeId atlanıyor (FuelTypeBody ID: ${ftb.id})`);
-			}
-		}
-	}
-	await prisma.transmissionTypeFuel.createMany({ data: transmissionTypeFuelInsertData, skipDuplicates: true });
-	// Include necessary data for VehicleYear creation
-	const transmissionTypeFuels = await prisma.transmissionTypeFuel.findMany({
-		include: {
-			transmissionType: true, // Potentially useful later
-			// Include the chain again if needed by VehicleYear/Mileage logic, otherwise keep lean
-			// fuelBody: { include: { bodyVersion: { include: { version: { include: { model: { include: { brand: true } } } } } } } }
-		}
-	});
-	console.log(`✅ ${transmissionTypeFuels.length} Yakıt-Vites ilişkisi eklendi.`);
-
-
-	// Araç yılları
-	console.log("📝 Araç yılları ekleniyor...");
-	const currentYear = new Date().getFullYear();
-	const vehicleYearInsertData = [];
-	const startYear = currentYear - 15;
-	if (transmissionTypeFuels.length > 0) {
-		for (const ttf of transmissionTypeFuels) {
-			const numYears = Math.floor(Math.random() * 8) + 5;
-			for (let i = 0; i < numYears; i++) {
-				const year = currentYear - Math.floor(Math.random() * (currentYear - startYear + 1));
-				vehicleYearInsertData.push({ year, transmissionTypeFuelId: ttf.id });
-			}
-		}
-	} else {
-		console.warn("⚠️ Hiç TransmissionTypeFuel bulunamadı, Araç Yılları oluşturulamıyor.");
-	}
-	const uniqueVehicleYears = Array.from(new Map(vehicleYearInsertData.map(item => [`${item.transmissionTypeFuelId}-${item.year}`, item])).values());
-	if (uniqueVehicleYears.length > 0) {
-		await prisma.vehicleYear.createMany({ data: uniqueVehicleYears, skipDuplicates: true });
-	}
-	const vehicleYears = await prisma.vehicleYear.findMany();
-	console.log(`✅ ${vehicleYears.length} Araç yılı eklendi.`);
-
-
-	// Kilometre aralıkları
-	console.log("📝 Kilometre aralıkları ekleniyor...");
-	const mileageRanges = [ { minKm: 0, maxKm: 5000 }, { minKm: 5001, maxKm: 15000 }, { minKm: 15001, maxKm: 30000 }, { minKm: 30001, maxKm: 50000 }, { minKm: 50001, maxKm: 75000 }, { minKm: 75001, maxKm: 100000 }, { minKm: 100001, maxKm: 130000 }, { minKm: 130001, maxKm: 160000 }, { minKm: 160001, maxKm: 200000 }, { minKm: 200001, maxKm: 250000 }, { minKm: 250001, maxKm: 300000 }, { minKm: 300001, maxKm: 400000 } ];
-	const mileageInsertData = [];
-	if (vehicleYears.length > 0) {
-		for (const vy of vehicleYears) {
-			const age = currentYear - vy.year;
-			let relevantRanges = mileageRanges;
-			if (age <= 1) relevantRanges = mileageRanges.slice(0, 4);
-			else if (age <= 3) relevantRanges = mileageRanges.slice(0, 7);
-			else if (age <= 7) relevantRanges = mileageRanges.slice(2, 10);
-			else relevantRanges = mileageRanges.slice(5);
-			const selectedRanges = getRandomSubset(relevantRanges, 3, 5);
-			for (const range of selectedRanges) {
-				mileageInsertData.push({ minKm: range.minKm, maxKm: range.maxKm, vehicleYearId: vy.id });
-			}
-		}
-	} else {
-		console.warn("⚠️ Hiç VehicleYear bulunamadı, Kilometre Aralıkları oluşturulamıyor.");
-	}
-	const uniqueMileages = Array.from(new Map(mileageInsertData.map(item => [`${item.vehicleYearId}-${item.minKm}-${item.maxKm}`, item])).values());
-	if (uniqueMileages.length > 0) {
-		await prisma.mileage.createMany({ data: uniqueMileages, skipDuplicates: true });
-	}
-	const mileages = await prisma.mileage.findMany();
-	console.log(`✅ ${mileages.length} Kilometre kaydı eklendi.`);
-
-
-	// ColorMileage ilişkileri
-	console.log("📝 Renk-Kilometre ilişkileri ekleniyor...");
-	const colorMileageInsertData = [];
-	if (mileages.length > 0) {
-		for (const mileage of mileages) {
-			const numberOfColors = Math.floor(Math.random() * 4) + 2;
-			const selectedColors = getRandomSubset(colors, numberOfColors, numberOfColors);
-			for (const color of selectedColors) {
-				if(color && color.id){ // Ensure color is valid
-					colorMileageInsertData.push({ mileageId: mileage.id, colorId: color.id });
-				} else {
-					console.warn(`⚠️ Geçersiz renk objesi atlanıyor (Mileage ID: ${mileage.id})`);
-				}
-			}
-		}
-	} else {
-		console.warn("⚠️ Hiç Mileage bulunamadı, Renk-Kilometre ilişkileri oluşturulamıyor.");
-	}
-	const uniqueColorMileages = Array.from(new Map(colorMileageInsertData.map(item => [`${item.mileageId}-${item.colorId}`, item])).values());
-	if(uniqueColorMileages.length > 0) {
-		await prisma.colorMileage.createMany({ data: uniqueColorMileages, skipDuplicates: true });
-	}
-	const colorMileages = await prisma.colorMileage.findMany();
-	console.log(`✅ ${colorMileages.length} Renk-Kilometre ilişkisi eklendi.`);
-
-
-	// Kaza kayıtları
-	console.log("📝 Kaza kayıtları ekleniyor...");
-	const accidentRecordInsertData = [];
-	if (colorMileages.length > 0) {
-		for (const cm of colorMileages) {
-			const hasAccident = Math.random() > 0.65;
-			let amount = null;
-			if (hasAccident) {
-				amount = Math.floor(Math.random() * 49001) + 1000;
-				amount = Math.round(amount / 100) * 100;
-			}
-			accidentRecordInsertData.push({ status: hasAccident ? "Exists" : "None", amount: amount, colorMileageId: cm.id });
-		}
-		await prisma.accidentRecord.createMany({ data: accidentRecordInsertData });
-	} else {
-		console.warn("⚠️ Hiç ColorMileage bulunamadı, Kaza Kayıtları oluşturulamıyor.");
-	}
-	const accidentRecords = await prisma.accidentRecord.findMany();
-	console.log(`✅ ${accidentRecords.length} Kaza kaydı eklendi.`);
-
-
-	// Araçlar
-	console.log("📝 Araçlar ekleniyor...");
-	const vehicleInsertData = [];
-	const descriptions = [ "Çok temiz, sigara içilmemiş.", "Bakımları zamanında yetkili serviste yapıldı.", "İlk sahibinden, garaj arabası.", "Muayenesi yeni yapıldı.", "Masrafsız, dosta gider.", "Değişensiz, boyasız.", "Sadece tamponda lokal boya var.", "Aile aracı olarak kullanıldı.", "İçi dışı pırıl pırıl.", "Tramer kaydı sadece 1500 TL.", "Lastikleri yeni.", "Yakıt cimrisi.", "Performansı yüksek.", "Full+Full donanım." ];
-	const listingStatuses = ["Active", "Active", "Active", "Active", "Sold", "Pending", "Cancelled"];
-
-	if (accidentRecords.length > 0) {
-		// İlişkili verileri toplu çekelim
-		const detailedAccidentRecords = await prisma.accidentRecord.findMany({
-			// take: 5000, // Limit if needed
-			include: { // Include the full chain needed for pricing and description
-				colorMileage: {
-					include: {
-						color: true,
-						mileage: {
-							include: {
-								vehicleYear: {
-									include: {
-										transmissionTypeFuel: {
-											include: {
-												transmissionType: true,
-												fuelBody: {
-													include: {
-														fuelType: true,
-														bodyVersion: {
-															include: {
-																bodyType: true,
-																version: {
-																	include: {
-																		model: {
-																			include: {
-																				brand: true
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		});
-		console.log(`📝 ${detailedAccidentRecords.length} adet detaylı kaza kaydı üzerinden Araçlar oluşturuluyor...`);
-
-		for (const ar of detailedAccidentRecords) {
-			const cm = ar.colorMileage;
-			// Robust check for the entire data chain needed
-			if (!ar || !cm?.mileage?.vehicleYear?.transmissionTypeFuel?.fuelBody?.bodyVersion?.version?.model?.brand?.name || !cm?.mileage?.vehicleYear?.transmissionTypeFuel?.fuelBody?.bodyVersion?.bodyType?.name || !cm?.mileage?.vehicleYear?.transmissionTypeFuel?.fuelBody?.fuelType?.name || !cm?.mileage?.vehicleYear?.transmissionTypeFuel?.transmissionType?.name) {
-				console.warn(`❗️ Araç oluşturma için eksik veri zinciri. AccidentRecord ID: ${ar?.id}, ColorMileage ID: ${cm?.id}. Atlanıyor.`);
+			if (!randomFuelTypeWithChain || !randomFuelTypeWithChain.bodyType || !randomFuelTypeWithChain.bodyType.subModel || !randomFuelTypeWithChain.bodyType.subModel.model || !randomFuelTypeWithChain.bodyType.subModel.model.brand || !randomFuelTypeWithChain.bodyType.subModel.model.year || !randomFuelTypeWithChain.bodyType.subModel.model.vehicleType) {
+				console.warn(`Teklif için geçerli bir zincir oluşturulamadı (FuelType ile başlamadı veya ilişkiler eksik), Teklif ${i + 1} atlanıyor.`);
 				continue;
 			}
 
-			// Data extraction (should be safe now due to the check above)
-			const brandName = cm.mileage.vehicleYear.transmissionTypeFuel.fuelBody.bodyVersion.version.model.brand.name;
-			const modelName = cm.mileage.vehicleYear.transmissionTypeFuel.fuelBody.bodyVersion.version.model.name;
-			const year = cm.mileage.vehicleYear.year;
-			const mileageKm = cm.mileage.minKm + Math.floor(Math.random() * (cm.mileage.maxKm - cm.mileage.minKm + 1));
-			const bodyType = cm.mileage.vehicleYear.transmissionTypeFuel.fuelBody.bodyVersion.bodyType.name;
-			const fuelType = cm.mileage.vehicleYear.transmissionTypeFuel.fuelBody.fuelType.name;
-			const transmissionType = cm.mileage.vehicleYear.transmissionTypeFuel.transmissionType.name;
+			const fuelType = randomFuelTypeWithChain;
+			const bodyType = fuelType.bodyType;
+			const subModel = bodyType.subModel;
+			const model = subModel.model;
+			const brand = model.brand;
+			const year = model.year; // Model zaten yıla bağlı
+			const vehicleType = model.vehicleType; // Model zaten vasıta tipine bağlı
 
+			const randomTransmission = getRandomItem(createdTransmissionTypes);
+			const randomColor = getRandomItem(createdColors);
+			const randomContact = getRandomItem(createdContacts);
 
-			// --- Fiyat Hesaplama (Aynı mantık) ---
-			let basePrice = 300000;
-			if (["BMW", "Mercedes-Benz", "Audi"].includes(brandName)) basePrice *= 1.8; else if (["Volkswagen", "Honda"].includes(brandName)) basePrice *= 1.3; else if (["Toyota", "Skoda"].includes(brandName)) basePrice *= 1.1; else if (["Fiat", "Renault", "Hyundai", "Kia", "Peugeot", "Opel"].includes(brandName)) basePrice *= 0.9;
-			const age = Math.max(0, currentYear - year);
-			basePrice *= Math.pow(0.92, age);
-			basePrice *= Math.pow(0.985, mileageKm / 10000);
-			if (bodyType === 'SUV') basePrice *= 1.15; else if (bodyType === 'Coupe' || bodyType === 'Cabrio') basePrice *= 1.1; else if (bodyType === 'Station Wagon' || bodyType === 'MPV') basePrice *= 0.95;
-			if (fuelType === 'Hibrit') basePrice *= 1.1; else if (fuelType === 'Elektrik') basePrice *= 1.2; else if (fuelType === 'Dizel') basePrice *= 1.05; else if (fuelType === 'LPG' || fuelType === 'Benzin+LPG') basePrice *= 0.98;
-			if (!['Manuel'].includes(transmissionType)) basePrice *= 1.08; if (['DSG', 'CVT', 'Tiptronic'].includes(transmissionType)) basePrice *= 1.03;
-			if (ar.status === "Exists" && ar.amount) { const priceRatio = basePrice > 0 ? ar.amount / basePrice : 1; const accidentFactor = Math.min(0.5, priceRatio); basePrice *= (1 - accidentFactor * 0.8); }
-			basePrice *= (1 + (Math.random() - 0.5) * 0.1);
-			const finalPrice = Math.max(75000, Math.round(basePrice / 1000) * 1000);
-			// --- End Fiyat Hesaplama ---
+			const statuses = Object.values(OfferStatus);
+			const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
 
-			const description = `${year} ${brandName} ${modelName} - ${getRandomElement(descriptions)}`;
-			const listingStatus = getRandomElement(listingStatuses);
+			const damageStatuses = Object.values(DamageRecordStatus);
+			const randomDamageStatus = getRandomItem(damageStatuses);
+			const damageAmount = randomDamageStatus === DamageRecordStatus.EXISTS ? parseFloat(faker.finance.amount(500, 100000, 2)) : null; // Daha geniş hasar aralığı
 
-			vehicleInsertData.push({ price: finalPrice, description: description, listingStatus: listingStatus, accidentRecordId: ar.id, });
-		}
-	} else {
-		console.warn("⚠️ Hiç AccidentRecord bulunamadı, Araçlar oluşturulamıyor.");
-	}
+			const mileage = faker.number.int({ min: 1000, max: 500000 }); // Daha geniş kilometre aralığı
 
-	let createdVehicleCount = 0;
-	if (vehicleInsertData.length > 0) {
-		console.log(`📝 ${vehicleInsertData.length} araç verisi ekleniyor...`);
-		// Insert vehicles one by one with error handling
-		for (const data of vehicleInsertData) {
-			try {
-				await prisma.vehicle.create({ data });
-				createdVehicleCount++;
-			} catch (error) {
-				console.error(`❌ Araç eklenirken hata (AccidentRecordId: ${data.accidentRecordId}):`, error.message);
+			// Teklif tutarını aracın yaşına, kilometresine ve hasarına göre kabaca belirleme
+			let basePrice = 100000; // Başlangıç değeri
+			if (vehicleType.name === 'Motosiklet') basePrice = 50000;
+			if (vehicleType.name === 'Kamyon') basePrice = 300000;
+			if (vehicleType.name === 'Ticari Vasıta') basePrice = 150000;
+
+			// Marka/Modele göre baz fiyatı artır/azalt
+			if (brand.name === 'BMW' || brand.name === 'Audi' || brand.name === 'Mercedes') basePrice *= 1.5;
+			if (brand.name === 'Fiat' || brand.name === 'Renault') basePrice *= 0.8;
+
+			// Yıla göre fiyat düşüşü (daha eski ise düşer)
+			const currentYear = new Date().getFullYear();
+			const age = currentYear - year.year;
+			basePrice *= (1 - age * 0.03); // Her yıl için %3 değer kaybı varsayalım
+
+			// Kilometreye göre fiyat düşüşü
+			basePrice *= (1 - mileage / 500000 * 0.4); // 500k km'de %40 değer kaybı varsayalım
+
+			// Hasar miktarına göre düşüş
+			if (damageAmount !== null) {
+				basePrice -= damageAmount * 0.8; // Hasarın %80'i kadar düşüş
 			}
+
+			// Fiyatın negatif olmaması ve minimum bir değerin altına düşmemesi
+			basePrice = Math.max(basePrice, 5000); // Minimum 5000 TL olsun
+
+			// Duruma göre teklif tutarı atama
+			let offerAmount = null;
+			if (randomStatus === OfferStatus.OFFERED || randomStatus === OfferStatus.ACCEPTED || randomStatus === OfferStatus.COMPLETED) {
+				offerAmount = parseFloat(faker.finance.amount(basePrice * 0.8, basePrice * 1.1, 2)); // Hesaplanan fiyatın %80 - %110'u arası teklif
+			}
+
+
+			await prisma.offer.create({
+				data: {
+					vehicleTypeId: vehicleType.id,
+					yearId: year.id,
+					brandId: brand.id,
+					modelId: model.id,
+					subModelId: subModel.id,
+					bodyTypeId: bodyType.id,
+					fuelTypeId: fuelType.id,
+					transmissionTypeId: randomTransmission.id,
+					colorId: randomColor.id,
+					mileage: mileage,
+					damageRecord: randomDamageStatus,
+					damageAmount: damageAmount,
+					contactId: randomContact.id,
+					notes: faker.lorem.sentence(), // Faker ile rastgele not
+					images: Array.from({ length: faker.number.int({ min: 1, max: 4 }) }).map(() => faker.image.urlPicsumPhotos({ width: 640, height: 480 })), // Faker ile rastgele resim URL'leri
+					status: randomStatus,
+					adminNotes: randomStatus !== OfferStatus.PENDING ? faker.lorem.sentence() : null, // Teklif bekliyorsa admin notu olmasın
+					offerAmount: offerAmount,
+					// createdAt ve updatedAt Prisma tarafından otomatik yönetilir
+				},
+			});
+		} catch (error) {
+			console.error(`Teklif oluşturulurken hata (Teklif ${i + 1}): ${error.message}`);
+			// Çok sık hata alıyorsanız buraya breakpoint koyup hatanın kaynağını araştırabilirsiniz.
+			// Örneğin, belirli bir ID'nin bulunamaması gibi.
 		}
 	}
+	console.log(`Oluşturulması denenen teklif sayısı: ${numberOfOffersToCreate}`);
+	const createdOffers = await prisma.offer.count();
+	console.log(`Başarıyla oluşturulan teklif sayısı: ${createdOffers}`);
 
-	console.log(`✅ ${createdVehicleCount} Araç başarıyla eklendi.`);
-	if(vehicleInsertData.length > 0) {
-		console.log(`⚠️ ${vehicleInsertData.length - createdVehicleCount} araç eklenirken hata oluştu.`);
-	}
 
-	console.log("✅ Seed işlemi başarıyla tamamlandı!");
+	console.log('Veri ekleme tamamlandı.');
 }
 
-async function clearDatabase() {
-	console.log("🗑️ Veritabanı temizleniyor (Önce bağımlı tablolar)...");
-	// Delete order is critical due to relations
-	await prisma.vehicleOffer.deleteMany({});
-	await prisma.vehicle.deleteMany({});
-	await prisma.accidentRecord.deleteMany({});
-	await prisma.colorMileage.deleteMany({});
-	await prisma.mileage.deleteMany({});
-	await prisma.vehicleYear.deleteMany({});
-	await prisma.transmissionTypeFuel.deleteMany({});
-	await prisma.fuelTypeBody.deleteMany({});
-	await prisma.bodyTypeVersion.deleteMany({});
-	// Delete main types after dependent join tables
-	await prisma.color.deleteMany({});
-	await prisma.transmissionType.deleteMany({});
-	await prisma.fuelType.deleteMany({});
-	await prisma.bodyType.deleteMany({});
-	await prisma.version.deleteMany({});
-	await prisma.model.deleteMany({});
-	await prisma.brand.deleteMany({});
-	console.log("🗑️ Veritabanı temizlendi.");
+async function main() {
+	await clearDatabase();
+	await seedData();
 }
 
-// main fonksiyonunu çağır ve promise'i handle et
 main()
-	.then(async () => {
-		await prisma.$disconnect();
-	})
-	.catch(async (e) => {
-		console.error("💥 Seed işlemi sırasında kritik hata oluştu:", e); // Changed emoji for critical error
-		await prisma.$disconnect();
+	.catch((e) => {
+		console.error('Çalışma sırasında hata oluştu:', e);
 		process.exit(1);
+	})
+	.finally(async () => {
+		await prisma.$disconnect();
+		console.log('Prisma client bağlantısı kapatıldı.');
 	});
