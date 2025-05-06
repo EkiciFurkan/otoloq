@@ -1,44 +1,24 @@
-// src/components/VehicleSelector/steps/BrandSelector.tsx
-
 import React, { useEffect, useState } from "react";
-import { useStepperContext } from "../StepperContext";
+import { useStepperContext, BrandOption } from "../StepperContext";
 import "../styles/StepperContainer.css";
 
-interface BrandOption {
-	id: number;
-	name: string;
-}
-
-interface YearOption {
-	id: number;
-	year: number;
-	vehicleTypeId: number;
-}
 
 export function BrandSelector() {
-	// updateSelection hook'tan geliyor, stabil olması beklenir
 	const { selections, updateSelection } = useStepperContext();
 	const [brands, setBrands] = useState<BrandOption[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
-		// Vasıta tipi veya yıl değiştiğinde veya component mount olduğunda
-		// state'leri sıfırla
-		setBrands([]); // Önceki markaları temizle
-		// updateSelection("brand", undefined); // <-- BU SATIR KALDIRILDI
+		setBrands([]);
 		setLoading(true);
-		setError(null); // Önceki hataları temizle
+		setError(null);
 
-		// Hem vasıta tipi hem de yıl seçilmediyse, fetch yapma
 		if (!selections.vehicleType || !selections.year) {
-			setLoading(false); // Yükleniyor durumunu kapat
-			// updateSelection("brand", undefined); // <-- BURADA DA OLMAMALI
-			return; // Gerekli seçimler yapılmadıysa çık
+			setLoading(false);
+			return;
 		}
 
-		// API çağrısı async fonksiyonu
-		// Bu fonksiyon vehicleTypeId ve yılın değerini (number) kabul edecek
 		const fetchBrands = async (vehicleTypeId: number, year: number) => {
 			try {
 				const response = await fetch(`/api/brands?vehicleTypeId=${vehicleTypeId}&year=${year}`);
@@ -59,24 +39,20 @@ export function BrandSelector() {
 			}
 		};
 
-		// Vasıta tipi ve yıl seçildiyse veriyi çek
 		fetchBrands(selections.vehicleType.id, selections.year.year);
 
-		// Bağımlılık listesinden updateSelection'ı çıkardık
-		// Çünkü çağrılması sonsuz döngüye neden oluyor
-	}, [selections.vehicleType, selections.year]); // useEffect sadece selections.vehicleType veya selections.year değiştiğinde çalışacak
+	}, [selections.vehicleType, selections.year]);
 
 	const handleSelect = (brand: BrandOption) => {
 		updateSelection("brand", brand);
 	};
 
 	if (!selections.vehicleType || !selections.year) {
-		if (!loading) {
+		if (!loading) { // Yükleniyor değilse mesajı göster
 			return <div className="message">Lütfen önce vasıta tipi ve yıl seçin.</div>;
 		}
 		return null;
 	}
-
 
 	if (loading) {
 		return <div className="message">Yükleniyor...</div>;

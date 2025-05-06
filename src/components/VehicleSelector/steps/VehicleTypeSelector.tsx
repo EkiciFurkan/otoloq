@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useStepperContext } from "../StepperContext";
+import { useStepperContext, VehicleTypeOption } from "../StepperContext"; 
 
 import "../styles/StepperContainer.css";
 
-interface VehicleType {
-	id: number;
-	name: string;
-}
-
 export function VehicleTypeSelector() {
 	const { selections, updateSelection } = useStepperContext();
-	const [vehicleTypes, setVehicleTypes] = useState<VehicleType[]>([]);
+	const [vehicleTypes, setVehicleTypes] = useState<VehicleTypeOption[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
@@ -18,34 +13,30 @@ export function VehicleTypeSelector() {
 		const fetchVehicleTypes = async () => {
 			try {
 				setLoading(true);
-				// Doğrudan sunucu tarafındaki API route'a istek at
-				const response = await fetch('/api/vehicleTypes'); // Oluşturduğumuz API route'un URL'si
+				const response = await fetch('/api/vehicleTypes');
 
 				if (!response.ok) {
-					// HTTP hata kodlarını kontrol et
 					throw new Error(`HTTP hata! Status: ${response.status}`);
 				}
 
-				const data = await response.json(); // JSON yanıtını parse et
+				const data = await response.json();
 				setVehicleTypes(data);
-				setError(null); // Başarılı olursa hatayı temizle
-			} catch (err: any) { // Hata tipini any olarak belirledim, dilerseniz daha spesifik yapabilirsiniz
+				setError(null);
+			} catch (err: any) {
 				console.error("Veri çekilirken hata oluştu:", err);
-				// Kullanıcıya gösterilecek hatayı ayarla
 				setError("Vasıta tipleri yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
 			} finally {
-				setLoading(false); // Yükleniyor durumunu sonlandır
+				setLoading(false);
 			}
 		};
 
 		fetchVehicleTypes();
-	}, []); // useEffect sadece component mount edildiğinde çalışacak
+	}, []);
 
-	const handleSelect = (vehicleType: VehicleType) => {
+	const handleSelect = (vehicleType: VehicleTypeOption) => {
 		updateSelection("vehicleType", vehicleType);
 	};
 
-	// İkon class'ını belirleyen yardımcı fonksiyon (değişmedi)
 	const getIconClass = (name: string): string => {
 		const lowerName = name.toLowerCase();
 		if (lowerName.includes("otomobil") || lowerName.includes("araba")) {
@@ -55,7 +46,6 @@ export function VehicleTypeSelector() {
 		} else if (lowerName.includes("traktör")) {
 			return "fa-tractor";
 		} else {
-			// Varsayılan ikon
 			return "fa-car";
 		}
 	};

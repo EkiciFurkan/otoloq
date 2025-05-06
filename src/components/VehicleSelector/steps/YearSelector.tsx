@@ -1,43 +1,33 @@
 // src/components/VehicleSelector/steps/YearSelector.tsx
-
 import React, { useEffect, useState } from "react";
-import { useStepperContext } from "../StepperContext";
+// useStepperContext, YearOption ve VehicleTypeOption'ı import ettik
+import { useStepperContext, YearOption } from "../StepperContext";
+
 import "../styles/StepperContainer.css";
 
-interface YearOption {
-	id: number;
-	year: number;
-	vehicleTypeId: number; // API'den gelecek veri bu yapıda olmalı
-}
+// Burada tanımlı olan interface kaldırıldı, StepperContext'ten gelen kullanılacak
+
 
 export function YearSelector() {
-	// updateSelection fonksiyonu hook'tan geliyor, stabil olması beklenir
 	const { selections, updateSelection } = useStepperContext();
+	// useState tipi YearOption[] olarak güncellendi
 	const [years, setYears] = useState<YearOption[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
-		// Vasıta tipi değiştiğinde veya component mount olduğunda
-		// loading state'ini ayarla ve önceki hataları temizle
 		setLoading(true);
-		setError(null); // Önceki hataları temizle
+		setError(null);
 
-		// Önemli: Burada setYears([]) ve updateSelection("year", undefined) çağrılarını kaldırdık
-		// setYears([]) çağrısını isteğe bağlı olarak, fetch başlamadan hemen önce ekleyebilirsiniz
-		// ancak updateSelection("year", undefined) kesinlikle burada olmamalı.
-
+		// selections.vehicleType null ise fetch yapma
 		if (!selections.vehicleType) {
-			setYears([]); // Vasıta tipi seçilmemişse listeyi boşalt
-			setLoading(false); // Yükleniyor durumunu kapat
-			// updateSelection("year", undefined) çağrısı burada da olmamalı
-			return; // Vasıta tipi seçilmediyse daha fazla ilerleme
+			setYears([]);
+			setLoading(false);
+			return;
 		}
 
 		const fetchYears = async (vehicleTypeId: number) => {
-			// Fetch başlamadan önce state'i sıfırlamak iyi bir pratik olabilir
-			setYears([]); // Yeni fetch başlamadan mevcut yılları temizle
-			// updateSelection("year", undefined); // Seçili yılı temizlemek başka bir yerde yapılmalı
+			setYears([]);
 
 			try {
 				const response = await fetch(`/api/years?vehicleTypeId=${vehicleTypeId}`);
@@ -47,36 +37,38 @@ export function YearSelector() {
 				}
 
 				const data = await response.json();
+				// API'den gelen veri YearOption[] yapısına uygun olmalı (id, year alanları olmalı)
+				// Eğer API'den vehicleTypeId gibi ek alanlar geliyorsa,
+				// useState<YearOption[]> tipi sadece id ve year alanlarını kullanacaktır, bu sorun yaratmaz.
 				setYears(data);
 				setError(null);
 			} catch (err: any) {
 				console.error("Yıllar çekilirken hata oluştu:", err);
 				setError("Yıllar yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
-				setYears([]); // Hata durumunda yılları boşalt
+				setYears([]);
 			} finally {
 				setLoading(false);
 			}
 		};
 
-		// Vasıta tipi seçildiyse veriyi çek
+		// selections.vehicleType null değilse fetch yap
+		// VehicleTypeOption interface'i sayesinde selections.vehicleType'ın id özelliği olduğunu biliyoruz
 		fetchYears(selections.vehicleType.id);
 
-		// Bağımlılık listesinden updateSelection'ı çıkardık
-	}, [selections.vehicleType]); // useEffect sadece selections.vehicleType değiştiğinde çalışacak
+	}, [selections.vehicleType]);
 
+	// handleSelect parametre tipi YearOption olarak güncellendi
 	const handleSelect = (year: YearOption) => {
 		updateSelection("year", year);
 	};
 
+	// Vasıta tipi seçilmemişse mesaj göster
 	if (!selections.vehicleType) {
-		// Vasıta tipi seçilmemişse ve yüklenmiyor durumu bittiyse mesaj göster
 		if (!loading) {
 			return <div className="message">Lütfen önce bir vasıta tipi seçin.</div>;
 		}
-		// Vasıta tipi seçilmemiş ama hala loading=true ise (olmamalı ama kontrol)
-		return null; // Ya da boş bir şey dön
+		return null;
 	}
-
 
 	if (loading) {
 		return <div className="message">Yükleniyor...</div>;
@@ -86,8 +78,6 @@ export function YearSelector() {
 		return <div className="message error">{error}</div>;
 	}
 
-	// Eğer vasıta tipi seçili, yükleme bitti ve hata yoksa listeyi göster
-	// API'den boş dizi gelirse de burası çalışır ve boş liste gösterilir
 	return (
 		<div className="selector-container">
 			{years.map((year) => (

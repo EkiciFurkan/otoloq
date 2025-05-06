@@ -1,37 +1,24 @@
-// src/components/VehicleSelector/steps/ModelSelector.tsx
-
 import React, { useEffect, useState } from "react";
-import { useStepperContext } from "../StepperContext";
+import { useStepperContext, ModelOption } from "../StepperContext";
+
 import "../styles/StepperContainer.css";
 
-interface ModelOption {
-	id: number;
-	name: string;
-}
-
 export function ModelSelector() {
-	// updateSelection hook'tan geliyor, stabil olması beklenir
 	const { selections, updateSelection } = useStepperContext();
 	const [models, setModels] = useState<ModelOption[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
-		// Seçimler değiştiğinde state'leri sıfırla
-		setModels([]); // Önceki modelleri temizle
-		// updateSelection("model", undefined); // <-- BU SATIR KALDIRILDI
+		setModels([]);
 		setLoading(true);
-		setError(null); // Önceki hataları temizle
+		setError(null);
 
-		// Vasıta tipi, yıl veya marka seçilmediyse, fetch yapma
 		if (!selections.vehicleType || !selections.year || !selections.brand) {
-			setLoading(false); // Yükleniyor durumunu kapat
-			// updateSelection("model", undefined); // <-- BURADA DA OLMAMALI
-			return; // Gerekli seçimler yapılmadıysa çık
+			setLoading(false);
+			return;
 		}
 
-		// API çağrısı async fonksiyonu
-		// Bu fonksiyon vehicleTypeId, yearId ve brandId kabul edecek
 		const fetchModels = async (vehicleTypeId: number, yearId: number, brandId: number) => {
 			try {
 				const response = await fetch(`/api/models?vehicleTypeId=${vehicleTypeId}&yearId=${yearId}&brandId=${brandId}`);
@@ -52,19 +39,16 @@ export function ModelSelector() {
 			}
 		};
 
-		// Vasıta tipi, yıl ve marka seçildiyse veriyi çek
 		fetchModels(selections.vehicleType.id, selections.year.id, selections.brand.id);
 
-		// Bağımlılık listesinden updateSelection'ı çıkardık
-	}, [selections.vehicleType, selections.year, selections.brand]); // Bağımlılıklar, seçim objelerinden herhangi biri değiştiğinde tetiklenir
+	}, [selections.vehicleType, selections.year, selections.brand]);
 
 	const handleSelect = (model: ModelOption) => {
 		updateSelection("model", model);
 	};
 
-	// Gerekli seçimlerin yapılmadığı durumu kontrol et
 	if (!selections.vehicleType || !selections.year || !selections.brand) {
-		if (!loading) { // Eğer loading false ise
+		if (!loading) {
 			return <div className="message">Lütfen önce vasıta tipi, yıl ve marka seçin.</div>;
 		}
 		return null;

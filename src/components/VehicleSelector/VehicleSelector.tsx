@@ -1,6 +1,5 @@
 "use client"
 
-// src/components/VehicleSelector/VehicleSelector.tsx
 import React, { useState } from "react";
 import { StepperContainer } from "./StepperContainer";
 import { VehicleTypeSelector } from "./steps/VehicleTypeSelector";
@@ -9,21 +8,31 @@ import "./styles/StepperContainer.css";
 
 import { BrandSelector } from "./steps/BrandSelector";
 import { ModelSelector } from "./steps/ModelSelector";
+import { SubModelSelector } from "./steps/SubModelSelector";
 
-/*import { SubModelSelector } from "./steps/SubModelSelector";
+
 import { BodyTypeSelector } from "./steps/BodyTypeSelector";
+
 import { FuelTypeSelector } from "./steps/FuelTypeSelector";
-import { TransmissionSelector } from "./steps/TransmissionSelector";
+
+import { TransmissionTypeSelector } from "./steps/TransmissionSelector";
+
 import { ColorSelector } from "./steps/ColorSelector";
+/*
 import { VehicleDetailsForm } from "./steps/VehicleDetailsForm";
 import { ContactForm } from "./steps/ContactForm";
 import { Summary } from "./steps/Summary";
 */
 
-import { StepperContext } from "./StepperContext";
+import { StepperContext, VehicleSelections, StepperContextType } from "./StepperContext";
+import {MileageForm} from "@/components/VehicleSelector/forms/MileageForm";
+import {DamageRecordForm} from "@/components/VehicleSelector/forms/DamageRecordForm";
+import {ContactForm} from "@/components/VehicleSelector/forms/ContactForm";
+import {VehicleDetailsForm} from "@/components/VehicleSelector/forms/VehicleDetailsForm";
+
 
 export function VehicleSelector() {
-	const [selections, setSelections] = useState({
+	const [selections, setSelections] = useState<VehicleSelections>({
 		vehicleType: null,
 		year: null,
 		brand: null,
@@ -43,7 +52,7 @@ export function VehicleSelector() {
 
 	const [activeStep, setActiveStep] = useState(0);
 
-	const updateSelection = (key: string, value: any) => {
+	const updateSelection = <K extends keyof VehicleSelections>(key: K, value: VehicleSelections[K]) => {
 		setSelections((prev) => ({ ...prev, [key]: value }));
 
 		if (key === "vehicleType") {
@@ -119,12 +128,12 @@ export function VehicleSelector() {
 			label: "Model",
 			component: <ModelSelector />
 		},
-		/*{
+		{
 			label: "Alt Model",
-			component: <SubModelSelector />
+			component: <SubModelSelector/>
 		},
 		{
-			label: "Kasa Tipi",
+			label: "Gövde Tipi",
 			component: <BodyTypeSelector />
 		},
 		{
@@ -132,38 +141,42 @@ export function VehicleSelector() {
 			component: <FuelTypeSelector />
 		},
 		{
-			label: "Vites",
-			component: <TransmissionSelector />
+			label: "Vites Tipi",
+			component: <TransmissionTypeSelector />
 		},
 		{
 			label: "Renk",
 			component: <ColorSelector />
 		},
 		{
-			label: "Araç Detayları",
-			component: <VehicleDetailsForm />
+			label: "Kilometre",
+			component: <MileageForm />
+		},
+		{
+			label: "Tramer Kaydı",
+			component: <DamageRecordForm />
 		},
 		{
 			label: "İletişim Bilgileri",
 			component: <ContactForm />
 		},
 		{
-			label: "Özet",
-			component: <Summary />
-		}*/
+			label: "Ek Bilgiler",
+			component: <VehicleDetailsForm />
+		}
 	];
 
+	const contextValue: StepperContextType = {
+		selections,
+		updateSelection,
+		activeStep,
+		nextStep,
+		prevStep,
+		steps
+	};
+
 	return (
-		<StepperContext.Provider
-			value={{
-				selections,
-				updateSelection,
-				activeStep,
-				nextStep,
-				prevStep,
-				steps
-			}}
-		>
+		<StepperContext.Provider value={contextValue}>
 			<StepperContainer />
 		</StepperContext.Provider>
 	);
