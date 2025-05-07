@@ -30,6 +30,7 @@ import {DamageRecordForm} from "@/components/VehicleSelector/forms/DamageRecordF
 import {ContactForm} from "@/components/VehicleSelector/forms/ContactForm";
 import {VehicleDetailsForm} from "@/components/VehicleSelector/forms/VehicleDetailsForm";
 import {VehicleSummaryCard} from "@/components/VehicleSelector/components/VehicleSummaryCard";
+import {OfferConfirmation} from "@/components/VehicleSelector/steps/OfferConfirmation";
 
 
 export function VehicleSelector() {
@@ -164,6 +165,10 @@ export function VehicleSelector() {
 		{
 			label: "Ek Bilgiler",
 			component: <VehicleDetailsForm />
+		},
+		{
+			label: "Onay",
+			component: <OfferConfirmation />
 		}
 	];
 
