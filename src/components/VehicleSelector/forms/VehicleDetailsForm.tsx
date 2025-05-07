@@ -1,15 +1,25 @@
-import React, { useState, useRef, ChangeEvent } from "react";
+import React, { useState, useRef, ChangeEvent, useEffect } from "react";
 import { useStepperContext } from "../StepperContext";
 
 import "../styles/StepperContainer.css";
 
 export function VehicleDetailsForm() {
-	const { selections, updateSelection, nextStep } = useStepperContext();
+	const { selections, updateSelection } = useStepperContext();
 	const [notes, setNotes] = useState<string>(selections.notes || "");
 	const [images, setImages] = useState<string[]>(selections.images || []);
 	const [uploading, setUploading] = useState<boolean>(false);
 	const [error, setError] = useState<string | null>(null);
 	const fileInputRef = useRef<HTMLInputElement>(null);
+
+	// Not değiştiğinde context'e kaydet
+	useEffect(() => {
+		updateSelection("notes", notes);
+	}, [notes]);
+
+	// Resimler değiştiğinde context'e kaydet
+	useEffect(() => {
+		updateSelection("images", images);
+	}, [images]);
 
 	const handleNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setNotes(e.target.value);
@@ -40,7 +50,7 @@ export function VehicleDetailsForm() {
 					continue;
 				}
 
-				if (!file.type.startsWith('image/')) {
+				if (!file.type.startsWith("image/")) {
 					setError("Sadece resim dosyaları yükleyebilirsiniz.");
 					continue;
 				}
@@ -74,18 +84,12 @@ export function VehicleDetailsForm() {
 		setImages(prev => prev.filter((_, i) => i !== index));
 	};
 
-	const handleSubmit = () => {
-		updateSelection("notes", notes);
-		updateSelection("images", images);
-		nextStep();
-	};
-
 	if (!selections.contact) {
 		return <div className="message">Lütfen önce iletişim bilgilerinizi tamamlayın.</div>;
 	}
 
 	return (
-		<div className="form-container">
+		<div className="form-container" id="vehicleDetailsForm">
 			<h2 className="form-title">Ek Bilgiler</h2>
 			<p className="form-subtitle">Aracınız hakkında eklemek istediğiniz bilgiler ve fotoğraflar</p>
 
@@ -140,16 +144,6 @@ export function VehicleDetailsForm() {
 						))}
 					</div>
 				)}
-			</div>
-
-			<div className="form-actions">
-				<button
-					className="form-button primary"
-					onClick={handleSubmit}
-					disabled={uploading}
-				>
-					Devam Et
-				</button>
 			</div>
 		</div>
 	);

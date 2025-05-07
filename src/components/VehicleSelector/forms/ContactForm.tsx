@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStepperContext, ContactDetails } from "../StepperContext";
 
 import "../styles/StepperContainer.css";
 
 export function ContactForm() {
-	const { selections, updateSelection, nextStep } = useStepperContext();
+	const { selections, updateSelection } = useStepperContext();
 	const [contact, setContact] = useState<ContactDetails>({
 		fullName: selections.contact?.fullName || "",
 		phone: selections.contact?.phone || "",
 		email: selections.contact?.email || ""
 	});
 	const [errors, setErrors] = useState<Record<string, string>>({});
+
+	// İletişim bilgilerindeki değişiklikleri context'e kaydet
+	useEffect(() => {
+		// Boş değerleri kaydetmekten kaçınmak için bir kontrol yapabiliriz
+		if (contact.fullName.trim() || contact.phone.trim() || contact.email?.trim()) {
+			updateSelection("contact", contact);
+		}
+	}, [contact]);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -29,6 +37,7 @@ export function ContactForm() {
 		}
 	};
 
+	// Form geçerliliğini kontrol eden fonksiyon
 	const validateForm = (): boolean => {
 		const newErrors: Record<string, string> = {};
 
@@ -38,7 +47,7 @@ export function ContactForm() {
 
 		if (!contact.phone.trim()) {
 			newErrors.phone = "Telefon alanı zorunludur";
-		} else if (!/^[0-9]{10,11}$/.test(contact.phone.replace(/\s/g, ''))) {
+		} else if (!/^[0-9]{10,11}$/.test(contact.phone.replace(/\s/g, ""))) {
 			newErrors.phone = "Geçerli bir telefon numarası giriniz";
 		}
 
@@ -50,13 +59,6 @@ export function ContactForm() {
 		return Object.keys(newErrors).length === 0;
 	};
 
-	const handleSubmit = () => {
-		if (validateForm()) {
-			updateSelection("contact", contact);
-			nextStep();
-		}
-	};
-
 	if (!selections.vehicleType || !selections.year || !selections.brand ||
 		!selections.model || !selections.subModel || !selections.bodyType ||
 		!selections.fuelType || !selections.transmissionType ||
@@ -66,7 +68,7 @@ export function ContactForm() {
 	}
 
 	return (
-		<div className="form-container">
+		<div className="form-container" id="contactForm">
 			<h2 className="form-title">İletişim Bilgileri</h2>
 			<p className="form-subtitle">Size ulaşabilmemiz için bilgilerinizi giriniz.</p>
 
@@ -110,15 +112,6 @@ export function ContactForm() {
 					placeholder="ornek@domain.com"
 				/>
 				{errors.email && <div className="form-error">{errors.email}</div>}
-			</div>
-
-			<div className="form-actions">
-				<button
-					className="form-button primary"
-					onClick={handleSubmit}
-				>
-					Devam Et
-				</button>
 			</div>
 		</div>
 	);

@@ -29,6 +29,7 @@ import {MileageForm} from "@/components/VehicleSelector/forms/MileageForm";
 import {DamageRecordForm} from "@/components/VehicleSelector/forms/DamageRecordForm";
 import {ContactForm} from "@/components/VehicleSelector/forms/ContactForm";
 import {VehicleDetailsForm} from "@/components/VehicleSelector/forms/VehicleDetailsForm";
+import {VehicleSummaryCard} from "@/components/VehicleSelector/components/VehicleSummaryCard";
 
 
 export function VehicleSelector() {
@@ -178,6 +179,7 @@ export function VehicleSelector() {
 	return (
 		<StepperContext.Provider value={contextValue}>
 			<StepperContainer />
+			<VehicleSummaryCard/>
 		</StepperContext.Provider>
 	);
 }

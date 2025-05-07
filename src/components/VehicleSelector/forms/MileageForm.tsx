@@ -17,33 +17,42 @@ export function MileageForm() {
 		if (value === "" || /^\d+$/.test(value)) {
 			setMileage(value);
 			setError(null);
+
+			// Değeri anlık olarak context'e kaydet
+			if (value === "") {
+				updateSelection("mileage", 0);
+			} else {
+				updateSelection("mileage", parseInt(value, 10));
+			}
 		}
 	};
 
-	const handleSubmit = () => {
+	// Form geçerliliğini kontrol eden fonksiyon
+	const validateMileage = (): boolean => {
 		if (!mileage) {
 			setError("Lütfen kilometreyi girin.");
-			return;
+			return false;
 		}
 
 		const mileageValue = parseInt(mileage, 10);
 
 		if (isNaN(mileageValue)) {
 			setError("Geçerli bir kilometre değeri girin.");
-			return;
+			return false;
 		}
 
 		if (mileageValue < 0) {
 			setError("Kilometre değeri 0'dan küçük olamaz.");
-			return;
+			return false;
 		}
 
 		if (mileageValue > 999999) {
 			setError("Kilometre değeri çok yüksek.");
-			return;
+			return false;
 		}
 
-		updateSelection("mileage", mileageValue);
+		setError(null);
+		return true;
 	};
 
 	if (!selections.vehicleType || !selections.year || !selections.brand ||
@@ -65,15 +74,6 @@ export function MileageForm() {
 					placeholder="Kilometreyi girin (örn: 45000)"
 				/>
 				{error && <div className="form-error">{error}</div>}
-			</div>
-
-			<div className="form-actions">
-				<button
-					className="form-button primary"
-					onClick={handleSubmit}
-				>
-					Devam Et
-				</button>
 			</div>
 		</div>
 	);

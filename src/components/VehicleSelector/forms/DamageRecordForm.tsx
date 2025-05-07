@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStepperContext } from "../StepperContext";
 
 import "../styles/StepperContainer.css";
@@ -15,6 +15,7 @@ export function DamageRecordForm() {
 
 	const handleDamageRecordChange = (value: string) => {
 		setDamageRecord(value);
+		updateSelection("damageRecord", value as "NONE" | "EXISTS");
 
 		// Eğer "NONE" seçilirse, hasar miktarını sıfırla
 		if (value === "NONE") {
@@ -30,37 +31,51 @@ export function DamageRecordForm() {
 		if (value === "" || /^[0-9]*[.,]?[0-9]*$/.test(value)) {
 			setDamageAmount(value);
 			setError(null);
+
+			if (value.trim() !== "") {
+				// Virgülü noktaya çevir (ondalık sayılar için)
+				const formattedAmount = value.replace(",", ".");
+				const damageValue = parseFloat(formattedAmount);
+
+				if (!isNaN(damageValue) && damageValue >= 0) {
+					updateSelection("damageAmount", damageValue);
+				}
+			}
 		}
 	};
 
-	const handleSubmit = () => {
-		// Önce damageRecord'u güncelle
-		updateSelection("damageRecord", damageRecord as "NONE" | "EXISTS");
-
+	// Form geçerliliğini kontrol eden fonksiyon
+	const validateDamageRecord = (): boolean => {
 		// Eğer hasar kaydı var ise, hasar miktarını kontrol et
 		if (damageRecord === "EXISTS") {
 			if (!damageAmount.trim()) {
 				setError("Lütfen hasar miktarını girin.");
-				return;
+				return false;
 			}
 
 			// Virgülü noktaya çevir (ondalık sayılar için)
-			const formattedAmount = damageAmount.replace(',', '.');
+			const formattedAmount = damageAmount.replace(",", ".");
 			const damageValue = parseFloat(formattedAmount);
 
 			if (isNaN(damageValue)) {
 				setError("Geçerli bir hasar miktarı girin.");
-				return;
+				return false;
 			}
 
 			if (damageValue < 0) {
 				setError("Hasar miktarı 0'dan küçük olamaz.");
-				return;
+				return false;
 			}
-
-			updateSelection("damageAmount", damageValue);
 		}
+
+		setError(null);
+		return true;
 	};
+
+	// Context'e güncel durumu kaydet
+	useEffect(() => {
+		updateSelection("damageRecord", damageRecord as "NONE" | "EXISTS");
+	}, [damageRecord]);
 
 	if (!selections.vehicleType || !selections.year || !selections.brand ||
 		!selections.model || !selections.subModel || !selections.bodyType ||
@@ -70,7 +85,7 @@ export function DamageRecordForm() {
 	}
 
 	return (
-		<div className="form-container">
+		<div className="form-container" id="damageRecordForm">
 			<div className="form-group">
 				<label className="form-label">Tramer Kaydı</label>
 				<div className="radio-group">
@@ -110,15 +125,6 @@ export function DamageRecordForm() {
 					{error && <div className="form-error">{error}</div>}
 				</div>
 			)}
-
-			<div className="form-actions">
-				<button
-					className="form-button primary"
-					onClick={handleSubmit}
-				>
-					Devam Et
-				</button>
-			</div>
 		</div>
 	);
 }

@@ -4,7 +4,6 @@
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3); /* Softer shadow for dark theme */
     padding: 24px;
-    max-width: 800px;
     margin: 0 auto;
     color: #e0e0e0; /* Light text color */
 }
@@ -204,5 +203,246 @@
 
     .step-label {
         font-size: 12px;
+    }
+}
+
+/* Özet Kartı Stilleri */
+.summary-container {
+    width: 100%;
+    margin: 20px 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.summary-message {
+    text-align: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    color: #666;
+}
+
+.summary-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    overflow: hidden;
+}
+
+.summary-title {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    position: relative;
+}
+
+.summary-title:after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #0056b3;
+}
+
+.summary-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.summary-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #0056b3;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item-label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.item-value {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.summary-notes {
+    margin-top: 16px;
+}
+
+.notes-content {
+    margin-top: 8px;
+    padding: 12px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    font-size: 15px;
+}
+
+.summary-images {
+    margin-top: 16px;
+}
+
+.images-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.image-thumbnail {
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-thumbnail:hover img {
+    transform: scale(1.05);
+}
+
+/* Sabit Özet Çubuğu Stilleri */
+.fixed-summary-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.fixed-summary-bar.expanded {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.summary-bar-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #0056b3;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.toggle-title {
+    font-size: 16px;
+}
+
+.toggle-icon {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.summary-bar-content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+}
+
+.fixed-summary-bar.expanded .summary-bar-content {
+    height: auto;
+    max-height: calc(70vh - 40px);
+    padding: 16px;
+}
+
+.summary-bar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #f5f5f5;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+}
+
+.summary-item.active {
+    background-color: #e8f4ff;
+    opacity: 1;
+    border-left: 3px solid #0056b3;
+}
+
+.summary-item.current {
+    background-color: #ddf4e4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    border-left: 3px solid #00a854;
+}
+
+.summary-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.summary-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    word-break: break-word;
+}
+
+/* Mobil ekranlarda düzenleme */
+@media (max-width: 768px) {
+    .summary-bar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Çok küçük ekranlarda tek sütuna düş */
+@media (max-width: 480px) {
+    .summary-bar-grid {
+        grid-template-columns: 1fr;
     }
 }
