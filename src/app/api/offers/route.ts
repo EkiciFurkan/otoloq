@@ -64,3 +64,22 @@ export async function POST(request: NextRequest) {
 		}, { status: 500 });
 	}
 }
+
+export async function GET() {
+	try {
+		const offers = await offerApi.getAllOffers();
+
+		return NextResponse.json({
+			success: true,
+			data: offers
+		}, { status: 200 });
+	} catch (error: any) {
+		console.error("Teklifler listelenirken hata oluştu:", error);
+
+		return NextResponse.json({
+			success: false,
+			message: "Teklifler listelenirken bir hata oluştu",
+			error: error.message
+		}, { status: 500 });
+	}
+}

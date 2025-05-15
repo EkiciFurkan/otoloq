@@ -106,5 +106,30 @@ export const offerApi = {
 			console.error(`${id} ID'li teklif alınırken hata oluştu:`, error);
 			throw error;
 		}
+	},
+
+	getAllOffers: async () => {
+		try {
+			return await prisma.offer.findMany({
+				include: {
+					vehicleType: true,
+					year: true,
+					brand: true,
+					model: true,
+					subModel: true,
+					bodyType: true,
+					fuelType: true,
+					transmissionType: true,
+					color: true,
+					contact: true
+				},
+				orderBy: {
+					createdAt: 'desc'
+				}
+			});
+		} catch (error) {
+			console.error("Teklifler alınırken hata oluştu:", error);
+			throw error;
+		}
 	}
 };

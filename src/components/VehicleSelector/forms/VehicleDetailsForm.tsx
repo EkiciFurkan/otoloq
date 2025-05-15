@@ -1,10 +1,10 @@
-import React, { useState, useRef, ChangeEvent, useEffect } from "react";
-import { useStepperContext } from "../StepperContext";
+import React, {useState, useRef, ChangeEvent, useEffect} from "react";
+import {useStepperContext} from "../StepperContext";
 
 import "../styles/StepperContainer.css";
 
 export function VehicleDetailsForm() {
-	const { selections, updateSelection } = useStepperContext();
+	const {selections, updateSelection} = useStepperContext();
 	const [notes, setNotes] = useState<string>(selections.notes || "");
 	const [images, setImages] = useState<string[]>(selections.images || []);
 	const [uploading, setUploading] = useState<boolean>(false);
@@ -57,7 +57,6 @@ export function VehicleDetailsForm() {
 
 				const reader = new FileReader();
 
-				// Dosyanın yüklenmesini bekle
 				const imageDataUrl = await new Promise<string>((resolve) => {
 					reader.onload = (e) => resolve(e.target?.result as string);
 					reader.readAsDataURL(file);
@@ -131,7 +130,7 @@ export function VehicleDetailsForm() {
 					<div className="image-preview-container">
 						{images.map((image, index) => (
 							<div key={index} className="image-preview">
-								<img src={image} alt={`Yüklenen resim ${index + 1}`} />
+								<img src={image} alt={`Yüklenen resim ${index + 1}`}/>
 								<button
 									type="button"
 									className="image-remove-btn"
