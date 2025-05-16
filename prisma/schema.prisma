@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,78 +7,69 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Vasıta tiplerini temsil eden model (Araba, Motosiklet, Traktör, vb.)
+model User {
+  id        String    @id @default(cuid())
+  name      String?
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
 model VehicleType {
   id        Int      @id @default(autoincrement())
   name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // İlişkiler
-  years  Year[] // Bir vasıta tipine bağlı yıllar (Orijinal şemanızdaki gibi bırakıldı)
-  models Model[] // VehicleType'a bağlı modeller eklendi (Model'de vehicleTypeId olacak)
-  offers Offer[] // Bu vasıta tipine ait teklifler
+  years  Year[]
+  models Model[]
+  offers Offer[]
 }
 
-// Araç yılları (2022, 2023, 2024, vb.)
-// Bu model, orijinal şemanızdaki gibi Vasıta Tipi'ne bağlı kalıyor.
 model Year {
   id            Int         @id @default(autoincrement())
   year          Int
   vehicleType   VehicleType @relation(fields: [vehicleTypeId], references: [id])
-  vehicleTypeId Int // Yıl, vasıta tipine bağlı
+  vehicleTypeId Int
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 
-  // İlişkiler
-  // brands Brand[] // Bir yıla bağlı markalar (Bu ilişki, markalar yıldan bağımsızsa anlamsızdır, kaldırılması önerilir ama minimal değişiklik için şimdilik bırakıldı)
-  models Model[] // Yıla bağlı modeller eklendi (Model'de yearId olacak)
-  offers Offer[] // Bu yıla ait teklifler
+  models Model[]
+  offers Offer[]
 
-  // @@unique([year, vehicleTypeId]) // Orijinal şemanızdaki benzersizlik kısıtlaması
-  @@unique([year, vehicleTypeId]) // Bir vasıta tipi için her yıl benzersiz olmalı
+  @@unique([year, vehicleTypeId])
 }
 
-// Araç markaları (BMW, Audi, vb.)
-// MARKALAR YILDAN BAĞIMSIZ HALE GETİRİLDİ.
 model Brand {
   id        Int      @id @default(autoincrement())
-  name      String   @unique // Marka adı benzersiz olmalı
-  // year Year @relation(fields: [yearId], references: [id]) // <-- BU SATIR KALDIRILDI
-  // yearId Int // <-- BU SATIR KALDIRILDI
+  name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // İlişkiler
-  models Model[] // Bir markaya bağlı modeller (BU İLİŞKİ ARTIK TEMEL BAĞLANTI NOKTASI)
-  // offers Offer[] // Bu markaya ait teklifler (Bu ilişki OfferItem seviyesinde daha standart olabilir)
+  models Model[]
   Offer  Offer[]
 }
 
-// Araç modelleri (3 Serisi, 5 Serisi, vb.)
-// MODELLER ARTIK Marka, Yıl ve Vasıta Tipi'ne BAĞLANACAK.
 model Model {
   id            Int         @id @default(autoincrement())
   name          String
-  brand         Brand       @relation(fields: [brandId], references: [id]) // Modele ait marka
+  brand         Brand       @relation(fields: [brandId], references: [id])
   brandId       Int
-  year          Year        @relation(fields: [yearId], references: [id]) // Modele ait yıl (EKLENDİ)
-  yearId        Int // EKLENDİ
-  vehicleType   VehicleType @relation(fields: [vehicleTypeId], references: [id]) // Modele ait vasıta tipi (EKLENDİ)
-  vehicleTypeId Int // EKLENDİ
+  year          Year        @relation(fields: [yearId], references: [id])
+  yearId        Int
+  vehicleType   VehicleType @relation(fields: [vehicleTypeId], references: [id])
+  vehicleTypeId Int
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 
-  // İlişkiler
-  subModels SubModel[] // Bir modele bağlı alt modeller
-  offers    Offer[] // Bu modele ait teklifler (Bu ilişki OfferItem seviyesinde daha standart olabilir)
+  subModels SubModel[]
+  offers    Offer[]
 
-  // Modelin adını, markasını, yılını ve vasıta tipini benzersiz yapacak kısıtlama
-  // Orijinal @@unique([name, brandId]) kısıtlaması güncellendi.
-  @@unique([name, brandId, yearId, vehicleTypeId]) // Örnek: Bir model adı, marka, yıl ve vasıta tipi kombinasyonu benzersiz olmalı
+  @@unique([name, brandId, yearId, vehicleTypeId])
 }
 
-// Alt modeller (320i Sport Line, 520d M Sport, vb.) - AYNEN KALDI
 model SubModel {
   id        Int      @id @default(autoincrement())
   name      String
@@ -90,14 +78,12 @@ model SubModel {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // İlişkiler
-  bodyTypes BodyType[] // Bir alt modele bağlı gövde tipleri
-  offers    Offer[] // Bu alt modele ait teklifler
+  bodyTypes BodyType[]
+  offers    Offer[]
 
-  @@unique([name, modelId]) // Bir model için her alt model benzersiz olmalı
+  @@unique([name, modelId])
 }
 
-// Gövde tipleri (Sedan, Hatchback, vb.) - AYNEN KALDI
 model BodyType {
   id         Int      @id @default(autoincrement())
   name       String
@@ -106,14 +92,12 @@ model BodyType {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  // İlişkiler
-  fuelTypes FuelType[] // Bir gövde tipine bağlı yakıt tipleri
-  offers    Offer[] // Bu gövde tipine ait teklifler
+  fuelTypes FuelType[]
+  offers    Offer[]
 
-  @@unique([name, subModelId]) // Bir alt model için her gövde tipi benzersiz olmalı
+  @@unique([name, subModelId])
 }
 
-// Yakıt tipleri (Dizel, Benzin, vb.) - AYNEN KALDI
 model FuelType {
   id         Int      @id @default(autoincrement())
   name       String
@@ -122,35 +106,29 @@ model FuelType {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  // İlişkiler
-  offers Offer[] // Bu yakıt tipine ait teklifler
+  offers Offer[]
 
-  @@unique([name, bodyTypeId]) // Bir gövde tipi için her yakıt tipi benzersiz olmalı
+  @@unique([name, bodyTypeId])
 }
 
-// Vites tipleri (Manuel, Otomatik, vb.) - AYNEN KALDI
 model TransmissionType {
   id        Int      @id @default(autoincrement())
   name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // İlişkiler
-  offers Offer[] // Bu vites tipine ait teklifler
+  offers Offer[]
 }
 
-// Renk seçenekleri - AYNEN KALDI
 model Color {
   id        Int      @id @default(autoincrement())
   name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // İlişkiler
-  offers Offer[] // Bu renge ait teklifler
+  offers Offer[]
 }
 
-// İletişim bilgileri - AYNEN KALDI
 model Contact {
   id        Int      @id @default(autoincrement())
   fullName  String
@@ -159,59 +137,53 @@ model Contact {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // İlişkiler
-  offers Offer[] // Bu kişiye ait teklifler
+  offers Offer[]
 }
 
-// Teklif durumu - AYNEN KALDI
 enum OfferStatus {
-  PENDING // Beklemede
-  CONTACTED // İletişime geçildi
-  OFFERED // Teklif verildi
-  ACCEPTED // Kabul edildi
-  REJECTED // Reddedildi
-  COMPLETED // Tamamlandı
+  PENDING
+  CONTACTED
+  OFFERED
+  ACCEPTED
+  REJECTED
+  COMPLETED
 }
 
-// Tramer/hasar kaydı durumu - AYNEN KALDI
 enum DamageRecordStatus {
-  NONE // Hasar kaydı yok
-  EXISTS // Hasar kaydı var
+  NONE
+  EXISTS
 }
 
-// Teklifler - AYNEN KALDI (ancak artık Brand'den yearId kaldırıldığı için brandId ilişkisi year-independent Brand'e bakar)
 model Offer {
   id                 Int                @id @default(autoincrement())
   vehicleType        VehicleType        @relation(fields: [vehicleTypeId], references: [id])
   vehicleTypeId      Int
   year               Year               @relation(fields: [yearId], references: [id])
   yearId             Int
-  brand              Brand              @relation(fields: [brandId], references: [id]) // Bu artık year-independent Brand'e bakıyor
+  brand              Brand              @relation(fields: [brandId], references: [id])
   brandId            Int
-  model              Model              @relation(fields: [modelId], references: [id]) // Offer'dan Model'e direk ilişki
+  model              Model              @relation(fields: [modelId], references: [id])
   modelId            Int
-  subModel           SubModel           @relation(fields: [subModelId], references: [id]) // Offer'dan SubModel'e direk ilişki
+  subModel           SubModel           @relation(fields: [subModelId], references: [id])
   subModelId         Int
-  bodyType           BodyType           @relation(fields: [bodyTypeId], references: [id]) // Offer'dan BodyType'a direk ilişki
+  bodyType           BodyType           @relation(fields: [bodyTypeId], references: [id])
   bodyTypeId         Int
-  fuelType           FuelType           @relation(fields: [fuelTypeId], references: [id]) // Offer'dan FuelType'a direk ilişki
+  fuelType           FuelType           @relation(fields: [fuelTypeId], references: [id])
   fuelTypeId         Int
   transmissionType   TransmissionType   @relation(fields: [transmissionTypeId], references: [id])
   transmissionTypeId Int
   color              Color              @relation(fields: [colorId], references: [id])
   colorId            Int
-  mileage            Int // Kilometre
+  mileage            Int
   damageRecord       DamageRecordStatus @default(NONE)
-  damageAmount       Float? // Hasar kaydı miktarı (varsa)
+  damageAmount       Float?
   contact            Contact            @relation(fields: [contactId], references: [id])
   contactId          Int
   notes              String?            @db.Text
-  images             String[] // Resim URL'leri
+  images             String[]
   status             OfferStatus        @default(PENDING)
-  adminNotes         String?            @db.Text // Yönetici notları
-  offerAmount        Float? // Teklif miktarı (yönetici tarafından belirlenir)
+  adminNotes         String?            @db.Text
+  offerAmount        Float?
   createdAt          DateTime           @default(now())
   updatedAt          DateTime           @updatedAt
-
-  // @@unique([...?]) // Teklifler için benzersizlik kısıtlaması eklemeyi düşünebilirsiniz
 }
